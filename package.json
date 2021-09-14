@@ -1,0 +1,42 @@
+{
+	"name": "website",
+	"version": "1.0.0",
+	"description": "The NextJS server that powers the mcstatus.io public website.",
+	"main": "index.js",
+	"scripts": {
+		"start": "next start src/",
+		"build": "next build src/",
+		"dev": "next dev src/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mcstatus-io/Website.git"
+	},
+	"keywords": [
+		"minecraft",
+		"status",
+		"api",
+		"server"
+	],
+	"author": "Jacob Gunther",
+	"license": "UNLICENSED",
+	"bugs": {
+		"url": "https://github.com/mcstatus-io/Website/issues"
+	},
+	"homepage": "https://github.com/mcstatus-io/Website#readme",
+	"dependencies": {
+		"bulma": "^0.9.3",
+		"humanize-duration": "^3.27.0",
+		"next": "^11.1.0",
+		"prop-types": "^15.7.2",
+		"react": "^17.0.2",
+		"react-content-loader": "^6.0.3",
+		"react-dom": "^17.0.2",
+		"sass": "^1.38.2",
+		"use-dark-mode": "^2.3.1"
+	},
+	"devDependencies": {
+		"eslint": "^7.32.0",
+		"eslint-plugin-react": "^7.25.0"
+	}
+}
