@@ -1,2 +1,3 @@
 # Website
-The NextJS server that powers the mcstatus.io public website.
+
+The NextJS server that powers the mcstatus.io website.
