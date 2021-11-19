@@ -6,7 +6,7 @@ export default function Footer() {
 		<footer className="footer mt-6">
 			<div className="container is-flex">
 				<p className="is-flex-grow-1">
-					<strong>mcstatus.io</strong> by <a href="https://passthemayo.dev" target="_blank" rel="noreferrer">Jacob Gunther</a> &ndash; inspired by <a href="https://mcsrvstat.us">mcsrvstat.us</a>
+					<strong>mcstatus.io</strong> by <a href="https://passthemayo.dev" target="_blank" rel="noreferrer">Jacob Gunther</a>
 				</p>
 				<p>
 					<Link href="/about">
