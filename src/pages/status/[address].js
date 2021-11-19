@@ -8,7 +8,7 @@ import humanizeDuration from 'humanize-duration';
 
 export default function Status() {
 	const input = useRef(null);
-	const { push, query } = useRouter();
+	const { push, query, pathname } = useRouter();
 	const [debug, setDebug] = useState(false);
 	const [result, setResult] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -43,6 +43,14 @@ export default function Status() {
 		<>
 			<Head>
 				<title>{query.address ?? 'Loading'} - mcstatus.io</title>
+				<meta name="robots" content="noindex,follow" />
+				<meta name="title" content={`${query.address ?? 'Loading'} - mcstatus.io`} />
+				<meta name="description" content={`Easily and quickly retrieve the status of ${query.address ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content={`https://mcstatus.io${pathname}`} />
+				<meta property="og:title" content={`${query.address ?? 'Loading'} - mcstatus.io`} />
+				<meta property="og:description" content={`Easily and quickly retrieve the status of ${query.address ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
+				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>
 			<div className="container">
 				<form onSubmit={onSubmit} className="mb-5">

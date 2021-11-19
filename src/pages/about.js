@@ -7,6 +7,14 @@ export default function About() {
 		<>
 			<Head>
 				<title>About - mcstatus.io</title>
+				<meta name="robots" content="index,follow" />
+				<meta name="title" content="About - mcstatus.io" />
+				<meta name="description" content="Learn about our Minecraft server status retrieval tool and what you can do with it, or read into our frequently asked questions and answers." />
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content="https://mcstatus.io/about" />
+				<meta property="og:title" content="About - mcstatus.io" />
+				<meta property="og:description" content="Learn about our Minecraft server status retrieval tool and what you can do with it, or read into our frequently asked questions and answers." />
+				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>
 			<div className="container">
 				<h2 className="title mb-2">About</h2>

@@ -18,6 +18,14 @@ export default function Home() {
 		<>
 			<Head>
 				<title>mcstatus.io - A Minecraft server status utility</title>
+				<meta name="robots" content="index,follow" />
+				<meta name="title" content="mcstatus.io - A Minecraft server status utility" />
+				<meta name="description" content="Easily and quickly retrieve the status of any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second." />
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content="https://mcstatus.io" />
+				<meta property="og:title" content="mcstatus.io - A Minecraft server status utility" />
+				<meta property="og:description" content="Easily and quickly retrieve the status of any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second." />
+				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>
 			<div className="container">
 				<form onSubmit={onSubmit}>
