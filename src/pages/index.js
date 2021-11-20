@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 export default function Home() {
 	const input = useRef(null);
+	const [error, setError] = useState(false);
 	const { push } = useRouter();
 
 	const onSubmit = (event) => {
@@ -12,6 +13,12 @@ export default function Home() {
 		if (!input || !input.current) return;
 
 		push(`/status/${input.current.value.toLowerCase()}`);
+	};
+
+	const onChange = () => {
+		if (!input || !input.current || input.current.value.length < 1) return;
+
+		setError(input.current.value.length < 1);
 	};
 
 	return (
@@ -33,7 +40,7 @@ export default function Home() {
 						<div className="column is-flex-grow-1 pr-1">
 							<div className="field">
 								<div className="control is-fullwidth">
-									<input type="text" className="input" id="address" placeholder="play.hypixel.net" spellCheck="false" autoComplete="false" ref={input} />
+									<input type="text" className={`input ${error ? 'is-danger' : ''}`} id="address" placeholder="play.hypixel.net" spellCheck="false" autoComplete="false" onChange={onChange} ref={input} />
 								</div>
 							</div>
 						</div>

@@ -9,6 +9,7 @@ import humanizeDuration from 'humanize-duration';
 export default function Status() {
 	const input = useRef(null);
 	const { push, query, pathname } = useRouter();
+	const [error, setError] = useState(false);
 	const [debug, setDebug] = useState(false);
 	const [result, setResult] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -35,9 +36,15 @@ export default function Status() {
 	const onSubmit = (event) => {
 		event.preventDefault();
 
-		if (!input || !input.current || input.current.value.toLowerCase() === query.address.toLowerCase()) return;
+		if (!input || !input.current || input.current.value.length < 1 || input.current.value.toLowerCase() === query.address.toLowerCase()) return;
 
 		push(`/status/${input.current.value.toLowerCase()}`);
+	};
+
+	const onChange = () => {
+		if (!input || !input.current) return;
+
+		setError(input.current.value.length < 1);
 	};
 
 	return (
@@ -59,7 +66,7 @@ export default function Status() {
 						<div className="column is-flex-grow-1 pr-1">
 							<div className="field">
 								<div className="control is-fullwidth">
-									<input type="text" className="input" id="address" placeholder="play.hypixel.net" defaultValue={query.address} spellCheck="false" autoComplete="false" ref={input} />
+									<input type="text" className={`input ${error ? 'is-danger' : ''}`} id="address" placeholder="play.hypixel.net" defaultValue={query.address} spellCheck="false" autoComplete="false" onChange={onChange} ref={input} />
 								</div>
 							</div>
 						</div>
