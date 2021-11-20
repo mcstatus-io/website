@@ -5,7 +5,8 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:@next/next/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -37,5 +38,10 @@
     },
     "globals": {
         "process": true
+    },
+    "settings": {
+        "react": {
+            "version": "latest"
+        }
     }
 }
