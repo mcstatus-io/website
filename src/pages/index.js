@@ -10,13 +10,13 @@ export default function Home() {
 	const onSubmit = (event) => {
 		event.preventDefault();
 
-		if (!input || !input.current) return;
+		if (!input || !input.current || input.current.value.length < 1) return;
 
 		push(`/status/${input.current.value.toLowerCase()}`);
 	};
 
 	const onChange = () => {
-		if (!input || !input.current || input.current.value.length < 1) return;
+		if (!input || !input.current) return;
 
 		setError(input.current.value.length < 1);
 	};
