@@ -27,7 +27,7 @@ export default function Home() {
 				<meta property="og:description" content="Easily and quickly retrieve the status of any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second." />
 				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>
-			<div className="container">
+			<div className="container main-container">
 				<form onSubmit={onSubmit}>
 					<div className="columns">
 						<div className="column is-flex-grow-1 pr-1">
@@ -37,7 +37,7 @@ export default function Home() {
 								</div>
 							</div>
 						</div>
-						<div className="column is-flex-grow-0 pl-1">
+						<div className="column is-flex-grow-0 is-hidden-mobile pl-1">
 							<button type="submit" className="button is-link">Submit</button>
 						</div>
 					</div>

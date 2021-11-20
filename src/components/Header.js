@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Header() {
 	return (
-		<div className="container pt-6">
+		<div className="container main-container pt-6">
 			<img src="/img/stone.png" width="64" height="64" className="is-pulled-left mr-4 mt-4" />
 			<Link href="/">
 				<a>

@@ -23,12 +23,13 @@ export default function Status() {
 			const body = await result.json();
 
 			setResult(body);
-			setLoading(false);
 		} catch (e) {
 			setResult({ errors: [e?.message ?? e.toString()] });
 
 			console.error(e);
 		}
+
+		setLoading(false);
 	})(), [query]);
 
 	const onSubmit = (event) => {
