@@ -1,6 +1,6 @@
 @import "~bulma/sass/utilities/_all"
 
-$shadow: none
+$body-background-color: $white-ter
 $title-family: 'Poppins', sans-serif
 $title-weight: 500
 $subtitle-family: 'Poppins', sans-serif
@@ -9,6 +9,7 @@ $footer-padding: 1.5rem 0
 $table-background-color: none
 $input-shadow: none
 $input-focus-box-shadow-size: 0
+$hr-background-color: $grey-lightest
 
 .main-columns
     min-height: 100vh
@@ -21,6 +22,9 @@ ul.menu-list > li
 
     &:last-of-type
         border-bottom: none
+
+.footer
+    border-top: 1px solid $grey-lightest
 
 @import "~bulma/sass/base/minireset"
 @import "~bulma/sass/base/generic"

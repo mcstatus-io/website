@@ -5,7 +5,7 @@ export default function Footer() {
 	return (
 		<footer className="footer mt-6">
 			<div className="container main-container">
-				<div className="columns">
+				<div className="columns has-text-centered-mobile">
 					<div className="column">
 						<p>
 							<strong>mcstatus.io</strong> by <a href="https://passthemayo.dev" target="_blank" rel="noreferrer">Jacob Gunther</a>

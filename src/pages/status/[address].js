@@ -61,7 +61,7 @@ export default function Status() {
 				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>
 			<div className="container">
-				<form onSubmit={onSubmit} className="mb-5">
+				<form onSubmit={onSubmit} className="mb-5" spellCheck="false" autoComplete="false">
 					<div className="columns">
 						<div className="column is-flex-grow-1 pr-1">
 							<div className="field">
@@ -75,97 +75,99 @@ export default function Status() {
 						</div>
 					</div>
 				</form>
-				{
-					loading
-						? <ContentLoader viewBox="0 0 1200 400" uniqueKey="result-loader">
-							<rect x="0" y="0" width="1200" height="400" rx="3" ry="3" />
-						</ContentLoader>
-						: result.errors
-							? <p className="has-text-danger">{result.errors.join('\n')}</p>
-							: result.online
-								? <>
-									<table className="table is-fullwidth is-hoverable mt-5">
-										<tbody>
-											<tr>
-												<th className={style.label}>Hostname</th>
-												<td>{result.response.host}</td>
-											</tr>
-											<tr>
-												<th className={style.label}>Port</th>
-												<td>{result.response.port}</td>
-											</tr>
-											<tr>
-												<th className={style.label}>MOTD</th>
-												<td>
-													<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.description.html }} />
-												</td>
-											</tr>
-											<tr>
-												<th className={style.label}>Favicon</th>
-												<td>
-													{
-														result.response.favicon
-															? <img src={result.response.favicon} />
-															: <p className="has-text-grey">N/A</p>
-													}
-												</td>
-											</tr>
-											<tr>
-												<th className={style.label}>Version</th>
-												<td>
-													{
-														result.response.version?.name
-															? <span>{result.response.version.name}</span>
-															: <span className="has-text-grey">N/A</span>
-													}
-												</td>
-											</tr>
-											<tr>
-												<th className={style.label}>Players</th>
-												<td>{result.response.players.online} / {result.response.players.max}</td>
-											</tr>
-											{
-												debug
-													? <tr>
-														<th className={style.label}>SRV Lookup</th>
-														<td>
-															{
-																result.response.srv_record
-																	? <span className="tag is-success">Yes</span>
-																	: <span className="tag is-danger">No</span>
-															}
-														</td>
-													</tr>
-													: null
-											}
-											{
-												debug
-													? <tr>
-														<th className={style.label}>Protocol Version</th>
-														<td>{result.response.version.protocol}</td>
-													</tr>
-													: null
-											}
-											{
-												debug
-													? <tr>
-														<th className={style.label}>Cached Result</th>
-														<td>
-															{
-																result.cache_record
-																	? <p className="tag is-success" title={`Expires in ${humanizeDuration(result.cache_record.expires_at - Date.now(), { largest: 2, round: true })}`}>Yes</p>
-																	: <p className="tag is-danger">No</p>
-															}
-														</td>
-													</tr>
-													: null
-											}
-										</tbody>
-									</table>
-									<button type="button" className="button is-link" onClick={() => setDebug(!debug)}>{debug ? 'Hide' : 'Show'} debug info</button>
-								</>
-								: <p className="has-text-danger mt-6">Failed to retrieve the status of the specified server.</p>
-				}
+				<div className="box">
+					{
+						loading
+							? <ContentLoader viewBox="0 0 1200 400" uniqueKey="result-loader">
+								<rect x="0" y="0" width="1200" height="400" rx="3" ry="3" />
+							</ContentLoader>
+							: result.errors
+								? <p className="has-text-danger">{result.errors.join('\n')}</p>
+								: result.online
+									? <>
+										<table className="table is-fullwidth is-hoverable">
+											<tbody>
+												<tr>
+													<th className={style.label}>Hostname</th>
+													<td>{result.response.host}</td>
+												</tr>
+												<tr>
+													<th className={style.label}>Port</th>
+													<td>{result.response.port}</td>
+												</tr>
+												<tr>
+													<th className={style.label}>MOTD</th>
+													<td>
+														<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.description.html }} />
+													</td>
+												</tr>
+												<tr>
+													<th className={style.label}>Favicon</th>
+													<td>
+														{
+															result.response.favicon
+																? <img src={result.response.favicon} />
+																: <p className="has-text-grey">N/A</p>
+														}
+													</td>
+												</tr>
+												<tr>
+													<th className={style.label}>Version</th>
+													<td>
+														{
+															result.response.version?.name
+																? <span>{result.response.version.name}</span>
+																: <span className="has-text-grey">N/A</span>
+														}
+													</td>
+												</tr>
+												<tr>
+													<th className={style.label}>Players</th>
+													<td>{result.response.players.online} / {result.response.players.max}</td>
+												</tr>
+												{
+													debug
+														? <tr>
+															<th className={style.label}>SRV Lookup</th>
+															<td>
+																{
+																	result.response.srv_record
+																		? <span className="tag is-success">Yes</span>
+																		: <span className="tag is-danger">No</span>
+																}
+															</td>
+														</tr>
+														: null
+												}
+												{
+													debug
+														? <tr>
+															<th className={style.label}>Protocol Version</th>
+															<td>{result.response.version.protocol}</td>
+														</tr>
+														: null
+												}
+												{
+													debug
+														? <tr>
+															<th className={style.label}>Cached Result</th>
+															<td>
+																{
+																	result.cache_record
+																		? <p className="tag is-success" title={`Expires in ${humanizeDuration(result.cache_record.expires_at - Date.now(), { largest: 2, round: true })}`}>Yes</p>
+																		: <p className="tag is-danger">No</p>
+																}
+															</td>
+														</tr>
+														: null
+												}
+											</tbody>
+										</table>
+										<button type="button" className="button is-link" onClick={() => setDebug(!debug)}>{debug ? 'Hide' : 'Show'} debug info</button>
+									</>
+									: <p className="has-text-danger mt-6">Failed to retrieve the status of the specified server.</p>
+					}
+				</div>
 			</div>
 		</>
 	);

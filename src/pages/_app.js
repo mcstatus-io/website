@@ -24,10 +24,10 @@ export default function MyApp({ Component, pageProps }) {
 				<meta name="theme-color" content="#ffffff" />
 			</Head>
 			<div className="columns is-flex-direction-column main-columns m-0">
-				<div className="column is-flex-grow-0 p-0">
+				<div className="column is-flex-grow-0 p-2">
 					<Header />
 				</div>
-				<div className="column is-flex-grow-1 p-0">
+				<div className="column is-flex-grow-1 p-3">
 					{
 						pageProps.error
 							? <Error {...pageProps.error} />

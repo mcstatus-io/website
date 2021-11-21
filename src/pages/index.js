@@ -1,26 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function Home() {
-	const input = useRef(null);
-	const [error, setError] = useState(false);
-	const { push } = useRouter();
-
-	const onSubmit = (event) => {
-		event.preventDefault();
-
-		if (!input || !input.current || input.current.value.length < 1) return;
-
-		push(`/status/${input.current.value.toLowerCase()}`);
-	};
-
-	const onChange = () => {
-		if (!input || !input.current) return;
-
-		setError(input.current.value.length < 1);
-	};
-
 	return (
 		<>
 			<Head>
@@ -35,20 +17,32 @@ export default function Home() {
 				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>
 			<div className="container main-container">
-				<form onSubmit={onSubmit}>
-					<div className="columns">
-						<div className="column is-flex-grow-1 pr-1">
-							<div className="field">
-								<div className="control is-fullwidth">
-									<input type="text" className={`input ${error ? 'is-danger' : ''}`} id="address" placeholder="play.hypixel.net" spellCheck="false" autoComplete="false" onChange={onChange} ref={input} />
-								</div>
-							</div>
-						</div>
-						<div className="column is-flex-grow-0 is-hidden-mobile pl-1">
-							<button type="submit" className="button is-link">Submit</button>
-						</div>
+				<div className="columns">
+					<div className="column is-4">
+						<Link href="/status">
+							<a className="box">
+								<h2 className="title">Java Server Status</h2>
+								<p className="subtitle">Retrieve the status of a Java Edition Minecraft server</p>
+							</a>
+						</Link>
 					</div>
-				</form>
+					<div className="column is-4">
+						<Link href="/bedrock">
+							<a className="box">
+								<h2 className="title">Bedrock Server Status</h2>
+								<p className="subtitle">Retrieve the status of a Bedrock Edition Minecraft server</p>
+							</a>
+						</Link>
+					</div>
+					<div className="column is-4">
+						<Link href="/query">
+							<a className="box">
+								<h2 className="title">Query</h2>
+								<p className="subtitle">Perform a full query on a Java Edition Minecraft server</p>
+							</a>
+						</Link>
+					</div>
+				</div>
 			</div>
 		</>
 	);
