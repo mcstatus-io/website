@@ -27,6 +27,7 @@
 	"dependencies": {
 		"bulma": "^0.9.3",
 		"humanize-duration": "^3.27.0",
+		"minecraft-motd-util": "^1.1.9",
 		"next": "^11.1.0",
 		"prop-types": "^15.7.2",
 		"react": "^17.0.2",

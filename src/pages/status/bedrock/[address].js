@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ContentLoader from 'react-content-loader';
-import config from '../../config';
+import config from '../../../config';
 import style from './[address].module.sass';
 import humanizeDuration from 'humanize-duration';
 
@@ -20,7 +20,7 @@ export default function Status() {
 		setLoading(true);
 
 		try {
-			const result = await fetch(`${config.apiHost}/status/${query.address}`);
+			const result = await fetch(`${config.apiHost}/status/bedrock/${query.address}`);
 			const body = await result.json();
 
 			setResult(body);
@@ -38,7 +38,7 @@ export default function Status() {
 
 		if (!input || !input.current || input.current.value.length < 1 || input.current.value.toLowerCase() === query.address.toLowerCase()) return;
 
-		push(`/status/${input.current.value.toLowerCase()}`);
+		push(`/status/bedrock/${input.current.value.toLowerCase()}`);
 	};
 
 	const onChange = () => {
@@ -89,26 +89,16 @@ export default function Status() {
 											<tbody>
 												<tr>
 													<th className={style.label}>Hostname</th>
-													<td>{result.response.host}</td>
+													<td>{result.host}</td>
 												</tr>
 												<tr>
 													<th className={style.label}>Port</th>
-													<td>{result.response.port}</td>
+													<td>{result.port}</td>
 												</tr>
 												<tr>
 													<th className={style.label}>MOTD</th>
 													<td>
-														<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.description.html }} />
-													</td>
-												</tr>
-												<tr>
-													<th className={style.label}>Favicon</th>
-													<td>
-														{
-															result.response.favicon
-																? <img src={result.response.favicon} />
-																: <p className="has-text-grey">N/A</p>
-														}
+														<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.motd.html }} />
 													</td>
 												</tr>
 												<tr>
@@ -123,7 +113,11 @@ export default function Status() {
 												</tr>
 												<tr>
 													<th className={style.label}>Players</th>
-													<td>{result.response.players.online} / {result.response.players.max}</td>
+													<td>{result.response.online_players} / {result.response.max_players}</td>
+												</tr>
+												<tr>
+													<th className={style.label}>Gamemode</th>
+													<td>{result.response.gamemode}</td>
 												</tr>
 												{
 													debug
@@ -143,7 +137,39 @@ export default function Status() {
 													debug
 														? <tr>
 															<th className={style.label}>Protocol Version</th>
-															<td>{result.response.version.protocol}</td>
+															<td>{result.response.protocol_version}</td>
+														</tr>
+														: null
+												}
+												{
+													debug
+														? <tr>
+															<th className={style.label}>Server GUID</th>
+															<td>{result.response.server_guid}</td>
+														</tr>
+														: null
+												}
+												{
+													debug
+														? <tr>
+															<th className={style.label}>Edition</th>
+															<td>{result.response.edition}</td>
+														</tr>
+														: null
+												}
+												{
+													debug
+														? <tr>
+															<th className={style.label}>Port IPv4</th>
+															<td>{result.response.port_ipv4}</td>
+														</tr>
+														: null
+												}
+												{
+													debug
+														? <tr>
+															<th className={style.label}>Port IPv6</th>
+															<td>{result.response.port_ipv6}</td>
 														</tr>
 														: null
 												}
@@ -165,7 +191,7 @@ export default function Status() {
 										</table>
 										<button type="button" className="button is-link" onClick={() => setDebug(!debug)}>{debug ? 'Hide' : 'Show'} debug info</button>
 									</>
-									: <p className="has-text-danger mt-6">Failed to retrieve the status of the specified server.</p>
+									: <p className="has-text-danger">Failed to retrieve the status of the specified server.</p>
 					}
 				</div>
 			</div>

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 export default function Status() {
 	const input = useRef(null);
-	const { push } = useRouter();
+	const { push, pathname } = useRouter();
 	const [error, setError] = useState(false);
 
 	const onSubmit = (event) => {
@@ -12,7 +12,7 @@ export default function Status() {
 
 		if (!input || !input.current || input.current.value.length < 1) return;
 
-		push(`/status/${input.current.value.toLowerCase()}`);
+		push(`/status/legacy/${input.current.value.toLowerCase()}`);
 	};
 
 	const onChange = () => {
@@ -24,12 +24,12 @@ export default function Status() {
 	return (
 		<>
 			<Head>
-				<title>Status - mcstatus.io</title>
+				<title>Legacy Status - mcstatus.io</title>
 				<meta name="robots" content="index,follow" />
-				<meta name="title" content="Status - mcstatus.io" />
+				<meta name="title" content="Legacy Status - mcstatus.io" />
 				<meta name="description" content="Easily and quickly retrieve the status of any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second." />
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content="https://mcstatus.io/status" />
+				<meta property="og:url" content={`https://mcstatus.io${pathname}`} />
 				<meta property="og:title" content="Status - mcstatus.io" />
 				<meta property="og:description" content="Easily and quickly retrieve the status of any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second." />
 				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
