@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import ContentLoader from 'react-content-loader';
 import config from '../../../config';
 import style from './[address].module.sass';
-import humanizeDuration from 'humanize-duration';
 
 export default function Status() {
 	const input = useRef(null);
@@ -170,20 +169,6 @@ export default function Status() {
 														? <tr>
 															<th className={style.label}>Port IPv6</th>
 															<td>{result.response.port_ipv6}</td>
-														</tr>
-														: null
-												}
-												{
-													debug
-														? <tr>
-															<th className={style.label}>Cached Result</th>
-															<td>
-																{
-																	result.cache_record
-																		? <p className="tag is-success" title={`Expires in ${humanizeDuration(result.cache_record.expires_at - Date.now(), { largest: 2, round: true })}`}>Yes</p>
-																		: <p className="tag is-danger">No</p>
-																}
-															</td>
 														</tr>
 														: null
 												}
