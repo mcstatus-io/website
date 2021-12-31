@@ -1,66 +1,59 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-export default function Home() {
+export default function Status() {
+	const inputElem = useRef(null);
+	const bedrockElem = useRef(null);
+	const { push, pathname } = useRouter();
+	const [error, setError] = useState(false);
+
+	const onSubmit = (event) => {
+		event.preventDefault();
+
+		if (!inputElem || !inputElem.current || inputElem.current.value.length < 1) return;
+
+		push(`/status/${inputElem.current.value.toLowerCase()}${bedrockElem && bedrockElem.current && bedrockElem.current.checked ? '?bedrock=true' : ''}`);
+	};
+
+	const onChange = () => {
+		if (!inputElem || !inputElem.current) return;
+
+		setError(inputElem.current.value.length < 1);
+	};
+
 	return (
 		<>
 			<Head>
-				<title>mcstatus.io - A Minecraft server status utility</title>
+				<title>mcstatus.io - Retrieve the status of any Minecraft server</title>
 				<meta name="robots" content="index,follow" />
-				<meta name="title" content="mcstatus.io - A Minecraft server status utility" />
+				<meta name="title" content="mcstatus.io - Retrieve the status of any Minecraft server" />
 				<meta name="description" content="Easily and quickly retrieve the status of any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second." />
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content="https://mcstatus.io" />
-				<meta property="og:title" content="mcstatus.io - A Minecraft server status utility" />
+				<meta property="og:url" content={`https://mcstatus.io${pathname}`} />
+				<meta property="og:title" content="mcstatus.io - Retrieve the status of any Minecraft server" />
 				<meta property="og:description" content="Easily and quickly retrieve the status of any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second." />
 				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>
-			<div className="container main-container">
-				<div className="columns">
-					<div className="column is-4">
-						<Link href="/status/java">
-							<a className="box">
-								<h2 className="title">Java Server Status</h2>
-								<p className="subtitle">Retrieve the status of a &gt;1.6 Minecraft server</p>
-							</a>
-						</Link>
+			<div className="container">
+				<form onSubmit={onSubmit} className="mb-5">
+					<div className="columns">
+						<div className="column is-flex-grow-1 pr-1">
+							<div className="field">
+								<div className="control is-fullwidth">
+									<input type="text" className={`input ${error ? 'is-danger' : ''}`} id="address" placeholder="play.hypixel.net" spellCheck="false" autoComplete="false" onChange={onChange} ref={inputElem} />
+								</div>
+							</div>
+							<label className="checkbox">
+								<input type="checkbox" className="mr-2" ref={bedrockElem} />
+								<span>Bedrock server</span>
+							</label>
+						</div>
+						<div className="column is-flex-grow-0 pl-1">
+							<button type="submit" className="button is-link">Submit</button>
+						</div>
 					</div>
-					<div className="column is-4">
-						<Link href="/status/legacy">
-							<a className="box">
-								<h2 className="title">Legacy Server Status</h2>
-								<p className="subtitle">Retrieve the status of a &lt;1.7 Minecraft server</p>
-							</a>
-						</Link>
-					</div>
-					<div className="column is-4">
-						<Link href="/status/bedrock">
-							<a className="box">
-								<h2 className="title">Bedrock Server Status</h2>
-								<p className="subtitle">Retrieve the status of a Bedrock Edition Minecraft server</p>
-							</a>
-						</Link>
-					</div>
-				</div>
-				<div className="columns">
-					<div className="column is-4">
-						<Link href="/query/basic">
-							<a className="box">
-								<h2 className="title">Basic Query</h2>
-								<p className="subtitle">Perform a basic query on a Java Edition Minecraft server</p>
-							</a>
-						</Link>
-					</div>
-					<div className="column is-4">
-						<Link href="/query/full">
-							<a className="box">
-								<h2 className="title">Full Query</h2>
-								<p className="subtitle">Perform a full query on a Java Edition Minecraft server</p>
-							</a>
-						</Link>
-					</div>
-				</div>
+				</form>
 			</div>
 		</>
 	);
