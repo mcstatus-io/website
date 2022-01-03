@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Head from 'next/head';
+import Script from 'next/script';
 import { useRouter } from 'next/router';
 
 export default function Status() {
@@ -61,7 +62,7 @@ export default function Status() {
 					<p>Caching of the server response is used to prevent abuse of the service and potential spam. Responses are cached for 10 minutes, meaning a fresh status will be retrieved after 10 minutes from the previous. This site is built with <a href="https://reactjs.org/" target="_blank" rel="noreferrer">React</a> and <a href="https://nextjs.org/" target="_blank" rel="noreferrer">Next.js</a>, and the back-end API server is running on <a href="https://go.dev/" target="_blank" rel="noreferrer">Golang</a> with speed and efficiency in mind. We are using <a href="https://github.com/PassTheMayo/mcstatus" target="_blank" rel="noreferrer">mcstatus</a> as the library for retrieving the Minecraft server statuses.</p>
 				</div>
 			</div>
-			<script type="application/ld+json">
+			<Script id="structured-data-1" type="application/ld+json">
 				{`
 					{
 						"@context": "https://schema.org",
@@ -76,8 +77,8 @@ export default function Status() {
 						]
 					}
 				`}
-			</script>
-			<script type="application/ld+json">
+			</Script>
+			<Script id="structured-data-2" type="application/ld+json">
 				{`
 					{
 						"@context": "https://schema.org",
@@ -93,7 +94,7 @@ export default function Status() {
 						}
 					}
 				`}
-			</script>
+			</Script>
 		</>
 	);
 }

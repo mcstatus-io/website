@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Script from 'next/script';
 
 export default function About() {
 	return (
@@ -35,7 +36,7 @@ export default function About() {
 					</li>
 				</ol>
 			</div>
-			<script type="application/ld+json">
+			<Script id="structured-data-1" type="application/ld+json">
 				{`
 					{
 						"@context": "https://schema.org",
@@ -56,8 +57,8 @@ export default function About() {
 						]
 					}
 				`}
-			</script>
-			<script type="application/ld+json">
+			</Script>
+			<Script id="structured-data-2" type="application/ld+json">
 				{`
 					{
 						"@context": "https://schema.org",
@@ -90,7 +91,7 @@ export default function About() {
 						]
 					}
 				`}
-			</script>
+			</Script>
 		</>
 	);
 }
