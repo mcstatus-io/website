@@ -12,6 +12,7 @@ export default function Status() {
 	const [debug, setDebug] = useState(false);
 	const [result, setResult] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [cache, setCache] = useState(null);
 
 	useEffect(() => (async () => {
 		if (!query.address) return;
@@ -23,6 +24,7 @@ export default function Status() {
 			const body = await result.json();
 
 			setResult(body);
+			setCache(result.headers.get('x-cache-hit') === 'TRUE');
 		} catch (e) {
 			setResult({ errors: [e?.message ?? e.toString()] });
 
@@ -35,7 +37,17 @@ export default function Status() {
 	const onSubmit = (event) => {
 		event.preventDefault();
 
-		if (!inputElem || !inputElem.current || inputElem.current.value.length < 1) return;
+		if (
+			!inputElem
+			|| !inputElem.current
+			|| inputElem.current.value.length < 1
+			|| !bedrockElem
+			|| !bedrockElem.current
+			|| (
+				inputElem.current.value === query.address
+				&& bedrockElem.current.checked === ('bedrock' in query)
+			)
+		) return;
 
 		setLoading(true);
 		setError(null);
@@ -55,8 +67,23 @@ export default function Status() {
 
 	if (loading) {
 		content = (
-			<ContentLoader viewBox="0 0 1200 400" uniqueKey="result-loader">
-				<rect x="0" y="0" width="1200" height="400" rx="3" ry="3" />
+			<ContentLoader viewBox="0 0 1200 390" uniqueKey="result-loader">
+				<rect x="0" y="0" width="240" height="40" rx="3" ry="3" />
+				<rect x="260" y="0" width="940" height="40" rx="3" ry="3" />
+				<rect x="0" y="50" width="240" height="40" rx="3" ry="3" />
+				<rect x="260" y="50" width="940" height="40" rx="3" ry="3" />
+				<rect x="0" y="100" width="240" height="40" rx="3" ry="3" />
+				<rect x="260" y="100" width="940" height="40" rx="3" ry="3" />
+				<rect x="0" y="150" width="240" height="40" rx="3" ry="3" />
+				<rect x="260" y="150" width="940" height="40" rx="3" ry="3" />
+				<rect x="0" y="200" width="240" height="40" rx="3" ry="3" />
+				<rect x="260" y="200" width="940" height="40" rx="3" ry="3" />
+				<rect x="0" y="250" width="240" height="40" rx="3" ry="3" />
+				<rect x="260" y="250" width="940" height="40" rx="3" ry="3" />
+				<rect x="0" y="300" width="240" height="40" rx="3" ry="3" />
+				<rect x="260" y="300" width="940" height="40" rx="3" ry="3" />
+				<rect x="0" y="350" width="240" height="40" rx="3" ry="3" />
+				<rect x="260" y="350" width="940" height="40" rx="3" ry="3" />
 			</ContentLoader>
 		);
 	} else if (result) {
@@ -133,6 +160,20 @@ export default function Status() {
 										</tr>
 										: null
 								}
+								{
+									debug
+										? <tr>
+											<th className={style.label}>Cached Response</th>
+											<td>
+												{
+													cache
+														? <span className="tag is-success">Yes</span>
+														: <span className="tag is-danger">No</span>
+												}
+											</td>
+										</tr>
+										: null
+								}
 							</tbody>
 						</table>
 						<button type="button" className="button is-link" onClick={() => setDebug(!debug)}>{debug ? 'Hide' : 'Show'} debug info</button>
@@ -173,7 +214,7 @@ export default function Status() {
 										{
 											result.response.version?.name
 												? <span>{result.response.version.name}</span>
-												: <span className="has-text-grey">N/A</span>
+												: <span className="has-text-grey">N/A (&lt; 1.3)</span>
 										}
 									</td>
 								</tr>
@@ -204,6 +245,20 @@ export default function Status() {
 													result.response.version?.protocol
 														? <span>{result.response.version.protocol}</span>
 														: <span className="has-text-grey">N/A</span>
+												}
+											</td>
+										</tr>
+										: null
+								}
+								{
+									debug
+										? <tr>
+											<th className={style.label}>Cached Response</th>
+											<td>
+												{
+													cache
+														? <span className="tag is-success">Yes</span>
+														: <span className="tag is-danger">No</span>
 												}
 											</td>
 										</tr>
