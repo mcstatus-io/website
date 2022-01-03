@@ -31,7 +31,7 @@ export default function About() {
 					</li>
 					<li>
 						<h3 className="title is-5 mt-5 mb-3">How do I report a bug?</h3>
-						<p>You can join the Discord support server for this site by using the following invite link: <Link href="https://discord.gg/e7jgDYY" target="_blank" rel="noreferrer">https://discord.gg/e7jgDYY</Link>.</p>
+						<p>You may send any bug reports, feature suggestions, or question to the following email address: <a href="mailto:contact@mcstatus.io">contact@mcstatus.io</a>.</p>
 					</li>
 				</ol>
 			</div>

@@ -54,6 +54,12 @@ export default function Status() {
 						</div>
 					</div>
 				</form>
+				<div className="content mt-6">
+					<h2 className="title mb-2">About</h2>
+					<p>mcstatus.io is a tool for quickly retrieving the status of any Java or Bedrock Edition Minecraft server. This tool will show all the information returned from the server in an easily understandable format. Simply type the address of the server into the input box above and hit submit to retrieve the status in a fraction of a second. This service is entirely free-to-use and has no advertising whatsoever. There is additionally a developer API for people to use within their own service.</p>
+					<p>All versions of a Minecraft server are supported. Some details such as the version and the favicon may be unavailable for a specific range of versions since they did not exist that early in the game. To use a non-standard port, use a colon followed by the port number in the address bar. For example, <code>myserver.com:29845</code>. SRV records are also supported and will be correctly resolved.</p>
+					<p>Caching of the server response is used to prevent abuse of the service and potential spam. Responses are cached for 10 minutes, meaning a fresh status will be retrieved after 10 minutes from the previous. This site is built with <a href="https://reactjs.org/" target="_blank" rel="noreferrer">React</a> and <a href="https://nextjs.org/" target="_blank" rel="noreferrer">Next.js</a>, and the back-end API server is running on <a href="https://go.dev/" target="_blank" rel="noreferrer">Go</a> with speed and efficiency in mind. We are using <a href="https://github.com/PassTheMayo/mcstatus" target="_blank" rel="noreferrer">mcstatus</a> as the library for retrieving the Minecraft server statuses.</p>
+				</div>
 			</div>
 		</>
 	);
