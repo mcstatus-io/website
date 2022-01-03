@@ -35,6 +35,62 @@ export default function About() {
 					</li>
 				</ol>
 			</div>
+			<script type="application/ld+json">
+				{`
+					{
+						"@context": "https://schema.org",
+						"@type": "BreadcrumbList",
+						"itemListElement": [
+							{
+								"@type": "ListItem",
+								"position": 1,
+								"name": "Home",
+								"item": "https://mcstatus.io"
+							},
+							{
+								"@type": "ListItem",
+								"position": 2,
+								"name": "About",
+								"item": "https://mcstatus.io/about"
+							}
+						]
+					}
+				`}
+			</script>
+			<script type="application/ld+json">
+				{`
+					{
+						"@context": "https://schema.org",
+						"@type": "FAQPage",
+						"mainEntity": [
+							{
+								"@type": "Question",
+								"name": "How do I check the status of a server?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "<p>Simply paste the address of the server into the address box on the home page. The address is in the form of <code>host:port</code> but the port is optional and defaults to <code>25565</code>.</p>"
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "What is an SRV record?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "An SRV record is created by the server host to redirect users to another IP address, typically to allow users to connect to the memorable host name instead of a string of a bunch of numbers. This service automatically resolves all SRV records and obtains the status of the server behind them."
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "How do I report a bug?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "You may send any bug reports, feature suggestions, or question to the following email address: contact@mcstatus.io"
+								}
+							}
+						]
+					}
+				`}
+			</script>
 		</>
 	);
 }
