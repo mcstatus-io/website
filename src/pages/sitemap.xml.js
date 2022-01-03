@@ -5,7 +5,7 @@ const createSitemap = (paths) => `<?xml version="1.0" encoding="UTF-8"?>
         ${paths
 		.map((path) => `
 		<url>
-			<loc>https://unitconvert.io${path}</loc>
+			<loc>https://mcstatus.io${path}</loc>
 		</url>`)
 		.join('')}
     </urlset>
