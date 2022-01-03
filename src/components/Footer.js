@@ -17,7 +17,7 @@ export default function Footer() {
 								<a className="mr-5">About</a>
 							</Link>
 							<a className="mr-5" href="https://docs.mcstatus.io/" target="_blank" rel="noreferrer">API</a>
-							<a className="mr-5" href="https://status.mcstatus.io/" target="_blank" rel="noreferrer">Uptime</a>
+							<a className="mr-5" href="https://uptime.mcstatus.io/" target="_blank" rel="noreferrer">Uptime</a>
 							<a className="mr-5" href="mailto:contact@mcstatus.io">Contact</a>
 						</p>
 					</div>
