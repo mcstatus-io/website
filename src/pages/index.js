@@ -14,7 +14,7 @@ export default function Status() {
 
 		if (!inputElem || !inputElem.current || inputElem.current.value.length < 1) return;
 
-		push(`/status/${inputElem.current.value.toLowerCase()}${bedrockElem && bedrockElem.current && bedrockElem.current.checked ? '?bedrock=true' : ''}`);
+		push(`/${bedrockElem && bedrockElem.current && bedrockElem.current.checked ? 'bedrock' : 'status'}/${inputElem.current.value.toLowerCase()}`);
 	};
 
 	const onChange = () => {

@@ -20,7 +20,7 @@ export default function Status() {
 		setLoading(true);
 
 		try {
-			const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/status/${query.bedrock ? 'bedrock' : 'java'}/${query.address}`);
+			const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/status/bedrock/${query.address}`);
 			const body = await result.json();
 
 			setResult(body);
@@ -45,7 +45,7 @@ export default function Status() {
 			|| !bedrockElem.current
 			|| (
 				inputElem.current.value === query.address
-				&& !bedrockElem.current.checked
+				&& bedrockElem.current.checked
 			)
 		) return;
 
@@ -111,12 +111,12 @@ export default function Status() {
 								</td>
 							</tr>
 							<tr>
-								<th className={style.label}>Favicon</th>
+								<th className={style.label}>Edition</th>
 								<td>
 									{
-										result.response.favicon
-											? <img src={result.response.favicon} />
-											: <p className="has-text-grey">N/A</p>
+										result.response.edition !== null
+											? <span>{result.response.edition}</span>
+											: <span className="has-text-grey">N/A</span>
 									}
 								</td>
 							</tr>
@@ -124,15 +124,40 @@ export default function Status() {
 								<th className={style.label}>Version</th>
 								<td>
 									{
-										result.response.version?.name
-											? <span>{result.response.version.name}</span>
-											: <span className="has-text-grey">N/A (&lt; 1.3)</span>
+										result.response.version !== null
+											? <span>{result.response.version}</span>
+											: <span className="has-text-grey">N/A</span>
 									}
 								</td>
 							</tr>
 							<tr>
 								<th className={style.label}>Players</th>
-								<td>{result.response.players.online} / {result.response.players.max}</td>
+								<td>
+									{
+										result.response.online_players !== null
+											? <span>{result.response.online_players}</span>
+											: <span className="has-text-grey">N/A</span>
+									}
+									<span> / </span>
+									{
+										result.response.max_players !== null
+											? <span>{result.response.max_players}</span>
+											: <span className="has-text-grey">N/A</span>
+									}
+								</td>
+							</tr>
+							<tr>
+								<th className={style.label}>Gamemode</th>
+								<td>
+									<span>{result.response.gamemode}</span>
+									<span className="has-text-grey"> (
+										{
+											result.response.gamemode_id !== null
+												? <span>{result.response.gamemode_id}</span>
+												: <span className="has-text-grey">N/A</span>
+										}
+										)</span>
+								</td>
 							</tr>
 							{
 								debug
@@ -151,14 +176,29 @@ export default function Status() {
 							{
 								debug
 									? <tr>
-										<th className={style.label}>Protocol Version</th>
+										<th className={style.label}>Server Port</th>
 										<td>
+											<span>IPv4: </span>
 											{
-												result.response.version?.protocol
-													? <span>{result.response.version.protocol}</span>
+												result.response.port_ipv4 !== null
+													? <span>{result.response.port_ipv4}</span>
+													: <span className="has-text-grey">N/A</span>
+											}
+											<span> / IPv6: </span>
+											{
+												result.response.port_ipv6 !== null
+													? <span>{result.response.port_ipv6}</span>
 													: <span className="has-text-grey">N/A</span>
 											}
 										</td>
+									</tr>
+									: null
+							}
+							{
+								debug
+									? <tr>
+										<th className={style.label}>Protocol Version</th>
+										<td>{result.response.protocol_version}</td>
 									</tr>
 									: null
 							}
@@ -207,7 +247,7 @@ export default function Status() {
 								</div>
 							</div>
 							<label className="checkbox">
-								<input type="checkbox" className="mr-2" defaultChecked={false} ref={bedrockElem} />
+								<input type="checkbox" className="mr-2" defaultChecked={true} ref={bedrockElem} />
 								<span>Bedrock server</span>
 							</label>
 						</div>
