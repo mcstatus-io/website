@@ -163,7 +163,7 @@ export default function Status() {
 							{
 								debug
 									? <tr>
-										<th>SRV Lookup</th>
+										<th>SRV Record</th>
 										<td>
 											{
 												result.response.srv_record
