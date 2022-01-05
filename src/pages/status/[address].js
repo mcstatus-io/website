@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ContentLoader from 'react-content-loader';
+import { parse, toHTML } from 'minecraft-motd-util';
 
 export default function Status() {
 	const inputElem = useRef(null);
@@ -91,6 +92,22 @@ export default function Status() {
 				<p className="has-text-danger">{result.errors.join('\n')}</p>
 			);
 		} else if (result.online) {
+			let information = null;
+
+			if (result.response.players.sample?.length > 0) {
+				information = [];
+
+				for (const player of result.response.players.sample) {
+					const parsed = parse(player.name);
+
+					information.push(
+						<p dangerouslySetInnerHTML={{ __html: toHTML(parsed) }} key={player.id} />
+					);
+				}
+
+				console.log(result.response.players);
+			}
+
 			content = (
 				<>
 					<table className="table is-fullwidth is-hoverable">
@@ -107,6 +124,16 @@ export default function Status() {
 								<th>MOTD</th>
 								<td className="motd-container">
 									<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.motd.html }} />
+								</td>
+							</tr>
+							<tr>
+								<th>Information</th>
+								<td>
+									{
+										information
+											? <pre className="has-background-black has-text-white">{information}</pre>
+											: <p className="has-text-grey">N/A</p>
+									}
 								</td>
 							</tr>
 							<tr>

@@ -39,8 +39,11 @@ ul.menu-list > li
     ::marker
         font-size: 20px
 
-.table th
-    vertical-align: middle !important
+.table
+    table-layout: fixed
+
+    th
+        vertical-align: middle !important
 
 .motd-container
     max-width: 100%
@@ -49,7 +52,7 @@ ul.menu-list > li
 
 @media (min-width: 469px)
     .table th
-        width: 15%
+        width: 180px
 
 @media (max-width: 468px)
     h1.title
