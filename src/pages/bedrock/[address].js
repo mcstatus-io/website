@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ContentLoader from 'react-content-loader';
-import style from './[address].module.sass';
 
 export default function Status() {
 	const inputElem = useRef(null);
@@ -97,21 +96,21 @@ export default function Status() {
 					<table className="table is-fullwidth is-hoverable">
 						<tbody>
 							<tr>
-								<th className={style.label}>Hostname</th>
+								<th>Hostname</th>
 								<td>{result.host}</td>
 							</tr>
 							<tr>
-								<th className={style.label}>Port</th>
+								<th>Port</th>
 								<td>{result.port}</td>
 							</tr>
 							<tr>
-								<th className={style.label}>MOTD</th>
+								<th>MOTD</th>
 								<td>
 									<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.motd.html }} />
 								</td>
 							</tr>
 							<tr>
-								<th className={style.label}>Edition</th>
+								<th>Edition</th>
 								<td>
 									{
 										result.response.edition !== null
@@ -121,7 +120,7 @@ export default function Status() {
 								</td>
 							</tr>
 							<tr>
-								<th className={style.label}>Version</th>
+								<th>Version</th>
 								<td>
 									{
 										result.response.version !== null
@@ -131,7 +130,7 @@ export default function Status() {
 								</td>
 							</tr>
 							<tr>
-								<th className={style.label}>Players</th>
+								<th>Players</th>
 								<td>
 									{
 										result.response.online_players !== null
@@ -147,7 +146,7 @@ export default function Status() {
 								</td>
 							</tr>
 							<tr>
-								<th className={style.label}>Gamemode</th>
+								<th>Gamemode</th>
 								<td>
 									<span>{result.response.gamemode}</span>
 									<span className="has-text-grey"> (
@@ -162,7 +161,7 @@ export default function Status() {
 							{
 								debug
 									? <tr>
-										<th className={style.label}>SRV Lookup</th>
+										<th>SRV Lookup</th>
 										<td>
 											{
 												result.response.srv_record
@@ -176,7 +175,7 @@ export default function Status() {
 							{
 								debug
 									? <tr>
-										<th className={style.label}>Server Port</th>
+										<th>Server Port</th>
 										<td>
 											<span>IPv4: </span>
 											{
@@ -197,7 +196,7 @@ export default function Status() {
 							{
 								debug
 									? <tr>
-										<th className={style.label}>Protocol Version</th>
+										<th>Protocol Version</th>
 										<td>{result.response.protocol_version}</td>
 									</tr>
 									: null
@@ -205,7 +204,7 @@ export default function Status() {
 							{
 								debug
 									? <tr>
-										<th className={style.label}>Cached Response</th>
+										<th>Cached Response</th>
 										<td>
 											{
 												cache
@@ -240,7 +239,7 @@ export default function Status() {
 			<div className="container">
 				<form onSubmit={onSubmit} className="mb-5" spellCheck="false" autoComplete="false">
 					<div className="columns">
-						<div className="column is-flex-grow-1 pr-1">
+						<div className="column is-flex-grow-1">
 							<div className="field">
 								<div className="control is-fullwidth">
 									<input type="text" className={`input ${error ? 'is-danger' : ''}`} id="address" placeholder="play.hypixel.net" defaultValue={query.address} spellCheck="false" autoComplete="false" onChange={onChange} ref={inputElem} />
@@ -251,7 +250,7 @@ export default function Status() {
 								<span>Bedrock server</span>
 							</label>
 						</div>
-						<div className="column is-flex-grow-0 pl-1">
+						<div className="column is-flex-grow-0">
 							<button type="submit" className={`button is-link ${loading ? 'is-loading' : ''}`} disabled={loading}>Submit</button>
 						</div>
 					</div>

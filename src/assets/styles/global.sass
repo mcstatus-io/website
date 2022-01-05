@@ -39,12 +39,38 @@ ul.menu-list > li
     ::marker
         font-size: 20px
 
+.table th
+    vertical-align: middle !important
+
+.motd-container
+    max-width: 100%
+    position: relative
+    overflow: hidden
+
+@media (min-width: 469px)
+    .table th
+        width: 15%
+
 @media (max-width: 468px)
     h1.title
         font-size: 36px !important
 
     p.subtitle
         font-size: 16px
+
+    .table
+        th
+            padding-bottom: 0 !important
+            border: none !important
+
+        tr:not(:first-of-type) th
+            padding-top: 1rem !important
+        
+        th, td
+            display: block
+
+        td
+            padding-bottom: 1rem !important
 
 @import "~bulma/sass/base/minireset"
 @import "~bulma/sass/base/generic"
