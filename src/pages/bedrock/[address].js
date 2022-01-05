@@ -242,7 +242,7 @@ export default function Status() {
 						<div className="column is-flex-grow-1">
 							<div className="field">
 								<div className="control is-fullwidth">
-									<input type="text" className={`input ${error ? 'is-danger' : ''}`} id="address" placeholder="play.hypixel.net" defaultValue={query.address} spellCheck="false" autoComplete="false" onChange={onChange} ref={inputElem} />
+									<input type="text" className={`input ${error ? 'is-danger' : ''}`} placeholder="play.hypixel.net OR play.hypixel.net:25565" defaultValue={query.address} spellCheck="false" autoComplete="false" onChange={onChange} ref={inputElem} />
 								</div>
 							</div>
 							<label className="checkbox">
