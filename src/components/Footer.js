@@ -12,14 +12,14 @@ export default function Footer() {
 						</p>
 					</div>
 					<div className="column is-flex-grow-0">
-						<p>
+						<nav>
 							<Link href="/about">
 								<a className="mr-5">About</a>
 							</Link>
 							<a className="mr-5" href="https://docs.mcstatus.io/" target="_blank" rel="noreferrer">API</a>
 							<a className="mr-5" href="https://uptime.mcstatus.io/" target="_blank" rel="noreferrer">Uptime</a>
 							<a className="mr-5" href="mailto:contact@mcstatus.io">Contact</a>
-						</p>
+						</nav>
 					</div>
 				</div>
 			</div>
