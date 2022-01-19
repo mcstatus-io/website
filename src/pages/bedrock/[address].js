@@ -227,7 +227,7 @@ export default function Status() {
 		<>
 			<Head>
 				<title>{query.address ?? 'Loading'} - mcstatus.io</title>
-				<meta name="robots" content="noindex,follow" />
+				<meta name="robots" content="index,follow" />
 				<meta name="title" content={`${query.address ?? 'Loading'} - mcstatus.io`} />
 				<meta name="description" content={`Easily and quickly retrieve the status of ${query.address ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
 				<meta property="og:type" content="website" />

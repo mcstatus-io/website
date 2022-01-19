@@ -1,4 +1,5 @@
 import React from 'react';
+import { exampleServers } from '../assets/servers';
 
 const createSitemap = (paths) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -16,7 +17,8 @@ class Sitemap extends React.Component {
 		res.setHeader('Content-Type', 'text/xml');
 		res.write(createSitemap([
 			'/',
-			'/about'
+			'/about',
+			...exampleServers.map((server) => `/${server.type === 'java' ? 'status' : 'bedrock'}/${server.address}`)
 		]));
 		res.end();
 	}

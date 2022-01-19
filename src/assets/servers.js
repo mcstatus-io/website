@@ -57,6 +57,6 @@ export const exampleServers = [
 	{
 		type: 'bedrock',
 		name: 'Emperials',
-		address: 'play.emperials.net:19132'
+		address: 'play.emperials.net'
 	}
 ];
