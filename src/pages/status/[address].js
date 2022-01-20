@@ -175,7 +175,7 @@ export default function Status() {
 											<span>{result.response.mod_info.type}</span>
 											<span className="has-text-grey"> ({result.response.mod_info.mods.length} mod{result.response.mod_info.mods.length === 1 ? '' : 's'} loaded)</span>
 											{
-												result?.response?.mod_info
+												result?.response?.mod_info && result.response.mod_info.mods.length > 0
 													? <button type="button" className="button is-link is-small is-vertically-aligned ml-3" onClick={() => setShowMods(!showMods)}>{showMods ? 'Hide' : 'Show'} mod info</button>
 													: null
 											}
