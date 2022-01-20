@@ -10,6 +10,8 @@ export default function Status() {
 	const { push, query, pathname } = useRouter();
 	const [error, setError] = useState(false);
 	const [debug, setDebug] = useState(false);
+	const [showMods, setShowMods] = useState(false);
+	const [showInformation, setShowInformation] = useState(false);
 	const [result, setResult] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [cache, setCache] = useState(null);
@@ -51,6 +53,9 @@ export default function Status() {
 
 		setLoading(true);
 		setError(null);
+		setShowMods(false);
+		setDebug(false);
+		setShowInformation(false);
 
 		push(`/${bedrockElem && bedrockElem.current && bedrockElem.current.checked ? 'bedrock' : 'status'}/${inputElem.current.value.toLowerCase()}`);
 	};
@@ -92,20 +97,20 @@ export default function Status() {
 				<p className="has-text-danger">{result.errors.join('\n')}</p>
 			);
 		} else if (result.online) {
-			let information = null;
+			let players = null;
 
 			if (result.response.players.sample?.length > 0) {
-				information = [];
+				players = [];
 
-				for (const player of result.response.players.sample) {
+				for (let i = 0; i < result.response.players.sample.length; i++) {
+					const player = result.response.players.sample[i];
+
 					const parsed = parse(player.name);
 
-					information.push(
-						<p dangerouslySetInnerHTML={{ __html: toHTML(parsed) }} key={player.id} />
+					players.push(
+						<p dangerouslySetInnerHTML={{ __html: toHTML(parsed) }} key={i} />
 					);
 				}
-
-				console.log(result.response.players);
 			}
 
 			content = (
@@ -124,16 +129,6 @@ export default function Status() {
 								<th>MOTD</th>
 								<td className="motd-container">
 									<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.motd.html }} />
-								</td>
-							</tr>
-							<tr>
-								<th>Information</th>
-								<td>
-									{
-										information
-											? <pre className="has-background-black has-text-white">{information}</pre>
-											: <p className="has-text-grey">N/A</p>
-									}
 								</td>
 							</tr>
 							<tr>
@@ -158,8 +153,47 @@ export default function Status() {
 							</tr>
 							<tr>
 								<th>Players</th>
-								<td>{result.response.players.online} / {result.response.players.max}</td>
+								<td>
+									<span>{result.response.players.online} / {result.response.players.max}</span>
+									{
+										players
+											? <button type="button" className="button is-link is-small is-vertically-aligned ml-3" onClick={() => setShowInformation(!showInformation)}>{showInformation ? 'Hide' : 'Show'} player list</button>
+											: null
+									}
+									{
+										showInformation
+											? <pre className="has-background-black has-text-white mt-3">{players}</pre>
+											: null
+									}
+								</td>
 							</tr>
+							{
+								result.response.mod_info
+									? <tr>
+										<th>Mod Info</th>
+										<td>
+											<span>{result.response.mod_info.type}</span>
+											<span className="has-text-grey"> ({result.response.mod_info.mods.length} mod{result.response.mod_info.mods.length === 1 ? '' : 's'} loaded)</span>
+											{
+												result?.response?.mod_info
+													? <button type="button" className="button is-link is-small is-vertically-aligned ml-3" onClick={() => setShowMods(!showMods)}>{showMods ? 'Hide' : 'Show'} mod info</button>
+													: null
+											}
+											{
+												showMods
+													? <div className="tags mt-2">
+														{
+															result.response.mod_info.mods.map((mod, index) => (
+																<span className="tag is-link" key={index}>{mod.id}: v{mod.version}</span>
+															))
+														}
+													</div>
+													: null
+											}
+										</td>
+									</tr>
+									: null
+							}
 							{
 								debug
 									? <tr>

@@ -145,19 +145,23 @@ export default function Status() {
 									}
 								</td>
 							</tr>
-							<tr>
-								<th>Gamemode</th>
-								<td>
-									<span>{result.response.gamemode}</span>
-									<span className="has-text-grey"> (
-										{
-											result.response.gamemode_id !== null
-												? <span>{result.response.gamemode_id}</span>
-												: <span className="has-text-grey">N/A</span>
-										}
-										)</span>
-								</td>
-							</tr>
+							{
+								result.response.gamemode
+									? <tr>
+										<th>Gamemode</th>
+										<td>
+											<span>{result.response.gamemode}</span>
+											<span className="has-text-grey"> (
+												{
+													result.response.gamemode_id !== null
+														? <span>{result.response.gamemode_id}</span>
+														: <span className="has-text-grey">N/A</span>
+												}
+												)</span>
+										</td>
+									</tr>
+									: null
+							}
 							{
 								debug
 									? <tr>
