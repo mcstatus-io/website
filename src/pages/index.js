@@ -31,11 +31,11 @@ export default function Home({ servers }) {
 			<Head>
 				<title>Minecraft Server Status</title>
 				<meta name="robots" content="index,follow" />
-				<meta name="title" content="mcstatus.io - Retrieve the status of any Minecraft server" />
+				<meta name="title" content="Minecraft Server Status" />
 				<meta name="description" content="Easily and quickly retrieve the status of any Java or Bedrock Edition Minecraft server by using our tool." />
 				<meta property="og:type" content="website" />
 				<meta property="og:url" content={`https://mcstatus.io${pathname}`} />
-				<meta property="og:title" content="mcstatus.io - Retrieve the status of any Minecraft server" />
+				<meta property="og:title" content="Minecraft Server Status" />
 				<meta property="og:description" content="Easily and quickly retrieve the status of any Java or Bedrock Edition Minecraft server by using our tool." />
 				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>

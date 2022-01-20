@@ -230,13 +230,13 @@ export default function Status() {
 	return (
 		<>
 			<Head>
-				<title>{query.address ?? 'Loading'} - mcstatus.io</title>
+				<title>{query.address ?? 'Loading'} - Minecraft Server Status</title>
 				<meta name="robots" content="index,follow" />
-				<meta name="title" content={`${query.address ?? 'Loading'} - mcstatus.io`} />
+				<meta name="title" content={`${query.address ?? 'Loading'} - Minecraft Server Status`} />
 				<meta name="description" content={`Easily and quickly retrieve the status of ${query.address ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
 				<meta property="og:type" content="website" />
 				<meta property="og:url" content={`https://mcstatus.io${pathname}`} />
-				<meta property="og:title" content={`${query.address ?? 'Loading'} - mcstatus.io`} />
+				<meta property="og:title" content={`${query.address ?? 'Loading'} - Minecraft Server Status`} />
 				<meta property="og:description" content={`Easily and quickly retrieve the status of ${query.address ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
 				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>
