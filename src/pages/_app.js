@@ -24,18 +24,13 @@ export default function MyApp({ Component, pageProps }) {
 					<Footer />
 				</div>
 			</div>
-			<Script src="https://www.googletagmanager.com/gtag/js?id=G-76CZV53176" strategy="afterInteractive" />
+			<Script async src="https://www.googletagmanager.com/gtag/js?id=UA-104913718-10" strategy="afterInteractive" />
 			<Script id="google-analytics" strategy="afterInteractive">
-				{`
-					window.dataLayer = window.dataLayer || [];
+				{`window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
 
-					function gtag() {
-						dataLayer.push(arguments);
-					}
-
-					gtag('js', new Date());
-					gtag('config', 'G-76CZV53176');
-				`}
+				gtag('config', 'UA-104913718-10');`}
 			</Script>
 		</>
 	);
