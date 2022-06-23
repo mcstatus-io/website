@@ -37,7 +37,8 @@ export default function Home({ servers }) {
 				<meta property="og:url" content={`https://mcstatus.io${pathname}`} />
 				<meta property="og:title" content="Minecraft Server Status" />
 				<meta property="og:description" content="Easily and quickly retrieve the status of any Java or Bedrock Edition Minecraft server by using our tool." />
-				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
+				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
+				<link rel="canonical" href="https://mcstatus.io" />
 			</Head>
 			<div className="container">
 				<h1 className="title">Minecraft Server Status</h1>

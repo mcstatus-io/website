@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 
 export default function Status({ address, result, error, cache }) {
 	const inputElem = useRef(null);
@@ -48,7 +49,8 @@ export default function Status({ address, result, error, cache }) {
 				<meta property="og:url" content={`https://mcstatus.io${pathname}`} />
 				<meta property="og:title" content={`${address} - Minecraft Server Status`} />
 				<meta property="og:description" content={result?.response?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${result?.host ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
-				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
+				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
+				<link rel="canonical" href={`https://mcstatus.io${pathname}`} />
 			</Head>
 			<div className="container">
 				<h1 className="title">Minecraft Server Status</h1>
@@ -214,6 +216,13 @@ export default function Status({ address, result, error, cache }) {
 	);
 }
 
+Status.propTypes = {
+	address: PropTypes.string.isRequired,
+	result: PropTypes.object,
+	error: PropTypes.string,
+	cache: PropTypes.bool
+};
+
 export async function getServerSideProps({ query: { address } }) {
 	try {
 		const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/status/bedrock/${address}`);
@@ -231,4 +240,4 @@ export async function getServerSideProps({ query: { address } }) {
 	} catch (e) {
 		return { props: { address, error: e.message } };
 	}
-};
+}

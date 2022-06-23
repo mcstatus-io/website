@@ -207,7 +207,8 @@ export default function Status({ address, result, error, cache }) {
 				<meta property="og:url" content={`https://mcstatus.io${pathname}`} />
 				<meta property="og:title" content={`${address} - Minecraft Server Status`} />
 				<meta property="og:description" content={result?.response?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${result?.host ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
-				<meta property="og:image" content={result?.response?.favicon ?? `https://mcstatus.io/img/stone.png`} />
+				<meta property="og:image" content={result?.response?.favicon ?? 'https://mcstatus.io/img/icon.png'} />
+				<link rel="canonical" href={`https://mcstatus.io${pathname}`} />
 			</Head>
 			<div className="container">
 				<h1 className="title">Minecraft Server Status</h1>
@@ -259,4 +260,4 @@ export async function getServerSideProps({ query: { address } }) {
 	} catch (e) {
 		return { props: { address, error: e.message } };
 	}
-};
+}

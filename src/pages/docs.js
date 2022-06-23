@@ -91,7 +91,7 @@ const revisions = [
 			</>
 		)
 	}
-]
+];
 
 export default function API() {
 	const [selectedRevision, setSelectedRevision] = useState(revisions[revisions.length - 1]);
@@ -113,7 +113,8 @@ export default function API() {
 				<meta property="og:url" content="https://mcstatus.io/docs" />
 				<meta property="og:title" content="API Documentation - mcstatus.io" />
 				<meta property="og:description" content="Detailed documentation about our API and how to fetch the status of any Minecraft server through your service." />
-				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
+				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
+				<link rel="canonical" href="https://mcstatus.io/docs" />
 			</Head>
 			<div className="container content">
 				<h1 className="title">API Documentation</h1>
