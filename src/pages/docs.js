@@ -40,8 +40,8 @@ export default function API() {
             "sample": []	// may be empty, null, or missing
         },
         "motd": {
-            "raw": "                §aHypixel Network §c[1.8-1.18]\n              §6§lWOOL WARS 1.0 RELEASED",
-            "clean": "                Hypixel Network [1.8-1.18]\n              WOOL WARS 1.0 RELEASED",
+            "raw": "                §aHypixel Network §c[1.8-1.18]\\n              §6§lWOOL WARS 1.0 RELEASED",
+            "clean": "                Hypixel Network [1.8-1.18]\\n              WOOL WARS 1.0 RELEASED",
             "html": "<span><span style=\\"color: #ffffff;\\">                </span><span style=\\"color: #55ff55;\\">Hypixel Network </span><span style=\\"color: #ff5555;\\">[1.8-1.18]</span><span style=\\"color: #ffffff;\\">\\n              </span><span style=\\"color: #ffaa00; font-weight: bold;\\">WOOL WARS 1.0 RELEASED</span></span>"
         },
         "favicon": "data:image/png;base64,...",	// may be null
