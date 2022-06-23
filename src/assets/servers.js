@@ -58,5 +58,20 @@ export const exampleServers = [
 		type: 'bedrock',
 		name: 'Emperials',
 		address: 'play.emperials.net'
+	},
+	{
+		type: 'java',
+		name: 'MC-Complex',
+		address: 'top.mc-complex.com'
+	},
+	{
+		type: 'java',
+		name: 'OPBlocks',
+		address: 'top.opblocks.com'
+	},
+	{
+		type: 'java',
+		name: 'HerobrineMC',
+		address: 'mc.herobrine.org'
 	}
 ];
