@@ -67,34 +67,44 @@ export default function Status() {
 	};
 
 	let content = (
-		<p className="has-text-danger">Failed to retrieve the status of the specified server.</p>
+		<article className="message is-danger">
+			<div className="message-body">
+				Failed to retrieve the status of the specified server.
+			</div>
+		</article>
 	);
 
 	if (loading) {
 		content = (
-			<ContentLoader viewBox="0 0 1200 390" uniqueKey="result-loader">
-				<rect x="0" y="0" width="240" height="40" rx="3" ry="3" />
-				<rect x="260" y="0" width="940" height="40" rx="3" ry="3" />
-				<rect x="0" y="50" width="240" height="40" rx="3" ry="3" />
-				<rect x="260" y="50" width="940" height="40" rx="3" ry="3" />
-				<rect x="0" y="100" width="240" height="40" rx="3" ry="3" />
-				<rect x="260" y="100" width="940" height="40" rx="3" ry="3" />
-				<rect x="0" y="150" width="240" height="40" rx="3" ry="3" />
-				<rect x="260" y="150" width="940" height="40" rx="3" ry="3" />
-				<rect x="0" y="200" width="240" height="40" rx="3" ry="3" />
-				<rect x="260" y="200" width="940" height="40" rx="3" ry="3" />
-				<rect x="0" y="250" width="240" height="40" rx="3" ry="3" />
-				<rect x="260" y="250" width="940" height="40" rx="3" ry="3" />
-				<rect x="0" y="300" width="240" height="40" rx="3" ry="3" />
-				<rect x="260" y="300" width="940" height="40" rx="3" ry="3" />
-				<rect x="0" y="350" width="240" height="40" rx="3" ry="3" />
-				<rect x="260" y="350" width="940" height="40" rx="3" ry="3" />
-			</ContentLoader>
+			<div className="box">
+				<ContentLoader viewBox="0 0 1200 390" uniqueKey="result-loader">
+					<rect x="0" y="0" width="240" height="40" rx="3" ry="3" />
+					<rect x="260" y="0" width="940" height="40" rx="3" ry="3" />
+					<rect x="0" y="50" width="240" height="40" rx="3" ry="3" />
+					<rect x="260" y="50" width="940" height="40" rx="3" ry="3" />
+					<rect x="0" y="100" width="240" height="40" rx="3" ry="3" />
+					<rect x="260" y="100" width="940" height="40" rx="3" ry="3" />
+					<rect x="0" y="150" width="240" height="40" rx="3" ry="3" />
+					<rect x="260" y="150" width="940" height="40" rx="3" ry="3" />
+					<rect x="0" y="200" width="240" height="40" rx="3" ry="3" />
+					<rect x="260" y="200" width="940" height="40" rx="3" ry="3" />
+					<rect x="0" y="250" width="240" height="40" rx="3" ry="3" />
+					<rect x="260" y="250" width="940" height="40" rx="3" ry="3" />
+					<rect x="0" y="300" width="240" height="40" rx="3" ry="3" />
+					<rect x="260" y="300" width="940" height="40" rx="3" ry="3" />
+					<rect x="0" y="350" width="240" height="40" rx="3" ry="3" />
+					<rect x="260" y="350" width="940" height="40" rx="3" ry="3" />
+				</ContentLoader>
+			</div>
 		);
 	} else if (result) {
 		if (result.errors) {
 			content = (
-				<p className="has-text-danger">{result.errors.join('\n')}</p>
+				<article className="message is-danger">
+					<div className="message-body">
+						{result.errors.join('\n')}
+					</div>
+				</article>
 			);
 		} else if (result.online) {
 			let players = null;
@@ -114,7 +124,7 @@ export default function Status() {
 			}
 
 			content = (
-				<>
+				<div className="box">
 					<table className="table is-fullwidth is-hoverable">
 						<tbody>
 							<tr>
@@ -239,7 +249,7 @@ export default function Status() {
 						</tbody>
 					</table>
 					<button type="button" className="button is-link" onClick={() => setDebug(!debug)}>{debug ? 'Hide' : 'Show'} debug info</button>
-				</>
+				</div>
 			);
 		}
 	}
@@ -276,9 +286,7 @@ export default function Status() {
 						</div>
 					</div>
 				</form>
-				<div className="box">
-					{content}
-				</div>
+				{content}
 			</div>
 		</>
 	);

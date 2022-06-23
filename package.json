@@ -34,7 +34,8 @@
 		"react-content-loader": "^6.0.3",
 		"react-dom": "^17.0.2",
 		"react-highlight": "^0.14.0",
-		"sass": "^1.38.2"
+		"sass": "^1.38.2",
+		"use-dark-mode": "^2.3.1"
 	},
 	"devDependencies": {
 		"@next/eslint-plugin-next": "^12.0.4",

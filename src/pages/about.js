@@ -18,9 +18,9 @@ export default function About() {
 				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>
 			<div className="container content">
-				<h2 className="title is-header">About</h2>
+				<h1 className="title">About</h1>
 				<p>mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <Link href="https://mcsrvstat.us">mcsrvstat.us</Link>. The website is built using <Link href="https://nextjs.org">NextJS</Link> and the back-end was built with <Link href="https://golang.org">Go</Link>. This site is ad-free to reduce the amount of visual clutter and intrusive tracking.</p>
-				<h2 className="title is-header mt-6">FAQ</h2>
+				<h2 className="title is-4">FAQ</h2>
 				<ol>
 					<li>
 						<h3 className="title is-5 mb-3">How do I check the status of a server?</h3>

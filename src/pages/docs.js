@@ -18,13 +18,14 @@ export default function API() {
 				<meta property="og:image" content="https://mcstatus.io/img/stone.png" />
 			</Head>
 			<div className="container content">
+				<h1 className="title">API Documentation</h1>
 				<h2 className="title is-header">Overview</h2>
 				<p>mcstatus.io believes that anybody should be able to retrieve the status of any Minecraft server using a simple and efficient manner. This is why we prioritize a detailed and continuously updated documentation on how to interact with our service from yours. Please make sure to read this documentation thoroughly to prevent any errors that may be a mistake on your part.</p>
 				<p>All methods documented are using the REST API, which is supported in all major programming languages and browsers. Body data sent and received from/to the server are using JSON formatting for standardization reasons. You should familiarize yourself with this data encoding before attempting to use our service. If you have any questions, concerns or encounter any problems after attempting a solution, please feel free to contact us by sending an email to <a href="mailto:api@mcstatus.io">api@mcstatus.io</a>.</p>
 				<p>All server statuses are cached for up to 10 minutes from the previous network fetch. You can determine if a status was fetched from cache by using the <code>X-Cache-Hit</code> header returned from the server after the request.</p>
 				<h2 className="title is-header mt-6">Java Status</h2>
 				<p><span className="tag is-success">GET</span> <code>https://api.mcstatus.io/status/java/&lt;address&gt;</code></p>
-				<p className="has-text-weight-bold">Response Body (online)</p>
+				<p className="has-text-weight-semibold">Response Body (online)</p>
 				<Highlight className="language-json p-3">{`{
     "online": true,
     "host": "play.hypixel.net",
@@ -57,14 +58,14 @@ export default function API() {
         }
     }
 }`}</Highlight>
-				<p className="has-text-weight-bold">Response Body (offline)</p>
+				<p className="has-text-weight-semibold">Response Body (offline)</p>
 				<Highlight className="language-json p-3">{`{
     "online": false,
     "response": null
 }`}</Highlight>
 				<h2 className="title is-header mt-6">Bedrock Status</h2>
 				<p><span className="tag is-success">GET</span> <code>https://api.mcstatus.io/status/bedrock/&lt;address&gt;</code></p>
-				<p className="has-text-weight-bold">Response Body (online)</p>
+				<p className="has-text-weight-semibold">Response Body (online)</p>
 				<Highlight className="language-json p-3">{`{
     "online": true,
     "host": "play.nethergames.org",
@@ -92,7 +93,7 @@ export default function API() {
         }
     }
 }`}</Highlight>
-				<p className="has-text-weight-bold">Response Body (offline)</p>
+				<p className="has-text-weight-semibold">Response Body (offline)</p>
 				<Highlight className="language-json p-3">{`{
     "online": false,
     "response": null

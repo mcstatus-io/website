@@ -2,7 +2,7 @@
 
 $body-background-color: $white-ter
 $title-family: 'Poppins', sans-serif
-$title-weight: 500
+$title-weight: 600
 $subtitle-family: 'Poppins', sans-serif
 $subtitle-weight: 300
 $footer-padding: 1.5rem 0
@@ -11,8 +11,44 @@ $input-shadow: none
 $input-focus-box-shadow-size: 0
 $hr-background-color: $grey-lightest
 
+h1.title
+    border-bottom: 1px solid $grey-lighter
+    padding-bottom: 0.75rem
+
+nav a::before
+    content: ''
+    position: absolute
+    display: inline-block
+    width: 0
+    height: 2px
+    background: $black
+    top: 50%
+    transition: 0.25s width ease, 0.25s opacity ease
+    opacity: 0
+
+nav a
+    position: relative
+
+nav a span
+    transition: 0.25s padding-left ease
+
+nav a.is-active span
+        padding-left: calc(0.5rem + 24px)
+
+nav a.is-active::before
+    width: 24px
+    opacity: 1
+
 .main-columns
-    min-height: 100vh
+    padding: 6rem 6rem 1rem 6rem
+
+@media (min-width: 769px)
+    .nav-container
+        position: sticky
+        top: 6rem
+
+    .main-columns .column.is-10
+        padding-left: 1.5rem !important
 
 .main-container
     max-width: 95%
@@ -22,13 +58,6 @@ ul.menu-list > li
 
     &:last-of-type
         border-bottom: none
-
-.footer
-    border-top: 1px solid $grey-lightest
-
-.is-header
-    border-bottom: 1px solid $grey-lighter
-    padding-bottom: 0.5rem
 
 .content ol
     margin-left: 2.5rem !important
@@ -58,12 +87,6 @@ ul.menu-list > li
         width: 180px
 
 @media (max-width: 468px)
-    h1.title
-        font-size: 36px !important
-
-    p.subtitle
-        font-size: 16px
-
     .table
         th
             padding-bottom: 0 !important
@@ -77,6 +100,11 @@ ul.menu-list > li
 
         td
             padding-bottom: 1rem !important
+
+@media (max-width: 1024px)
+    .main-columns
+        padding-left: 2rem
+        padding-right: 2rem
 
 .has-border
     border: 1px solid $grey-lighter
@@ -96,6 +124,8 @@ ul.menu-list > li
 @import "~bulma/sass/elements/tag"
 @import "~bulma/sass/elements/title"
 
+@import "~bulma/sass/components/message"
+
 @import "~bulma/sass/form/shared"
 @import "~bulma/sass/form/input-textarea"
 @import "~bulma/sass/form/tools"
@@ -108,7 +138,5 @@ ul.menu-list > li
 @import "~bulma/sass/helpers/spacing"
 @import "~bulma/sass/helpers/typography"
 @import "~bulma/sass/helpers/visibility"
-
-@import "~bulma/sass/layout/footer"
 
 @import "~highlight.js/scss/atom-one-dark"
