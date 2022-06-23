@@ -3,17 +3,18 @@ import Link from 'next/link';
 import Script from 'next/script';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import '../assets/styles/global.sass';
 import openIcon from '../assets/icons/open-new.svg';
+import '../assets/styles/global.sass';
 
 export default function MyApp({ Component, pageProps }) {
 	const { pathname, route } = useRouter();
 
 	return (
 		<>
-			<div className="columns main-columns m-0">
-				<div className="column is-2 p-0">
+			<div className="columns main-columns">
+				<div className="column">
 					<div className="nav-container">
+						<img src="/img/icon.png" className="mb-3" width="96" height="96" alt="Minecraft bookshelf" />
 						<p className="title mb-5">mcstatus.io</p>
 						<p className="subtitle">A Minecraft server status tool</p>
 						<nav>
@@ -45,7 +46,7 @@ export default function MyApp({ Component, pageProps }) {
 					</div>
 					<hr className="is-hidden-tablet my-5" />
 				</div>
-				<div className="column is-10 p-0">
+				<div className="column">
 					<Component {...pageProps} />
 				</div>
 			</div>

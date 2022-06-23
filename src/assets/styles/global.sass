@@ -11,6 +11,9 @@ $input-shadow: none
 $input-focus-box-shadow-size: 0
 $hr-background-color: $grey-lightest
 
+.nav-container
+    width: 360px
+
 h1.title
     border-bottom: 1px solid $grey-lighter
     padding-bottom: 0.75rem
@@ -40,7 +43,11 @@ nav a.is-active::before
     opacity: 1
 
 .main-columns
-    padding: 6rem 6rem 1rem 6rem
+    margin: 4rem 4rem 1rem 4rem !important
+
+    & > .column:first-of-type
+        flex-basis: 360px
+        flex-grow: 0
 
 @media (min-width: 769px)
     .nav-container
@@ -49,9 +56,6 @@ nav a.is-active::before
 
     .main-columns .column.is-10
         padding-left: 1.5rem !important
-
-.main-container
-    max-width: 95%
 
 ul.menu-list > li
     border-bottom: 1px solid $grey-lightest
@@ -103,8 +107,8 @@ ul.menu-list > li
 
 @media (max-width: 1024px)
     .main-columns
-        padding-left: 2rem
-        padding-right: 2rem
+        margin-left: 1rem !important
+        margin-right: 1rem !important
 
 .has-border
     border: 1px solid $grey-lighter
