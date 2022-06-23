@@ -20,7 +20,7 @@ export default function MyApp({ Component, pageProps }) {
 							<ul className="mb-5">
 								<li className="mb-2">
 									<Link href="/">
-										<a className={`is-size-4 ${pathname === '/' || route === '/status/[address]' || route === '/bedrock/[address]' ? 'is-active' : ''}`}><span>home</span></a>
+										<a className={`is-size-4 ${pathname === '/' || route.startsWith('/status') ? 'is-active' : ''}`}><span>home</span></a>
 									</Link>
 								</li>
 								<li className="mb-2">

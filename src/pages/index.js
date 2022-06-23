@@ -17,7 +17,7 @@ export default function Home({ servers }) {
 
 		if (!inputElem || !inputElem.current || inputElem.current.value.length < 1) return;
 
-		push(`/${bedrockElem && bedrockElem.current && bedrockElem.current.checked ? 'bedrock' : 'status'}/${inputElem.current.value.toLowerCase()}`);
+		push(`/status/${bedrockElem && bedrockElem.current && bedrockElem.current.checked ? 'bedrock' : 'java'}/${inputElem.current.value.toLowerCase()}`);
 	};
 
 	const onChange = () => {
@@ -29,7 +29,7 @@ export default function Home({ servers }) {
 	return (
 		<>
 			<Head>
-				<title>Minecraft Server Status</title>
+				<title>Minecraft Server Status - mcstatus.io</title>
 				<meta name="robots" content="index,follow" />
 				<meta name="title" content="Minecraft Server Status" />
 				<meta name="description" content="Easily and quickly retrieve the status of any Java or Bedrock Edition Minecraft server by using our tool." />
@@ -70,7 +70,7 @@ export default function Home({ servers }) {
 					{
 						servers.map((server, index) => (
 							<div className="column is-6" key={index}>
-								<Link href={`/${server.type === 'java' ? 'status' : 'bedrock'}/${server.address}`}>
+								<Link href={`/status/${server.type}/${server.address}`}>
 									<a className="box">
 										<span className={`tag is-${server.type === 'java' ? 'success' : 'info'} is-pulled-right`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
 										<p>
