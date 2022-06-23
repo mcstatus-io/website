@@ -41,7 +41,7 @@ export default function MyApp({ Component, pageProps }) {
 								</li>
 							</ul>
 						</nav>
-						<p>&copy; 2022 Jacob Gunther</p>
+						<p>&copy; 2022 <a href="https://github.com/PassTheMayo">Jacob Gunther</a></p>
 					</div>
 					<hr className="is-hidden-tablet my-5" />
 				</div>
