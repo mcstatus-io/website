@@ -7,6 +7,7 @@ class Sitemap extends React.Component {
 		res.write([
 			'/',
 			'/about',
+			'/docs',
 			...exampleServers.map((server) => `/${server.type === 'java' ? 'status' : 'bedrock'}/${server.address}`)
 		].join('\n'));
 		res.end();

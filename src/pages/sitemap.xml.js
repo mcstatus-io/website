@@ -18,6 +18,7 @@ class Sitemap extends React.Component {
 		res.write(createSitemap([
 			'/',
 			'/about',
+			'/docs',
 			...exampleServers.map((server) => `/${server.type === 'java' ? 'status' : 'bedrock'}/${server.address}`)
 		]));
 		res.end();
