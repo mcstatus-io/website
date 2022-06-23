@@ -36,8 +36,6 @@ export default function Status({ address, result, error, cache }) {
 		setInputError(inputElem.current.value.length < 1);
 	};
 
-	console.log(result);
-
 	return (
 		<>
 			<Head>

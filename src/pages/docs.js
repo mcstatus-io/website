@@ -97,8 +97,6 @@ export default function API() {
 	const [selectedRevision, setSelectedRevision] = useState(revisions[revisions.length - 1]);
 
 	const handleChange = (event) => {
-		console.log(event);
-
 		setSelectedRevision(revisions.find((value) => value.id === event.target.options[event.target.selectedIndex].value));
 	};
 
