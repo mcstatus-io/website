@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
 import PropTypes from 'prop-types';
@@ -11,19 +11,9 @@ ReactGA.initialize('G-76CZV53176');
 
 export default function MyApp({ Component, pageProps }) {
 	const { asPath, pathname, route } = useRouter();
-	const [requestCount, setRequestCount] = useState(null);
 
 	useEffect(async () => {
 		ReactGA.pageview(asPath);
-
-		try {
-			const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/statistics/request-count`);
-			const body = await result.text();
-
-			setRequestCount(body);
-		} catch (e) {
-			console.error(e);
-		}
 	}, [asPath]);
 
 	return (
@@ -60,7 +50,6 @@ export default function MyApp({ Component, pageProps }) {
 							</ul>
 						</nav>
 						<p>&copy; 2022 <a href="https://github.com/PassTheMayo">Jacob Gunther</a></p>
-						{requestCount ? <p className="mt-3">{requestCount} total API requests</p> : null}
 					</div>
 					<hr className="is-hidden-tablet my-5" />
 				</div>
