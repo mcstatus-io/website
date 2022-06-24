@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import humanizeDuration from 'humanize-duration';
 
 export default function Status({ address, result, error, cache }) {
 	const inputElem = useRef(null);
@@ -192,7 +193,7 @@ export default function Status({ address, result, error, cache }) {
 												<td>
 													{
 														cache
-															? <span className="tag is-success">Yes</span>
+															? <span className="tag is-success" title={`${humanizeDuration(parseInt(cache) * 1000, { round: true })} remaining`}>Yes</span>
 															: <span className="tag is-danger">No</span>
 													}
 												</td>
@@ -218,7 +219,7 @@ Status.propTypes = {
 	address: PropTypes.string.isRequired,
 	result: PropTypes.object,
 	error: PropTypes.string,
-	cache: PropTypes.bool
+	cache: PropTypes.string
 };
 
 export async function getServerSideProps({ query: { address } }) {
@@ -234,7 +235,7 @@ export async function getServerSideProps({ query: { address } }) {
 			return { props: { address, error: 'Failed to retrieve the status of the specified server.' } };
 		}
 
-		return { props: { address, result: body, cache: result.headers.get('x-cache-hit') === 'TRUE' } };
+		return { props: { address, result: body, cache: result.headers.get('x-cache-time-remaining') } };
 	} catch (e) {
 		return { props: { address, error: e.message } };
 	}
