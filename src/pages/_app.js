@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
 import PropTypes from 'prop-types';
+import ReactGA from 'react-ga';
 import { useRouter } from 'next/router';
 import openIcon from '../assets/icons/open-new.svg';
 import '../assets/styles/global.sass';
 
+ReactGA.initialize('G-76CZV53176');
+
 export default function MyApp({ Component, pageProps }) {
-	const { pathname, route } = useRouter();
+	const { asPath, pathname, route } = useRouter();
+
+	useEffect(() => {
+		ReactGA.pageview(asPath);
+	}, [asPath]);
 
 	return (
 		<>
