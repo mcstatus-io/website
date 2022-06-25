@@ -1,0 +1,86 @@
+{
+    // Determines whether the server is online or offline.
+    // @type {boolean}
+    "online": true,
+    // The hostname of the server that was resolved from the address string.
+    // @type {string}
+    "host": "play.nethergames.org",
+    // The port of the server that was resolved from the address string.
+    // @type {number}
+    "port": 19132,
+    // The response object that was returned from the server with modifications
+    // to properties for ease of use. This will be `null` if the server is offline.
+    // @type {object | null}
+    "response": {
+        // The GUID of the server itself. There is little to no documentation
+        // online about the use of this value.
+        // @type {number}
+        "server_guid": 3037183795130687807,
+        // The type of server that was retrieved. Possible values are "MCPE" for
+        // Bedrock and Pocket Edition, or "MCEE" for Education Edition.
+        // @type {"MCPE" | "MCEE"}
+        "edition": "MCPE",
+        // The message of the day (or MOTD/description) of the server. This is the
+        // message shown below the server name in the client multiplayer menu.
+        // @type {object}
+        "motd": {
+            // The raw MOTD with formatting codes. Refer to
+            // https://minecraft.fandom.com/wiki/Formatting_codes for information
+            // on how to use formatting codes.
+            // @type {string}
+            "raw": "§e§lN§6G§7: §61.18 support!\nWaterdogPE Proxy",
+            // A clean text-only version of the MOTD with all formatting codes removed.
+            // @type {string}
+            "clean": "NG: 1.18 support!\nWaterdogPE Proxy",
+            // An HTML representation of the MOTD with proper formatting. All formatting
+            // codes are supported and are equal to their value in the Minecraft fandom wiki.
+            // Magic/obfuscated formatting codes are a <span> with the class `.minecraft-format-obfuscated`.
+            // Line breaks are encoded as the "\n" escape code and may be replaced with <br> by the user.
+            // @type {string}
+            "html": "<span><span style=\"color: #ffff55; font-weight: bold;\">N</span><span style=\"color: #ffaa00;\">G</span><span style=\"color: #aaaaaa;\">: </span><span style=\"color: #ffaa00;\">1.18 support!</span><span style=\"color: #ffffff;\">\nWaterdogPE Proxy</span></span>"
+        },
+        // The protocol version of the server which is used to identify
+        // what client versions are supported.
+        // @type {number}
+        "protocol_version": 503,
+        // The version name of the server shown on the multiplayer menu.
+        // @type {string}
+        "version": "1.18.30",
+        // The amount of online players in the server.
+        // @type {number}
+        "online_players": 571,
+        // The maximum number of allowed players in the server.
+        // @type {number}
+        "max_players": 576,
+        // The ID of the server itself. There is little to no documentation
+        // online about the use of this value.
+        // @type {string}
+        "server_id": "3037183795130687807",
+        // The default gamemode that players will spawn into when joining
+        // the server.
+        // @type {string}
+        "gamemode": "Survival",
+        // The type ID of the gamemode that players will spawn into when
+        // joining the server. Directly correlates to the property above.
+        // @type {number}
+        "gamemode_id": 1,
+        // The port to use when connecting to the server using an IPv4 address.
+        // @type {number}
+        "port_ipv4": 19132,
+        // The port to use when connecting to the server using an IPv6 address.
+        // @type {number}
+        "port_ipv6": 19132,
+        // Some servers use an SRV record to redirect users to another host. Our
+        // service correctly resolves SRV records and retrieves the status from
+        // this host and port if provided.
+        // @type {object | null}
+        "srv_record": {
+            // The hostname of the SRV record.
+            // @type {string}
+            "host": "...",
+            // The port of the SRV record.
+            // @type {number}
+            "port": 25565
+        }
+    }
+}

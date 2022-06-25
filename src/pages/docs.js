@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 import Highlight from 'react-highlight';
+import javaExample from '../assets/response/java.jsonc';
+import bedrockExample from '../assets/response/bedrock.jsonc';
 
 const revisions = [
 	{
@@ -15,79 +17,10 @@ const revisions = [
 				<p>All server statuses are cached for up to 10 minutes from the previous network fetch. You can determine if a status was fetched from cache by using the <code>X-Cache-Hit</code> header returned from the server after the request.</p>
 				<h2 className="title is-header mt-6">Java Status</h2>
 				<p><span className="tag is-success">GET</span> <code>https://api.mcstatus.io/v1/status/java/&lt;address&gt;</code></p>
-				<p className="has-text-weight-semibold">Response Body (online)</p>
-				<Highlight className="language-json p-3">{`{
-    "online": true,
-    "host": "play.hypixel.net",
-    "port": 25565,
-    "response": {
-        "version": {
-            "name": "Requires MC 1.8 / 1.18",
-            "protocol": 47
-        },
-        "players": {
-            "online": 38666,
-            "max": 200000,
-            "sample": []	// may be empty, null, or missing
-        },
-        "motd": {
-            "raw": "                §aHypixel Network §c[1.8-1.18]\\n              §6§lWOOL WARS 1.0 RELEASED",
-            "clean": "                Hypixel Network [1.8-1.18]\\n              WOOL WARS 1.0 RELEASED",
-            "html": "<span><span style=\\"color: #ffffff;\\">                </span><span style=\\"color: #55ff55;\\">Hypixel Network </span><span style=\\"color: #ff5555;\\">[1.8-1.18]</span><span style=\\"color: #ffffff;\\">\\n              </span><span style=\\"color: #ffaa00; font-weight: bold;\\">WOOL WARS 1.0 RELEASED</span></span>"
-        },
-        "favicon": "data:image/png;base64,...",	// may be null
-        "mod_info": {	// may be null
-            "type": "Forge",
-            "mods": [
-                { "id": "Forge", "version": "1.0.0" }
-            ]
-        },
-        "srv_record": {	// may be null
-            "host": "...",
-            "port": 25565
-        }
-    }
-}`}</Highlight>
-				<p className="has-text-weight-semibold">Response Body (offline)</p>
-				<Highlight className="language-json p-3">{`{
-    "online": false,
-    "response": null
-}`}</Highlight>
+				<Highlight className="language-json p-3">{javaExample}</Highlight>
 				<h2 className="title is-header mt-6">Bedrock Status</h2>
 				<p><span className="tag is-success">GET</span> <code>https://api.mcstatus.io/v1/status/bedrock/&lt;address&gt;</code></p>
-				<p className="has-text-weight-semibold">Response Body (online)</p>
-				<Highlight className="language-json p-3">{`{
-    "online": true,
-    "host": "play.nethergames.org",
-    "port": 19132,
-    "response": {
-        "server_guid": 3037183795130687807,
-        "edition": "MCPE",
-        "motd": {
-            "raw": "§e§lN§6G§7: §61.18 support!\nWaterdogPE Proxy",
-            "clean": "NG: 1.18 support!\nWaterdogPE Proxy",
-            "html": "<span><span style=\\"color: #ffff55; font-weight: bold;\\">N</span><span style=\\"color: #ffaa00;\\">G</span><span style=\\"color: #aaaaaa;\\">: </span><span style=\\"color: #ffaa00;\\">1.18 support!</span><span style=\\"color: #ffffff;\\">\nWaterdogPE Proxy</span></span>"
-        },
-        "protocol_version": 503,
-        "version": "1.18.30",
-        "online_players": 571,
-        "max_players": 576,
-        "server_id": "3037183795130687807",
-        "gamemode": "Survival",
-        "gamemode_id": 1,
-        "port_ipv4": 19132,
-        "port_ipv6": 19132,
-        "srv_record": {	// may be null
-            "host": "...",
-            "port": 25565
-        }
-    }
-}`}</Highlight>
-				<p className="has-text-weight-semibold">Response Body (offline)</p>
-				<Highlight className="language-json p-3">{`{
-    "online": false,
-    "response": null
-}`}</Highlight>
+				<Highlight className="language-json p-3">{bedrockExample}</Highlight>
 			</>
 		)
 	}
