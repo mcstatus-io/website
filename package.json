@@ -27,6 +27,7 @@
 	"homepage": "https://github.com/mcstatus-io/Website#readme",
 	"dependencies": {
 		"bulma": "^0.9.3",
+		"formik": "^2.2.9",
 		"humanize-duration": "^3.27.0",
 		"minecraft-motd-util": "^1.1.11",
 		"next": "^11.1.0",
@@ -36,7 +37,8 @@
 		"react-dom": "^17.0.2",
 		"react-ga": "^3.3.1",
 		"react-highlight": "^0.14.0",
-		"sass": "^1.38.2"
+		"sass": "^1.38.2",
+		"yup": "^0.32.11"
 	},
 	"devDependencies": {
 		"@next/eslint-plugin-next": "^12.0.4",
