@@ -20,7 +20,7 @@ export default function About() {
 			</Head>
 			<div className="container content">
 				<h1 className="title">About</h1>
-				<p>mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <Link href="https://mcsrvstat.us">mcsrvstat.us</Link>. The website is built using <Link href="https://nextjs.org">NextJS</Link> and the back-end was built with <Link href="https://golang.org">Go</Link>. This site is ad-free to reduce the amount of visual clutter and intrusive tracking.</p>
+				<p>mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <Link href="https://mcsrvstat.us">mcsrvstat.us</Link>. The website is built using <Link href="https://nextjs.org">NextJS</Link> and the back-end was built with <Link href="https://golang.org">Go</Link>. This site uses clean advertising from <a href="https://www.carbonads.net/">Carbon Ads</a> to help cover the hosting and development costs.</p>
 				<h2 className="title is-4">FAQ</h2>
 				<ol>
 					<li>
@@ -32,10 +32,16 @@ export default function About() {
 						<p>An SRV record is created by the server host to &quot;redirect&quot; users to another IP address, typically to allow users to connect to the memorable host name instead of a string of a bunch of numbers. This service automatically resolves all SRV records and obtains the status of the server behind them.</p>
 					</li>
 					<li>
-						<h3 className="title is-5 mt-5 mb-3">How do I report a bug?</h3>
-						<p>You may send any bug reports, feature suggestions, or question to the following email address: <a href="mailto:contact@mcstatus.io">contact@mcstatus.io</a>.</p>
+						<h3 className="title is-5 mt-5 mb-3">How do I hide the status of my server?</h3>
+						<p>Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable them, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu. There is no &quot;workaround&quot; from preventing status libraries/services from retrieving it and still allowing in-game clients to view them.</p>
+					</li>
+					<li>
+						<h3 className="title is-5 mt-5 mb-3">Does this service use query?</h3>
+						<p>Query is currently not supported in our API due to limitations with malformed addresses and hanging issues. This will eventually be resolved and query will be implemented sometime in the future.</p>
 					</li>
 				</ol>
+				<h2 className="title is-4 mb-3">Contact</h2>
+				<p>If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
 			</div>
 			<Script id="structured-data-1" type="application/ld+json">
 				{`
@@ -83,10 +89,18 @@ export default function About() {
 							},
 							{
 								"@type": "Question",
-								"name": "How do I report a bug?",
+								"name": "How do I hide the status of my server?",
 								"acceptedAnswer": {
 									"@type": "Answer",
-									"text": "You may send any bug reports, feature suggestions, or question to the following email address: contact@mcstatus.io"
+									"text": "<p>Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable them, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu. There is no &quot;workaround&quot; from preventing status libraries/services from retrieving it and still allowing in-game clients to view them.</p>"
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "Does this service use query?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "Query is currently not supported in our API due to limitations with malformed addresses and hanging issues. This will eventually be resolved and query will be implemented sometime in the future."
 								}
 							}
 						]

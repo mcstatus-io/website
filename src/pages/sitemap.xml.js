@@ -19,7 +19,7 @@ class Sitemap extends React.Component {
 			'/',
 			'/about',
 			'/docs',
-			...exampleServers.map((server) => `/${server.type === 'java' ? 'status' : 'bedrock'}/${server.address}`)
+			...exampleServers.map((server) => `/status/${server.type}/${server.address}`)
 		]));
 		res.end();
 	}
