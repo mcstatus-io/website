@@ -13,7 +13,7 @@
     // @type {object | null}
     "response": {
         // The version data of the server. This will be null if the server 
-        // version is pre-1.6.4.
+        // version is pre-1.3.2.
         // @type {object | null}
         "version": {
             // The version name of the server, typically modified by the server
