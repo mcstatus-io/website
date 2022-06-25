@@ -42,6 +42,12 @@ export default function MyApp({ Component, pageProps }) {
 									</Link>
 								</li>
 								<li className="mb-2">
+									<a className="is-size-4" href="https://paypal.me/jacobgunther03" target="_blank" rel="noreferrer">
+										<span className="mr-2">donate</span>
+										<img src={openIcon.src} alt="Open new window icon" width="14" height="14" />
+									</a>
+								</li>
+								<li className="mb-2">
 									<a className="is-size-4" href="https://uptime.mcstatus.io/" target="_blank" rel="noreferrer">
 										<span className="mr-2">uptime</span>
 										<img src={openIcon.src} alt="Open new window icon" width="14" height="14" />
