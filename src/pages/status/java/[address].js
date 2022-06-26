@@ -16,7 +16,7 @@ export default function Status({ address, result, error, cache }) {
 	const form = useFormik({
 		initialValues: {
 			host: address,
-			bedrock: true
+			bedrock: false
 		},
 		validationSchema: Yup
 			.object()
