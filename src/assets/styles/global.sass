@@ -1,4 +1,6 @@
-@import "~bulma/sass/utilities/_all"
+@import "~bulma/sass/utilities/initial-variables"
+@import "~bulma/sass/utilities/controls"
+@import "~bulma/sass/utilities/extends"
 
 $body-background-color: $white-ter
 $title-family: 'Poppins', sans-serif
@@ -54,15 +56,6 @@ nav a.is-active::before
         position: sticky
         top: 6rem
 
-    .main-columns .column.is-10
-        padding-left: 1.5rem !important
-
-ul.menu-list > li
-    border-bottom: 1px solid $grey-lightest
-
-    &:last-of-type
-        border-bottom: none
-
 .content ol
     margin-left: 2.5rem !important
 
@@ -110,15 +103,11 @@ ul.menu-list > li
         margin-left: 1rem !important
         margin-right: 1rem !important
 
-.has-border
-    border: 1px solid $grey-lighter
-
 .content pre
     padding: 0 !important
 
 @import "~bulma/sass/base/minireset"
 @import "~bulma/sass/base/generic"
-@import "~bulma/sass/base/animations"
 
 @import "~bulma/sass/elements/box"
 @import "~bulma/sass/elements/button"
