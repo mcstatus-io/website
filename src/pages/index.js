@@ -94,17 +94,13 @@ Home.propTypes = {
 };
 
 export function getServerSideProps() {
+	const javaServers = exampleServers.filter((server) => server.type === 'java').sort(() => Math.random() - 0.5).slice(0, 4);
+	const bedrockServers = exampleServers.filter((server) => server.type === 'bedrock').sort(() => Math.random() - 0.5).slice(0, 4);
+
 	const servers = [];
 
-	while (!servers.some((server) => server.type === 'bedrock')) {
-		servers.length = 0;
-
-		while (servers.length < 8) {
-			const server = exampleServers[Math.floor(Math.random() * exampleServers.length)];
-			if (servers.some((s) => s.address === server.address)) continue;
-
-			servers.push(server);
-		}
+	for (let i = 0; i < 4; i++) {
+		servers.push(javaServers[i], bedrockServers[i]);
 	}
 
 	return { props: { servers } };
