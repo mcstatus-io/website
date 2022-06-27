@@ -58,8 +58,8 @@ export default function NavMenu() {
 					</ul>
 				</nav>
 				<p>&copy; 2022 <a href="https://github.com/PassTheMayo">Jacob Gunther</a></p>
+				{showAds ? <Ad code="CEAIV23Y" placement="mcstatusio" className="mt-5" /> : null}
 			</div>
-			{showAds ? <Ad code="CEAIV23Y" placement="mcstatusio" className="mt-6" /> : null}
 			<hr className="is-hidden-tablet my-5" />
 		</>
 	);
