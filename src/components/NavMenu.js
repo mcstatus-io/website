@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import openIcon from '../assets/icons/open-new.svg';
+import Ad from './Ad';
 
 export default function NavMenu() {
-	const { pathname, route } = useRouter();
+	const { pathname, route, events } = useRouter();
+	const [showAds, setShowAds] = useState(false);
+
+	useEffect(() => {
+		events.on('routeChangeStart', () => {
+			setShowAds(false);
+		});
+
+		events.on('routeChangeComplete', () => {
+			setShowAds(true);
+		});
+
+		setShowAds(true);
+	}, []);
 
 	return (
 		<>
@@ -45,6 +59,7 @@ export default function NavMenu() {
 				</nav>
 				<p>&copy; 2022 <a href="https://github.com/PassTheMayo">Jacob Gunther</a></p>
 			</div>
+			{showAds ? <Ad code="CEAIV23Y" placement="mcstatusio" className="mt-6" /> : null}
 			<hr className="is-hidden-tablet my-5" />
 		</>
 	);
