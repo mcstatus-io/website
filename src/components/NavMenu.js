@@ -58,7 +58,7 @@ export default function NavMenu() {
 					</ul>
 				</nav>
 				<p>&copy; 2022 <a href="https://github.com/PassTheMayo">Jacob Gunther</a></p>
-				{showAds ? <Ad code="CEAIV23Y" placement="mcstatusio" className="mt-5" /> : null}
+				{showAds && process.env.NODE_ENV !== 'development' ? <Ad code="CEAIV23Y" placement="mcstatusio" className="mt-5" /> : null}
 			</div>
 			<hr className="is-hidden-tablet my-5" />
 		</>

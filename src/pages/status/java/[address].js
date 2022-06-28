@@ -1,169 +1,14 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import { parse, toHTML } from 'minecraft-motd-util';
 import PropTypes from 'prop-types';
 import humanizeDuration from 'humanize-duration';
+import Formatted from '../../../components/Formatted';
 import Search from '../../../components/Search';
 
 export default function Status({ address, result, error, cache }) {
 	const [showDebug, setShowDebug] = useState(false);
 	const [showMods, setShowMods] = useState(false);
-	const [showInformation, setShowInformation] = useState(false);
-
-	let content = (
-		<article className="message is-danger">
-			<div className="message-body">
-				{error ?? 'Failed to retrieve the status of the specified server.'}
-			</div>
-		</article>
-	);
-
-	if (result) {
-		let players = null;
-
-		if (result.response.players.sample?.length > 0) {
-			players = [];
-
-			for (let i = 0; i < result.response.players.sample.length; i++) {
-				const player = result.response.players.sample[i];
-
-				const parsed = parse(player.name);
-
-				players.push(
-					<p dangerouslySetInnerHTML={{ __html: toHTML(parsed) }} key={i} />
-				);
-			}
-		}
-
-		content = (
-			<div className="box">
-				<table className="table is-fullwidth is-hoverable">
-					<tbody>
-						<tr>
-							<th>Hostname</th>
-							<td>{result.host}</td>
-						</tr>
-						<tr>
-							<th>Port</th>
-							<td>{result.port}</td>
-						</tr>
-						<tr>
-							<th>MOTD</th>
-							<td className="motd-container">
-								<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.motd.html }} />
-							</td>
-						</tr>
-						<tr>
-							<th>Favicon</th>
-							<td>
-								{
-									result.response.favicon
-										? <img src={result.response.favicon} />
-										: <p className="has-text-grey">N/A</p>
-								}
-							</td>
-						</tr>
-						<tr>
-							<th>Version</th>
-							<td>
-								{
-									result.response.version?.name
-										? <span>{result.response.version.name}</span>
-										: <span className="has-text-grey">N/A (&lt; 1.3)</span>
-								}
-							</td>
-						</tr>
-						<tr>
-							<th>Players</th>
-							<td>
-								<span>{result.response.players.online} / {result.response.players.max}</span>
-								{
-									players
-										? <button type="button" className="button is-link is-small is-vertically-aligned ml-3" onClick={() => setShowInformation(!showInformation)}>{showInformation ? 'Hide' : 'Show'} player list</button>
-										: null
-								}
-								{
-									showInformation
-										? <pre className="has-background-black has-text-white mt-3">{players}</pre>
-										: null
-								}
-							</td>
-						</tr>
-						{
-							result.response.mod_info
-								? <tr>
-									<th>Mod Info</th>
-									<td>
-										<span>{result.response.mod_info.type}</span>
-										<span className="has-text-grey"> ({result.response.mod_info.mods.length} mod{result.response.mod_info.mods.length === 1 ? '' : 's'} loaded)</span>
-										{
-											result?.response?.mod_info && result.response.mod_info.mods.length > 0
-												? <button type="button" className="button is-link is-small is-vertically-aligned ml-3" onClick={() => setShowMods(!showMods)}>{showMods ? 'Hide' : 'Show'} mod info</button>
-												: null
-										}
-										{
-											showMods
-												? <div className="tags mt-2">
-													{
-														result.response.mod_info.mods.map((mod, index) => (
-															<span className="tag is-link" key={index}>{mod.id}: v{mod.version}</span>
-														))
-													}
-												</div>
-												: null
-										}
-									</td>
-								</tr>
-								: null
-						}
-						{
-							showDebug
-								? <tr>
-									<th>SRV Record</th>
-									<td>
-										{
-											result.response.srv_record
-												? <span className="tag is-success">Yes</span>
-												: <span className="tag is-danger">No</span>
-										}
-									</td>
-								</tr>
-								: null
-						}
-						{
-							showDebug
-								? <tr>
-									<th>Protocol Version</th>
-									<td>
-										{
-											result.response.version?.protocol
-												? <span>{result.response.version.protocol}</span>
-												: <span className="has-text-grey">N/A</span>
-										}
-									</td>
-								</tr>
-								: null
-						}
-						{
-							showDebug
-								? <tr>
-									<th>Cached Response</th>
-									<td>
-										{
-											cache
-												? <span className="tag is-success" title={`${humanizeDuration(parseInt(cache) * 1000, { round: true })} remaining`}>Yes</span>
-												: <span className="tag is-danger">No</span>
-										}
-									</td>
-								</tr>
-								: null
-						}
-					</tbody>
-				</table>
-				<button type="button" className="button is-link" onClick={() => setShowDebug(!showDebug)}>{showDebug ? 'Hide' : 'Show'} debug info</button>
-			</div>
-		);
-	}
+	const [showPlayers, setShowPlayers] = useState(false);
 
 	return (
 		<>
@@ -182,7 +27,134 @@ export default function Status({ address, result, error, cache }) {
 			<div className="container">
 				<h1 className="title">Minecraft Server Status</h1>
 				<Search initialValues={{ host: address, bedrock: false }} />
-				{content}
+				{
+					result
+						? <div className="box">
+							<table className="table is-fullwidth is-hoverable">
+								<tbody>
+									<tr>
+										<th>Hostname</th>
+										<td>{result.host}</td>
+									</tr>
+									<tr>
+										<th>Port</th>
+										<td>{result.port}</td>
+									</tr>
+									<tr>
+										<th>MOTD</th>
+										<td className="motd-container">
+											<Formatted content={result.response.motd.raw} />
+										</td>
+									</tr>
+									<tr>
+										<th>Favicon</th>
+										<td>
+											{
+												result.response.favicon
+													? <img src={result.response.favicon} />
+													: <p className="has-text-grey">N/A</p>
+											}
+										</td>
+									</tr>
+									<tr>
+										<th>Version</th>
+										<td>
+											{
+												result.response.version?.name
+													? <span>{result.response.version.name}</span>
+													: <span className="has-text-grey">N/A (&lt; 1.3)</span>
+											}
+										</td>
+									</tr>
+									<tr>
+										<th>Players</th>
+										<td>
+											<span>{result.response.players.online} / {result.response.players.max}</span>
+											{
+												result.response.players.sample?.length > 0
+													? <button type="button" className="button is-link is-small is-vertically-aligned ml-3" onClick={() => setShowPlayers(!showPlayers)}>{showPlayers ? 'Hide' : 'Show'} player list</button>
+													: null
+											}
+											{
+												showPlayers
+													? <Formatted content={result.response.players.sample?.map((player) => player.name).join('\n')} className="mt-3" />
+													: null
+											}
+										</td>
+									</tr>
+									{
+										result.response.mod_info
+											? <tr>
+												<th>Mod Info</th>
+												<td>
+													<span>{result.response.mod_info.type}</span>
+													<span className="has-text-grey"> ({result.response.mod_info.mods.length} mod{result.response.mod_info.mods.length === 1 ? '' : 's'} loaded)</span>
+													{
+														result?.response?.mod_info && result.response.mod_info.mods.length > 0
+															? <button type="button" className="button is-link is-small is-vertically-aligned ml-3" onClick={() => setShowMods(!showMods)}>{showMods ? 'Hide' : 'Show'} mod info</button>
+															: null
+													}
+													{
+														showMods
+															? <div className="tags mt-2">
+																{
+																	result.response.mod_info.mods.map((mod, index) => (
+																		<span className="tag is-link" key={index}>{mod.id}: v{mod.version}</span>
+																	))
+																}
+															</div>
+															: null
+													}
+												</td>
+											</tr>
+											: null
+									}
+									{
+										showDebug
+											? <>
+												<tr>
+													<th>SRV Record</th>
+													<td>
+														{
+															result.response.srv_record
+																? <span className="tag is-success">Yes</span>
+																: <span className="tag is-danger">No</span>
+														}
+													</td>
+												</tr>
+												<tr>
+													<th>Protocol Version</th>
+													<td>
+														{
+															result.response.version?.protocol
+																? <span>{result.response.version.protocol}</span>
+																: <span className="has-text-grey">N/A</span>
+														}
+													</td>
+												</tr>
+												<tr>
+													<th>Cached Response</th>
+													<td>
+														{
+															cache
+																? <span className="tag is-success" title={`${humanizeDuration(parseInt(cache) * 1000, { round: true })} remaining`}>Yes</span>
+																: <span className="tag is-danger">No</span>
+														}
+													</td>
+												</tr>
+											</>
+											: null
+									}
+								</tbody>
+							</table>
+							<button type="button" className="button is-link" onClick={() => setShowDebug(!showDebug)}>{showDebug ? 'Hide' : 'Show'} debug info</button>
+						</div>
+						: <article className="message is-danger">
+							<div className="message-body">
+								{error ?? 'Failed to retrieve the status of the specified server.'}
+							</div>
+						</article>
+				}
 			</div>
 		</>
 	);

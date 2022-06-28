@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import humanizeDuration from 'humanize-duration';
+import Formatted from '../../../components/Formatted';
 import Search from '../../../components/Search';
 
 export default function Status({ address, result, error, cache }) {
@@ -40,7 +41,7 @@ export default function Status({ address, result, error, cache }) {
 									<tr>
 										<th>MOTD</th>
 										<td>
-											<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.motd.html }} />
+											<Formatted content={result.response.motd.raw} />
 										</td>
 									</tr>
 									<tr>
@@ -79,78 +80,64 @@ export default function Status({ address, result, error, cache }) {
 											}
 										</td>
 									</tr>
+									<tr>
+										<th>Gamemode</th>
+										<td>
+											{result.response.gamemode ?? <span className="has-text-grey">{result.response.gamemode}</span>}
+											<span className="has-text-grey"> (
+												{
+													result.response.gamemode_id !== null
+														? <span>{result.response.gamemode_id}</span>
+														: <span className="has-text-grey">N/A</span>
+												}
+												)</span>
+										</td>
+									</tr>
 									{
-										result.response.gamemode
-											? <tr>
-												<th>Gamemode</th>
-												<td>
-													<span>{result.response.gamemode}</span>
-													<span className="has-text-grey"> (
+										showDebug
+											? <>
+												<tr>
+													<th>SRV Record</th>
+													<td>
 														{
-															result.response.gamemode_id !== null
-																? <span>{result.response.gamemode_id}</span>
+															result.response.srv_record
+																? <span className="tag is-success">Yes</span>
+																: <span className="tag is-danger">No</span>
+														}
+													</td>
+												</tr>
+												<tr>
+													<th>Server Port</th>
+													<td>
+														<span>IPv4: </span>
+														{
+															result.response.port_ipv4 !== null
+																? <span>{result.response.port_ipv4}</span>
 																: <span className="has-text-grey">N/A</span>
 														}
-														)</span>
-												</td>
-											</tr>
-											: null
-									}
-									{
-										showDebug
-											? <tr>
-												<th>SRV Record</th>
-												<td>
-													{
-														result.response.srv_record
-															? <span className="tag is-success">Yes</span>
-															: <span className="tag is-danger">No</span>
-													}
-												</td>
-											</tr>
-											: null
-									}
-									{
-										showDebug
-											? <tr>
-												<th>Server Port</th>
-												<td>
-													<span>IPv4: </span>
-													{
-														result.response.port_ipv4 !== null
-															? <span>{result.response.port_ipv4}</span>
-															: <span className="has-text-grey">N/A</span>
-													}
-													<span> / IPv6: </span>
-													{
-														result.response.port_ipv6 !== null
-															? <span>{result.response.port_ipv6}</span>
-															: <span className="has-text-grey">N/A</span>
-													}
-												</td>
-											</tr>
-											: null
-									}
-									{
-										showDebug
-											? <tr>
-												<th>Protocol Version</th>
-												<td>{result.response.protocol_version}</td>
-											</tr>
-											: null
-									}
-									{
-										showDebug
-											? <tr>
-												<th>Cached Response</th>
-												<td>
-													{
-														cache
-															? <span className="tag is-success" title={`${humanizeDuration(parseInt(cache) * 1000, { round: true })} remaining`}>Yes</span>
-															: <span className="tag is-danger">No</span>
-													}
-												</td>
-											</tr>
+														<span> / IPv6: </span>
+														{
+															result.response.port_ipv6 !== null
+																? <span>{result.response.port_ipv6}</span>
+																: <span className="has-text-grey">N/A</span>
+														}
+													</td>
+												</tr>
+												<tr>
+													<th>Protocol Version</th>
+													<td>{result.response.protocol_version}</td>
+												</tr>
+												<tr>
+													<th>Cached Response</th>
+													<td>
+														{
+															cache
+																? <span className="tag is-success" title={`${humanizeDuration(parseInt(cache) * 1000, { round: true })} remaining`}>Yes</span>
+																: <span className="tag is-danger">No</span>
+														}
+													</td>
+												</tr>
+											</>
 											: null
 									}
 								</tbody>
