@@ -51,7 +51,7 @@ export default function API() {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io/docs" />
 			</Head>
-			<div className="container content">
+			<div className="content">
 				<h1 className="title">API Documentation</h1>
 				<label className="label" htmlFor="revision">API Revision</label>
 				<div className="select">

@@ -24,27 +24,25 @@ export default function Home({ servers }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io" />
 			</Head>
-			<div className="container">
-				<h1 className="title">Minecraft Server Status</h1>
-				<Search />
-				<h2 className="title is-4 mb-3 mt-5">Example Servers</h2>
-				<div className="columns is-multiline">
-					{
-						servers.map((server, index) => (
-							<div className="column is-6" key={index}>
-								<Link href={`/status/${server.type}/${server.address}`}>
-									<a className="box">
-										<span className={`tag is-${server.type === 'java' ? 'success' : 'info'} is-pulled-right`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
-										<p>
-											<span>{server.name}</span>
-											<span className="has-text-grey"> ({server.address})</span>
-										</p>
-									</a>
-								</Link>
-							</div>
-						))
-					}
-				</div>
+			<h1 className="title">Minecraft Server Status</h1>
+			<Search />
+			<h2 className="title is-4 mb-3 mt-5">Example Servers</h2>
+			<div className="columns is-multiline">
+				{
+					servers.map((server, index) => (
+						<div className="column is-6" key={index}>
+							<Link href={`/status/${server.type}/${server.address}`}>
+								<a className="box">
+									<span className={`tag is-${server.type === 'java' ? 'success' : 'info'} is-pulled-right`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
+									<p>
+										<span>{server.name}</span>
+										<span className="has-text-grey"> ({server.address})</span>
+									</p>
+								</a>
+							</Link>
+						</div>
+					))
+				}
 			</div>
 			<Script id="structured-data-1" type="application/ld+json">
 				{`

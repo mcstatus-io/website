@@ -9,13 +9,11 @@ export default function Error({ statusCode, reason }) {
 			<Head>
 				<title>{statusCode} - mcstatus.io</title>
 			</Head>
-			<div className="container">
-				<h1 className="title is-size-1 mb-4 pb-1">{statusCode}</h1>
-				<p className="subtitle mt-0">{reason}</p>
-				<Link href="/">
-					<a className="button is-link">&larr; Return to Home</a>
-				</Link>
-			</div>
+			<h1 className="title is-size-1 mb-4 pb-1">{statusCode}</h1>
+			<p className="subtitle mt-0">{reason}</p>
+			<Link href="/">
+				<a className="button is-link">&larr; Return to Home</a>
+			</Link>
 		</>
 	);
 }

@@ -13,9 +13,6 @@ $input-shadow: none
 $input-focus-box-shadow-size: 0
 $hr-background-color: $grey-lightest
 
-.nav-container
-    width: 360px
-
 h1.title
     border-bottom: 1px solid $grey-lighter
     padding-bottom: 0.75rem
@@ -48,13 +45,12 @@ nav a.is-active::before
     margin: 4rem 4rem 1rem 4rem !important
 
     & > .column:first-of-type
-        flex-basis: 360px
-        flex-grow: 0
+        padding-right: 1rem !important
 
 @media (min-width: 769px)
     .nav-container
         position: sticky
-        top: 6rem
+        top: 4rem
 
 .content ol
     margin-left: 2.5rem !important
@@ -70,11 +66,6 @@ nav a.is-active::before
 
     th
         vertical-align: middle !important
-
-.motd-container
-    max-width: 100%
-    position: relative
-    overflow: hidden
 
 .is-vertically-aligned
     vertical-align: middle
@@ -111,7 +102,6 @@ nav a.is-active::before
 
 @import "~bulma/sass/elements/box"
 @import "~bulma/sass/elements/button"
-@import "~bulma/sass/elements/container"
 @import "~bulma/sass/elements/content"
 @import "~bulma/sass/elements/table"
 @import "~bulma/sass/elements/tag"

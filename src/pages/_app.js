@@ -8,10 +8,10 @@ export default function MyApp({ Component, pageProps }) {
 	return (
 		<>
 			<div className="columns main-columns">
-				<div className="column">
+				<div className="column is-3 p-0">
 					<NavMenu />
 				</div>
-				<div className="column">
+				<div className="column is-9 is-main-column p-0">
 					<Component {...pageProps} />
 				</div>
 			</div>
