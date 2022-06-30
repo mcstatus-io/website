@@ -12,6 +12,10 @@ $table-background-color: none
 $input-shadow: none
 $input-focus-box-shadow-size: 0
 $hr-background-color: $grey-lightest
+$card-header-shadow: none
+
+.card .card-header:not(:only-child)
+    border-bottom: 1px solid $grey-lightest
 
 h1.title
     border-bottom: 1px solid $grey-lighter
@@ -108,6 +112,7 @@ nav a.is-active::before
 @import "~bulma/sass/elements/title"
 
 @import "~bulma/sass/components/message"
+@import "~bulma/sass/components/card"
 
 @import "~bulma/sass/form/shared"
 @import "~bulma/sass/form/input-textarea"
@@ -122,6 +127,7 @@ nav a.is-active::before
 @import "~bulma/sass/helpers/spacing"
 @import "~bulma/sass/helpers/typography"
 @import "~bulma/sass/helpers/visibility"
+@import "~bulma/sass/helpers/other"
 
 @import "~highlight.js/scss/atom-one-dark"
 
