@@ -46,12 +46,6 @@ export default function Status({ address, result, error, cache }) {
 										<td>{result.port}</td>
 									</tr>
 									<tr>
-										<th>MOTD</th>
-										<td>
-											<Formatted content={result.response.motd.raw} />
-										</td>
-									</tr>
-									<tr>
 										<th>Favicon</th>
 										<td>
 											{
@@ -62,11 +56,17 @@ export default function Status({ address, result, error, cache }) {
 										</td>
 									</tr>
 									<tr>
+										<th>MOTD</th>
+										<td>
+											<Formatted content={result.response.motd.raw} />
+										</td>
+									</tr>
+									<tr>
 										<th>Version</th>
 										<td>
 											{
 												result.response.version?.name
-													? <span>{result.response.version.name}</span>
+													? <Formatted content={result.response.version.name} />
 													: <span className="has-text-grey">N/A (&lt; 1.3)</span>
 											}
 										</td>
