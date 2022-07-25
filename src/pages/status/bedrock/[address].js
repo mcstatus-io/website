@@ -102,6 +102,16 @@ export default function Status({ address, result, error, cache }) {
 										showDebug
 											? <>
 												<tr>
+													<th>EULA Blocked</th>
+													<td>
+														{
+															result.eula_blocked
+																? <span className="tag is-danger">Yes</span>
+																: <span className="tag is-success">No</span>
+														}
+													</td>
+												</tr>
+												<tr>
 													<th>SRV Record</th>
 													<td>
 														{
