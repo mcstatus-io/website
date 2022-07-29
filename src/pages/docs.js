@@ -23,7 +23,7 @@ const revisions = [
 				<p><span className="tag is-success">GET</span> <code>https://api.mcstatus.io/v1/status/bedrock/&lt;address&gt;</code></p>
 				<Highlight className="language-json p-3">{bedrockExample}</Highlight>
 				<h2 className="title is-header mt-6 mb-3">Favicon</h2>
-				<p><span className="tag is-success">GET</span> <code>https://api.mcstatus.io/v1/favicon/&lt;address&gt;/&lt;filename&gt;.png</code></p>
+				<p><span className="tag is-success">GET</span> <code>https://api.mcstatus.io/v1/favicon/&lt;address&gt;</code></p>
 				<img src={sampleIcon.src} alt="Sample icon of Hypixel" width="128" height="128" />
 			</>
 		)

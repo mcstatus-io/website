@@ -41,9 +41,10 @@
             // @type {number}
             "max": 200000,
             // Some sample players online in the server. Most (if not all) major
-            // servers disable this or modify the data for custom formatting. This
-            // array may be `null`, empty or the property will be completely missing.
-            // @type {Array<{ name: string, id: string } | null}
+            // servers disable this or modify the data for custom formatting. If you
+            // do not have any items in this array, it is because the server has
+            // disabled sample players for a reason.
+            // @type {Array<{ name: string, id: string, clean: string, html: string }>}
             "sample": []
         },
         // The message of the day (or MOTD/description) of the server. This is the

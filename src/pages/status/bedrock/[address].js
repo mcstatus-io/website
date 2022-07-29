@@ -4,7 +4,6 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import humanizeDuration from 'humanize-duration';
 import Highlight from 'react-highlight';
-import Formatted from '../../../components/Formatted';
 import Search from '../../../components/Search';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
@@ -46,7 +45,7 @@ export default function Status({ address, result, error, cache }) {
 									<tr>
 										<th>MOTD</th>
 										<td>
-											<Formatted content={result.response.motd.raw} />
+											<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.motd.html }} />
 										</td>
 									</tr>
 									<tr>

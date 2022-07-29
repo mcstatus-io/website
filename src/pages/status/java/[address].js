@@ -4,7 +4,6 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import humanizeDuration from 'humanize-duration';
 import Highlight from 'react-highlight';
-import Formatted from '../../../components/Formatted';
 import Search from '../../../components/Search';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
@@ -58,7 +57,7 @@ export default function Status({ address, result, error, cache }) {
 									<tr>
 										<th>MOTD</th>
 										<td>
-											<Formatted content={result.response.motd.raw} />
+											<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.motd.html }} />
 										</td>
 									</tr>
 									<tr>
@@ -66,7 +65,7 @@ export default function Status({ address, result, error, cache }) {
 										<td>
 											{
 												result.response.version?.name
-													? <Formatted content={result.response.version.name} />
+													? <pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.version.name }} />
 													: <span className="has-text-grey">N/A (&lt; 1.3)</span>
 											}
 										</td>
@@ -76,13 +75,13 @@ export default function Status({ address, result, error, cache }) {
 										<td>
 											<span>{result.response.players.online} / {result.response.players.max}</span>
 											{
-												result.response.players.sample?.length > 0
+												result.response.players.sample.length > 0
 													? <button type="button" className="button is-link is-small is-vertically-aligned ml-3" onClick={() => setShowPlayers(!showPlayers)}>{showPlayers ? 'Hide' : 'Show'} player list</button>
 													: null
 											}
 											{
 												showPlayers
-													? <Formatted content={result.response.players.sample?.map((player) => player.name).join('\n')} className="mt-3" />
+													? <pre className="has-background-black mt-3" dangerouslySetInnerHTML={{ __html: result.response.players.sample.map((player) => player.html).join('<br />') }} />
 													: null
 											}
 										</td>
@@ -209,7 +208,7 @@ export default function Status({ address, result, error, cache }) {
 Status.propTypes = {
 	address: PropTypes.string.isRequired,
 	result: PropTypes.object,
-	cache: PropTypes.bool,
+	cache: PropTypes.string,
 	error: PropTypes.string
 };
 

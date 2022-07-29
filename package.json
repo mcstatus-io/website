@@ -29,7 +29,6 @@
 		"bulma": "^0.9.3",
 		"formik": "^2.2.9",
 		"humanize-duration": "^3.27.0",
-		"minecraft-motd-util": "^1.1.11",
 		"next": "^11.1.0",
 		"prop-types": "^15.7.2",
 		"raw-loader": "^4.0.2",
