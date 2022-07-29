@@ -65,7 +65,7 @@ export default function Status({ address, result, error, cache }) {
 										<td>
 											{
 												result.response.version?.name
-													? <pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.response.version.name }} />
+													? <span>{result.response.version.name}</span>
 													: <span className="has-text-grey">N/A (&lt; 1.3)</span>
 											}
 										</td>
