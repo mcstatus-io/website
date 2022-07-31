@@ -35,7 +35,7 @@ export default function NavMenu() {
 						</li>
 						<li className="mb-2">
 							<Link href="/docs">
-								<a className={`is-size-4 ${pathname === '/docs' ? 'is-active' : ''}`}><span>api docs</span></a>
+								<a className={`is-size-4 ${pathname.startsWith('/docs') ? 'is-active' : ''}`}><span>api docs</span></a>
 							</Link>
 						</li>
 						<li className="mb-2">
@@ -58,7 +58,7 @@ export default function NavMenu() {
 					</ul>
 				</nav>
 				<p>&copy; 2022 <a href="https://github.com/PassTheMayo">Jacob Gunther</a></p>
-				{showAds && process.env.NODE_ENV !== 'development' ? <Ad code="CEAIV23Y" placement="mcstatusio" className="mt-5" /> : null}
+				{showAds && process.env.NODE_ENV !== 'development' ? <Ad code={process.env.NEXT_PUBLIC_CARBON_CODE} placement="mcstatusio" className="mt-5" /> : null}
 			</div>
 			<hr className="is-hidden-tablet my-5" />
 		</>

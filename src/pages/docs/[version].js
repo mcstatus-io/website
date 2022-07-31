@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
+import { useRouter } from 'next/router';
 import Highlight from 'react-highlight';
-import javaExample from '../assets/response/java.jsonc';
-import bedrockExample from '../assets/response/bedrock.jsonc';
-import sampleIcon from '../assets/response/icon.png';
+import Error from '../../components/Error';
+import javaExample from '../../assets/response/java.jsonc';
+import bedrockExample from '../../assets/response/bedrock.jsonc';
+import sampleIcon from '../../assets/response/icon.png';
 
-const revisions = [
+export const revisions = [
 	{
 		id: 'v1',
-		name: 'v1 — Latest',
+		name: 'v1',
 		content: (
 			<>
 				<h2 className="title is-header">Overview</h2>
@@ -31,11 +33,17 @@ const revisions = [
 ];
 
 export default function API() {
-	const [selectedRevision, setSelectedRevision] = useState(revisions[revisions.length - 1]);
+	const { push, query } = useRouter();
 
 	const handleChange = (event) => {
-		setSelectedRevision(revisions.find((value) => value.id === event.target.options[event.target.selectedIndex].value));
+		push(`/docs/${event.target.options[event.target.selectedIndex].value}`);
 	};
+
+	const revision = revisions.find((revision) => revision.id === query.version);
+
+	if (!revision) return (
+		<Error statusCode={404} reason="Page not found" />
+	);
 
 	return (
 		<>
@@ -57,13 +65,13 @@ export default function API() {
 				<div className="select">
 					<select onChange={handleChange} id="revision">
 						{
-							revisions.map((revision, index) => (
-								<option value={revision.id} key={index}>{revision.name}</option>
+							revisions.map((meta, index) => (
+								<option value={meta.id} key={index}>{meta.name}</option>
 							))
 						}
 					</select>
 				</div>
-				{selectedRevision.content}
+				{revision.content}
 			</div>
 			<Script id="structured-data-1" type="application/ld+json">
 				{`
@@ -82,6 +90,12 @@ export default function API() {
 								"position": 2,
 								"name": "API",
 								"item": "https://mcstatus.io/docs"
+							},
+							{
+								"@type": "ListItem",
+								"position": 3,
+								"name": "${revision.name}",
+								"item": "https://mcstatus.io/docs/${revision.id}"
 							}
 						]
 					}

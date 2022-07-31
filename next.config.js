@@ -5,6 +5,11 @@ module.exports = {
 			source: '/status/:address',
 			destination: '/status/java/:address',
 			permanent: true
+		},
+		{
+			source: '/docs',
+			destination: '/docs/v1',
+			permanent: false
 		}
 	],
 	webpack: (config) => {
