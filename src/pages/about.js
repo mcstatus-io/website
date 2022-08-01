@@ -20,7 +20,7 @@ export default function About() {
 				<link rel="canonical" href="https://mcstatus.io/about" />
 			</Head>
 			<div className="container content content-container">
-				<Ad />
+				<Ad className="mb-5" />
 				<h1 className="title mt-0">About</h1>
 				<p>mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <Link href="https://mcsrvstat.us">mcsrvstat.us</Link> but aimed at improving consistency and conformity to standards. The website is built using <Link href="https://nextjs.org">NextJS</Link> and the back-end was built with <Link href="https://golang.org">Go</Link>. This site uses clean advertising from <a href="https://www.carbonads.net/">Carbon Ads</a> to help cover the hosting and development costs.</p>
 				<h2 className="title is-4">FAQ</h2>

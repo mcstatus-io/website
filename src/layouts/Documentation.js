@@ -27,7 +27,7 @@ export default function DocumentationLayout({ version, children }) {
 				<link rel="canonical" href={`https://mcstatus.io/docs/${version}`} />
 			</Head>
 			<div className="container content content-container">
-				<Ad />
+				<Ad className="mb-5" />
 				<h1 className="title mt-0">API Documentation</h1>
 				<label className="label" htmlFor="revision">API Revision</label>
 				<div className="select">
