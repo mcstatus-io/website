@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Script from 'next/script';
+import Ad from '../components/Ad';
 
 export default function About() {
 	return (
@@ -18,9 +19,10 @@ export default function About() {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io/about" />
 			</Head>
-			<div className="content">
+			<div className="container content my-5 px-3">
+				<Ad />
 				<h1 className="title">About</h1>
-				<p>mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <Link href="https://mcsrvstat.us">mcsrvstat.us</Link>. The website is built using <Link href="https://nextjs.org">NextJS</Link> and the back-end was built with <Link href="https://golang.org">Go</Link>. This site uses clean advertising from <a href="https://www.carbonads.net/">Carbon Ads</a> to help cover the hosting and development costs.</p>
+				<p>mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <Link href="https://mcsrvstat.us">mcsrvstat.us</Link> but aimed at improving consistency and conformity to standards. The website is built using <Link href="https://nextjs.org">NextJS</Link> and the back-end was built with <Link href="https://golang.org">Go</Link>. This site uses clean advertising from <a href="https://www.carbonads.net/">Carbon Ads</a> to help cover the hosting and development costs.</p>
 				<h2 className="title is-4">FAQ</h2>
 				<ol>
 					<li>

@@ -17,45 +17,6 @@ $card-header-shadow: none
 .card .card-header:not(:only-child)
     border-bottom: 1px solid $grey-lightest
 
-h1.title
-    border-bottom: 1px solid $grey-lighter
-    padding-bottom: 0.75rem
-
-nav a::before
-    content: ''
-    position: absolute
-    display: inline-block
-    width: 0
-    height: 2px
-    background: $black
-    top: 50%
-    transition: 0.25s width ease, 0.25s opacity ease
-    opacity: 0
-
-nav a
-    position: relative
-
-nav a span
-    transition: 0.25s padding-left ease
-
-nav a.is-active span
-        padding-left: calc(0.5rem + 24px)
-
-nav a.is-active::before
-    width: 24px
-    opacity: 1
-
-.main-columns
-    margin: 4rem 4rem 1rem 4rem !important
-
-    & > .column:first-of-type
-        padding-right: 1rem !important
-
-@media (min-width: 769px)
-    .nav-container
-        position: sticky
-        top: 4rem
-
 .content ol
     margin-left: 2.5rem !important
 
@@ -93,13 +54,18 @@ nav a.is-active::before
         td
             padding-bottom: 1rem !important
 
-@media (max-width: 1024px)
-    .main-columns
-        margin-left: 1rem !important
-        margin-right: 1rem !important
-
 .content pre
     padding: 0 !important
+
+.navbar
+    border-bottom: 1px solid $grey-lightest
+
+    .navbar-brand .navbar-item img
+        max-height: unset !important
+
+.nav-icon
+    height: 18px
+    margin-right: 0.5rem
 
 @import "~bulma/sass/base/minireset"
 @import "~bulma/sass/base/generic"
@@ -110,9 +76,11 @@ nav a.is-active::before
 @import "~bulma/sass/elements/table"
 @import "~bulma/sass/elements/tag"
 @import "~bulma/sass/elements/title"
+@import "~bulma/sass/elements/container"
 
 @import "~bulma/sass/components/message"
 @import "~bulma/sass/components/card"
+@import "~bulma/sass/components/navbar"
 
 @import "~bulma/sass/form/shared"
 @import "~bulma/sass/form/input-textarea"

@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-export default function Ad({ code, placement, className }) {
+export default function Ad({ className }) {
 	const reference = useRef();
 
 	useEffect(() => {
 		reference.current.innerHTML = '';
 		const s = document.createElement('script');
 		s.id = '_carbonads_js';
-		s.src = `//cdn.carbonads.com/carbon.js?serve=${code}&placement=${placement}`;
+		s.src = `//cdn.carbonads.com/carbon.js?serve=${process.env.NEXT_PUBLIC_CARBON_CODE}&placement=mcstatusio`;
 		reference.current.appendChild(s);
 	}, []);
 
@@ -16,7 +16,5 @@ export default function Ad({ code, placement, className }) {
 }
 
 Ad.propTypes = {
-	code: PropTypes.string.isRequired,
-	placement: PropTypes.string.isRequired,
 	className: PropTypes.string
 };
