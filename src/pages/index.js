@@ -25,7 +25,7 @@ export default function Home({ servers }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io" />
 			</Head>
-			<div className="container my-5 px-3">
+			<div className="container content-container">
 				<Search />
 				<Ad />
 				<hr />

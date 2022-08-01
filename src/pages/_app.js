@@ -2,6 +2,7 @@ import React from 'react';
 import Script from 'next/script';
 import PropTypes from 'prop-types';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import '../assets/styles/global.sass';
 
 export default function MyApp({ Component, pageProps }) {
@@ -9,6 +10,7 @@ export default function MyApp({ Component, pageProps }) {
 		<>
 			<Navbar />
 			<Component {...pageProps} />
+			<Footer />
 			<Script async src="https://www.googletagmanager.com/gtag/js?id=UA-104913718-10" strategy="afterInteractive" />
 			<Script id="google-analytics" strategy="afterInteractive">
 				{`window.dataLayer = window.dataLayer || [];

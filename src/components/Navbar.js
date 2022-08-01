@@ -16,7 +16,7 @@ export default function Navbar() {
 			<div className="container">
 				<div className="navbar-brand is-align-items-center">
 					<div className="navbar-item">
-						<img src="/img/icon.png" width="48" height="48" />
+						<img src="/img/icon.png" width="42" height="42" />
 						<span className="ml-2 is-size-5 has-text-weight-bold">mcstatus.io</span>
 					</div>
 					<a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -39,7 +39,7 @@ export default function Navbar() {
 										}
 									</a>
 								</Link>
-								<Link href="/docs/v1">
+								<Link href="/docs/v2">
 									<a className={`button ${!pathname.startsWith('/docs') ? 'is-light' : ''}`}>
 										<img src={linkIcon.src} alt="Link icon" className="nav-icon" />
 										{

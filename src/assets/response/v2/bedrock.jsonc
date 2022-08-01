@@ -1,0 +1,71 @@
+{
+    // Determines whether the server is online or offline.
+    // @type {boolean}
+    "online": true,
+    // The hostname of the server that was resolved from the address string.
+    // @type {string}
+    "host": "bedrock.vortexnetwork.net",
+    // The port of the server that was resolved from the address string.
+    // @type {number}
+    "port": 19132,
+    // Whether or not this server address has been blocked by Mojang.
+    // If this is true, Notchian clients will not be able to connect to the
+    // server via the Minecraft client because it previously violated the EULA.
+    // @type {boolean}
+    "eula_blocked": false,
+    // The version data of the server. This property will be missing if
+    // the server is offline.
+    // @type {object?}
+    "version": {
+        // The version name of the server.
+        // @type {string}
+        "name": "1.19.10",
+        // The protocol version of the server which is used to identify
+        // what client versions are supported.
+        // @type {number}
+        "protocol": 534
+    },
+    // Information about the amount of online and max players. This property
+    // will be missing if the server is offline.
+    // @type {object?}
+    "players": {
+        // The amount of online players in the server.
+        // @type {number}
+        "online": 1633,
+        // The maximum number of allowed players in the server.
+        // @type {number}
+        "max": 3000
+    },
+    // The message of the day (or MOTD/description) of the server. This is the
+    // message shown below the server name in the client multiplayer menu. This
+    // property will be missing if the server is offline.
+    // @type {object?}
+    "motd": {
+        // The raw MOTD with formatting codes. Refer to
+        // https://minecraft.fandom.com/wiki/Formatting_codes for information
+        // on how to use formatting codes.
+        // @type {string}
+        "raw": "§d\\-§9/  §d§lVORTEX  §9\\-§d/\n§d§lSKYBLOCK PANDORA RELEASED §9- §d§l85% OFF SALE!",
+        // A clean text-only version of the MOTD with all formatting codes removed.
+        // @type {string}
+        "clean": "\\-/  VORTEX  \\-/\nSKYBLOCK PANDORA RELEASED - 85% OFF SALE!",
+        // An HTML representation of the MOTD with proper formatting. All formatting
+        // codes are supported and are equal to their value in the Minecraft fandom wiki.
+        // Magic/obfuscated formatting codes are a <span> with the class `.minecraft-format-obfuscated`.
+        // Line breaks are encoded as the "\n" escape code and may be replaced with <br> by the user.
+        // @type {string}
+        "html": "<span><span style=\"color: #ff55ff;\">\\</span><span style=\"color: #ffffff;\">-</span><span style=\"color: #5555ff;\">/  </span><span style=\"color: #ff55ff; font-weight: bold;\">VORTEX  </span><span style=\"color: #5555ff;\">\\</span><span style=\"color: #ffffff;\">-</span><span style=\"color: #ff55ff;\">/</span><span style=\"color: #ffffff;\">\n</span><span style=\"color: #ff55ff; font-weight: bold;\">SKYBLOCK PANDORA RELEASED </span><span style=\"color: #5555ff;\">- </span><span style=\"color: #ff55ff; font-weight: bold;\">85% OFF SALE!</span></span>"
+    },
+    // The default gamemode that players will spawn into when joining
+    // the server.
+    // @type {string}
+    "gamemode": "Survival",
+    // The ID of the server itself. There is little to no documentation
+    // online about the use of this value.
+    // @type {string}
+    "server_id": "904448693530150393",
+    // The type of server that was retrieved. Possible values are "MCPE" for
+    // Bedrock and Pocket Edition, or "MCEE" for Education Edition.
+    // @type {"MCPE" | "MCEE"}
+    "edition": "MCPE"
+}
