@@ -75,7 +75,31 @@ $card-header-shadow: none
     padding: 4rem 0 !important
 
     @media (max-width: 1024px)
-        padding-inline: 1rem !important
+        padding: 1rem !important
+
+@media (max-width: 1023px)
+    .buttons-block-mobile
+        display: block !important
+
+        .button
+            display: block
+
+    .navbar-menu
+        box-shadow: none !important
+        padding: 0 !important
+
+    .navbar-menu .buttons .button:not(:last-child):not(.is-fullwidth)
+        margin-right: 0 !important
+    
+.navbar-burger
+    margin-right: 0.5rem !important
+
+.navbar-burger:hover
+    background-color: transparent !important
+
+.navbar-item .button > img, .navbar-item .button > span
+    display: inline-block !important
+    vertical-align: middle !important
 
 @import "~bulma/sass/base/minireset"
 @import "~bulma/sass/base/generic"

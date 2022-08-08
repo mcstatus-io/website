@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import homeIcon from '../assets/icons/home.svg';
@@ -9,7 +9,12 @@ import githubIcon from '../assets/icons/github.svg';
 import discordIcon from '../assets/icons/discord.svg';
 
 export default function Navbar() {
-	const { pathname } = useRouter();
+	const { pathname, events } = useRouter();
+	const [isUncollapsed, setUncollapsed] = useState(false);
+
+	useEffect(() => {
+		events.on('routeChangeStart', () => setUncollapsed(false));
+	}, []);
 
 	return (
 		<nav className="navbar py-2" role="navigation" aria-label="main navigation">
@@ -19,16 +24,16 @@ export default function Navbar() {
 						<img src="/img/icon.png" width="42" height="42" />
 						<span className="ml-2 is-size-5 has-text-weight-bold">mcstatus.io</span>
 					</div>
-					<a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+					<a role="button" className={`navbar-burger ${isUncollapsed ? 'is-active' : ''}`} aria-label="menu" aria-expanded="false" data-target="navbar" onClick={() => setUncollapsed(!isUncollapsed)}>
 						<span aria-hidden="true"></span>
 						<span aria-hidden="true"></span>
 						<span aria-hidden="true"></span>
 					</a>
 				</div>
-				<div id="navbarBasicExample" className="navbar-menu">
+				<div id="navbar" className={`navbar-menu ${isUncollapsed ? 'is-active' : ''}`}>
 					<div className="navbar-start">
 						<div className="navbar-item">
-							<div className="buttons">
+							<div className="buttons buttons-block-mobile">
 								<Link href="/">
 									<a className={`button ${pathname !== '/' ? 'is-light' : ''}`}>
 										<img src={homeIcon.src} alt="Home icon" className="nav-icon" />
@@ -64,7 +69,7 @@ export default function Navbar() {
 					</div>
 					<div className="navbar-end">
 						<div className="navbar-item">
-							<div className="buttons">
+							<div className="buttons buttons-block-mobile">
 								<a href="https://uptime.mcstatus.io" className="button is-light">
 									<img src={calendarIcon.src} alt="Calendar icon" className="nav-icon" />
 									<span>Uptime</span>
