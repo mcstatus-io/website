@@ -6,7 +6,6 @@ import linkIcon from '../assets/icons/link.svg';
 import infoIcon from '../assets/icons/info.svg';
 import calendarIcon from '../assets/icons/calendar.svg';
 import githubIcon from '../assets/icons/github.svg';
-import discordIcon from '../assets/icons/discord.svg';
 
 export default function Navbar() {
 	const { pathname, events } = useRouter();
@@ -77,10 +76,6 @@ export default function Navbar() {
 								<a href="https://github.com/mcstatus-io" className="button is-light">
 									<img src={githubIcon.src} alt="GitHub icon" className="nav-icon" />
 									<span>GitHub</span>
-								</a>
-								<a href="https://discord.gg/Bmx5Uw7PZN" className="button is-light">
-									<img src={discordIcon.src} alt="Discord icon" className="nav-icon" />
-									<span>Discord</span>
 								</a>
 							</div>
 						</div>
