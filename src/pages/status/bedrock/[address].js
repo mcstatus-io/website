@@ -4,10 +4,10 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Highlight from 'react-highlight';
 import ContentLoader from 'react-content-loader';
-import Search from '../../../components/Search';
 import Ad from '../../../components/Ad';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
+import StatusLayout from '../../../layouts/StatusLayout';
 
 export default function Status({ address }) {
 	const [result, setResult] = useState(null);
@@ -55,9 +55,7 @@ export default function Status({ address }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href={`https://mcstatus.io/status/bedrock/${address}`} />
 			</Head>
-			<div className="container content-container">
-				<Search initialValues={{ host: address, bedrock: true }} />
-				<Ad className="my-5" />
+			<StatusLayout host={address} bedrock>
 				{
 					result
 						? result.error
@@ -67,7 +65,7 @@ export default function Status({ address }) {
 								</div>
 							</article>
 							: <>
-								<div className="box">
+								<div className="box table-overflow-wrapper">
 									<table className="table is-fullwidth is-hoverable">
 										<tbody>
 											<tr>
@@ -169,6 +167,7 @@ export default function Status({ address }) {
 										</tbody>
 									</table>
 								</div>
+								<Ad className="my-5" />
 								<div className="card">
 									<header className="card-header is-clickable" onClick={() => setShowAPIUsage(!showAPIUsage)}>
 										<p className="card-header-title">
@@ -222,7 +221,7 @@ export default function Status({ address }) {
 							</ContentLoader>
 						</div>
 				}
-			</div>
+			</StatusLayout>
 		</>
 	);
 }

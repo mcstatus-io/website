@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Highlight from 'react-highlight';
 import ContentLoader from 'react-content-loader';
 import PropTypes from 'prop-types';
-import Search from '../../../components/Search';
+import StatusLayout from '../../../layouts/StatusLayout';
 import Ad from '../../../components/Ad';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
@@ -57,9 +57,7 @@ export default function Status({ address }) {
 				<meta property="og:image" content={result?.favicon ?? 'https://mcstatus.io/img/icon.png'} />
 				<link rel="canonical" href={`https://mcstatus.io/status/java/${address}`} />
 			</Head>
-			<div className="container content-container">
-				<Search initialValues={{ host: address, bedrock: false }} />
-				<Ad className="my-5" />
+			<StatusLayout host={address}>
 				{
 					result
 						? result.error
@@ -69,7 +67,7 @@ export default function Status({ address }) {
 								</div>
 							</article>
 							: <>
-								<div className="box">
+								<div className="box table-overflow-wrapper">
 									<table className="table is-fullwidth is-hoverable">
 										<tbody>
 											<tr>
@@ -189,6 +187,7 @@ export default function Status({ address }) {
 										</tbody>
 									</table>
 								</div>
+								<Ad className="my-5" />
 								<div className="card">
 									<header className="card-header is-clickable" onClick={() => setShowAPIUsage(!showAPIUsage)}>
 										<p className="card-header-title">
@@ -242,7 +241,7 @@ export default function Status({ address }) {
 							</ContentLoader>
 						</div>
 				}
-			</div>
+			</StatusLayout>
 		</>
 	);
 }

@@ -1,68 +1,78 @@
-@import "~bulma/sass/utilities/initial-variables"
-@import "~bulma/sass/utilities/controls"
-@import "~bulma/sass/utilities/extends"
+@import "~bulma/sass/utilities/_all"
 
-$dark: #1e2125
-$dark-accent: lighten($dark, 10%)
-$border: $dark-accent
-$text: $grey-lighter
-$text-strong: $grey-lightest
+$main-dark: #212937
+$secondary-dark: #131a26
+$family-sans-serif: 'Poppins', sans-serif
+$title-family: 'Ubuntu', sans-serif
+$title-weight: $weight-normal
+$text: $grey-lightest
+$text-strong: $white
 $link: $success
-$link-hover: darken($success, 15%)
-$scheme-main: $dark
-$scheme-main-bis: darken($dark, 2.5%)
-$scheme-main-ter: darken($dark, 5%)
-$scheme-invert: $light
-$scheme-invert-bis: lighten($light, 2.5%)
-$scheme-invert-ter: lighten($light, 5%)
-$body-background-color: darken($dark, 3%)
-$content-heading-color: $white
-$title-color: $white
-$title-family: 'Poppins', sans-serif
-$title-weight: 600
-$subtitle-family: 'Poppins', sans-serif
-$subtitle-weight: 300
-$footer-padding: 1.5rem 0
-$table-background-color: none
-$input-color: $white
-$input-border-color: $dark-accent
-$input-hover-border-color: lighten($dark-accent, 5%)
-$input-focus-border-color: lighten($dark-accent, 10%)
+$link-hover: darken($success, 10%)
+$scheme-main: $main-dark
+$scheme-main-bis: $main-dark
+$scheme-main-ter: $main-dark
+$border: lighten($main-dark, 10%)
+$custom-colors: ("dark-light": ($main-dark, $secondary-dark))
+
+$body-overflow-y: auto
+$body-background-color: $secondary-dark
+$box-background-color: $main-dark
+$input-color: $text
 $input-shadow: none
 $input-focus-box-shadow-size: 0
-$hr-background-color: $dark-accent
+$input-border-color: rgba(255, 255, 255, 0.2)
+$input-hover-border-color: rgba(255, 255, 255, 0.3)
+$input-focus-border-color: rgba(255, 255, 255, 0.3)
+$input-background-color: $main-dark
+$content-pre-padding: 0
+$code-background: $main-dark
+$code: $text-strong
+$box-link-hover-shadow: $shadow
+$box-link-active-shadow: $shadow
 $card-header-shadow: none
-$code-background: $dark-accent
-$code: $grey-lighter
-$box-background-color: $dark
-$box-link-hover-shadow: 0 0 1px 0 lighten($dark-accent, 50%)
+$button-border-color: lighten($border, 10%)
+$button-hover-border-color: lighten($border, 20%)
+$button-hover-color: $white
+$button-focus-color: $white
+$button-focus-border-color: lighten($border, 25%)
+$button-focus-box-shadow-size: 0
+$button-active-color: $white
+$message-header-background-color: hsl(0, 0%, 50%)
 
 ::-webkit-scrollbar
-    background: $dark-accent
+    background: $main-dark
 
 ::-webkit-scrollbar-thumb
-    background: lighten($dark-accent, 10%)
+    background: lighten($main-dark, 10%)
 
-.card .card-header:not(:only-child)
-    border-bottom: 1px solid $dark-accent
+    &:hover:not(:active)
+        background: lighten($main-dark, 15%)
 
-.content ol
-    margin-left: 2.5rem !important
+body
+    margin-block: 5rem !important
+    padding-inline: 1rem !important
 
-    li
-        padding-left: 0.5rem
+.header
+    display: flex
+    margin-bottom: 1.5rem
 
-    ::marker
-        font-size: 20px
+h2.title
+    letter-spacing: 0.5px
 
-.table
-    table-layout: fixed
+.nav-icon
+    max-width: 20px
+    max-height: 20px
+    margin-right: 0.5rem
 
-    th
-        vertical-align: middle !important
+.card .card-header.is-clickable:not(:only-child)
+    border-bottom: 1px solid lighten($main-dark, 10%)
 
-.is-vertically-aligned
+.is-align-middle
     vertical-align: middle
+
+.content li::marker
+    font-size: 20px
 
 @media (min-width: 469px)
     .table th
@@ -83,82 +93,23 @@ $box-link-hover-shadow: 0 0 1px 0 lighten($dark-accent, 50%)
         td
             padding-bottom: 1rem !important
 
-.content pre
-    padding: 0 !important
-
-.navbar
-    border-bottom: 1px solid $dark-accent
-
-    .navbar-brand .navbar-item img
-        max-height: unset !important
-
-.nav-icon
-    height: 18px
-    margin-right: 0.5rem
-
-.footer .container
-    border-top: 1px solid $dark-accent
-    padding-block: 1rem
-
-.content-container
-    padding: 4rem 0 !important
-
-    @media (max-width: 1024px)
-        padding: 1rem !important
-
-@media (max-width: 1023px)
-    .buttons-block-mobile
+@media (max-width: $tablet)
+    .header
         display: block !important
 
-        .button
-            display: block
+        & > :first-child
+            margin-bottom: 1rem
 
-    .navbar-menu
-        box-shadow: none !important
-        padding: 0 !important
+.table-overflow-wrapper, .card-content
+    overflow-x: auto
 
-    .navbar-menu .buttons .button:not(:last-child):not(.is-fullwidth)
-        margin-right: 0 !important
-    
-.navbar-burger
-    margin-right: 0.5rem !important
-
-.navbar-burger:hover
-    background-color: transparent !important
-
-.navbar-item .button > img, .navbar-item .button > span
-    display: inline-block !important
-    vertical-align: middle !important
-
-@import "~bulma/sass/base/minireset"
-@import "~bulma/sass/base/generic"
-
-@import "~bulma/sass/elements/box"
-@import "~bulma/sass/elements/button"
-@import "~bulma/sass/elements/content"
-@import "~bulma/sass/elements/table"
-@import "~bulma/sass/elements/tag"
-@import "~bulma/sass/elements/title"
-@import "~bulma/sass/elements/container"
-
-@import "~bulma/sass/components/message"
-@import "~bulma/sass/components/card"
-@import "~bulma/sass/components/navbar"
-
-@import "~bulma/sass/form/shared"
-@import "~bulma/sass/form/input-textarea"
-@import "~bulma/sass/form/tools"
-@import "~bulma/sass/form/select"
-
-@import "~bulma/sass/grid/columns"
-
-@import "~bulma/sass/helpers/color"
-@import "~bulma/sass/helpers/flexbox"
-@import "~bulma/sass/helpers/float"
-@import "~bulma/sass/helpers/spacing"
-@import "~bulma/sass/helpers/typography"
-@import "~bulma/sass/helpers/visibility"
-@import "~bulma/sass/helpers/other"
+@import "~bulma/sass/base/_all"
+@import "~bulma/sass/elements/_all"
+@import "~bulma/sass/form/_all"
+@import "~bulma/sass/components/_all"
+@import "~bulma/sass/grid/_all"
+@import "~bulma/sass/helpers/_all"
+@import "~bulma/sass/layout/_all"
 
 @import "~highlight.js/scss/atom-one-dark"
 

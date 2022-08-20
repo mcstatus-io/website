@@ -26,7 +26,7 @@ export default function DocumentationLayout({ version, children }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href={`https://mcstatus.io/docs/${version}`} />
 			</Head>
-			<div className="container content content-container">
+			<div className="content">
 				<Ad className="mb-5" />
 				<h1 className="title mt-0">API Documentation</h1>
 				<label className="label" htmlFor="revision">API Revision</label>

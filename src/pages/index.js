@@ -4,9 +4,9 @@ import Link from 'next/link';
 import Script from 'next/script';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import Search from '../components/Search';
-import Ad from '../components/Ad';
 import { exampleServers } from '../assets/servers';
+import StatusLayout from '../layouts/StatusLayout';
+import Ad from '../components/Ad';
 
 export default function Home({ servers }) {
 	const { pathname } = useRouter();
@@ -25,10 +25,7 @@ export default function Home({ servers }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io" />
 			</Head>
-			<div className="container content-container">
-				<Search />
-				<Ad />
-				<hr />
+			<StatusLayout>
 				<div className="columns is-multiline">
 					{
 						servers.map((server, index) => (
@@ -46,7 +43,8 @@ export default function Home({ servers }) {
 						))
 					}
 				</div>
-			</div>
+				<Ad />
+			</StatusLayout>
 			<Script id="structured-data-1" type="application/ld+json">
 				{`
 					{
