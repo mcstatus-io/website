@@ -18,7 +18,7 @@ export default function Status({ address }) {
 
 		(async () => {
 			try {
-				const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/status/java/${address}`);
+				const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/status/bedrock/${address}`);
 
 				console.log(result);
 
@@ -56,7 +56,6 @@ export default function Status({ address }) {
 				<link rel="canonical" href={`https://mcstatus.io/status/bedrock/${address}`} />
 			</Head>
 			<div className="container content-container">
-				<h1 className="title">Minecraft Server Status</h1>
 				<Search initialValues={{ host: address, bedrock: true }} />
 				<Ad className="my-5" />
 				{
