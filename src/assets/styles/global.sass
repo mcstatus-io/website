@@ -2,20 +2,49 @@
 @import "~bulma/sass/utilities/controls"
 @import "~bulma/sass/utilities/extends"
 
-$body-background-color: $white-ter
+$dark: #1e2125
+$dark-accent: lighten($dark, 10%)
+$border: $dark-accent
+$text: $grey-lighter
+$text-strong: $grey-lightest
+$link: $success
+$link-hover: darken($success, 15%)
+$scheme-main: $dark
+$scheme-main-bis: darken($dark, 2.5%)
+$scheme-main-ter: darken($dark, 5%)
+$scheme-invert: $light
+$scheme-invert-bis: lighten($light, 2.5%)
+$scheme-invert-ter: lighten($light, 5%)
+$body-background-color: darken($dark, 3%)
+$content-heading-color: $white
+$title-color: $white
 $title-family: 'Poppins', sans-serif
 $title-weight: 600
 $subtitle-family: 'Poppins', sans-serif
 $subtitle-weight: 300
 $footer-padding: 1.5rem 0
 $table-background-color: none
+$input-color: $white
+$input-border-color: $dark-accent
+$input-hover-border-color: lighten($dark-accent, 5%)
+$input-focus-border-color: lighten($dark-accent, 10%)
 $input-shadow: none
 $input-focus-box-shadow-size: 0
-$hr-background-color: $grey-lightest
+$hr-background-color: $dark-accent
 $card-header-shadow: none
+$code-background: $dark-accent
+$code: $grey-lighter
+$box-background-color: $dark
+$box-link-hover-shadow: 0 0 1px 0 lighten($dark-accent, 50%)
+
+::-webkit-scrollbar
+    background: $dark-accent
+
+::-webkit-scrollbar-thumb
+    background: lighten($dark-accent, 10%)
 
 .card .card-header:not(:only-child)
-    border-bottom: 1px solid $grey-lightest
+    border-bottom: 1px solid $dark-accent
 
 .content ol
     margin-left: 2.5rem !important
@@ -58,7 +87,7 @@ $card-header-shadow: none
     padding: 0 !important
 
 .navbar
-    border-bottom: 1px solid $grey-lightest
+    border-bottom: 1px solid $dark-accent
 
     .navbar-brand .navbar-item img
         max-height: unset !important
@@ -68,7 +97,7 @@ $card-header-shadow: none
     margin-right: 0.5rem
 
 .footer .container
-    border-top: 1px solid $grey-lighter
+    border-top: 1px solid $dark-accent
     padding-block: 1rem
 
 .content-container

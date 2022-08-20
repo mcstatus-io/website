@@ -203,7 +203,7 @@ export default function Status({ address }) {
 								</div>
 							</>
 						: <div className="box">
-							<ContentLoader viewBox="0 0 1200 390" uniqueKey="result-loader">
+							<ContentLoader viewBox="0 0 1200 390" uniqueKey="result-loader" foregroundColor="rgba(0, 0, 0, 0.1)" backgroundColor="rgba(0, 0, 0, 0.2)">
 								<rect x="0" y="0" width="240" height="40" rx="3" ry="3" />
 								<rect x="260" y="0" width="940" height="40" rx="3" ry="3" />
 								<rect x="0" y="50" width="240" height="40" rx="3" ry="3" />

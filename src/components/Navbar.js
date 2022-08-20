@@ -34,33 +34,21 @@ export default function Navbar() {
 						<div className="navbar-item">
 							<div className="buttons buttons-block-mobile">
 								<Link href="/">
-									<a className={`button ${pathname !== '/' ? 'is-light' : ''}`}>
+									<a className={`button ${pathname === '/' ? 'is-link' : 'is-dark'}`}>
 										<img src={homeIcon.src} alt="Home icon" className="nav-icon" />
-										{
-											pathname === '/'
-												? <strong>Home</strong>
-												: <span>Home</span>
-										}
+										<span>Home</span>
 									</a>
 								</Link>
 								<Link href="/docs/v2">
-									<a className={`button ${!pathname.startsWith('/docs') ? 'is-light' : ''}`}>
+									<a className={`button ${pathname.startsWith('/docs') ? 'is-link' : 'is-dark'}`}>
 										<img src={linkIcon.src} alt="Link icon" className="nav-icon" />
-										{
-											pathname.startsWith('/docs')
-												? <strong>API</strong>
-												: <span>API</span>
-										}
+										<span>API</span>
 									</a>
 								</Link>
 								<Link href="/about">
-									<a className={`button ${pathname !== '/about' ? 'is-light' : ''}`}>
+									<a className={`button ${pathname === '/about' ? 'is-link' : 'is-dark'}`}>
 										<img src={infoIcon.src} alt="Info icon" className="nav-icon" />
-										{
-											pathname === '/about'
-												? <strong>About</strong>
-												: <span>About</span>
-										}
+										<span>About</span>
 									</a>
 								</Link>
 							</div>
@@ -69,11 +57,11 @@ export default function Navbar() {
 					<div className="navbar-end">
 						<div className="navbar-item">
 							<div className="buttons buttons-block-mobile">
-								<a href="https://uptime.mcstatus.io" className="button is-light">
+								<a href="https://uptime.mcstatus.io" className="button is-dark">
 									<img src={calendarIcon.src} alt="Calendar icon" className="nav-icon" />
 									<span>Uptime</span>
 								</a>
-								<a href="https://github.com/mcstatus-io" className="button is-light">
+								<a href="https://github.com/mcstatus-io" className="button is-dark">
 									<img src={githubIcon.src} alt="GitHub icon" className="nav-icon" />
 									<span>GitHub</span>
 								</a>
