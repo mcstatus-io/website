@@ -1,5 +1,10 @@
 module.exports = {
 	swcMinify: true,
+	experimental: {
+		images: {
+			allowFutureImage: true
+		}
+	},
 	redirects: () => [
 		{
 			source: '/status/:address',

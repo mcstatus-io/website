@@ -2,7 +2,6 @@ import React from 'react';
 import Script from 'next/script';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import '../assets/styles/global.sass';
 
 export default function MyApp({ Component, pageProps }) {

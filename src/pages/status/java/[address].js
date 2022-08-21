@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/future/image';
 import Highlight from 'react-highlight';
 import ContentLoader from 'react-content-loader';
 import PropTypes from 'prop-types';
@@ -21,8 +22,6 @@ export default function Status({ address }) {
 		(async () => {
 			try {
 				const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/status/java/${address}`);
-
-				console.log(result);
 
 				if (result.status === 200) {
 					const body = await result.json();
@@ -96,7 +95,7 @@ export default function Status({ address }) {
 															<td>
 																{
 																	result.icon
-																		? <img src={result.icon} />
+																		? <Image src={result.icon} width="64" height="64" alt="Server icon" />
 																		: <p className="has-text-grey">N/A</p>
 																}
 															</td>
@@ -197,8 +196,8 @@ export default function Status({ address }) {
 											<span className="icon">
 												{
 													showAPIUsage
-														? <img src={chevronUp.src} className="is-vertically-aligned" alt="Chevron up" width="14" height="16" />
-														: <img src={chevronDown.src} className="is-vertically-aligned" alt="Chevron down" width="14" height="16" />
+														? <Image src={chevronUp} className="is-vertically-aligned" alt="Chevron up" width="14" height="16" />
+														: <Image src={chevronDown} className="is-vertically-aligned" alt="Chevron down" width="14" height="16" />
 												}
 											</span>
 										</button>
@@ -213,7 +212,7 @@ export default function Status({ address }) {
 													</p>
 													<p className="has-text-weight-bold">Response Body</p>
 													<Highlight className="language-json p-3">{JSON.stringify(result, null, 4)}</Highlight>
-													<p>Refer to the <Link href="/docs/v2">API documentation</Link> for more information about this response.</p>
+													<p>Refer to the <Link href="/docs/v2#java-status">API documentation</Link> for more information about this response.</p>
 												</div>
 											</div>
 											: null

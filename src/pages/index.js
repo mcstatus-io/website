@@ -1,12 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/future/image';
 import Script from 'next/script';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { exampleServers } from '../assets/servers';
 import StatusLayout from '../layouts/StatusLayout';
 import Ad from '../components/Ad';
+import rightArrow from '../assets/icons/arrow-right.svg';
 
 export default function Home({ servers }) {
 	const { pathname } = useRouter();
@@ -32,17 +34,24 @@ export default function Home({ servers }) {
 							<div className="column py-2 is-6" key={index}>
 								<Link href={`/status/${server.type}/${server.address}`}>
 									<a className="box">
-										<span className={`tag is-${server.type === 'java' ? 'success' : 'info'} is-pulled-right`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
-										<p>
-											<span>{server.name}</span>
-											<span className="has-text-grey"> ({server.address})</span>
+										<p className="has-text-white">
+											<span className={`tag is-${server.type === 'java' ? 'success' : 'info'} mr-2`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
+											<code>{server.address}</code>
 										</p>
+										<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" />
 									</a>
 								</Link>
 							</div>
 						))
 					}
 				</div>
+				<Link href="/servers">
+					<a className="box">
+						<span className="has-text-white">All sample servers</span>
+						<span className="has-text-grey ml-2">({servers.length})</span>
+						<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" />
+					</a>
+				</Link>
 				<Ad />
 			</StatusLayout>
 			<Script id="structured-data-1" type="application/ld+json">

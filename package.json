@@ -29,7 +29,7 @@
 		"bulma": "^0.9.3",
 		"formik": "^2.2.9",
 		"humanize-duration": "^3.27.0",
-		"next": "^11.1.0",
+		"next": "^12.2.5",
 		"prop-types": "^15.7.2",
 		"raw-loader": "^4.0.2",
 		"react": "^17.0.2",

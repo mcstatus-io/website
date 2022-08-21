@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 export default function Error({ statusCode, reason }) {
@@ -9,13 +8,8 @@ export default function Error({ statusCode, reason }) {
 			<Head>
 				<title>{statusCode} - mcstatus.io</title>
 			</Head>
-			<div className="container content-container">
-				<h1 className="title is-size-1 mb-4 pb-1">{statusCode}</h1>
-				<p className="subtitle mt-0">{reason}</p>
-				<Link href="/">
-					<a className="button is-link">&larr; Return to Home</a>
-				</Link>
-			</div>
+			<h1 className="title is-size-1 has-text-weight-bold mt-6">{statusCode}</h1>
+			<p className="subtitle">{reason}</p>
 		</>
 	);
 }

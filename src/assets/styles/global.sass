@@ -20,7 +20,6 @@ $scheme-main-ter: $main-dark
 $border: lighten($main-dark, 10%)
 $custom-colors: ("dark-light": ($main-dark, $secondary-dark))
 
-$body-overflow-y: auto
 $body-background-color: $secondary-dark
 $box-background-color: $main-dark
 $input-color: $text
@@ -31,7 +30,7 @@ $input-hover-border-color: rgba(255, 255, 255, 0.3)
 $input-focus-border-color: rgba(255, 255, 255, 0.3)
 $input-background-color: $main-dark
 $content-pre-padding: 0
-$code-background: $main-dark
+$code-background: rgba(0, 0, 0, 0.25)
 $code: $text-strong
 $box-link-hover-shadow: $shadow
 $box-link-active-shadow: $shadow
@@ -79,6 +78,9 @@ h2.title
 .content li::marker
     font-size: 20px
 
+.table th
+    vertical-align: middle !important
+
 @media (min-width: 469px)
     .table th
         width: 180px
@@ -107,6 +109,20 @@ h2.title
 
 .table-overflow-wrapper, .card-content
     overflow-x: auto
+
+a.box
+    position: relative
+    overflow: hidden
+
+    .box-link-arrow
+        position: absolute
+        top: 50%
+        right: -20px
+        transform: translate(0, -50%)
+        transition: 0.25s right ease
+
+    &:hover .box-link-arrow
+        right: 1.25rem
 
 @import "~bulma/sass/base/minireset"
 @import "~bulma/sass/base/generic"

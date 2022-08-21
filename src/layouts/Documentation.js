@@ -29,10 +29,10 @@ export default function DocumentationLayout({ version, children }) {
 			<div className="content">
 				<Ad className="mb-5" />
 				<h1 className="title mt-0">API Documentation</h1>
-				<label className="label" htmlFor="revision">API Revision</label>
+				<label className="label" htmlFor="revision">Revision</label>
 				<div className="select">
 					<select onChange={handleChange} id="revision">
-						<option value="v1" selected={version === 'v1'}>v1</option>
+						<option value="v1" selected={version === 'v1'}>v1 &mdash; Deprecated</option>
 						<option value="v2" selected={version === 'v2'}>v2</option>
 					</select>
 				</div>
