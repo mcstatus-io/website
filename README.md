@@ -3,6 +3,7 @@ The NextJS server that powers the mcstatus.io website. This project is open sour
 
 ## Requirements
 
+- [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/en/)
 
 ## Installation

@@ -3,9 +3,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/future/image';
 import PropTypes from 'prop-types';
-import Highlight from 'react-highlight';
 import ContentLoader from 'react-content-loader';
 import Ad from '../../../components/Ad';
+import Highlight from '../../../components/Highlight';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
 import StatusLayout from '../../../layouts/StatusLayout';
@@ -211,7 +211,7 @@ export default function Status({ address }) {
 														<code>https://api.mcstatus.io/v2/status/bedrock/{address}</code>
 													</p>
 													<p className="has-text-weight-bold">Response Body</p>
-													<Highlight className="language-json p-3">{JSON.stringify(data.result, null, 4)}</Highlight>
+													<Highlight source={JSON.stringify(data.result, null, 4)} />
 													<p>Refer to the <Link href="/docs/v2#bedrock-status">API documentation</Link> for more information about this response.</p>
 												</div>
 											</div>

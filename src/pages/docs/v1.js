@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/future/image';
-import Highlight from 'react-highlight';
+import Highlight from '../../components/Highlight';
 import DocumentationLayout from '../../layouts/Documentation';
 import javaExample from '../../assets/response/v1/java.jsonc';
 import bedrockExample from '../../assets/response/v1/bedrock.jsonc';
@@ -35,7 +35,7 @@ export default function DocumentationV1() {
 				<p className="subtitle is-size-5">Retrieve the status of any Java Edition Minecraft server</p>
 			</div>
 			<p><span className="tag is-success">GET</span> <code>https://api.mcstatus.io/v1/status/java/&lt;address&gt;</code></p>
-			<Highlight className="language-json p-3">{javaExample}</Highlight>
+			<Highlight source={javaExample} />
 			<div className="heading-group">
 				<h2 className="title is-size-4" id="bedrock-status">
 					<span className="is-align-middle">Bedrock Status</span>
@@ -44,7 +44,7 @@ export default function DocumentationV1() {
 				<p className="subtitle is-size-5">Retrieve the status of any Bedrock Edition Minecraft server</p>
 			</div>
 			<p><span className="tag is-success">GET</span> <code>https://api.mcstatus.io/v1/status/bedrock/&lt;address&gt;</code></p>
-			<Highlight className="language-json p-3">{bedrockExample}</Highlight>
+			<Highlight source={bedrockExample} />
 			<div className="heading-group">
 				<h2 className="title is-size-4" id="favicon">
 					<span className="is-align-middle">Favicon</span>
