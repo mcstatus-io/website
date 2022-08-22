@@ -51,7 +51,7 @@ export default function Home({ servers }) {
 				</div>
 				<Link href="/servers">
 					<a className="box">
-						<span className="has-text-white">All sample servers</span>
+						<span className="has-text-white">All sample Minecraft servers</span>
 						<span className="has-text-grey ml-2">({servers.length})</span>
 						<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" />
 					</a>
