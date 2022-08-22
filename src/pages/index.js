@@ -28,6 +28,10 @@ export default function Home({ servers }) {
 				<link rel="canonical" href="https://mcstatus.io" />
 			</Head>
 			<StatusLayout>
+				<div className="heading-group">
+					<h2 className="title is-size-4 has-text-weight-semibold">Sample Servers</h2>
+					<p className="subtitle is-size-5">A short list of sample Minecraft servers to test</p>
+				</div>
 				<div className="columns is-multiline">
 					{
 						servers.map((server, index) => (

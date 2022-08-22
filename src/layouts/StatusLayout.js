@@ -21,6 +21,10 @@ export default function StatusLayout({ host, isBedrock, isLoading, children }) {
 
 	return (
 		<>
+			<div className="heading-group">
+				<h1 className="title has-text-weight-semibold">Minecraft Server Status</h1>
+				<p className="subtitle">Quickly retrieve the status of any Minecraft server</p>
+			</div>
 			<div className="box">
 				<form onSubmit={form.handleSubmit}>
 					<div className="columns">

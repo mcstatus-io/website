@@ -28,7 +28,10 @@ export default function DocumentationLayout({ version, children }) {
 			</Head>
 			<div className="content">
 				<Ad className="mb-5" />
-				<h1 className="title mt-0">API Documentation</h1>
+				<div className="heading-group">
+					<h1 className="title">API Documentation</h1>
+					<p className="subtitle">Documentation on how to use our API in your service</p>
+				</div>
 				<label className="label" htmlFor="revision">Revision</label>
 				<div className="select">
 					<select onChange={handleChange} id="revision">
