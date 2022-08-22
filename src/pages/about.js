@@ -63,14 +63,6 @@ export default function About() {
 					</li>
 				</ol>
 				<div className="heading-group">
-					<h2 className="title is-size-4" id="contact">
-						<span className="is-align-middle">Contact</span>
-						<Link href="#contact"><a className="ml-3 is-size-4 is-align-middle">#</a></Link>
-					</h2>
-					<p className="subtitle is-size-5">Preferred methods of contacting us</p>
-				</div>
-				<p>If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
-				<div className="heading-group">
 					<h2 className="title is-size-4" id="sponsors">
 						<span className="is-align-middle">Sponsors</span>
 						<Link href="#sponsors"><a className="ml-3 is-size-4 is-align-middle">#</a></Link>
@@ -94,11 +86,19 @@ export default function About() {
 								<Image src={mineatarIcon} width="32" height="32" className="is-align-middle" alt="mineservers.io Logo" />
 								<span className="ml-3">mineatar.io</span>
 							</p>
-							<p className="has-text-grey-lighter mb-0">An incredibly API for generating 2D and isometric 3D renders of Minecraft player skins, with username and UUID support.</p>
+							<p className="has-text-grey-lighter mb-0">An incredibly fast API for generating 2D and isometric 3D renders of Minecraft player skins, with username and UUID support.</p>
 							<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" />
 						</a>
 					</div>
 				</div>
+				<div className="heading-group">
+					<h2 className="title is-size-4" id="contact">
+						<span className="is-align-middle">Contact</span>
+						<Link href="#contact"><a className="ml-3 is-size-4 is-align-middle">#</a></Link>
+					</h2>
+					<p className="subtitle is-size-5">Preferred methods of contacting us</p>
+				</div>
+				<p>If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
 			</div>
 			<Script id="structured-data-1" type="application/ld+json">
 				{`
