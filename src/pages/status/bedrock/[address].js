@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/future/image';
@@ -11,11 +11,25 @@ import chevronUp from '../../../assets/icons/chevron-up.svg';
 import StatusLayout from '../../../layouts/StatusLayout';
 
 export default function Status({ address }) {
-	const [result, setResult] = useState(null);
-	const [showAPIUsage, setShowAPIUsage] = useState(false);
+	const reducer = (state, action) => {
+		switch (action.type) {
+			case 'SET_RESULT':
+				return { isLoaded: true, result: action.result, cached: action.cached, error: null, showAPIUsage: false };
+			case 'SET_ERROR':
+				return { isLoaded: true, result: null, cached: false, error: action.error, showAPIUsage: false };
+			case 'RESET_ALL':
+				return { isLoaded: false, result: null, cached: false, error: null, showAPIUsage: false };
+			case 'TOGGLE_SHOW_API_USAGE':
+				return { ...state, showAPIUsage: !state.showAPIUsage };
+			default:
+				return state;
+		}
+	};
+
+	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cached: false, showAPIUsage: false });
 
 	useEffect(() => {
-		setResult(null);
+		dispatch({ type: 'RESET_ALL' });
 
 		(async () => {
 			try {
@@ -24,18 +38,18 @@ export default function Status({ address }) {
 				if (result.status === 200) {
 					const body = await result.json();
 
-					setResult(body);
+					dispatch({ type: 'SET_RESULT', result: body, cached: result.headers.has('X-Cache-Time-Remaining') });
 				} else {
 					const body = await result.text();
 
 					console.error(body);
 
-					setResult({ error: body });
+					dispatch({ type: 'SET_ERROR', error: body });
 				}
 			} catch (e) {
 				console.error(e);
 
-				setResult({ error: e.message ?? e.toString() });
+				dispatch({ type: 'SET_ERROR', error: e.message ?? e.toString() });
 			}
 		})();
 	}, [address]);
@@ -46,21 +60,21 @@ export default function Status({ address }) {
 				<title>{address} - Minecraft Server Status</title>
 				<meta name="robots" content="index,follow" />
 				<meta name="title" content={`${address} - Minecraft Server Status`} />
-				<meta name="description" content={result?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${result?.host ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
+				<meta name="description" content={data.result?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${data.result?.host ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
 				<meta property="og:type" content="website" />
 				<meta property="og:url" content={`https://mcstatus.io/status/bedrock/${address}`} />
 				<meta property="og:title" content={`${address} - Minecraft Server Status`} />
-				<meta property="og:description" content={result?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${result?.host ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
+				<meta property="og:description" content={data.result?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${data.result?.host ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href={`https://mcstatus.io/status/bedrock/${address}`} />
 			</Head>
-			<StatusLayout host={address} isLoading={result === null} isBedrock>
+			<StatusLayout host={address} isLoading={!data.isLoaded} isBedrock>
 				{
-					result
-						? result.error
+					data.isLoaded
+						? data.error
 							? <article className="message is-danger">
 								<div className="message-body">
-									{result.error ?? 'Failed to retrieve the status of the specified server.'}
+									{data.error ?? 'Failed to retrieve the status of the specified server.'}
 								</div>
 							</article>
 							: <>
@@ -71,7 +85,7 @@ export default function Status({ address }) {
 												<th>Status</th>
 												<td>
 													{
-														result.online
+														data.result.online
 															? <span className="tag is-success">Online</span>
 															: <span className="tag is-danger">Offline</span>
 													}
@@ -79,27 +93,27 @@ export default function Status({ address }) {
 											</tr>
 											<tr>
 												<th>Hostname</th>
-												<td>{result.host}</td>
+												<td>{data.result.host}</td>
 											</tr>
 											<tr>
 												<th>Port</th>
-												<td>{result.port}</td>
+												<td>{data.result.port}</td>
 											</tr>
 											{
-												result.online
+												data.result.online
 													? <>
 														<tr>
 															<th>MOTD</th>
 															<td>
-																<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: result.motd.html }} />
+																<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: data.result.motd.html }} />
 															</td>
 														</tr>
 														<tr>
 															<th>Edition</th>
 															<td>
 																{
-																	result.edition !== null
-																		? <span>{result.edition}</span>
+																	data.result.edition !== null
+																		? <span>{data.result.edition}</span>
 																		: <span className="has-text-grey">N/A</span>
 																}
 															</td>
@@ -108,8 +122,8 @@ export default function Status({ address }) {
 															<th>Version</th>
 															<td>
 																{
-																	result.version?.name
-																		? <span>{result.version.name}</span>
+																	data.result.version?.name
+																		? <span>{data.result.version.name}</span>
 																		: <span className="has-text-grey">N/A</span>
 																}
 															</td>
@@ -118,14 +132,14 @@ export default function Status({ address }) {
 															<th>Players</th>
 															<td>
 																{
-																	result.players?.online
-																		? <span>{result.players.online}</span>
+																	data.result.players?.online
+																		? <span>{data.result.players.online}</span>
 																		: <span className="has-text-grey">N/A</span>
 																}
 																<span> / </span>
 																{
-																	result.players?.max
-																		? <span>{result.players.max}</span>
+																	data.result.players?.max
+																		? <span>{data.result.players.max}</span>
 																		: <span className="has-text-grey">N/A</span>
 																}
 															</td>
@@ -134,8 +148,8 @@ export default function Status({ address }) {
 															<th>Gamemode</th>
 															<td>
 																{
-																	result.gamemode
-																		? <span>{result.gamemode}</span>
+																	data.result.gamemode
+																		? <span>{data.result.gamemode}</span>
 																		: <span className="has-text-grey">N/A</span>
 																}
 															</td>
@@ -144,7 +158,7 @@ export default function Status({ address }) {
 															<th>EULA Blocked</th>
 															<td>
 																{
-																	result.eula_blocked
+																	data.result.eula_blocked
 																		? <span className="tag is-danger">Yes</span>
 																		: <span className="tag is-success">No</span>
 																}
@@ -154,10 +168,16 @@ export default function Status({ address }) {
 															<th>Protocol Version</th>
 															<td>
 																{
-																	result.version?.protocol
-																		? <span>{result.version.protocol}</span>
+																	data.result.version?.protocol
+																		? <span>{data.result.version.protocol}</span>
 																		: <span className="has-text-grey">N/A</span>
 																}
+															</td>
+														</tr>
+														<tr>
+															<th>Cached Response</th>
+															<td>
+																<span className="tag is-info">{data.cached ? 'Yes' : 'No'}</span>
 															</td>
 														</tr>
 													</>
@@ -168,14 +188,14 @@ export default function Status({ address }) {
 								</div>
 								<Ad className="my-5" />
 								<div className="card">
-									<header className="card-header is-clickable" onClick={() => setShowAPIUsage(!showAPIUsage)}>
+									<header className="card-header is-clickable" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
 										<p className="card-header-title">
 											API Usage
 										</p>
 										<button className="card-header-icon" aria-label="more options">
 											<span className="icon">
 												{
-													showAPIUsage
+													data.showAPIUsage
 														? <Image src={chevronUp} className="is-vertically-aligned" alt="Chevron up" width="14" height="16" />
 														: <Image src={chevronDown} className="is-vertically-aligned" alt="Chevron down" width="14" height="16" />
 												}
@@ -183,7 +203,7 @@ export default function Status({ address }) {
 										</button>
 									</header>
 									{
-										showAPIUsage
+										data.showAPIUsage
 											? <div className="card-content">
 												<div className="content">
 													<p>
@@ -191,7 +211,7 @@ export default function Status({ address }) {
 														<code>https://api.mcstatus.io/v2/status/bedrock/{address}</code>
 													</p>
 													<p className="has-text-weight-bold">Response Body</p>
-													<Highlight className="language-json p-3">{JSON.stringify(result, null, 4)}</Highlight>
+													<Highlight className="language-json p-3">{JSON.stringify(data.result, null, 4)}</Highlight>
 													<p>Refer to the <Link href="/docs/v2#bedrock-status">API documentation</Link> for more information about this response.</p>
 												</div>
 											</div>
