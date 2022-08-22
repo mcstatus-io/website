@@ -29,6 +29,8 @@ $input-border-color: rgba(255, 255, 255, 0.2)
 $input-hover-border-color: rgba(255, 255, 255, 0.3)
 $input-focus-border-color: rgba(255, 255, 255, 0.3)
 $input-background-color: $main-dark
+$input-disabled-background-color: $secondary-dark
+$input-disabled-border-color: $secondary-dark
 $content-pre-padding: 0
 $code-background: rgba(0, 0, 0, 0.25)
 $code: $text-strong
@@ -43,6 +45,8 @@ $button-focus-border-color: lighten($border, 25%)
 $button-focus-box-shadow-size: 0
 $button-active-color: $white
 $message-header-background-color: hsl(0, 0%, 50%)
+$checkradio-focus: none
+$checkbox-border: 2px solid $grey
 
 ::-webkit-scrollbar
     background: $main-dark
@@ -124,8 +128,13 @@ a.box
     &:hover .box-link-arrow
         right: 1.25rem
 
+.is-checkradio[type="checkbox"] + label::before
+    transform: translate(0, 2px)
+    outline: none
+
 @import "~bulma/sass/base/minireset"
 @import "~bulma/sass/base/generic"
+@import "~bulma/sass/base/animations"
 @import "~bulma/sass/elements/box"
 @import "~bulma/sass/elements/button"
 @import "~bulma/sass/elements/container"
@@ -147,5 +156,6 @@ a.box
 @import "~bulma/sass/helpers/_all"
 
 @import "~highlight.js/scss/atom-one-dark"
+@import "~bulma-extensions/bulma-checkradio/src/sass/index"
 
 @import "_carbon"

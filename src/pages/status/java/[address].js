@@ -56,7 +56,7 @@ export default function Status({ address }) {
 				<meta property="og:image" content={result?.favicon ?? 'https://mcstatus.io/img/icon.png'} />
 				<link rel="canonical" href={`https://mcstatus.io/status/java/${address}`} />
 			</Head>
-			<StatusLayout host={address}>
+			<StatusLayout host={address} isLoading={result === null}>
 				{
 					result
 						? result.error

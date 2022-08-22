@@ -4,22 +4,19 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
-export default function StatusLayout({ host, bedrock, children }) {
+export default function StatusLayout({ host, isBedrock, isLoading, children }) {
 	const { push } = useRouter();
 
 	const form = useFormik({
-		initialValues: {
-			host,
-			bedrock
-		},
+		initialValues: { host, isBedrock },
 		validationSchema: Yup
 			.object()
 			.shape({
 				host: Yup.string().min(1).matches(/^[A-Za-z0-9-_]+(\.[A-Za-z0-9-_]+)*(:\d{1,5})?$/).required(),
-				bedrock: Yup.boolean().required()
+				isBedrock: Yup.boolean().required()
 			})
 			.required(),
-		onSubmit: ({ host, bedrock }) => push(`/status/${bedrock ? 'bedrock' : 'java'}/${host.toLowerCase()}`)
+		onSubmit: ({ host, isBedrock }) => push(`/status/${isBedrock ? 'bedrock' : 'java'}/${host.toLowerCase()}`)
 	});
 
 	return (
@@ -30,16 +27,16 @@ export default function StatusLayout({ host, bedrock, children }) {
 						<div className="column is-flex-grow-1">
 							<div className="field">
 								<div className="control is-fullwidth">
-									<input type="text" className={`input ${form.errors.host ? 'is-danger' : ''}`} id="host" placeholder="play.hypixel.net OR play.hypixel.net:25565" value={form.values.host} spellCheck="false" autoComplete="false" onChange={form.handleChange} onBlur={form.handleBlur} />
+									<input type="text" className={`input ${form.errors.host ? 'is-danger' : ''}`} id="host" placeholder="play.hypixel.net OR play.hypixel.net:25565" value={form.values.host} spellCheck="false" autoComplete="false" onChange={form.handleChange} onBlur={form.handleBlur} disabled={isLoading} />
 								</div>
 							</div>
-							<label className="checkbox">
-								<input type="checkbox" className="mr-2" id="bedrock" checked={form.values.bedrock} onChange={form.handleChange} />
-								<span>Bedrock server</span>
-							</label>
+							<div className="field">
+								<input type="checkbox" className="is-checkradio is-info" id="isBedrock" checked={form.values.isBedrock} onChange={form.handleChange} disabled={isLoading} />
+								<label htmlFor="isBedrock">Bedrock server</label>
+							</div>
 						</div>
 						<div className="column is-flex-grow-0">
-							<button type="submit" className="button is-fullwidth is-link" disabled={!form.isValid}>Submit</button>
+							<button type="submit" className={`button is-fullwidth is-link ${isLoading ? 'is-loading' : ''}`} disabled={!form.isValid || isLoading}>Submit</button>
 						</div>
 					</div>
 				</form>
@@ -51,11 +48,13 @@ export default function StatusLayout({ host, bedrock, children }) {
 
 StatusLayout.propTypes = {
 	host: PropTypes.string,
-	bedrock: PropTypes.bool,
+	isBedrock: PropTypes.bool,
+	isLoading: PropTypes.bool,
 	children: PropTypes.any
 };
 
 StatusLayout.defaultProps = {
 	host: '',
-	bedrock: false
+	isBedrock: false,
+	isLoading: false
 };

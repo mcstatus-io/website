@@ -27,6 +27,7 @@
 	"homepage": "https://github.com/mcstatus-io/Website#readme",
 	"dependencies": {
 		"bulma": "^0.9.3",
+		"bulma-extensions": "^6.2.7",
 		"formik": "^2.2.9",
 		"humanize-duration": "^3.27.0",
 		"next": "^12.2.5",

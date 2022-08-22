@@ -54,7 +54,7 @@ export default function Status({ address }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href={`https://mcstatus.io/status/bedrock/${address}`} />
 			</Head>
-			<StatusLayout host={address} bedrock>
+			<StatusLayout host={address} isLoading={result === null} isBedrock>
 				{
 					result
 						? result.error

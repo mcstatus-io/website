@@ -34,15 +34,19 @@ export default function About() {
 					</li>
 					<li>
 						<h3 className="title is-5 mt-5 mb-3">What is an SRV record?</h3>
-						<p>An SRV record is created by the server host to &quot;redirect&quot; users to another IP address, typically to allow users to connect to the memorable host name instead of a string of a bunch of numbers. This service automatically resolves all SRV records and obtains the status of the server behind them.</p>
+						<p>An SRV record is created by the server admin to tell Minecraft clients to connect to a specific server by default. This is typically done by network servers to initially connect players to the lobby, or to specify which server a player should connect to by default if the admin is also hosting other servers on the same network.</p>
 					</li>
 					<li>
 						<h3 className="title is-5 mt-5 mb-3">How do I hide the status of my server?</h3>
-						<p>Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable them, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu. There is no &quot;workaround&quot; from preventing status libraries/services from retrieving it and still allowing in-game clients to view them.</p>
+						<p>Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable this, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu. There is no &quot;workaround&quot; from preventing status libraries/services from retrieving it and still allowing in-game clients to view them.</p>
 					</li>
 					<li>
 						<h3 className="title is-5 mt-5 mb-3">Does this service use query?</h3>
 						<p>Query is currently not supported in our API due to limitations with malformed addresses and hanging issues. This will eventually be resolved and query will be implemented sometime in the future.</p>
+					</li>
+					<li>
+						<h3 className="title is-5 mt-5 mb-3">Is this service open-source?</h3>
+						<p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io">our GitHub organization</a>.</p>
 					</li>
 				</ol>
 				<h2 className="title is-4 mb-3" id="contact">
