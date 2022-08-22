@@ -9,7 +9,6 @@ class Sitemap extends React.Component {
 			'/about',
 			'/docs/v1',
 			'/docs/v2',
-			'/servers',
 			...exampleServers.map((server) => `/status/${server.type}/${server.address}`)
 		].join('\n'));
 		res.end();

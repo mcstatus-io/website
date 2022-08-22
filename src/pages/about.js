@@ -1,8 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/future/image';
 import Script from 'next/script';
 import Ad from '../components/Ad';
+import rightArrow from '../assets/icons/arrow-right.svg';
+import mineserversIcon from '../assets/img/mineservers.svg';
+import mineatarIcon from '../assets/img/mineatar.svg';
 
 export default function About() {
 	return (
@@ -66,6 +70,35 @@ export default function About() {
 					<p className="subtitle is-size-5">Preferred methods of contacting us</p>
 				</div>
 				<p>If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
+				<div className="heading-group">
+					<h2 className="title is-size-4" id="sponsors">
+						<span className="is-align-middle">Sponsors</span>
+						<Link href="#sponsors"><a className="ml-3 is-size-4 is-align-middle">#</a></Link>
+					</h2>
+					<p className="subtitle is-size-5">All companies and services that we sponsor</p>
+				</div>
+				<div className="columns is-multiline">
+					<div className="column is-4">
+						<a className="box" href="https://mineservers.io">
+							<p className="title is-size-4 has-text-white mb-2">
+								<Image src={mineserversIcon} width="32" height="32" className="is-align-middle" alt="mineservers.io Logo" />
+								<span className="ml-3">mineservers.io</span>
+							</p>
+							<p className="has-text-grey-lighter mb-0">A modern Minecraft server listing site with advanced but easy-to-use search, server filtering and achievement system.</p>
+							<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" />
+						</a>
+					</div>
+					<div className="column is-4">
+						<a className="box" href="https://docs.mineatar.io">
+							<p className="title is-size-4 has-text-white mb-2">
+								<Image src={mineatarIcon} width="32" height="32" className="is-align-middle" alt="mineservers.io Logo" />
+								<span className="ml-3">mineatar.io</span>
+							</p>
+							<p className="has-text-grey-lighter mb-0">An incredibly API for generating 2D and isometric 3D renders of Minecraft player skins, with username and UUID support.</p>
+							<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" />
+						</a>
+					</div>
+				</div>
 			</div>
 			<Script id="structured-data-1" type="application/ld+json">
 				{`

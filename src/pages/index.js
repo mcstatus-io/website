@@ -9,6 +9,7 @@ import { exampleServers } from '../assets/servers';
 import StatusLayout from '../layouts/StatusLayout';
 import Ad from '../components/Ad';
 import rightArrow from '../assets/icons/arrow-right.svg';
+import formatDuration from '../util/formatDuration';
 
 export default function Home({ servers }) {
 	const { pathname } = useRouter();
@@ -30,7 +31,6 @@ export default function Home({ servers }) {
 			<StatusLayout>
 				<div className="heading-group">
 					<h2 className="title is-size-4 has-text-weight-semibold">Sample Servers</h2>
-					<p className="subtitle is-size-5">A short list of sample Minecraft servers to test</p>
 				</div>
 				<div className="columns is-multiline">
 					{
@@ -49,14 +49,13 @@ export default function Home({ servers }) {
 						))
 					}
 				</div>
-				<Link href="/servers">
-					<a className="box">
-						<span className="has-text-white">All sample Minecraft servers</span>
-						<span className="has-text-grey ml-2">({servers.length})</span>
-						<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" />
-					</a>
-				</Link>
-				<Ad />
+				<div className="heading-group">
+					<h2 className="title is-size-4 has-text-weight-semibold">Why use mcstatus.io?</h2>
+				</div>
+				<p className="mb-3">This service was created after realizing the missing features of many other Minecraft server status websites, including services like <a href="https://mcsrvstat.us">mcsrvstat.us</a>. Their API and website was complex to navigate, and I found it easier to create my own service to fulfill this. This service is heavily focused on improving performance and optimizing latency when connecting to the server, that is why the API was built from the ground-up using the high performant Go language.</p>
+				<p className="mb-3">Our service offers many features that others do not, such as raw/clean/HTML formats of many values like the MOTD, version name, and sample player names. We also reduced the cache duration of every status down to only {formatDuration(parseInt(process.env.NEXT_PUBLIC_CACHE_TIME) * 1000)}. We intentionally chose not to use the query protocol, as it only slows down the time it takes to retrieve a Minecraft server status, and it does not provide any more relevant data than the more reliable status protocol does.</p>
+				<p>We also offer an endpoint for quickly viewing the icon of any Java Edition Minecraft server. This makes it easy for server owners to display the continuously changing server icon on their own website without the hassle of updating their own code. Our service is entirely open source, and you can view it any time on our <a href="https://github.com/mcstatus-io">GitHub organization</a>. If you would like to use our API in your service, head over to the <Link href="/docs/v2"><a>API documentation</a></Link> and easily implement our standardized API in any code environment.</p>
+				<Ad className="mt-4" />
 			</StatusLayout>
 			<Script id="structured-data-1" type="application/ld+json">
 				{`

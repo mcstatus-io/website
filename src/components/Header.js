@@ -14,10 +14,12 @@ export default function Header() {
 
 	return (
 		<div className="header is-align-items-center is-justify-content-space-between">
-			<div className="is-flex is-align-items-center">
-				<Image src={icon} className="is-align-middle" alt="Icon" width="64" height="64" />
-				<span className="title has-text-white is-align-middle ml-3">mcstatus.io</span>
-			</div>
+			<Link href="/">
+				<a className="is-flex is-align-items-center">
+					<Image src={icon} className="is-align-middle" alt="Icon" width="64" height="64" />
+					<span className="title has-text-white is-align-middle ml-3">mcstatus.io</span>
+				</a>
+			</Link>
 			<div className="buttons">
 				<Link href="/">
 					<a className={`button ${pathname === '/' ? 'is-link' : 'is-dark-light'} px-4`}>
