@@ -2,11 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/future/image';
 import Highlight from '../../components/Highlight';
-import humanizeDuration from 'humanize-duration';
 import DocumentationLayout from '../../layouts/Documentation';
 import javaExample from '../../assets/response/v2/java.jsonc';
 import bedrockExample from '../../assets/response/v2/bedrock.jsonc';
 import sampleIcon from '../../assets/response/icon.png';
+import formatDuration from '../../util/formatDuration';
 
 export default function DocumentationV2() {
 	return (
@@ -21,7 +21,7 @@ export default function DocumentationV2() {
 			</div>
 			<p>mcstatus.io believes that anybody should be able to retrieve the status of any Minecraft server using a simple and efficient manner. This is why we prioritize a detailed and continuously updated documentation on how to interact with our service from yours. Please make sure to read this documentation thoroughly to prevent any errors that may be a mistake on your part.</p>
 			<p>All methods documented are using the REST API, which is supported in all major programming languages and browsers. Body data sent and received from/to the server are using JSON formatting for standardization reasons. You should familiarize yourself with this data encoding before attempting to use our service. If you have any questions, concerns or encounter any problems after attempting a solution, please feel free to contact us by sending an email to <a href="mailto:api@mcstatus.io">api@mcstatus.io</a>.</p>
-			<p>All server statuses are cached for up to <span className="has-text-weight-bold">{humanizeDuration(parseInt(process.env.NEXT_PUBLIC_CACHE_TIME) * 1000, { round: true, largest: 1 })}</span> from the previous network fetch. The <code>X-Cache-Time-Remaining</code> response header will be present if the status was retrieved from the cache, and contains the amount of seconds until the cache expires.</p>
+			<p>All server statuses are cached for up to <span className="has-text-weight-bold">{formatDuration(parseInt(process.env.NEXT_PUBLIC_CACHE_TIME) * 1000)}</span> from the previous network fetch. The <code>X-Cache-Time-Remaining</code> response header will be present if the status was retrieved from the cache, and contains the amount of seconds until the cache expires.</p>
 			<div className="heading-group">
 				<h2 className="title is-size-4" id="java-status">
 					<span className="is-align-middle">Java Status</span>

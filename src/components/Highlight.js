@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
-import hljs from 'highlight.js';
+import hljs from 'highlight.js/lib/core';
 import json from 'highlight.js/lib/languages/json';
 import PropTypes from 'prop-types';
 

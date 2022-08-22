@@ -7,7 +7,10 @@
 		"start": "next start src/",
 		"build": "next build src/",
 		"dev": "next dev src/",
-		"update": "npx browserslist@latest --update-db"
+		"update": "npx browserslist@latest --update-db",
+		"analyze": "cross-env ANALYZE=true next build src/",
+		"analyze:server": "cross-env BUNDLE_ANALYZE=server next build src/",
+		"analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build src/"
 	},
 	"repository": {
 		"type": "git",
@@ -26,6 +29,7 @@
 	},
 	"homepage": "https://github.com/mcstatus-io/Website#readme",
 	"dependencies": {
+		"@next/bundle-analyzer": "^12.2.5",
 		"bulma": "^0.9.3",
 		"bulma-extensions": "^6.2.7",
 		"formik": "^2.2.9",
@@ -44,6 +48,7 @@
 	"devDependencies": {
 		"@next/eslint-plugin-next": "^12.0.4",
 		"@types/highlight.js": "^10.1.0",
+		"cross-env": "^7.0.3",
 		"eslint": "^7.32.0",
 		"eslint-plugin-react": "^7.25.0"
 	}

@@ -1,4 +1,8 @@
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+	enabled: process.env.ANALYZE === 'true'
+});
+
+module.exports = withBundleAnalyzer({
 	swcMinify: true,
 	experimental: {
 		images: {
@@ -27,4 +31,4 @@ module.exports = {
 
 		return config;
 	}
-};
+});
