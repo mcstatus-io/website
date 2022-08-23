@@ -37,8 +37,7 @@
         "semi": [
             "error",
             "always"
-        ],
-        "@next/next/no-img-element": "off"
+        ]
     },
     "globals": {
         "process": true
@@ -47,5 +46,14 @@
         "react": {
             "version": "detect"
         }
-    }
+    },
+    "overrides": [
+        {
+            "files": "next.config.js",
+            "globals": {
+                "require": true,
+                "module": true
+            }
+        }
+    ]
 }
