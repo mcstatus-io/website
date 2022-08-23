@@ -27,7 +27,7 @@ export default function StatusLayout({ host, type, isLoading, children }) {
 			</div>
 			<div className="box">
 				<form onSubmit={form.handleSubmit}>
-					<div className="columns">
+					<div className="columns is-multiline">
 						<div className="column is-flex-grow-0">
 							<div className="field">
 								<div className="select">

@@ -5,7 +5,7 @@
 @import "~bulma/sass/utilities/controls"
 @import "~bulma/sass/utilities/extends"
 
-$main-dark: #212121
+$main-dark: #232323
 $secondary-dark: #131313
 $family-sans-serif: 'Poppins', sans-serif
 $title-family: 'Ubuntu', sans-serif
@@ -114,6 +114,10 @@ ol li
         td
             padding-bottom: 1rem !important
 
+@media (max-width: $tablet)
+    .select, .select select
+        width: 100%
+
 .table-overflow-wrapper, .card-content
     overflow-x: auto
 
@@ -130,6 +134,13 @@ a.box
 
     &:hover .box-link-arrow
         right: 1.25rem
+
+code
+    word-break: break-word
+
+pre
+    border-radius: $radius
+    box-shadow: $shadow
 
 @import "~bulma/sass/base/minireset"
 @import "~bulma/sass/base/generic"
