@@ -5,8 +5,8 @@
 @import "~bulma/sass/utilities/controls"
 @import "~bulma/sass/utilities/extends"
 
-$main-dark: #212937
-$secondary-dark: #131a26
+$main-dark: #212121
+$secondary-dark: #131313
 $family-sans-serif: 'Poppins', sans-serif
 $title-family: 'Ubuntu', sans-serif
 $title-weight: $weight-normal
@@ -65,9 +65,6 @@ body
     display: flex
     margin-bottom: 1.5rem
 
-h2.title
-    letter-spacing: 0.5px
-
 .heading-group
     border-left: 4px solid lighten($main-dark, 10%)
     padding-left: 1rem
@@ -92,11 +89,17 @@ h2.title
 ol li
     padding-left: 0.5rem
 
-@media (min-width: 469px)
+@media not (max-width: $desktop)
     .table th
         width: 180px
 
-@media (max-width: 768px)
+@media (max-width: $desktop)
+    .header
+        display: block !important
+
+        & > :first-child
+            margin-bottom: 1rem
+            
     .table
         th
             padding-bottom: 0 !important
@@ -110,13 +113,6 @@ ol li
 
         td
             padding-bottom: 1rem !important
-
-@media (max-width: $tablet)
-    .header
-        display: block !important
-
-        & > :first-child
-            margin-bottom: 1rem
 
 .table-overflow-wrapper, .card-content
     overflow-x: auto
@@ -134,10 +130,6 @@ a.box
 
     &:hover .box-link-arrow
         right: 1.25rem
-
-.is-checkradio[type="checkbox"] + label::before
-    transform: translate(0, 2px)
-    outline: none
 
 @import "~bulma/sass/base/minireset"
 @import "~bulma/sass/base/generic"
@@ -161,7 +153,5 @@ a.box
 @import "~bulma/sass/components/message"
 @import "~bulma/sass/grid/columns"
 @import "~bulma/sass/helpers/_all"
-
-@import "~bulma-extensions/bulma-checkradio/src/sass/index"
 
 @import "_carbon"

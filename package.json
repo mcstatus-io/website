@@ -31,10 +31,8 @@
 	"dependencies": {
 		"@next/bundle-analyzer": "^12.2.5",
 		"bulma": "^0.9.3",
-		"bulma-extensions": "^6.2.7",
 		"formik": "^2.2.9",
 		"highlight.js": "^11.6.0",
-		"humanize-duration": "^3.27.0",
 		"next": "^12.2.5",
 		"prop-types": "^15.7.2",
 		"raw-loader": "^4.0.2",
@@ -47,7 +45,6 @@
 	},
 	"devDependencies": {
 		"@next/eslint-plugin-next": "^12.0.4",
-		"@types/highlight.js": "^10.1.0",
 		"cross-env": "^7.0.3",
 		"eslint": "^7.32.0",
 		"eslint-plugin-react": "^7.25.0"

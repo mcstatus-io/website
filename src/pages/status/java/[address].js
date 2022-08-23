@@ -72,7 +72,7 @@ export default function Status({ address }) {
 				<meta property="og:image" content={data.result?.favicon ?? 'https://mcstatus.io/img/icon.png'} />
 				<link rel="canonical" href={`https://mcstatus.io/status/java/${address}`} />
 			</Head>
-			<StatusLayout host={address} isLoading={!data.isLoaded}>
+			<StatusLayout host={address} type="java" isLoading={!data.isLoaded}>
 				{
 					data.isLoaded
 						? data.error
@@ -137,10 +137,10 @@ export default function Status({ address }) {
 														<tr>
 															<th>Players</th>
 															<td>
-																<span>{data.result.players.online} / {data.result.players.max}</span>
+																<span className="is-align-middle">{data.result.players.online} / {data.result.players.max}</span>
 																{
 																	data.result.players.list.length > 0
-																		? <button type="button" className="button is-link is-small is-vertically-aligned ml-3" onClick={() => dispatch({ type: 'TOGGLE_SHOW_PLAYERS' })}>{data.showPlayers ? 'Hide' : 'Show'} player list</button>
+																		? <button type="button" className="button is-link is-small is-align-middle ml-3" onClick={() => dispatch({ type: 'TOGGLE_SHOW_PLAYERS' })}>{data.showPlayers ? 'Hide' : 'Show'} player list</button>
 																		: null
 																}
 																{
@@ -155,10 +155,10 @@ export default function Status({ address }) {
 																? <tr>
 																	<th>Mods Loaded</th>
 																	<td>
-																		<span>{data.result.mods.length} mod{data.result.mods.length === 1 ? '' : 's'} loaded</span>
+																		<span className="is-align-middle">{data.result.mods.length} mod{data.result.mods.length === 1 ? '' : 's'} loaded</span>
 																		{
 																			data.result.mods.length > 0
-																				? <button type="button" className="button is-link is-small is-vertically-aligned ml-3" onClick={() => dispatch({ type: 'TOGGLE_SHOW_MODS' })}>{data.showMods ? 'Hide' : 'Show'} mod info</button>
+																				? <button type="button" className="button is-link is-small is-align-middle ml-3" onClick={() => dispatch({ type: 'TOGGLE_SHOW_MODS' })}>{data.showMods ? 'Hide' : 'Show'} mod info</button>
 																				: null
 																		}
 																		{
@@ -218,8 +218,8 @@ export default function Status({ address }) {
 											<span className="icon">
 												{
 													data.showAPIUsage
-														? <Image src={chevronUp} className="is-vertically-aligned" alt="Chevron up" width="14" height="16" />
-														: <Image src={chevronDown} className="is-vertically-aligned" alt="Chevron down" width="14" height="16" />
+														? <Image src={chevronUp} className="is-align-middle" alt="Chevron up" width="14" height="16" />
+														: <Image src={chevronDown} className="is-align-middle" alt="Chevron down" width="14" height="16" />
 												}
 											</span>
 										</button>

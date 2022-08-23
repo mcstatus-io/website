@@ -68,7 +68,7 @@ export default function Status({ address }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href={`https://mcstatus.io/status/bedrock/${address}`} />
 			</Head>
-			<StatusLayout host={address} isLoading={!data.isLoaded} isBedrock>
+			<StatusLayout host={address} type="bedrock" isLoading={!data.isLoaded}>
 				{
 					data.isLoaded
 						? data.error
@@ -196,8 +196,8 @@ export default function Status({ address }) {
 											<span className="icon">
 												{
 													data.showAPIUsage
-														? <Image src={chevronUp} className="is-vertically-aligned" alt="Chevron up" width="14" height="16" />
-														: <Image src={chevronDown} className="is-vertically-aligned" alt="Chevron down" width="14" height="16" />
+														? <Image src={chevronUp} className="is-align-middle" alt="Chevron up" width="14" height="16" />
+														: <Image src={chevronDown} className="is-align-middle" alt="Chevron down" width="14" height="16" />
 												}
 											</span>
 										</button>
