@@ -1,19 +1,44 @@
+@font-face
+    font-family: 'Ubuntu'
+    font-weight: 700
+    src: url('/font/Ubuntu-B.ttf')
+    
+@font-face
+    font-family: 'Ubuntu'
+    font-weight: 500
+    src: url('/font/Ubuntu-M.ttf')
+    
+@font-face
+    font-family: 'Ubuntu'
+    font-weight: 400
+    src: url('/font/Ubuntu-R.ttf')
+
+@font-face
+    font-family: 'Ubuntu'
+    font-weight: 300
+    src: url('/font/Ubuntu-L.ttf')
+
+@font-face
+    font-family: 'Ubuntu'
+    font-weight: 200
+    src: url('/font/Ubuntu-Th.ttf')
+    
 @import "~bulma/sass/utilities/initial-variables"
+
 @import "~bulma/sass/utilities/functions"
 @import "~bulma/sass/utilities/derived-variables"
-@import "~bulma/sass/utilities/mixins"
-@import "~bulma/sass/utilities/controls"
-@import "~bulma/sass/utilities/extends"
 
 $main-dark: #232323
 $secondary-dark: #131313
-$family-sans-serif: 'Poppins', sans-serif
+$family-primary: 'Ubuntu', sans-serif
 $title-family: 'Ubuntu', sans-serif
 $title-weight: $weight-normal
+$subtitle-family: 'Ubuntu', sans-serif
+$subtitle-weight: $weight-light
 $text: $grey-lightest
 $text-strong: $white
-$link: $success
-$link-hover: darken($success, 10%)
+$link: $green
+$link-hover: darken($green, 10%)
 $scheme-main: $main-dark
 $scheme-main-bis: $main-dark
 $scheme-main-ter: $main-dark
@@ -47,6 +72,10 @@ $button-active-color: $white
 $message-header-background-color: hsl(0, 0%, 50%)
 $checkradio-focus: none
 $checkbox-border: 2px solid $grey
+
+@import "~bulma/sass/utilities/mixins"
+@import "~bulma/sass/utilities/controls"
+@import "~bulma/sass/utilities/extends"
 
 ::-webkit-scrollbar
     background: $main-dark
