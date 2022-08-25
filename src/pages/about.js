@@ -73,21 +73,21 @@ export default function About() {
 					<div className="column is-4">
 						<a className="box" href="https://mineservers.io">
 							<p className="title is-size-4 has-text-white mb-2">
-								<Image src={mineserversIcon} width="32" height="32" className="is-align-middle" alt="mineservers.io Logo" />
+								<Image src={mineserversIcon} width="32" height="32" className="is-align-middle" alt="mineservers.io Logo" priority />
 								<span className="ml-3">mineservers.io</span>
 							</p>
 							<p className="has-text-grey-lighter mb-0">A modern Minecraft server listing site with advanced but easy-to-use search, server filtering and achievement system.</p>
-							<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" />
+							<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" priority />
 						</a>
 					</div>
 					<div className="column is-4">
 						<a className="box" href="https://docs.mineatar.io">
 							<p className="title is-size-4 has-text-white mb-2">
-								<Image src={mineatarIcon} width="32" height="32" className="is-align-middle" alt="mineservers.io Logo" />
+								<Image src={mineatarIcon} width="32" height="32" className="is-align-middle" alt="mineservers.io Logo" priority />
 								<span className="ml-3">mineatar.io</span>
 							</p>
 							<p className="has-text-grey-lighter mb-0">An incredibly fast API for generating 2D and isometric 3D renders of Minecraft player skins, with username and UUID support.</p>
-							<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" />
+							<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" priority />
 						</a>
 					</div>
 				</div>

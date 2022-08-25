@@ -39,10 +39,10 @@ export default function Home({ servers }) {
 								<Link href={`/status/${server.type}/${server.address}`}>
 									<a className="box">
 										<p className="has-text-white">
-											<span className={`tag is-${server.type === 'java' ? 'success' : 'info'} mr-2`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
+											<span className="tag is-link mr-2">{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
 											<code>{server.address}</code>
 										</p>
-										<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" />
+										<Image src={rightArrow} width="20" alt="Right arrow" className="box-link-arrow" priority />
 									</a>
 								</Link>
 							</div>
