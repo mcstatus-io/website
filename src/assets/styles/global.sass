@@ -174,7 +174,10 @@ code
 
 pre
     border-radius: $radius
-    box-shadow: $shadow
+    background-color: $main-dark !important
+
+    &.has-shadow
+        box-shadow: $shadow
 
 @import "~bulma/sass/base/minireset"
 @import "~bulma/sass/base/generic"
