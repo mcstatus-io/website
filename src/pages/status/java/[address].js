@@ -233,7 +233,7 @@ export default function Status({ address }) {
 														<code>https://api.mcstatus.io/v2/status/java/{address}</code>
 													</p>
 													<p className="has-text-weight-bold">Response Body</p>
-													<Highlight source={JSON.stringify(data.result, null, 4)} />
+													<Highlight className="has-border" source={JSON.stringify(data.result, null, 4)} />
 													<p>Refer to the <Link href="/docs/v2#java-status">API documentation</Link> for more information about this response.</p>
 												</div>
 											</div>
