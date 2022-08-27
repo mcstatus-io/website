@@ -43,7 +43,7 @@ export default function About() {
 				<ol>
 					<li>
 						<p className="has-text-weight-bold mb-1">How do I check the status of a server?</p>
-						<p>Simply paste the address of the server into the address box on the home page. The address is in the form of <code>host:port</code> but the port is optional and defaults to <code>25565</code>.</p>
+						<p>Simply paste the address of the server into the address box on the home page. The address is in the form of <code>host:port</code> but the port is optional and defaults to <code>25565</code> for Java Edition servers and <code>19132</code> for Bedrock Edition servers.</p>
 					</li>
 					<li>
 						<p className="has-text-weight-bold mb-1 mt-4">What is an SRV record?</p>
@@ -51,11 +51,11 @@ export default function About() {
 					</li>
 					<li>
 						<p className="has-text-weight-bold mb-1 mt-4">How do I hide the status of my server?</p>
-						<p>Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable this, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu. There is no &quot;workaround&quot; from preventing status libraries/services from retrieving it and still allowing in-game clients to view them.</p>
+						<p>Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable this, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu.</p>
 					</li>
 					<li>
 						<p className="has-text-weight-bold mb-1 mt-4">Does this service use query?</p>
-						<p>Query is currently not supported in our API due to limitations with malformed addresses and hanging issues. This will eventually be resolved and query will be implemented sometime in the future.</p>
+						<p>We intentionally chose not to use query in this service because it slows down any status retrieval, and it also does not provide much more information than the data sent by the status protocol.</p>
 					</li>
 					<li>
 						<p className="has-text-weight-bold mb-1 mt-4">Is this service open-source?</p>

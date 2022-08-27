@@ -3,9 +3,12 @@
 	"version": "1.0.0",
 	"description": "The NextJS server that powers the mcstatus.io public website.",
 	"main": "index.js",
+	"browserslist": [
+		"defaults"
+	],
 	"scripts": {
 		"start": "next start src/",
-		"build": "next build src/",
+		"build": "npm run update && next build src/",
 		"dev": "next dev src/",
 		"update": "npx browserslist@latest --update-db",
 		"analyze": "cross-env ANALYZE=true next build src/",
@@ -30,23 +33,23 @@
 	"homepage": "https://github.com/mcstatus-io/Website#readme",
 	"dependencies": {
 		"@next/bundle-analyzer": "^12.2.5",
-		"bulma": "^0.9.3",
+		"bulma": "^0.9.4",
 		"formik": "^2.2.9",
 		"highlight.js": "^11.6.0",
 		"next": "^12.2.5",
-		"prop-types": "^15.7.2",
+		"prop-types": "^15.8.1",
 		"raw-loader": "^4.0.2",
-		"react": "^17.0.2",
+		"react": "^18.2.0",
 		"react-content-loader": "^6.2.0",
-		"react-dom": "^17.0.2",
-		"sass": "^1.38.2",
+		"react-dom": "^18.2.0",
+		"sass": "^1.54.5",
 		"sharp": "^0.30.7",
 		"yup": "^0.32.11"
 	},
 	"devDependencies": {
-		"@next/eslint-plugin-next": "^12.0.4",
+		"@next/eslint-plugin-next": "^12.2.5",
 		"cross-env": "^7.0.3",
-		"eslint": "^7.32.0",
-		"eslint-plugin-react": "^7.25.0"
+		"eslint": "^8.23.0",
+		"eslint-plugin-react": "^7.31.1"
 	}
 }

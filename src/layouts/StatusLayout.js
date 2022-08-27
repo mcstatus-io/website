@@ -41,12 +41,12 @@ export default function StatusLayout({ host, type, isLoading, children }) {
 						<div className="column is-flex-grow-1">
 							<div className="field">
 								<div className="control is-fullwidth">
-									<input type="text" className={`input ${form.errors.host ? 'is-danger' : ''}`} id="host" placeholder="play.hypixel.net OR play.hypixel.net:25565" value={form.values.host} spellCheck="false" autoComplete="false" onChange={form.handleChange} onBlur={form.handleBlur} disabled={isLoading} />
+									<input type="text" className={`input ${form.errors.host ? 'is-danger' : ''}`} id="host" placeholder="play.hypixel.net:25565" value={form.values.host} spellCheck="false" autoComplete="false" onChange={form.handleChange} onBlur={form.handleBlur} disabled={isLoading} />
 								</div>
 							</div>
 						</div>
 						<div className="column is-flex-grow-0">
-							<button type="submit" className={`button is-fullwidth is-link ${isLoading ? 'is-loading' : ''}`} disabled={!form.isValid || isLoading}>Submit</button>
+							<button type="submit" className={`button is-fullwidth is-link ${isLoading ? 'is-loading' : ''}`} disabled={!form.isValid || isLoading || !form.dirty}>Submit</button>
 						</div>
 					</div>
 				</form>
