@@ -21,8 +21,11 @@ class MyDocument extends Document {
 					<meta name="msapplication-TileColor" content="#232323" />
 					<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
 					<meta name="theme-color" content="#232323" />
+					<link rel="preconnect" href="https://fonts.googleapis.com" />
+					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+					<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&family=Fira+Mono&family=Inter:wght@200;300;400;500;700;900&display=swap" rel="stylesheet" />
 				</Head>
-				<body>
+				<body className="bg-neutral-900 text-white overflow-x-hidden scroll-smooth">
 					<Main />
 					<NextScript />
 				</body>

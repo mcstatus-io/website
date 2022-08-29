@@ -2,8 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import '../assets/styles/global.sass';
+import '../styles/global.sass';
 
 export default function MyApp({ Component, pageProps }) {
 	return (
@@ -11,10 +10,7 @@ export default function MyApp({ Component, pageProps }) {
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<div className="container">
-				<Header />
-				<Component {...pageProps} />
-			</div>
+			<Component {...pageProps} />
 			<Script async src="https://www.googletagmanager.com/gtag/js?id=UA-104913718-10" strategy="afterInteractive" />
 			<Script id="google-analytics" strategy="afterInteractive">
 				{`window.dataLayer = window.dataLayer || [];

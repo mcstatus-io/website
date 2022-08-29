@@ -1,24 +1,29 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
+import Image from 'next/future/image';
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/future/image';
 import PropTypes from 'prop-types';
-import ContentLoader from 'react-content-loader';
-import Ad from '../../../components/Ad';
+import Header from '../../../components/Header';
+import Search from '../../../components/Search';
 import Highlight from '../../../components/Highlight';
+import MinecraftFormatted from '../../../components/MinecraftFormatted';
+import Ad from '../../../components/Ad';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
-import StatusLayout from '../../../layouts/StatusLayout';
 
-export default function Status({ address }) {
+export default function BedrockStatus({ address }) {
 	const reducer = (state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
-				return { isLoaded: true, result: action.result, cached: action.cached, error: null, showAPIUsage: false };
+				return { isLoaded: true, result: action.result, cached: action.cached, error: null, showMods: false, showPlayers: false, showAPIUsage: false };
 			case 'SET_ERROR':
-				return { isLoaded: true, result: null, cached: false, error: action.error, showAPIUsage: false };
+				return { isLoaded: true, result: null, cached: false, error: action.error, showMods: false, showPlayers: false, showAPIUsage: false };
 			case 'RESET_ALL':
-				return { isLoaded: false, result: null, cached: false, error: null, showAPIUsage: false };
+				return { isLoaded: false, result: null, cached: false, error: null, showMods: false, showPlayers: false, showAPIUsage: false };
+			case 'TOGGLE_SHOW_MODS':
+				return { ...state, showMods: !state.showMods };
+			case 'TOGGLE_SHOW_PLAYERS':
+				return { ...state, showPlayers: !state.showPlayers };
 			case 'TOGGLE_SHOW_API_USAGE':
 				return { ...state, showAPIUsage: !state.showAPIUsage };
 			default:
@@ -26,7 +31,7 @@ export default function Status({ address }) {
 		}
 	};
 
-	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cached: false, showAPIUsage: false });
+	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cached: false, showMods: false, showPlayers: false, showAPIUsage: false });
 
 	useEffect(() => {
 		dispatch({ type: 'RESET_ALL' });
@@ -68,187 +73,148 @@ export default function Status({ address }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href={`https://mcstatus.io/status/bedrock/${address}`} />
 			</Head>
-			<StatusLayout host={address} type="bedrock" isLoading={!data.isLoaded}>
-				{
-					data.isLoaded
-						? data.error
-							? <article className="message is-danger">
-								<div className="message-body">
-									{data.error ?? 'Failed to retrieve the status of the specified server.'}
-								</div>
-							</article>
-							: <>
-								<div className="box table-overflow-wrapper">
-									<table className="table is-fullwidth is-hoverable">
-										<tbody>
-											<tr>
-												<th>Status</th>
-												<td>
-													{
-														data.result.online
-															? <span className="tag is-success">Online</span>
-															: <span className="tag is-danger">Offline</span>
-													}
-												</td>
-											</tr>
-											<tr>
-												<th>Hostname</th>
-												<td>{data.result.host}</td>
-											</tr>
-											<tr>
-												<th>Port</th>
-												<td>{data.result.port}</td>
-											</tr>
-											{
-												data.result.online
-													? <>
-														<tr>
-															<th>MOTD</th>
-															<td>
-																<pre className="has-background-black" dangerouslySetInnerHTML={{ __html: data.result.motd.html }} />
-															</td>
-														</tr>
-														<tr>
-															<th>Edition</th>
-															<td>
-																{
-																	data.result.edition !== null
-																		? <span>{data.result.edition}</span>
-																		: <span className="has-text-grey">N/A</span>
-																}
-															</td>
-														</tr>
-														<tr>
-															<th>Version</th>
-															<td>
-																{
-																	data.result.version?.name
-																		? <span>{data.result.version.name}</span>
-																		: <span className="has-text-grey">N/A</span>
-																}
-															</td>
-														</tr>
-														<tr>
-															<th>Players</th>
-															<td>
-																{
-																	data.result.players?.online
-																		? <span>{data.result.players.online}</span>
-																		: <span className="has-text-grey">N/A</span>
-																}
-																<span> / </span>
-																{
-																	data.result.players?.max
-																		? <span>{data.result.players.max}</span>
-																		: <span className="has-text-grey">N/A</span>
-																}
-															</td>
-														</tr>
-														<tr>
-															<th>Gamemode</th>
-															<td>
-																{
-																	data.result.gamemode
-																		? <span>{data.result.gamemode}</span>
-																		: <span className="has-text-grey">N/A</span>
-																}
-															</td>
-														</tr>
-														<tr>
-															<th>EULA Blocked</th>
-															<td>
-																{
-																	data.result.eula_blocked
-																		? <span className="tag is-danger">Yes</span>
-																		: <span className="tag is-success">No</span>
-																}
-															</td>
-														</tr>
-														<tr>
-															<th>Protocol Version</th>
-															<td>
-																{
-																	data.result.version?.protocol
-																		? <span>{data.result.version.protocol}</span>
-																		: <span className="has-text-grey">N/A</span>
-																}
-															</td>
-														</tr>
-														<tr>
-															<th>Cached Response</th>
-															<td>
-																<span className="tag is-info">{data.cached ? 'Yes' : 'No'}</span>
-															</td>
-														</tr>
-													</>
-													: null
-											}
-										</tbody>
-									</table>
-								</div>
-								<Ad className="my-5" />
-								<div className="card">
-									<header className="card-header is-clickable" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
-										<p className="card-header-title">
-											API Usage
-										</p>
-										<button className="card-header-icon" aria-label="more options">
-											<span className="icon">
+			<Header active="home" />
+			<div className="container mx-automy-12 lg:my-24 px-4">
+				<h1 className="text-5xl font-black">Minecraft Server Status</h1>
+				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
+				<Search host={address} type="bedrock" />
+				<div className="px-6 py-5 bg-neutral-800 rounded-md mt-4">
+					{
+						data.isLoaded
+							? data.error
+								? <p className="text-red-400">{data.error}</p>
+								: <table className="table w-full">
+									<tbody>
+										<tr className="border-b border-b-neutral-700">
+											<th className="px-3 pt-2 pb-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Status</th>
+											<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
 												{
-													data.showAPIUsage
-														? <Image src={chevronUp} className="is-align-middle" alt="Chevron up" width="14" height="16" />
-														: <Image src={chevronDown} className="is-align-middle" alt="Chevron down" width="14" height="16" />
+													data.result.online
+														? <span className="text-green-400">Online</span>
+														: <span className="text-red-400">Offline</span>
 												}
-											</span>
-										</button>
-									</header>
-									{
-										data.showAPIUsage
-											? <div className="card-content">
-												<div className="content">
-													<p>
-														<span className="tag is-success mr-2">GET</span>
-														<code>https://api.mcstatus.io/v2/status/bedrock/{address}</code>
-													</p>
-													<p className="has-text-weight-bold">Response Body</p>
-													<Highlight className="has-border" source={JSON.stringify(data.result, null, 4)} />
-													<p>Refer to the <Link href="/docs/v2#bedrock-status">API documentation</Link> for more information about this response.</p>
-												</div>
-											</div>
-											: null
-									}
+											</td>
+										</tr>
+										<tr className="border-b border-b-neutral-700">
+											<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Host</th>
+											<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.host}</td>
+										</tr>
+										<tr className="border-b border-b-neutral-700">
+											<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Port</th>
+											<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.port}</td>
+										</tr>
+										{
+											data.result.online
+												? <>
+													<tr className="border-b border-b-neutral-700">
+														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">MOTD</th>
+														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
+															<MinecraftFormatted html={data.result.motd.html} />
+														</td>
+													</tr>
+													<tr className="border-b border-b-neutral-700">
+														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Version</th>
+														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.version.name}</td>
+													</tr>
+													<tr className="border-b border-b-neutral-700">
+														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Players</th>
+														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.players.online} / {data.result.players.max}</td>
+													</tr>
+													<tr className="border-b border-b-neutral-700">
+														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Edition</th>
+														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.edition}</td>
+													</tr>
+													<tr className="border-b border-b-neutral-700">
+														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Gamemode</th>
+														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.gamemode}</td>
+													</tr>
+													<tr className="border-b border-b-neutral-700">
+														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">EULA Blocked</th>
+														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
+															{
+																data.result.eula_blocked
+																	? <span className="tag is-danger">Yes</span>
+																	: <span className="tag is-success">No</span>
+															}
+														</td>
+													</tr>
+													<tr className="border-b border-b-neutral-700">
+														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Protocol Version</th>
+														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
+															{
+																data.result.version?.protocol
+																	? <span>{data.result.version.protocol}</span>
+																	: <span className="has-text-grey">N/A</span>
+															}
+														</td>
+													</tr>
+													<tr>
+														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Cached Response</th>
+														<td className="px-3 pb-2 lg:py-3 block w-full lg:table-cell">
+															<span className="tag is-info">{data.cached ? 'Yes' : 'No'}</span>
+														</td>
+													</tr>
+												</>
+												: null
+										}
+									</tbody>
+								</table>
+							: <div className="flex gap-3">
+								<div className="w-1/4">
+									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full" />
 								</div>
-							</>
-						: <div className="box">
-							<ContentLoader viewBox="0 0 1200 390" uniqueKey="result-loader" foregroundColor="rgba(0, 0, 0, 0.1)" backgroundColor="rgba(0, 0, 0, 0.2)">
-								<rect x="0" y="0" width="240" height="40" rx="3" ry="3" />
-								<rect x="260" y="0" width="940" height="40" rx="3" ry="3" />
-								<rect x="0" y="50" width="240" height="40" rx="3" ry="3" />
-								<rect x="260" y="50" width="940" height="40" rx="3" ry="3" />
-								<rect x="0" y="100" width="240" height="40" rx="3" ry="3" />
-								<rect x="260" y="100" width="940" height="40" rx="3" ry="3" />
-								<rect x="0" y="150" width="240" height="40" rx="3" ry="3" />
-								<rect x="260" y="150" width="940" height="40" rx="3" ry="3" />
-								<rect x="0" y="200" width="240" height="40" rx="3" ry="3" />
-								<rect x="260" y="200" width="940" height="40" rx="3" ry="3" />
-								<rect x="0" y="250" width="240" height="40" rx="3" ry="3" />
-								<rect x="260" y="250" width="940" height="40" rx="3" ry="3" />
-								<rect x="0" y="300" width="240" height="40" rx="3" ry="3" />
-								<rect x="260" y="300" width="940" height="40" rx="3" ry="3" />
-								<rect x="0" y="350" width="240" height="40" rx="3" ry="3" />
-								<rect x="260" y="350" width="940" height="40" rx="3" ry="3" />
-							</ContentLoader>
+								<div className="w-3/4">
+									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-9 w-full" />
+								</div>
+							</div>
+					}
+				</div>
+				{
+					data.isLoaded && data.result
+						? <div className="mt-3 bg-neutral-800 rounded-md">
+							<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
+								<p className="font-bold">API Usage</p>
+								<Image src={data.showAPIUsage ? chevronUp : chevronDown} alt="Chevron down icon" width="16" />
+							</div>
+							{
+								data.showAPIUsage
+									? <div className="p-4 border-t border-t-neutral-700">
+										<p>
+											<span className="bg-green-600 text-sm px-2 py-1 rounded">GET</span>
+											<code className="ml-2">https://api.mcstatus.io/v2/status/bedrock/{address}</code>
+										</p>
+										<Highlight source={JSON.stringify(data.result, null, '    ')} className="border border-neutral-700 rounded mt-4" />
+										<p className="mt-3">Learn more about this response by viewing it in the <Link href="/docs#bedrock-status"><a className="text-blue-500 hover:text-blue-400 transition-colors duration-150" >API documentation</a></Link>.</p>
+									</div>
+									: null
+							}
 						</div>
+						: null
 				}
-			</StatusLayout>
+				<Ad className="mt-4" />
+			</div>
 		</>
 	);
 }
 
-Status.propTypes = {
+BedrockStatus.propTypes = {
 	address: PropTypes.string.isRequired
 };
 
-export async function getServerSideProps({ query: { address } }) {
+export function getServerSideProps({ params: { address } }) {
 	return { props: { address } };
 }

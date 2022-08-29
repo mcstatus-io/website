@@ -18,7 +18,7 @@ export default function Highlight({ source, className }) {
 			<Head>
 				<link rel="stylesheet" href="/css/atom-one-dark.min.css" />
 			</Head>
-			<pre className={`language-json ${className}`}><code>{source}</code></pre>
+			<pre className="language-json"><code className={className}>{source}</code></pre>
 		</>
 	);
 }

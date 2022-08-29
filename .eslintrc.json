@@ -49,7 +49,11 @@
     },
     "overrides": [
         {
-            "files": "next.config.js",
+            "files": [
+                "next.config.js",
+                "postcss.config.js",
+                "tailwind.config.js"
+            ],
             "globals": {
                 "require": true,
                 "module": true

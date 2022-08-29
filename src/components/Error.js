@@ -8,8 +8,10 @@ export default function Error({ statusCode, reason }) {
 			<Head>
 				<title>{statusCode} - mcstatus.io</title>
 			</Head>
-			<h1 className="title is-size-1 has-text-weight-bold mt-6">{statusCode}</h1>
-			<p className="subtitle">{reason}</p>
+			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+				<h1 className="font-black text-9xl">{statusCode}</h1>
+				<p className="font-light text-2xl">{reason}</p>
+			</div>
 		</>
 	);
 }

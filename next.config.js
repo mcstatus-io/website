@@ -16,9 +16,9 @@ module.exports = withBundleAnalyzer({
 			permanent: true
 		},
 		{
-			source: '/docs',
-			destination: '/docs/v2',
-			permanent: false
+			source: '/docs/:revision',
+			destination: '/docs',
+			permanent: true
 		}
 	],
 	webpack: (config) => {
