@@ -35,16 +35,12 @@ export default function Header({ active }) {
 				</div>
 				<div className="flex">
 					<div className="ml-8 flex gap-3 items-center">
-						<Link href="/">
-							<a className="text-blue-500 font-medium rounded-full hover:bg-neutral-800 p-2">
-								<Image src={githubIcon} width="24" height="24" alt="GitHub icon" priority />
-							</a>
-						</Link>
-						<Link href="/">
-							<a className="text-blue-500 font-medium rounded-full hover:bg-neutral-800 p-2">
-								<Image src={calendarIcon} width="20" height="20" alt="Calendar icon" priority />
-							</a>
-						</Link>
+						<a href="https://github.com/mcstatus-io" className="text-blue-500 font-medium rounded-full hover:bg-neutral-800 p-2">
+							<Image src={githubIcon} width="24" height="24" alt="GitHub icon" priority />
+						</a>
+						<a href="https://uptime.mcstatus.io" className="text-blue-500 font-medium rounded-full hover:bg-neutral-800 p-2">
+							<Image src={calendarIcon} width="20" height="20" alt="Calendar icon" priority />
+						</a>
 					</div>
 				</div>
 			</div>
