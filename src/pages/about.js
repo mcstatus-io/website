@@ -20,7 +20,7 @@ export default function About() {
 			</Head>
 			<Header active="about" />
 			<div className="container mx-auto my-12 lg:my-24 px-4">
-				<h1 className="text-5xl font-black">About</h1>
+				<h1 className="text-4xl lg:text-5xl font-black">About</h1>
 				<p className="text-2xl font-light mt-2">A quick understanding of what we do</p>
 				<p className="mt-3">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">NextJS</a> and the back-end was built with <a href="https://golang.org" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">Carbon Ads</a> to help cover the hosting and development costs.</p>
 				<Ad className="mt-4" />

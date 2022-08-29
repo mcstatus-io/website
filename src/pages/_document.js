@@ -25,7 +25,7 @@ class MyDocument extends Document {
 					<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 					<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&family=Fira+Mono&family=Inter:wght@200;300;400;500;700;900&display=swap" rel="stylesheet" />
 				</Head>
-				<body className="bg-neutral-900 text-white overflow-x-hidden scroll-smooth">
+				<body className="bg-neutral-900 text-white overflow-x-hidden w-[100vw] scroll-smooth">
 					<Main />
 					<NextScript />
 				</body>
