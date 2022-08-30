@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import Script from 'next/script';
 import Image from 'next/future/image';
 import Navbar from '../components/Navbar';
 import Highlight from '../components/Highlight';
@@ -116,7 +117,7 @@ export default function Documentation() {
 					</div>
 				</div>
 			</div>
-			<script type="application/ld+json">
+			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [
 	{
@@ -152,7 +153,7 @@ export default function Documentation() {
 	}
 ]
 				`}
-			</script>
+			</Script>
 		</>
 	);
 }

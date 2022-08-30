@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Script from 'next/script';
 import Navbar from '../components/Navbar';
 import Ad from '../components/Ad';
 
@@ -43,7 +44,7 @@ export default function About() {
 				<h2 className="text-3xl font-black mt-12">Contact</h2>
 				<p className="mt-1">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
 			</div>
-			<script type="application/ld+json">
+			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [
 	{
@@ -141,7 +142,7 @@ export default function About() {
 	}
 ]
 				`}
-			</script>
+			</Script>
 		</>
 	);
 }

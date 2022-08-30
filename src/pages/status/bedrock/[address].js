@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from 'react';
 import Image from 'next/future/image';
 import Head from 'next/head';
 import Link from 'next/link';
+import Script from 'next/script';
 import PropTypes from 'prop-types';
 import Navbar from '../../../components/Navbar';
 import Search from '../../../components/Search';
@@ -210,7 +211,7 @@ export default function BedrockStatus({ address }) {
 				}
 				<Ad className="mt-4" />
 			</div>
-			<script type="application/ld+json">
+			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [
 	{
@@ -252,7 +253,7 @@ export default function BedrockStatus({ address }) {
 	}
 ]
 				`}
-			</script>
+			</Script>
 		</>
 	);
 }

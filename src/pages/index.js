@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { exampleServers } from '../assets/servers';
+import Script from 'next/script';
 import Head from 'next/head';
+import { exampleServers } from '../assets/servers';
 import PropTypes from 'prop-types';
 import Navbar from '../components/Navbar';
 import Search from '../components/Search';
@@ -62,7 +63,7 @@ export default function Home({ javaServers, bedrockServers }) {
 				<p>We also offer an endpoint for quickly viewing the icon of any Java Edition Minecraft server. This makes it easy for server owners to display the continuously changing server icon on their own website without the hassle of updating their own code. Our service is entirely open source, and you can view it any time on our <a href="https://github.com/mcstatus-io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">GitHub organization</a>. If you would like to use our API in your service, head over to the <Link href="/docs/v2"><a className="text-blue-500 hover:text-blue-400 transition-colors duration-150">API documentation</a></Link> and easily implement our standardized API in any code environment.</p>
 				<Ad className="mt-6" />
 			</div>
-			<script type="application/ld+json">
+			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [
 	{
@@ -92,7 +93,7 @@ export default function Home({ javaServers, bedrockServers }) {
 	}
 ]
 				`}
-			</script>
+			</Script>
 		</>
 	);
 }
