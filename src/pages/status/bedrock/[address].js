@@ -17,15 +17,11 @@ export default function BedrockStatus({ address }) {
 	const reducer = (state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
-				return { isLoaded: true, result: action.result, cached: action.cached, error: null, showMods: false, showPlayers: false, showAPIUsage: false };
+				return { isLoaded: true, result: action.result, cached: action.cached, error: null, showAPIUsage: false };
 			case 'SET_ERROR':
-				return { isLoaded: true, result: null, cached: false, error: action.error, showMods: false, showPlayers: false, showAPIUsage: false };
+				return { isLoaded: true, result: null, cached: false, error: action.error, showAPIUsage: false };
 			case 'RESET_ALL':
-				return { isLoaded: false, result: null, cached: false, error: null, showMods: false, showPlayers: false, showAPIUsage: false };
-			case 'TOGGLE_SHOW_MODS':
-				return { ...state, showMods: !state.showMods };
-			case 'TOGGLE_SHOW_PLAYERS':
-				return { ...state, showPlayers: !state.showPlayers };
+				return { isLoaded: false, result: null, cached: false, error: null, showAPIUsage: false };
 			case 'TOGGLE_SHOW_API_USAGE':
 				return { ...state, showAPIUsage: !state.showAPIUsage };
 			default:
@@ -33,7 +29,7 @@ export default function BedrockStatus({ address }) {
 		}
 	};
 
-	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cached: false, showMods: false, showPlayers: false, showAPIUsage: false });
+	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cached: false, showAPIUsage: false });
 
 	useEffect(() => {
 		dispatch({ type: 'RESET_ALL' });
