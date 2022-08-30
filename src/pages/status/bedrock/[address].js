@@ -10,6 +10,7 @@ import MinecraftFormatted from '../../../components/MinecraftFormatted';
 import Ad from '../../../components/Ad';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
+import StatusTable from '../../../components/StatusTable';
 
 export default function BedrockStatus({ address }) {
 	const reducer = (state, action) => {
@@ -74,91 +75,93 @@ export default function BedrockStatus({ address }) {
 				<link rel="canonical" href={`https://mcstatus.io/status/bedrock/${address}`} />
 			</Head>
 			<Header active="home" />
-			<div className="container mx-automy-12 lg:my-24 px-4">
+			<div className="container mx-auto my-12 lg:my-24 px-4">
 				<h1 className="text-5xl font-black">Minecraft Server Status</h1>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search host={address} type="bedrock" />
-				<div className="px-6 py-5 bg-neutral-800 rounded-md mt-4">
+				<div className="px-5 py-4 bg-neutral-800 rounded-md mt-4">
 					{
 						data.isLoaded
 							? data.error
 								? <p className="text-red-400">{data.error}</p>
-								: <table className="table w-full">
-									<tbody>
-										<tr className="border-b border-b-neutral-700">
-											<th className="px-3 pt-2 pb-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Status</th>
-											<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
-												{
-													data.result.online
-														? <span className="text-green-400">Online</span>
-														: <span className="text-red-400">Offline</span>
-												}
-											</td>
-										</tr>
-										<tr className="border-b border-b-neutral-700">
-											<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Host</th>
-											<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.host}</td>
-										</tr>
-										<tr className="border-b border-b-neutral-700">
-											<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Port</th>
-											<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.port}</td>
-										</tr>
-										{
+								: <StatusTable
+									rows={[
+
+										[
+											'Status',
 											data.result.online
-												? <>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">MOTD</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
-															<MinecraftFormatted html={data.result.motd.html} />
-														</td>
-													</tr>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Version</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.version.name}</td>
-													</tr>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Players</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.players.online} / {data.result.players.max}</td>
-													</tr>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Edition</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.edition}</td>
-													</tr>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Gamemode</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.gamemode}</td>
-													</tr>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">EULA Blocked</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
-															{
-																data.result.eula_blocked
-																	? <span className="tag is-danger">Yes</span>
-																	: <span className="tag is-success">No</span>
-															}
-														</td>
-													</tr>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Protocol Version</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
-															{
-																data.result.version?.protocol
-																	? <span>{data.result.version.protocol}</span>
-																	: <span className="has-text-grey">N/A</span>
-															}
-														</td>
-													</tr>
-													<tr>
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Cached Response</th>
-														<td className="px-3 pb-2 lg:py-3 block w-full lg:table-cell">
-															<span className="tag is-info">{data.cached ? 'Yes' : 'No'}</span>
-														</td>
-													</tr>
-												</>
-												: null
-										}
-									</tbody>
-								</table>
+												? <span className="text-green-400">Online</span>
+												: <span className="text-red-400">Offline</span>
+										],
+										[
+											'Host',
+											data.result.host
+										],
+										[
+											'Port',
+											data.result.port
+										],
+										...(
+											data.result.online
+												? [
+													[
+														'MOTD',
+														data.result.motd
+															? <MinecraftFormatted html={data.result.motd.html} key="motd" />
+															: <span className="text-neutral-400">N/A</span>
+													],
+													[
+														'Version',
+														data.result.version?.name
+															? data.result.version.name
+															: <span className="text-neutral-400">N/A</span>
+													],
+													[
+														'Players',
+														data.result.players
+															? <span>
+																{data.result.players.online}
+																{
+																	data.result.players.max
+																		? <span> / {data.result.players.max}</span>
+																		: null
+																}
+															</span>
+															: <span className="text-neutral-400">N/A</span>
+													],
+													[
+														'Edition',
+														data.result.edition
+															? <span>{data.result.edition}</span>
+															: <span className="text-neutral-400">N/A</span>
+													],
+													[
+														'Gamemode',
+														data.result.gamemode
+															? <span>{data.result.gamemode}</span>
+															: <span className="text-neutral-400">N/A</span>
+													],
+													[
+														'EULA Blocked',
+														data.result.eula_blocked
+															? <span className="text-red-400">Yes</span>
+															: <span className="text-green-400">No</span>
+													],
+													[
+														'Protocol Version',
+														data.result.version?.protocol
+															? <span>{data.result.version.protocol}</span>
+															: <span className="text-neutral-400">N/A</span>
+													],
+													[
+														'Cached Response',
+														data.cached ? 'Yes' : 'No'
+													]
+												]
+												: []
+										)
+									]}
+								/>
 							: <div className="flex gap-3">
 								<div className="w-1/4">
 									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
@@ -195,7 +198,7 @@ export default function BedrockStatus({ address }) {
 									? <div className="p-4 border-t border-t-neutral-700">
 										<p>
 											<span className="bg-green-600 text-sm px-2 py-1 rounded">GET</span>
-											<code className="ml-2">https://api.mcstatus.io/v2/status/bedrock/{address}</code>
+											<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/bedrock/{address}</code>
 										</p>
 										<Highlight source={JSON.stringify(data.result, null, '    ')} className="border border-neutral-700 rounded mt-4" />
 										<p className="mt-3">Learn more about this response by viewing it in the <Link href="/docs#bedrock-status"><a className="text-blue-500 hover:text-blue-400 transition-colors duration-150" >API documentation</a></Link>.</p>

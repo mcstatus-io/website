@@ -10,6 +10,7 @@ import MinecraftFormatted from '../../../components/MinecraftFormatted';
 import Ad from '../../../components/Ad';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
+import StatusTable from '../../../components/StatusTable';
 
 export default function JavaStatus({ address }) {
 	const reducer = (state, action) => {
@@ -78,66 +79,52 @@ export default function JavaStatus({ address }) {
 				<h1 className="text-5xl font-black">Minecraft Server Status</h1>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search host={address} type="java" />
-				<div className="px-6 py-5 bg-neutral-800 rounded-md mt-4">
+				<div className="px-5 py-4 bg-neutral-800 rounded-md mt-4">
 					{
 						data.isLoaded
 							? data.error
 								? <p className="text-red-400">{data.error}</p>
-								: <table className="table w-full">
-									<tbody>
-										<tr className="border-b border-b-neutral-700">
-											<th className="px-3 pt-2 pb-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Status</th>
-											<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
-												{
-													data.result.online
-														? <span className="text-green-400">Online</span>
-														: <span className="text-red-400">Offline</span>
-												}
-											</td>
-										</tr>
-										<tr className="border-b border-b-neutral-700">
-											<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Host</th>
-											<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.host}</td>
-										</tr>
-										<tr className="border-b border-b-neutral-700">
-											<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Port</th>
-											<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">{data.result.port}</td>
-										</tr>
-										{
+								: <StatusTable
+									rows={[
+										[
+											'Status',
 											data.result.online
-												? <>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-2 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Icon</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
-															{
-																data.result.icon
-																	? <Image src={data.result.icon} width="64" height="64" alt="Server icon" />
-																	: <p className="has-text-grey">N/A</p>
-															}
-														</td>
-													</tr>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">MOTD</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
-															<MinecraftFormatted html={data.result.motd.html} />
-														</td>
-													</tr>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Version</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
-															{
-																data.result.version?.name_raw
-																	? data.result.version.name_raw === data.result.version.name_clean
-																		? <span>{data.result.version.name_clean}</span>
-																		: <MinecraftFormatted html={data.result.version.name_html} />
-																	: <span className="has-text-grey">N/A (&lt; 1.3)</span>
-															}
-														</td>
-													</tr>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Players</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
-															<span className="is-align-middle">{data.result.players.online} / {data.result.players.max}</span>
+												? <span className="text-green-400">Online</span>
+												: <span className="text-red-400">Offline</span>
+										],
+										[
+											'Host',
+											data.result.host
+										],
+										[
+											'Port',
+											data.result.port
+										],
+										...(
+											data.result.online
+												? [
+													[
+														'Icon',
+														data.result.icon
+															? <Image src={data.result.icon} width="64" height="64" alt="Server icon" />
+															: <p className="text-neutral-400">N/A</p>
+													],
+													[
+														'MOTD',
+														<MinecraftFormatted html={data.result.motd.html} key="motd" />
+													],
+													[
+														'Version',
+														data.result.version?.name_raw
+															? data.result.version.name_raw === data.result.version.name_clean
+																? <span>{data.result.version.name_clean}</span>
+																: <MinecraftFormatted html={data.result.version.name_html} />
+															: <span className="text-neutral-400">N/A (&lt; 1.3)</span>
+													],
+													[
+														'Players',
+														<>
+															<span>{data.result.players.online} / {data.result.players.max}</span>
 															{
 																data.result.players.list.length > 0
 																	? <button type="button" className="ml-3 text-sm border border-neutral-600 hover:border-neutral-500 outline-none px-2 py-1 rounded" onClick={() => dispatch({ type: 'TOGGLE_SHOW_PLAYERS' })}>{data.showPlayers ? 'Hide' : 'Show'} player list</button>
@@ -148,85 +135,71 @@ export default function JavaStatus({ address }) {
 																	? <MinecraftFormatted html={data.result.players.list.map((player) => player.name_html).join('<br />')} className="mt-3" />
 																	: null
 															}
-														</td>
-													</tr>
-													{
-														data.result.mods.length > 0
-															? <tr className="border-b border-b-neutral-700">
-																<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Mods</th>
-																<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
-																	<span className="is-align-middle">{data.result.mods.length} mod{data.result.mods.length === 1 ? '' : 's'} loaded</span>
-																	{
-																		data.result.mods.length > 0
-																			? <button type="button" className="button is-link is-small is-align-middle ml-3" onClick={() => dispatch({ type: 'TOGGLE_SHOW_MODS' })}>{data.showMods ? 'Hide' : 'Show'} mod info</button>
-																			: null
-																	}
-																	{
-																		data.showMods
-																			? <div className="tags mt-2">
-																				{
-																					data.result.mods.map((mod, index) => (
-																						<span className="tag is-link" key={index}>{mod.name}: v{mod.version}</span>
-																					))
-																				}
-																			</div>
-																			: null
-																	}
-																</td>
-															</tr>
-															: null
-													}
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">EULA Blocked</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
+														</>
+													],
+													[
+														'Mods',
+														<>
+															<span>{data.result.mods.length} mod{data.result.mods.length === 1 ? '' : 's'} loaded</span>
 															{
-																data.result.eula_blocked
-																	? <span className="tag is-danger">Yes</span>
-																	: <span className="tag is-success">No</span>
+																data.result.mods.length > 0
+																	? <button type="button" className="ml-3 text-sm border border-neutral-600 hover:border-neutral-500 outline-none px-2 py-1 rounded" onClick={() => dispatch({ type: 'TOGGLE_SHOW_MODS' })}>{data.showMods ? 'Hide' : 'Show'} mod info</button>
+																	: null
 															}
-														</td>
-													</tr>
-													<tr className="border-b border-b-neutral-700">
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Protocol Version</th>
-														<td className="px-3 pb-4 lg:py-3 block w-full lg:table-cell">
 															{
-																data.result.version?.protocol
-																	? <span>{data.result.version.protocol}</span>
-																	: <span className="has-text-grey">N/A</span>
+																data.showMods
+																	? <div className="tags mt-2">
+																		{
+																			data.result.mods.map((mod, index) => (
+																				<span className="tag is-link" key={index}>{mod.name}: v{mod.version}</span>
+																			))
+																		}
+																	</div>
+																	: null
 															}
-														</td>
-													</tr>
-													<tr>
-														<th className="px-3 pt-4 py-1 lg:py-3 text-left block w-full lg:w-1/6 lg:table-cell">Cached Response</th>
-														<td className="px-3 pb-2 lg:py-3 block w-full lg:table-cell">
-															<span className="tag is-info">{data.cached ? 'Yes' : 'No'}</span>
-														</td>
-													</tr>
-												</>
-												: null
-										}
-									</tbody>
-								</table>
+														</>
+													],
+													[
+														'EULA Blocked',
+														data.result.eula_blocked
+															? <span className="text-red-400">Yes</span>
+															: <span className="text-green-400">No</span>
+													],
+													[
+														'Protocol Version',
+														data.result.version?.protocol
+															? <span>{data.result.version.protocol}</span>
+															: <span className="text-neutral-400">N/A</span>
+													],
+													[
+														'Cached Response',
+														data.cached ? 'Yes' : 'No'
+													]
+												]
+												: []
+										)
+									]}
+								/>
 							: <div className="flex gap-3">
 								<div className="w-1/4">
-									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full" />
+									<div className="block rounded bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full" />
 								</div>
 								<div className="w-3/4">
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full" />
+									<div className="block rounded bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-700 h-12 w-full" />
 								</div>
 							</div>
 					}
@@ -243,7 +216,7 @@ export default function JavaStatus({ address }) {
 									? <div className="p-4 border-t border-t-neutral-700">
 										<p>
 											<span className="bg-green-600 text-sm px-2 py-1 rounded">GET</span>
-											<code className="ml-2">https://api.mcstatus.io/v2/status/java/{address}</code>
+											<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/java/{address}</code>
 										</p>
 										<Highlight source={JSON.stringify(data.result, null, '    ')} className="border border-neutral-700 rounded mt-4" />
 										<p className="mt-3">Learn more about this response by viewing it in the <Link href="/docs#java-status"><a className="text-blue-500 hover:text-blue-400 transition-colors duration-150" >API documentation</a></Link>.</p>

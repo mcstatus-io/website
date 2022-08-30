@@ -8,7 +8,7 @@ import icon from '../assets/img/icon.png';
 
 export default function Header({ active }) {
 	return (
-		<div className="sticky top-0 w-screen h-16 bg-neutral-900 bg-opacity-80 backdrop-blur-lg border-b border-b-neutral-700">
+		<div className="sticky top-0 w-screen h-16 bg-neutral-900 bg-opacity-90 backdrop-blur-lg border-b border-b-neutral-700">
 			<div className="container mx-auto h-full flex justify-between items-center px-6">
 				<div className="flex">
 					<div className="hidden md:block pr-6 border-r-2 border-r-neutral-800">
