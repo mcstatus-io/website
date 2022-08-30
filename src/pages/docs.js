@@ -116,6 +116,43 @@ export default function Documentation() {
 					</div>
 				</div>
 			</div>
+			<script type="application/ld+json">
+				{`
+[
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Home",
+				"item": "https://mcstatus.io"
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"name": "API Documentation",
+				"item": "https://mcstatus.io/docs"
+			}
+		]
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"url": "https://mcstatus.io",
+		"potentialAction": {
+			"@type": "SearchAction",
+			"target": {
+				"@type": "EntryPoint",
+				"urlTemplate": "https://mcstatus.io/status/java/{host}"
+			},
+			"query-input": "required name=host"
+		}
+	}
+]
+				`}
+			</script>
 		</>
 	);
 }

@@ -62,6 +62,37 @@ export default function Home({ javaServers, bedrockServers }) {
 				<p>We also offer an endpoint for quickly viewing the icon of any Java Edition Minecraft server. This makes it easy for server owners to display the continuously changing server icon on their own website without the hassle of updating their own code. Our service is entirely open source, and you can view it any time on our <a href="https://github.com/mcstatus-io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">GitHub organization</a>. If you would like to use our API in your service, head over to the <Link href="/docs/v2"><a className="text-blue-500 hover:text-blue-400 transition-colors duration-150">API documentation</a></Link> and easily implement our standardized API in any code environment.</p>
 				<Ad className="mt-6" />
 			</div>
+			<script type="application/ld+json">
+				{`
+[
+	{
+		"@context": "https://schema.org",
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Home",
+				"item": "https://mcstatus.io"
+			}
+		]
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"url": "https://mcstatus.io",
+		"potentialAction": {
+			"@type": "SearchAction",
+			"target": {
+				"@type": "EntryPoint",
+				"urlTemplate": "https://mcstatus.io/status/java/{host}"
+			},
+			"query-input": "required name=host"
+		}
+	}
+]
+				`}
+			</script>
 		</>
 	);
 }
