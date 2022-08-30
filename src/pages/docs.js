@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/future/image';
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import Highlight from '../components/Highlight';
 import Ad from '../components/Ad';
 import javaExample from '../assets/response/java.jsonc';
@@ -24,7 +24,7 @@ export default function Documentation() {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io/docs" />
 			</Head>
-			<Header active="api" />
+			<Navbar active="api" />
 			<div className="container mx-auto my-12 lg:my-24 px-4">
 				<div className="flex flex-col-reverse lg:flex-row">
 					<div className="lg:basis-[75%]">

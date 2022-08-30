@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import Ad from '../components/Ad';
 
 export default function About() {
@@ -19,7 +19,7 @@ export default function About() {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io/about" />
 			</Head>
-			<Header active="about" />
+			<Navbar active="about" />
 			<div className="container mx-auto my-12 lg:my-24 px-4">
 				<h1 className="text-4xl lg:text-5xl font-black">About</h1>
 				<p className="text-2xl font-light mt-2">A quick understanding of what we do</p>

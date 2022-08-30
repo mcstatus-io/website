@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { exampleServers } from '../assets/servers';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import Search from '../components/Search';
 import Ad from '../components/Ad';
 
@@ -22,7 +22,7 @@ export default function Home({ javaServers, bedrockServers }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io" />
 			</Head>
-			<Header active="home" />
+			<Navbar active="home" />
 			<div className="container mx-auto my-12 lg:my-24 px-4">
 				<h1 className="text-4xl lg:text-5xl font-black">Minecraft Server Status</h1>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>

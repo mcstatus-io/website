@@ -3,14 +3,14 @@ import Image from 'next/future/image';
 import Head from 'next/head';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import Header from '../../../components/Header';
+import Navbar from '../../../components/Navbar';
 import Search from '../../../components/Search';
 import Highlight from '../../../components/Highlight';
 import MinecraftFormatted from '../../../components/MinecraftFormatted';
+import StatusTable from '../../../components/StatusTable';
 import Ad from '../../../components/Ad';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
-import StatusTable from '../../../components/StatusTable';
 
 export default function JavaStatus({ address }) {
 	const reducer = (state, action) => {
@@ -74,9 +74,9 @@ export default function JavaStatus({ address }) {
 				<meta property="og:image" content={data.result?.favicon ?? 'https://mcstatus.io/img/icon.png'} />
 				<link rel="canonical" href={`https://mcstatus.io/status/java/${address}`} />
 			</Head>
-			<Header active="home" />
+			<Navbar active="home" />
 			<div className="container mx-auto my-12 lg:my-24 px-4">
-				<h1 className="text-5xl font-black">Minecraft Server Status</h1>
+				<h1 className="text-4xl lg:text-5xl font-black">Minecraft Server Status</h1>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search host={address} type="java" />
 				<div className="px-5 py-4 bg-neutral-800 rounded-md mt-4">

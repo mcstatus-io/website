@@ -29,7 +29,7 @@ export default function MinecraftFormatted({ html, className }) {
 	}, [containerElem]);
 
 	return (
-		<pre className={`block relative bg-black text-white p-4 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: html }} ref={containerElem} />
+		<pre className={`block bg-black text-white p-4 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: html }} ref={containerElem} />
 	);
 }
 
