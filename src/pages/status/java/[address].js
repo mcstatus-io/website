@@ -17,11 +17,13 @@ export default function JavaStatus({ address }) {
 	const reducer = (state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
-				return { isLoaded: true, result: action.result, cached: action.cached, error: null, showMods: false, showPlayers: false, showAPIUsage: false };
+				return { ...state, isLoaded: true, result: action.result, cached: action.cached, error: null, showMods: false, showPlayers: false, showAPIUsage: false };
 			case 'SET_ERROR':
-				return { isLoaded: true, result: null, cached: false, error: action.error, showMods: false, showPlayers: false, showAPIUsage: false };
+				return { ...state, isLoaded: true, result: null, cached: false, error: action.error, showMods: false, showPlayers: false, showAPIUsage: false };
+			case 'SET_PROTOCOL_VERSIONS':
+				return { ...state, protocolVersions: action.data };
 			case 'RESET_ALL':
-				return { isLoaded: false, result: null, cached: false, error: null, showMods: false, showPlayers: false, showAPIUsage: false };
+				return { ...state, isLoaded: false, result: null, cached: false, error: null, showMods: false, showPlayers: false, showAPIUsage: false };
 			case 'TOGGLE_SHOW_MODS':
 				return { ...state, showMods: !state.showMods };
 			case 'TOGGLE_SHOW_PLAYERS':
@@ -33,7 +35,7 @@ export default function JavaStatus({ address }) {
 		}
 	};
 
-	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cached: false, showMods: false, showPlayers: false, showAPIUsage: false });
+	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cached: false, showMods: false, showPlayers: false, showAPIUsage: false, protocolVersions: null });
 
 	useEffect(() => {
 		dispatch({ type: 'RESET_ALL' });
@@ -58,8 +60,26 @@ export default function JavaStatus({ address }) {
 
 				dispatch({ type: 'SET_ERROR', error: e.message ?? e.toString() });
 			}
+
+			try {
+				const result = await fetch('https://raw.githubusercontent.com/PrismarineJS/minecraft-data/master/data/pc/common/protocolVersions.json');
+
+				if (result.status < 400) {
+					const body = await result.json();
+
+					dispatch({ type: 'SET_PROTOCOL_VERSIONS', data: body });
+				} else {
+					const body = await result.text();
+
+					console.error(body);
+				}
+			} catch (e) {
+				console.error(e);
+			}
 		})();
 	}, [address]);
+
+	const protocolVersionName = data.result && data.protocolVersions ? data.protocolVersions.find((version) => version.version === data.result.version.protocol) : null;
 
 	return (
 		<>
@@ -169,7 +189,14 @@ export default function JavaStatus({ address }) {
 													[
 														'Protocol Version',
 														data.result.version?.protocol
-															? <span>{data.result.version.protocol}</span>
+															? <span>
+																<span>{data.result.version.protocol}</span>
+																{
+																	protocolVersionName
+																		? <span className="text-neutral-400"> ({protocolVersionName.minecraftVersion})</span>
+																		: null
+																}
+															</span>
 															: <span className="text-neutral-400">N/A</span>
 													],
 													[
