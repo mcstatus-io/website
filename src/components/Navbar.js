@@ -25,6 +25,9 @@ export default function Header({ active }) {
 								<span>Home</span>
 							</a>
 						</Link>
+						<Link href="/tools">
+							<a className={active === 'tools' ? 'text-white' : 'text-neutral-400 hover:text-white transition-colors duration-150'}>Tools</a>
+						</Link>
 						<Link href="/docs">
 							<a className={active === 'api' ? 'text-white' : 'text-neutral-400 hover:text-white transition-colors duration-150'}>API</a>
 						</Link>
