@@ -106,7 +106,7 @@ export default function About() {
 				"name": "How do I see all players on the server?",
 				"acceptedAnswer": {
 					"@type": "Answer",
-					"text": "<p>Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <a href="https://mcstatus.io/status/java/play.purpleprison.net">play.purpleprison.net</a> for example.</p>"
+					"text": "<p>Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <a href=https://mcstatus.io/status/java/play.purpleprison.net>play.purpleprison.net</a> for example.</p>"
 				}
 			},
 			{
@@ -122,7 +122,7 @@ export default function About() {
 				"name": "Is this service open-source?",
 				"acceptedAnswer": {
 					"@type": "Answer",
-					"text": "<p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io">our GitHub organization</a>.</p>"
+					"text": "<p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href=https://github.com/mcstatus-io>our GitHub organization</a>.</p>"
 				}
 			}
 		]
