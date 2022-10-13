@@ -95,8 +95,8 @@ export default function BedrockStatus({ address }) {
 			<div className="container mx-auto my-12 lg:my-24 px-4">
 				<h1 className="text-4xl lg:text-5xl font-black">Minecraft Server Status</h1>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
-				<Search host={address} type="bedrock" />
-				<div className="px-5 py-4 bg-neutral-800 rounded-md mt-4">
+				<Search host={address} type="bedrock" className="mt-4" />
+				<div className="px-5 py-4 bg-neutral-800 border border-neutral-700 rounded-md mt-4">
 					{
 						data.isLoaded
 							? data.error
@@ -212,7 +212,7 @@ export default function BedrockStatus({ address }) {
 				</div>
 				{
 					data.isLoaded && data.result
-						? <div className="mt-3 bg-neutral-800 rounded-md">
+						? <div className="mt-3 bg-neutral-800 border border-neutral-700 rounded-md">
 							<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
 								<p className="font-bold">API Usage</p>
 								<Image src={data.showAPIUsage ? chevronUp : chevronDown} alt="Chevron down icon" width="16" />

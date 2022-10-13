@@ -27,7 +27,7 @@ export default function Home({ javaServers, bedrockServers }) {
 			<div className="container mx-auto my-12 lg:my-24 px-4">
 				<h1 className="text-4xl lg:text-5xl font-black">Minecraft Server Status</h1>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
-				<Search />
+				<Search className="mt-4" />
 				<h2 className="text-2xl lg:text-3xl font-black mt-12">Sample Servers</h2>
 				<p className="text-xl font-light">A few sample servers to test out our service</p>
 				<div className="md:columns-2 gap-4 mt-4">
@@ -35,7 +35,7 @@ export default function Home({ javaServers, bedrockServers }) {
 						{
 							javaServers.map((server, index) => (
 								<Link href={`/status/java/${server.address}`} key={index}>
-									<a className="block p-5 bg-neutral-800 hover:bg-neutral-700 transition-colors duration-150 rounded-md mb-4">
+									<a className="block p-5 bg-neutral-800 border border-neutral-700 hover:border-neutral-600 rounded-md mb-4">
 										<span className="px-2 py-1 rounded mr-3 bg-green-700 text-xs">Java</span>
 										<code>{server.address}</code>
 									</a>
@@ -47,7 +47,7 @@ export default function Home({ javaServers, bedrockServers }) {
 						{
 							bedrockServers.map((server, index) => (
 								<Link href={`/status/bedrock/${server.address}`} key={index}>
-									<a className="block p-5 bg-neutral-800 hover:bg-neutral-700 transition-colors duration-150 rounded-md mb-4">
+									<a className="block p-5 bg-neutral-800 border border-neutral-700 hover:border-neutral-600 rounded-md mb-4">
 										<span className="px-2 py-1 rounded mr-3 bg-blue-600 text-xs">Bedrock</span>
 										<code>{server.address}</code>
 									</a>

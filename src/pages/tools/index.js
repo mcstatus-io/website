@@ -24,7 +24,7 @@ export default function Tools() {
 				<h1 className="text-4xl lg:text-5xl font-black">Tools</h1>
 				<p className="text-2xl font-light mt-2">Quick tools to help Minecraft developers</p>
 				<Link href="/tools/coordinate">
-					<a className="block p-5 bg-neutral-800 hover:bg-neutral-700 transition-colors duration-150 rounded-md my-5">
+					<a className="block p-5 bg-neutral-800 border border-neutral-700 hover:border-neutral-600 rounded-md my-5">
 						<h2 className="text-xl font-bold">Coordinate Calculator</h2>
 						<p className="text-lg">Calculate region, chunk and block coordinates</p>
 					</a>

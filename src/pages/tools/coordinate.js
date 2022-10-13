@@ -44,7 +44,7 @@ export default function Tools() {
 				<h1 className="text-4xl lg:text-5xl font-black">Coordinate Calculator</h1>
 				<p className="text-2xl font-light mt-2">Calculate region, chunk and block coordinates</p>
 				<h2 className="text-2xl font-black mt-6">Block Coordinates</h2>
-				<div className="p-5 bg-neutral-800 rounded mt-2">
+				<div className="p-5 bg-neutral-800 border border-neutral-700 rounded mt-2">
 					<div className="flex justify-between items-center gap-8">
 						<input type="text" className="grow border border-neutral-600 hover:border-neutral-500 focus:border-neutral-500 font-mono outline-none bg-transparent px-3 py-2 rounded w-full" placeholder="X" defaultValue={block.x} onChange={(event) => onChange('block', 'x', event)} />
 						<input type="text" className="grow border border-neutral-600 hover:border-neutral-500 focus:border-neutral-500 font-mono outline-none bg-transparent px-3 py-2 rounded w-full" placeholder="Y" defaultValue={block.y} onChange={(event) => onChange('block', 'y', event)} />
@@ -54,7 +54,7 @@ export default function Tools() {
 					<p>Region: <code>({block.x >> 9}, {block.z >> 9})</code> &ndash; in file <code>r.{block.x >> 9}.{block.z >> 9}.mcr</code></p>
 				</div>
 				<h2 className="text-2xl font-black mt-6">Chunk Coordinates</h2>
-				<div className="p-5 bg-neutral-800 rounded mt-2">
+				<div className="p-5 bg-neutral-800 border border-neutral-700 rounded mt-2">
 					<div className="flex justify-between items-center gap-8">
 						<input type="text" className="grow border border-neutral-600 hover:border-neutral-500 focus:border-neutral-500 font-mono outline-none bg-transparent px-3 py-2 rounded w-full" placeholder="X" defaultValue={chunk.x} onChange={(event) => onChange('chunk', 'x', event)} />
 						<input type="text" className="grow border border-neutral-600 hover:border-neutral-500 focus:border-neutral-500 font-mono outline-none bg-transparent px-3 py-2 rounded w-full" placeholder="Y" defaultValue={chunk.y} onChange={(event) => onChange('chunk', 'y', event)} />
@@ -64,7 +64,7 @@ export default function Tools() {
 					<p>Region: <code>({chunk.x >> 5}, {chunk.y >> 5})</code> (in file <code>r.{chunk.x >> 5}.{chunk.y >> 5}.mcr</code>)</p>
 				</div>
 				<h2 className="text-2xl font-black mt-6">Region Coordinates</h2>
-				<div className="p-5 bg-neutral-800 rounded mt-2">
+				<div className="p-5 bg-neutral-800 border border-neutral-700 rounded mt-2">
 					<div className="flex justify-between items-center gap-8">
 						<input type="text" className="grow border border-neutral-600 hover:border-neutral-500 focus:border-neutral-500 font-mono outline-none bg-transparent px-3 py-2 rounded w-full" placeholder="X" defaultValue={region.x} onChange={(event) => onChange('region', 'x', event)} />
 						<input type="text" className="grow border border-neutral-600 hover:border-neutral-500 focus:border-neutral-500 font-mono outline-none bg-transparent px-3 py-2 rounded w-full" placeholder="Z" defaultValue={region.z} onChange={(event) => onChange('region', 'z', event)} />
