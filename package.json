@@ -32,16 +32,16 @@
 	},
 	"homepage": "https://github.com/mcstatus-io/Website#readme",
 	"dependencies": {
-		"@next/bundle-analyzer": "^12.2.5",
+		"@next/bundle-analyzer": "^12.3.1",
 		"formik": "^2.2.9",
 		"highlight.js": "^11.6.0",
-		"next": "^12.2.5",
+		"next": "^12.3.1",
 		"prop-types": "^15.8.1",
 		"raw-loader": "^4.0.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"sass": "^1.54.5",
-		"sharp": "^0.30.7",
+		"sass": "^1.55.0",
+		"sharp": "^0.31.1",
 		"yup": "^0.32.11"
 	},
 	"devDependencies": {
