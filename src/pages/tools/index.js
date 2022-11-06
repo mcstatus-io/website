@@ -29,6 +29,12 @@ export default function Tools() {
 						<p className="text-lg">Calculate region, chunk and block coordinates</p>
 					</a>
 				</Link>
+				<Link href="/tools/vote">
+					<a className="block p-5 bg-neutral-800 border border-neutral-700 hover:border-neutral-600 rounded-md my-5">
+						<h2 className="text-xl font-bold">Votifier Tester</h2>
+						<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
+					</a>
+				</Link>
 			</div>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`

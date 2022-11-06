@@ -85,6 +85,18 @@ export default function Tools() {
 				"position": 1,
 				"name": "Home",
 				"item": "https://mcstatus.io"
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"name": "Tools",
+				"item": "https://mcstatus.io/tools"
+			},
+			{
+				"@type": "ListItem",
+				"position": 3,
+				"name": "Coordinate Calculator",
+				"item": "https://mcstatus.io/tools/coordinate"
 			}
 		]
 	},
