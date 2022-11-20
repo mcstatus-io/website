@@ -26,7 +26,7 @@ export default function About() {
 				<p className="text-2xl font-light mt-2">A quick understanding of what we do</p>
 				<p className="mt-3">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">NextJS</a> and the back-end was built with <a href="https://golang.org" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">Carbon Ads</a> to help cover the hosting and development costs.</p>
 				<Ad className="mt-4" />
-				<h2 className="text-3xl font-black mt-12">Frequently Asked Questions</h2>
+				<h2 className="text-3xl font-bold mt-12">Frequently Asked Questions</h2>
 				<h3 className="text-xl font-bold mt-6 text-green-400">How do I check the status of a server?</h3>
 				<p className="mt-1">Simply paste the address of the server into the address box on the home page. The address is in the form of <code>host:port</code> but the port is optional and defaults to <code>25565</code> for Java Edition servers and <code>19132</code> for Bedrock Edition servers.</p>
 				<h3 className="text-xl font-bold mt-6 text-green-400">What is an SRV record?</h3>
@@ -41,7 +41,7 @@ export default function About() {
 				<p className="mt-1">The latency to the server is only measured from the location of our service hosting provider, which is irrelevant to show because your connection to the server is going to be a lot different. It would not make sense to show this data in the response.</p>
 				<h3 className="text-xl font-bold mt-6 text-green-400">Is this service open-source?</h3>
 				<p className="mt-1">Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">our GitHub organization</a>.</p>
-				<h2 className="text-3xl font-black mt-12">Contact</h2>
+				<h2 className="text-3xl font-bold mt-12">Contact</h2>
 				<p className="mt-1">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
 			</div>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">

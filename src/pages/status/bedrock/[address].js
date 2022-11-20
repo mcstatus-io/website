@@ -75,7 +75,7 @@ export default function BedrockStatus({ address }) {
 		})();
 	}, [address]);
 
-	const protocolVersionName = data.result && data.protocolVersions ? data.protocolVersions.find((version) => version.version === data.result.version.protocol) : null;
+	const protocolVersionName = data.result?.version?.protocol && data.protocolVersions ? data.protocolVersions.find((version) => version.version === data.result.version.protocol) : null;
 
 	return (
 		<>
