@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
+import Input from './Input';
+import DropdownSelect from './DropdownSelect';
+import Button from './Button';
 
 export default function Search({ host, type, className }) {
 	const { push } = useRouter();
@@ -22,16 +25,16 @@ export default function Search({ host, type, className }) {
 	return (
 		<form className={`block md:flex items-center gap-5 ${className}`} onSubmit={form.handleSubmit}>
 			<div className="mb-3 md:mb-0">
-				<select className="w-full md:w-auto appearance-none text-center border border-neutral-600 hover:border-neutral-500 focus:border-neutral-500 bg-transparent outline-none cursor-pointer px-3 py-2 rounded" id="type" defaultValue={form.values.type} onChange={form.handleChange} onBlur={form.handleBlur}>
+				<DropdownSelect className="md:w-auto" id="type" defaultValue={form.values.type} onChange={form.handleChange} onBlur={form.handleBlur}>
 					<option value="java" className="text-neutral-800">Java Edition</option>
 					<option value="bedrock" className="text-neutral-800">Bedrock Edition</option>
-				</select>
+				</DropdownSelect>
 			</div>
 			<div className="grow mb-3 md:mb-0">
-				<input type="text" className={`border ${form.errors.host ? 'border-red-500' : 'border-neutral-600 hover:border-neutral-500 focus:border-neutral-500'} font-mono outline-none bg-transparent px-3 py-2 rounded w-full`} id="host" placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} />
+				<Input type="text" id="host" placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} error={form.errors.host} />
 			</div>
 			<div>
-				<button type="submit" className="w-full md:w-auto border border-neutral-600 hover:border-neutral-500 focus:border-neutral-500 disabled:border-neutral-700 disabled:text-neutral-400 bg-transparent px-3 py-2 rounded" disabled={!form.isValid || form.isSubmitting || !form.dirty}>Submit</button>
+				<Button text="Submit" disabled={!form.isValid || form.isSubmitting || !form.dirty} className="md:w-auto" />
 			</div>
 		</form>
 	);

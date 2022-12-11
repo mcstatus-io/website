@@ -1,8 +1,9 @@
 import React from 'react';
-import Link from 'next/link';
 import Script from 'next/script';
 import Head from 'next/head';
 import Navbar from '../../components/Navbar';
+import Header from '../../components/Header';
+import BoxLink from '../../components/BoxLink';
 
 export default function Tools() {
 	return (
@@ -21,20 +22,16 @@ export default function Tools() {
 			</Head>
 			<Navbar active="tools" />
 			<div className="container mx-auto my-12 lg:my-24 px-4">
-				<h1 className="text-4xl lg:text-5xl font-black">Tools</h1>
+				<Header size={1} text="Tools" />
 				<p className="text-2xl font-light mt-2">Quick tools to help Minecraft developers</p>
-				<Link href="/tools/coordinate">
-					<a className="block p-5 bg-neutral-800 border border-neutral-700 hover:border-neutral-600 rounded-md my-5">
-						<h2 className="text-xl font-bold">Coordinate Calculator</h2>
-						<p className="text-lg">Calculate region, chunk and block coordinates</p>
-					</a>
-				</Link>
-				<Link href="/tools/vote">
-					<a className="block p-5 bg-neutral-800 border border-neutral-700 hover:border-neutral-600 rounded-md my-5">
-						<h2 className="text-xl font-bold">Votifier Tester</h2>
-						<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
-					</a>
-				</Link>
+				<BoxLink href="/tools/coordinate" className="mt-5">
+					<Header size={2} text="Coordinate Calculator" />
+					<p className="text-lg">Calculate region, chunk and block coordinates</p>
+				</BoxLink>
+				<BoxLink href="/tools/vote" className="mt-3">
+					<Header size={2} text="Votifier Tester" />
+					<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
+				</BoxLink>
 			</div>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`

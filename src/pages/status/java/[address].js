@@ -12,6 +12,8 @@ import StatusTable from '../../../components/StatusTable';
 import Ad from '../../../components/Ad';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
+import Header from '../../../components/Header';
+import Button from '../../../components/Button';
 
 export default function JavaStatus({ address }) {
 	const reducer = (state, action) => {
@@ -97,7 +99,7 @@ export default function JavaStatus({ address }) {
 			</Head>
 			<Navbar active="home" />
 			<div className="container mx-auto my-12 lg:my-24 px-4">
-				<h1 className="text-4xl lg:text-5xl font-black">Minecraft Server Status</h1>
+				<Header size={1} text="Minecraft Server Status" />
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search host={address} type="java" className="mt-4" />
 				<div className="px-5 py-4 bg-neutral-800 border border-neutral-700 rounded-md mt-4">
@@ -148,7 +150,7 @@ export default function JavaStatus({ address }) {
 															<span>{data.result.players.online} / {data.result.players.max}</span>
 															{
 																data.result.players.list.length > 0
-																	? <button type="button" className="ml-3 text-sm border border-neutral-600 hover:border-neutral-500 outline-none px-2 py-1 rounded" onClick={() => dispatch({ type: 'TOGGLE_SHOW_PLAYERS' })}>{data.showPlayers ? 'Hide' : 'Show'} player list</button>
+																	? <Button text={`${data.showPlayers ? 'Hide' : 'Show'} player list`} className="ml-3 w-auto text-sm" onClick={() => dispatch({ type: 'TOGGLE_SHOW_PLAYERS' })} />
 																	: null
 															}
 															{
@@ -164,7 +166,7 @@ export default function JavaStatus({ address }) {
 															<span>{data.result.mods.length} mod{data.result.mods.length === 1 ? '' : 's'} loaded</span>
 															{
 																data.result.mods.length > 0
-																	? <button type="button" className="ml-3 text-sm border border-neutral-600 hover:border-neutral-500 outline-none px-2 py-1 rounded" onClick={() => dispatch({ type: 'TOGGLE_SHOW_MODS' })}>{data.showMods ? 'Hide' : 'Show'} mod info</button>
+																	? <Button text={`${data.showMods ? 'Hide' : 'Show'} mod info`} className="ml-3 w-auto text-sm" onClick={() => dispatch({ type: 'TOGGLE_SHOW_MODS' })} />
 																	: null
 															}
 															{

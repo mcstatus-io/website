@@ -12,6 +12,7 @@ import StatusTable from '../../../components/StatusTable';
 import Ad from '../../../components/Ad';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
+import Header from '../../../components/Header';
 
 export default function BedrockStatus({ address }) {
 	const reducer = (state, action) => {
@@ -93,7 +94,7 @@ export default function BedrockStatus({ address }) {
 			</Head>
 			<Navbar active="home" />
 			<div className="container mx-auto my-12 lg:my-24 px-4">
-				<h1 className="text-4xl lg:text-5xl font-black">Minecraft Server Status</h1>
+				<Header size={1} text="Minecraft Server Status" />
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search host={address} type="bedrock" className="mt-4" />
 				<div className="px-5 py-4 bg-neutral-800 border border-neutral-700 rounded-md mt-4">

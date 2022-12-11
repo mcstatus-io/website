@@ -4,6 +4,9 @@ import Head from 'next/head';
 import Navbar from '../../components/Navbar';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import Header from '../../components/Header';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 export default function Tools() {
 	const form = useFormik({
@@ -40,8 +43,6 @@ export default function Tools() {
 		}
 	});
 
-	console.log(form.status);
-
 	return (
 		<>
 			<Head>
@@ -58,7 +59,7 @@ export default function Tools() {
 			</Head>
 			<Navbar active="tools" />
 			<div className="container mx-auto my-12 lg:my-24 px-4">
-				<h1 className="text-4xl lg:text-5xl font-black">Votifier Tester</h1>
+				<Header size={1} text="Votifier Tester" />
 				<p className="text-2xl font-light mt-2">Send a Votifier test vote to a Minecraft server</p>
 				{
 					form.isSubmitting
@@ -80,20 +81,20 @@ export default function Tools() {
 						<div className="flex items-center gap-3 mb-3">
 							<div className="grow">
 								<label className="font-bold" htmlFor="host">Host</label>
-								<input type="text" className={`block border ${form.errors.host ? 'border-red-500' : 'border-neutral-600 hover:border-neutral-500 focus:border-neutral-500'} font-mono outline-none bg-transparent px-3 py-2 rounded w-full mt-1`} id="host" placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} />
+								<Input type="text" id="host" error={form.errors.host} placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
 							</div>
 							<div className="grow">
 								<label className="font-bold" htmlFor="port">Port</label>
-								<input type="number" className={`block border ${form.errors.port ? 'border-red-500' : 'border-neutral-600 hover:border-neutral-500 focus:border-neutral-500'} font-mono outline-none bg-transparent px-3 py-2 rounded w-full mt-1`} id="port" placeholder="8192" defaultValue={form.values.port} onChange={form.handleChange} onBlur={form.handleBlur} />
+								<Input type="number" id="port" min="0" max="65536" step="1" error={form.errors.port} defaultValue={form.values.port} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
 							</div>
 							<div className="grow">
 								<label className="font-bold" htmlFor="username">Username</label>
-								<input type="text" className={`block border ${form.errors.username ? 'border-red-500' : 'border-neutral-600 hover:border-neutral-500 focus:border-neutral-500'} outline-none bg-transparent px-3 py-2 rounded w-full mt-1`} id="username" placeholder="Notch" defaultValue={form.values.username} onChange={form.handleChange} onBlur={form.handleBlur} />
+								<Input type="text" id="username" error={form.errors.username} placeholder="Notch" defaultValue={form.values.username} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
 							</div>
 						</div>
 						<label className="font-bold" htmlFor="token">Token</label>
-						<textarea type="text" className={`block border ${form.errors.token ? 'border-red-500' : 'border-neutral-600 hover:border-neutral-500 focus:border-neutral-500'} font-mono outline-none bg-transparent px-3 py-2 rounded w-full mt-1 h-36`} id="token" defaultValue={form.values.token} onChange={form.handleChange} onBlur={form.handleBlur} />
-						<button type="submit" className="border border-neutral-600 rounded px-3 py-2 mt-3 disabled:border-neutral-700 disabled:text-neutral-300 hover:border-neutral-500" disabled={form.isSubmitting || !form.isValid}>Send Vote</button>
+						<Input type="textarea" id="token" error={form.errors.token} className="h-36 mt-1" defaultValue={form.values.token} onChange={form.handleChange} onBlur={form.handleBlur} />
+						<Button type="submit" text="Send Vote" disabled={form.isSubmitting || !form.isValid} className="mt-3 w-auto" />
 					</form>
 				</div>
 			</div>

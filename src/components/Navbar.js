@@ -6,7 +6,7 @@ import calendarIcon from '../assets/icons/calendar.svg';
 import githubIcon from '../assets/icons/github.svg';
 import icon from '../assets/img/icon.png';
 
-export default function Header({ active }) {
+export default function Navbar({ active }) {
 	return (
 		<div className="sticky top-0 z-50 w-screen h-16 bg-neutral-900 bg-opacity-90 backdrop-blur-lg border-b border-b-neutral-700">
 			<div className="container mx-auto h-full flex justify-between items-center px-6">
@@ -51,10 +51,10 @@ export default function Header({ active }) {
 	);
 }
 
-Header.propTypes = {
+Navbar.propTypes = {
 	active: PropTypes.string.isRequired
 };
 
-Header.defaultProps = {
+Navbar.defaultProps = {
 	active: 'home'
 };
