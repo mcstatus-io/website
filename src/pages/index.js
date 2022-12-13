@@ -36,7 +36,7 @@ export default function Home({ javaServers, bedrockServers }) {
 					<Search className="mt-4" />
 				</Container>
 			</div>
-			<Image src={wave} alt="Wave" />
+			<Image src={wave} alt="Wave" className="w-full h-64" />
 			<Container className="mb-12 lg:mb-24">
 				<Header size={2} text="Sample Servers" className="mt-12" />
 				<p className="text-lg font-light">A few sample servers to test out our service</p>
