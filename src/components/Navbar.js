@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import calendarIcon from '../assets/icons/calendar.svg';
 import githubIcon from '../assets/icons/github.svg';
 import icon from '../assets/img/icon.png';
+import { LinkButton } from './Button';
 
 export default function Navbar({ active }) {
 	return (
@@ -44,6 +45,9 @@ export default function Navbar({ active }) {
 						<a href="https://uptime.mcstatus.io" className="text-blue-500 font-medium rounded-full hover:bg-neutral-800 p-2">
 							<Image src={calendarIcon} width="20" height="20" alt="Calendar icon" priority />
 						</a>
+						<LinkButton href="/auth" className="lg:ml-2">
+							Log in with Discord
+						</LinkButton>
 					</div>
 				</div>
 			</div>

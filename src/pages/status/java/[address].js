@@ -13,7 +13,7 @@ import Ad from '../../../components/Ad';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
 import Header from '../../../components/Header';
-import Button from '../../../components/Button';
+import { Button } from '../../../components/Button';
 
 export default function JavaStatus({ address }) {
 	const reducer = (state, action) => {
@@ -150,7 +150,7 @@ export default function JavaStatus({ address }) {
 															<span>{data.result.players.online} / {data.result.players.max}</span>
 															{
 																data.result.players.list.length > 0
-																	? <Button text={`${data.showPlayers ? 'Hide' : 'Show'} player list`} className="ml-3 w-auto text-sm" onClick={() => dispatch({ type: 'TOGGLE_SHOW_PLAYERS' })} />
+																	? <Button className="ml-3 w-auto text-sm" onClick={() => dispatch({ type: 'TOGGLE_SHOW_PLAYERS' })}>{data.showPlayers ? 'Hide' : 'Show'} player list</Button>
 																	: null
 															}
 															{
@@ -166,7 +166,7 @@ export default function JavaStatus({ address }) {
 															<span>{data.result.mods.length} mod{data.result.mods.length === 1 ? '' : 's'} loaded</span>
 															{
 																data.result.mods.length > 0
-																	? <Button text={`${data.showMods ? 'Hide' : 'Show'} mod info`} className="ml-3 w-auto text-sm" onClick={() => dispatch({ type: 'TOGGLE_SHOW_MODS' })} />
+																	? <Button className="ml-3 w-auto text-sm" onClick={() => dispatch({ type: 'TOGGLE_SHOW_MODS' })}>{data.showMods ? 'Hide' : 'Show'} mod info</Button>
 																	: null
 															}
 															{

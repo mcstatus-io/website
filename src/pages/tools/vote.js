@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
-import Button from '../../components/Button';
+import { Button } from '../../components/Button';
 
 export default function Tools() {
 	const form = useFormik({
@@ -94,7 +94,7 @@ export default function Tools() {
 						</div>
 						<label className="font-bold" htmlFor="token">Token</label>
 						<Input type="textarea" id="token" error={form.errors.token} className="h-36 mt-1" defaultValue={form.values.token} onChange={form.handleChange} onBlur={form.handleBlur} />
-						<Button type="submit" text="Send Vote" disabled={form.isSubmitting || !form.isValid} className="mt-3 w-auto" />
+						<Button type="submit" disabled={form.isSubmitting || !form.isValid} className="mt-3 w-auto">Send Vote</Button>
 					</form>
 				</div>
 			</div>

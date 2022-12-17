@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import Input from './Input';
 import DropdownSelect from './DropdownSelect';
-import Button from './Button';
+import { Button } from './Button';
 
 export default function Search({ host, type, className }) {
 	const { push } = useRouter();
@@ -34,7 +34,9 @@ export default function Search({ host, type, className }) {
 				<Input type="text" id="host" placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} error={form.errors.host} />
 			</div>
 			<div>
-				<Button text="Submit" disabled={!form.isValid || form.isSubmitting || !form.dirty} className="md:w-auto" />
+				<Button disabled={!form.isValid || form.isSubmitting || !form.dirty} className="md:w-auto">
+					Submit
+				</Button>
 			</div>
 		</form>
 	);
