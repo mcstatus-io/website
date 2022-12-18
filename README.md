@@ -19,7 +19,11 @@ The NextJS server that powers the mcstatus.io website. This project is open sour
 ```
 NEXT_PUBLIC_API_HOST=http://localhost:3001
 NEXT_PUBLIC_CARBON_CODE=abc123
-NEXT_PUBLIC_CACHE_TIME=60
+NEXT_PUBLIC_JAVA_CACHE_TIME=60
+NEXT_PUBLIC_BEDROCK_CACHE_TIME=60
+NEXT_PUBLIC_ICON_CACHE_TIME=600
+NEXT_PUBLIC_DISCORD_CLIENT_ID=1000957409365340170
+NEXT_PUBLIC_DISCORD_REDIRECT_URI=http://localhost:3000/auth/callback
 ```
 5. Start the development server
     - `npm run dev`

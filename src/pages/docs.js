@@ -10,6 +10,7 @@ import javaExample from '../assets/response/java.jsonc';
 import bedrockExample from '../assets/response/bedrock.jsonc';
 import iconExample from '../assets/response/icon.png';
 import Header from '../components/Header';
+import formatDuration from '../util/formatDuration';
 
 export default function Documentation() {
 	return (
@@ -47,18 +48,21 @@ export default function Documentation() {
 							<span className="bg-green-500 rounded px-2 py-1 text-xs">GET</span>
 							<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/java/&lt;address&gt;</code>
 						</p>
+						<p className="mt-3">Cache duration: <span className="bg-blue-500 rounded px-2 py-1 text-xs align-middle">{formatDuration(parseInt(process.env.NEXT_PUBLIC_JAVA_CACHE_TIME) * 1000)}</span></p>
 						<Highlight source={javaExample} className="mt-3 border border-neutral-700 rounded" />
 						<Header size={3} text="Bedrock Status" id="bedrock-status" className="mt-12" />
 						<p className="mt-3">
 							<span className="bg-green-500 rounded px-2 py-1 text-xs">GET</span>
 							<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/bedrock/&lt;address&gt;</code>
 						</p>
+						<p className="mt-3">Cache duration: <span className="bg-blue-500 rounded px-2 py-1 text-xs align-middle">{formatDuration(parseInt(process.env.NEXT_PUBLIC_BEDROCK_CACHE_TIME) * 1000)}</span></p>
 						<Highlight source={bedrockExample} className="mt-3 border border-neutral-700 rounded" />
 						<Header size={3} text="Icon" id="icon" className="mt-12" />
 						<p className="mt-3">
 							<span className="bg-green-500 rounded px-2 py-1 text-xs">GET</span>
 							<code className="ml-2 break-words">https://api.mcstatus.io/v2/icon/&lt;address&gt;</code>
 						</p>
+						<p className="mt-3">Cache duration: <span className="bg-blue-500 rounded px-2 py-1 text-xs align-middle">{formatDuration(parseInt(process.env.NEXT_PUBLIC_ICON_CACHE_TIME) * 1000)}</span></p>
 						<Image src={iconExample} width="128" height="128" alt="Sample server icon" className="mt-3" />
 						<Header size={2} text="Support" id="support" className="mt-12" />
 						<p className="mt-3">If you require any additional assistance or found a bug you would like to report, please send an email to <a href="mailto:api@mcstatus.io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">api@mcstatus.io</a>.</p>
