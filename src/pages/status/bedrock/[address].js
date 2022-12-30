@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 import Script from 'next/script';
@@ -226,7 +226,7 @@ export default function BedrockStatus({ address }) {
 											<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/bedrock/{address}</code>
 										</p>
 										<Highlight source={JSON.stringify(data.result, null, '    ')} className="border border-neutral-700 rounded mt-4" />
-										<p className="mt-3">Learn more about this response by viewing it in the <Link href="/docs#bedrock-status"><a className="text-blue-500 hover:text-blue-400 transition-colors duration-150" >API documentation</a></Link>.</p>
+										<p className="mt-3">Learn more about this response by viewing it in the <Link href="/docs#bedrock-status" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">API documentation</Link>.</p>
 									</div>
 									: null
 							}

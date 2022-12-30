@@ -17,8 +17,8 @@ Button.propTypes = {
 
 export function LinkButton({ children, href, className, ...props }) {
 	return (
-		<Link href={href}>
-			<a {...{ ...props, className: getClassName(className) }}>{children}</a>
+		<Link href={href} {...{ ...props, className: getClassName(className) }}>
+			{children}
 		</Link>
 	);
 }

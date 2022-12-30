@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import Script from 'next/script';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Highlight from '../components/Highlight';
 import Ad from '../components/Ad';
@@ -70,52 +70,52 @@ export default function Documentation() {
 					<div className="lg:border-l-2 border-l-neutral-700 lg:ml-24 lg:pl-12 py-2 mb-8 lg:mb-0">
 						<ul>
 							<li>
-								<Link href="#overview">
-									<a className="font-bold text-neutral-300 hover:text-white transition-colors duration-150">Overview</a>
+								<Link href="#overview" className="font-bold text-neutral-300 hover:text-white transition-colors duration-150">
+									Overview
 								</Link>
 								<ul className="pl-6">
 									<li className="mt-1">
-										<Link href="#standards">
-											<a className="text-neutral-300 hover:text-white transition-colors duration-150">Standards</a>
+										<Link href="#standards" className="text-neutral-300 hover:text-white transition-colors duration-150">
+											Standards
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#cache">
-											<a className="text-neutral-300 hover:text-white transition-colors duration-150">Cache</a>
+										<Link href="#cache" className="text-neutral-300 hover:text-white transition-colors duration-150">
+											Cache
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#supported">
-											<a className="text-neutral-300 hover:text-white transition-colors duration-150">Supported Versions</a>
+										<Link href="#supported" className="text-neutral-300 hover:text-white transition-colors duration-150">
+											Supported Versions
 										</Link>
 									</li>
 								</ul>
 							</li>
 							<li className="mt-1">
-								<Link href="#routes">
-									<a className="font-bold text-neutral-300 hover:text-white transition-colors duration-150">Routes</a>
+								<Link href="#routes" className="font-bold text-neutral-300 hover:text-white transition-colors duration-150">
+									Routes
 								</Link>
 								<ul className="pl-6">
 									<li className="mt-1">
-										<Link href="#java-status">
-											<a className="text-neutral-300 hover:text-white transition-colors duration-150">Java Status</a>
+										<Link href="#java-status" className="text-neutral-300 hover:text-white transition-colors duration-150">
+											Java Status
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#bedrock-status">
-											<a className="text-neutral-300 hover:text-white transition-colors duration-150">Bedrock Status</a>
+										<Link href="#bedrock-status" className="text-neutral-300 hover:text-white transition-colors duration-150">
+											Bedrock Status
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#icon">
-											<a className="text-neutral-300 hover:text-white transition-colors duration-150">Icon</a>
+										<Link href="#icon" className="text-neutral-300 hover:text-white transition-colors duration-150">
+											Icon
 										</Link>
 									</li>
 								</ul>
 							</li>
 							<li className="mt-1">
-								<Link href="#support">
-									<a className="font-bold text-neutral-300 hover:text-white transition-colors duration-150">Support</a>
+								<Link href="#support" className="font-bold text-neutral-300 hover:text-white transition-colors duration-150">
+									Support
 								</Link>
 							</li>
 						</ul>
