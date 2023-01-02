@@ -2,11 +2,13 @@ import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Script from 'next/script';
+import PropTypes from 'prop-types';
 import Navbar from '../components/Navbar';
 import Ad from '../components/Ad';
 import Header from '../components/Header';
+import Container from '../components/Container';
 
-export default function About() {
+export default function About({ user }) {
 	return (
 		<>
 			<Head>
@@ -21,8 +23,8 @@ export default function About() {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io/about" />
 			</Head>
-			<Navbar active="about" />
-			<div className="container mx-auto my-12 lg:my-24 px-4">
+			<Navbar user={user} active="about" />
+			<Container>
 				<Header size={1} text="About" />
 				<p className="text-2xl font-light mt-2">A quick understanding of what we do</p>
 				<p className="mt-3">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">NextJS</a> and the back-end was built with <a href="https://golang.org" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">Carbon Ads</a> to help cover the hosting and development costs.</p>
@@ -44,7 +46,7 @@ export default function About() {
 				<p className="mt-1">Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">our GitHub organization</a>.</p>
 				<Header size={2} text="Contact" className="mt-12" />
 				<p className="mt-1">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
-			</div>
+			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [
@@ -147,3 +149,7 @@ export default function About() {
 		</>
 	);
 }
+
+About.propTypes = {
+	user: PropTypes.object
+};

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Container({ children, className }) {
 	return (
-		<div className={`container mx-auto px-4 ${className}`}>
+		<div className={`container mx-auto my-12 lg:my-24 px-4 ${className}`}>
 			{children}
 		</div>
 	);

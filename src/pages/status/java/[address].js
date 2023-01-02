@@ -10,12 +10,13 @@ import Highlight from '../../../components/Highlight';
 import MinecraftFormatted from '../../../components/MinecraftFormatted';
 import StatusTable from '../../../components/StatusTable';
 import Ad from '../../../components/Ad';
-import chevronDown from '../../../assets/icons/chevron-down.svg';
-import chevronUp from '../../../assets/icons/chevron-up.svg';
 import Header from '../../../components/Header';
 import { Button } from '../../../components/Button';
+import Container from '../../../components/Container';
+import chevronDown from '../../../assets/icons/chevron-down.svg';
+import chevronUp from '../../../assets/icons/chevron-up.svg';
 
-export default function JavaStatus({ address }) {
+export default function JavaStatus({ address, user }) {
 	const reducer = (state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
@@ -44,7 +45,7 @@ export default function JavaStatus({ address }) {
 
 		(async () => {
 			try {
-				const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/status/java/${address}`);
+				const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/java/${address}`);
 
 				if (result.status === 200) {
 					const body = await result.json();
@@ -86,7 +87,7 @@ export default function JavaStatus({ address }) {
 	return (
 		<>
 			<Head>
-				<title>{address} - Minecraft Server Status</title>
+				<title>{`${address} - Minecraft Server Status`}</title>
 				<meta name="robots" content="index,follow" />
 				<meta name="title" content={`${address} - Minecraft Server Status`} />
 				<meta name="description" content={data.result?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${data.result?.host ?? '<unknown>'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
@@ -97,8 +98,8 @@ export default function JavaStatus({ address }) {
 				<meta property="og:image" content={data.result?.favicon ?? 'https://mcstatus.io/img/icon.png'} />
 				<link rel="canonical" href={`https://mcstatus.io/status/java/${address}`} />
 			</Head>
-			<Navbar active="home" />
-			<div className="container mx-auto my-12 lg:my-24 px-4">
+			<Navbar user={user} />
+			<Container>
 				<Header size={1} text="Minecraft Server Status" />
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search host={address} type="java" className="mt-4" />
@@ -257,7 +258,7 @@ export default function JavaStatus({ address }) {
 						: null
 				}
 				<Ad className="mt-4" />
-			</div>
+			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [
@@ -306,6 +307,7 @@ export default function JavaStatus({ address }) {
 }
 
 JavaStatus.propTypes = {
+	user: PropTypes.object,
 	address: PropTypes.string.isRequired
 };
 

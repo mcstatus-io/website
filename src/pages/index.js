@@ -13,7 +13,7 @@ import wave from '../assets/img/wave.svg';
 import Header from '../components/Header';
 import BoxLink from '../components/BoxLink';
 
-export default function Home({ javaServers, bedrockServers }) {
+export default function Home({ user, javaServers, bedrockServers }) {
 	return (
 		<>
 			<Head>
@@ -28,16 +28,16 @@ export default function Home({ javaServers, bedrockServers }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io" />
 			</Head>
-			<Navbar active="home" />
+			<Navbar user={user} active="home" />
 			<div className="bg-[#232323]">
-				<Container className="pt-24 pb-12">
+				<Container className="pt-24 pb-12 my-0 lg:my-0">
 					<Header size={1} text="Minecraft Server Status" />
 					<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 					<Search className="mt-4" />
 				</Container>
 			</div>
 			<Image src={wave} alt="Wave" className="w-full h-32" priority />
-			<Container className="mb-12 lg:mb-24">
+			<Container className="mb-12 lg:mb-24 mt-0 lg:mt-0">
 				<Header size={2} text="Sample Servers" className="mt-12" />
 				<p className="text-lg font-light">A few sample servers to test out our service</p>
 				<div className="md:columns-2 gap-3 mt-4">
@@ -105,6 +105,7 @@ export default function Home({ javaServers, bedrockServers }) {
 }
 
 Home.propTypes = {
+	user: PropTypes.object,
 	javaServers: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 	bedrockServers: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };

@@ -34,7 +34,7 @@ export default function Search({ host, type, className }) {
 				<Input type="text" id="host" placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} error={form.errors.host} />
 			</div>
 			<div>
-				<Button disabled={!form.isValid || form.isSubmitting || !form.dirty} className="md:w-auto">
+				<Button disabled={!form.isValid || form.isSubmitting || (form.values.type === type && form.values.host === host)} className="md:w-auto">
 					Submit
 				</Button>
 			</div>

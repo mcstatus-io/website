@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 import calendarIcon from '../assets/icons/calendar.svg';
 import githubIcon from '../assets/icons/github.svg';
 import icon from '../assets/img/icon.png';
-// import { LinkButton } from './Button';
+import { LinkButton } from './Button';
+import getAvatarURL from '../util/getAvatarURL';
 
-export default function Navbar({ active }) {
+export default function Navbar({ active, user }) {
 	return (
 		<div className="sticky top-0 z-50 w-screen h-16 bg-neutral-900 bg-opacity-90 backdrop-blur-lg border-b border-b-neutral-700">
 			<div className="container mx-auto h-full flex justify-between items-center px-6">
@@ -41,9 +42,19 @@ export default function Navbar({ active }) {
 						<a href="https://uptime.mcstatus.io" className="text-blue-500 font-medium rounded-full hover:bg-neutral-800 p-2">
 							<Image src={calendarIcon} width="20" height="20" alt="Calendar icon" priority />
 						</a>
-						{/*<LinkButton href="/auth" className="lg:ml-2">
-							Log in with Discord
-						</LinkButton>*/}
+						{
+							user
+								? <Link href="/dashboard" className="flex items-center gap-3 p-2 pr-3 bg-neutral-800 hover:bg-neutral-700 hover:bg-opacity-70 transition-colors rounded-full">
+									<Image src={getAvatarURL(user)} className="rounded-full" alt="Profile icon" width="32" height="32" priority />
+									<span>
+										<span className="font-bold">{user.username}</span>
+										<span className="text-neutral-300">#{user.discriminator}</span>
+									</span>
+								</Link>
+								: <LinkButton href="/auth" className="lg:ml-2">
+									Log in with Discord
+								</LinkButton>
+						}
 					</div>
 				</div>
 			</div>
@@ -52,9 +63,6 @@ export default function Navbar({ active }) {
 }
 
 Navbar.propTypes = {
-	active: PropTypes.string.isRequired
-};
-
-Navbar.defaultProps = {
-	active: 'home'
+	active: PropTypes.string,
+	user: PropTypes.object
 };

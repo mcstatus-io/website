@@ -3,16 +3,18 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Script from 'next/script';
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 import Navbar from '../components/Navbar';
 import Highlight from '../components/Highlight';
 import Ad from '../components/Ad';
+import Header from '../components/Header';
+import Container from '../components/Container';
 import javaExample from '../assets/response/java.jsonc';
 import bedrockExample from '../assets/response/bedrock.jsonc';
 import iconExample from '../assets/response/icon.png';
-import Header from '../components/Header';
 import formatDuration from '../util/formatDuration';
 
-export default function Documentation() {
+export default function Documentation({ user }) {
 	return (
 		<>
 			<Head>
@@ -27,8 +29,8 @@ export default function Documentation() {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io/docs" />
 			</Head>
-			<Navbar active="api" />
-			<div className="container mx-auto my-12 lg:my-24 px-4">
+			<Navbar user={user} active="api" />
+			<Container>
 				<div className="flex flex-col-reverse lg:flex-row">
 					<div className="lg:basis-[75%]">
 						<Header size={1} text="API Documentation" />
@@ -121,7 +123,7 @@ export default function Documentation() {
 						</ul>
 					</div>
 				</div>
-			</div>
+			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [
@@ -162,3 +164,7 @@ export default function Documentation() {
 		</>
 	);
 }
+
+Documentation.propTypes = {
+	user: PropTypes.object
+};

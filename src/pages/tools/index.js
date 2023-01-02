@@ -1,11 +1,13 @@
 import React from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
 import BoxLink from '../../components/BoxLink';
+import Container from '../../components/Container';
 
-export default function Tools() {
+export default function Tools({ user }) {
 	return (
 		<>
 			<Head>
@@ -20,8 +22,8 @@ export default function Tools() {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io" />
 			</Head>
-			<Navbar active="tools" />
-			<div className="container mx-auto my-12 lg:my-24 px-4">
+			<Navbar user={user} active="tools" />
+			<Container>
 				<Header size={1} text="Tools" />
 				<p className="text-2xl font-light mt-2">Quick tools to help Minecraft developers</p>
 				<BoxLink href="/tools/coordinate" className="mt-5">
@@ -32,7 +34,7 @@ export default function Tools() {
 					<Header size={2} text="Votifier Tester" />
 					<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
 				</BoxLink>
-			</div>
+			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [
@@ -67,3 +69,7 @@ export default function Tools() {
 		</>
 	);
 }
+
+Tools.propTypes = {
+	user: PropTypes.object
+};
