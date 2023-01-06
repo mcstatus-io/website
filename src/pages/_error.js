@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Error from '../components/Error';
 
-export default function Error(props) {
+export default function ErrorPage(props) {
 	return (
 		<Error {...props} />
 	);
 }
 
-Error.propTypes = {
+ErrorPage.propTypes = {
 	statusCode: PropTypes.number,
 	reason: PropTypes.string
 };
 
-Error.getInitialProps = ({ res, err }) => {
+ErrorPage.getInitialProps = ({ res, err }) => {
 	const statusCode = res?.statusCode ?? err?.statusCode ?? 404;
 
 	return { statusCode, reason: new Response(null, { status: statusCode }).statusText };

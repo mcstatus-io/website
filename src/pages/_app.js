@@ -2,23 +2,24 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
 import PropTypes from 'prop-types';
+import { useCookies } from 'react-cookie';
 import '../styles/global.sass';
 
 export default function MyApp({ Component, pageProps }) {
 	const [user, setUser] = useState(undefined);
+	const [cookies] = useCookies(['session']);
 
 	useEffect(() => {
 		fetchUser();
 	}, []);
 
 	const fetchUser = async () => {
-		const sessionToken = window.localStorage.getItem('session');
-		if (!sessionToken) return setUser(null);
+		if (!cookies.session) return setUser(null);
 
 		try {
 			const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/users/@me`, {
 				headers: {
-					Authorization: sessionToken
+					Authorization: cookies.session
 				}
 			});
 
