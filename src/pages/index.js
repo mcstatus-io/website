@@ -30,7 +30,7 @@ export default function Home({ user, javaServers, bedrockServers }) {
 			</Head>
 			<Navbar user={user} active="home" />
 			<div className="bg-[#232323]">
-				<Container className="pt-24 pb-12 my-0 lg:my-0">
+				<Container className="pt-24 pb-12" noPadding>
 					<Header size={1} text="Minecraft Server Status" />
 					<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 					<Search className="mt-4" />
