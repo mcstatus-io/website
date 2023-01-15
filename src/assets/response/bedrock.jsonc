@@ -13,9 +13,17 @@
     // server via the Minecraft client because it previously violated the EULA.
     // @type {boolean}
     "eula_blocked": false,
+    // The timestamp in Unix milliseconds of when the status was retrieved from
+    // the Minecraft server itself.
+    // @type {number}
+    "retrieved_at": 1673774293240,
+    // The Unix milliseconds timestamp at which the cache will expire for this
+    // status. The first proceeding request made after this timestamp will
+    // return an up-to-date status of the server.
+    "expires_at": 1673774353240,
     // The version data of the server. This property will be missing if
     // the server is offline.
-    // @type {object?}
+    // @type {object}
     "version": {
         // The version name of the server.
         // @type {string}
@@ -27,7 +35,7 @@
     },
     // Information about the amount of online and max players. This property
     // will be missing if the server is offline.
-    // @type {object?}
+    // @type {object}
     "players": {
         // The amount of online players in the server.
         // @type {number}
@@ -39,7 +47,7 @@
     // The message of the day (or MOTD/description) of the server. This is the
     // message shown below the server name in the client multiplayer menu. This
     // property will be missing if the server is offline.
-    // @type {object?}
+    // @type {object}
     "motd": {
         // The raw MOTD with formatting codes. Refer to
         // https://minecraft.fandom.com/wiki/Formatting_codes for information

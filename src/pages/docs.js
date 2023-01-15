@@ -45,27 +45,42 @@ export default function Documentation({ user }) {
 						<Header size={3} text="Supported Versions" id="supported" className="mt-12" />
 						<p className="mt-3">All Minecraft servers, including pre-netty rewrite Java Edition and Bedrock Edition servers, are supported.Make sure you are using the correct endpoint when retrieving a server status, as attempting to use the Java Edition status route with a Bedrock Edition host (or vise-versa) will result in a response saying the server is offline unless the server explicitly has cross-play supported. If the server you specify does not use the standard port value (<code>25565</code> for Java Edition, <code>19132</code> for Bedrock Edition), then you will need to specify the port by using the following format: <code>host:port</code>.</p>
 						<Header size={2} text="Routes" id="routes" className="mt-12" />
-						<Header size={3} text="Java Status" id="java-status" className="mt-6" />
-						<p className="mt-3">
-							<span className="bg-green-500 rounded px-2 py-1 text-xs">GET</span>
-							<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/java/&lt;address&gt;</code>
-						</p>
-						<p className="mt-3">Cache duration: <span className="bg-blue-500 rounded px-2 py-1 text-xs align-middle">{formatDuration(parseInt(process.env.NEXT_PUBLIC_JAVA_CACHE_TIME) * 1000)}</span></p>
-						<Highlight source={javaExample} className="mt-3 border border-neutral-700 rounded" />
-						<Header size={3} text="Bedrock Status" id="bedrock-status" className="mt-12" />
-						<p className="mt-3">
-							<span className="bg-green-500 rounded px-2 py-1 text-xs">GET</span>
-							<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/bedrock/&lt;address&gt;</code>
-						</p>
-						<p className="mt-3">Cache duration: <span className="bg-blue-500 rounded px-2 py-1 text-xs align-middle">{formatDuration(parseInt(process.env.NEXT_PUBLIC_BEDROCK_CACHE_TIME) * 1000)}</span></p>
-						<Highlight source={bedrockExample} className="mt-3 border border-neutral-700 rounded" />
-						<Header size={3} text="Icon" id="icon" className="mt-12" />
-						<p className="mt-3">
-							<span className="bg-green-500 rounded px-2 py-1 text-xs">GET</span>
-							<code className="ml-2 break-words">https://api.mcstatus.io/v2/icon/&lt;address&gt;</code>
-						</p>
-						<p className="mt-3">Cache duration: <span className="bg-blue-500 rounded px-2 py-1 text-xs align-middle">{formatDuration(parseInt(process.env.NEXT_PUBLIC_ICON_CACHE_TIME) * 1000)}</span></p>
-						<Image src={iconExample} width="128" height="128" alt="Sample server icon" className="mt-3" />
+						<div className="rounded bg-neutral-800 bg-opacity-50 border border-neutral-700 p-5 shadow-lg mt-3">
+							<Header size={3} text="Java Status" id="java-status" />
+							<p className="flex items-center gap-2 mt-3">
+								<span className="bg-green-700 rounded px-2 py-1 text-xs">GET</span>
+								<code className="break-words">https://api.mcstatus.io/v2/status/java/&lt;address&gt;</code>
+							</p>
+							<p className="flex items-center gap-2 mt-3">
+								<span>Cache duration:</span>
+								<span className="bg-blue-600 rounded px-2 py-1 text-xs">{formatDuration(parseInt(process.env.NEXT_PUBLIC_JAVA_CACHE_TIME) * 1000)}</span>
+							</p>
+							<Highlight source={javaExample} className="mt-3 border border-neutral-700 rounded" />
+						</div>
+						<div className="rounded bg-neutral-800 bg-opacity-50 border border-neutral-700 p-5 shadow-lg mt-3">
+							<Header size={3} text="Bedrock Status" id="bedrock-status" />
+							<p className="flex items-center gap-2 mt-3">
+								<span className="bg-green-700 rounded px-2 py-1 text-xs">GET</span>
+								<code className="break-words">https://api.mcstatus.io/v2/status/bedrock/&lt;address&gt;</code>
+							</p>
+							<p className="flex items-center gap-2 mt-3">
+								<span>Cache duration:</span>
+								<span className="bg-blue-600 rounded px-2 py-1 text-xs">{formatDuration(parseInt(process.env.NEXT_PUBLIC_BEDROCK_CACHE_TIME) * 1000)}</span>
+							</p>
+							<Highlight source={bedrockExample} className="mt-3 border border-neutral-700 rounded" />
+						</div>
+						<div className="rounded bg-neutral-800 bg-opacity-50 border border-neutral-700 p-5 shadow-lg mt-3">
+							<Header size={3} text="Icon" id="icon" />
+							<p className="mt-3">
+								<span className="bg-green-700 rounded px-2 py-1 text-xs">GET</span>
+								<code className="ml-2 break-words">https://api.mcstatus.io/v2/icon/&lt;address&gt;</code>
+							</p>
+							<p className="flex items-center gap-2 mt-3">
+								<span>Cache duration:</span>
+								<span className="bg-blue-600 rounded px-2 py-1 text-xs">{formatDuration(parseInt(process.env.NEXT_PUBLIC_ICON_CACHE_TIME) * 1000)}</span>
+							</p>
+							<Image src={iconExample} width="128" height="128" alt="Sample server icon" className="mt-3" />
+						</div>
 						<Header size={2} text="Support" id="support" className="mt-12" />
 						<p className="mt-3">If you require any additional assistance or found a bug you would like to report, please send an email to <a href="mailto:api@mcstatus.io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">api@mcstatus.io</a>.</p>
 					</div>
