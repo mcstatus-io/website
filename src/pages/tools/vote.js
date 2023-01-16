@@ -9,7 +9,6 @@ import Header from '../../components/Header';
 import Input from '../../components/Input';
 import { Button } from '../../components/Button';
 import Container from '../../components/Container';
-import { boxClassName } from '../../components/shared';
 
 export default function VoteTestTool({ user }) {
 	const form = useFormik({
@@ -66,7 +65,7 @@ export default function VoteTestTool({ user }) {
 				<p className="text-2xl font-light mt-2">Send a Votifier test vote to a Minecraft server</p>
 				{
 					form.isSubmitting
-						? <div className={`p-5 rounded mt-3 ${boxClassName}`}>
+						? <div className="p-5 rounded mt-3 box">
 							<p>The vote is being processed by the server, please wait...</p>
 						</div>
 						: form.status?.success
@@ -79,7 +78,7 @@ export default function VoteTestTool({ user }) {
 								</div>
 								: null
 				}
-				<div className={`p-5 rounded mt-2 ${boxClassName}`}>
+				<div className="p-5 rounded mt-2 box">
 					<form onSubmit={form.handleSubmit}>
 						<div className="flex items-center gap-3 mb-3">
 							<div className="grow">

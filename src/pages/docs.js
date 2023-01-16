@@ -13,7 +13,6 @@ import javaExample from '../assets/response/java.jsonc';
 import bedrockExample from '../assets/response/bedrock.jsonc';
 import iconExample from '../assets/response/icon.png';
 import formatDuration from '../util/formatDuration';
-import { boxClassName } from '../components/shared';
 
 export default function Documentation({ user }) {
 	return (
@@ -46,7 +45,7 @@ export default function Documentation({ user }) {
 						<Header size={3} id="supported" className="mt-12">Supported Versions</Header>
 						<p className="mt-3">All Minecraft servers, including pre-netty rewrite Java Edition and Bedrock Edition servers, are supported. Make sure you are using the correct endpoint when retrieving a server status, as attempting to use the Java Edition status route with a Bedrock Edition host (or vise-versa) will result in a response saying the server is offline unless the server explicitly has cross-play supported. If the server you specify does not use the standard port value (<code>25565</code> for Java Edition, <code>19132</code> for Bedrock Edition), then you will need to specify the port by using the following format: <code>host:port</code>.</p>
 						<Header size={2} id="routes" className="mt-12">Routes</Header>
-						<details className={`rounded ${boxClassName} p-5 mt-3`} open>
+						<details className="rounded box p-5 mt-3" open>
 							<summary className="font-bold text-lg cursor-pointer" id="java-status">Java Status</summary>
 							<p className="flex items-center gap-2 mt-5">
 								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
@@ -58,7 +57,7 @@ export default function Documentation({ user }) {
 							</p>
 							<Highlight source={javaExample} className="mt-3" />
 						</details>
-						<details className={`rounded ${boxClassName} p-5 mt-3`} open>
+						<details className="rounded box p-5 mt-3" open>
 							<summary className="font-bold text-lg cursor-pointer" id="bedrock-status">Bedrock Status</summary>
 							<p className="flex items-center gap-2 mt-5">
 								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
@@ -70,7 +69,7 @@ export default function Documentation({ user }) {
 							</p>
 							<Highlight source={bedrockExample} className="mt-3" />
 						</details>
-						<details className={`rounded ${boxClassName} p-5 mt-3`} open>
+						<details className="rounded box p-5 mt-3" open>
 							<summary className="font-bold text-lg cursor-pointer" id="icon">Icon</summary>
 							<p className="mt-5">
 								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>

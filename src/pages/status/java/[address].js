@@ -13,7 +13,6 @@ import Ad from '../../../components/Ad';
 import Header from '../../../components/Header';
 import { Button } from '../../../components/Button';
 import Container from '../../../components/Container';
-import { boxClassName } from '../../../components/shared';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
 
@@ -104,7 +103,7 @@ export default function JavaStatus({ address, user }) {
 				<Header size={1}>Minecraft Server Status</Header>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search host={address} type="java" className="mt-4" />
-				<div className={`px-5 py-4 rounded mt-4 ${boxClassName}`}>
+				<div className="px-5 py-4 rounded mt-4 box">
 					{
 						data.isLoaded
 							? data.error
@@ -238,7 +237,7 @@ export default function JavaStatus({ address, user }) {
 				</div>
 				{
 					data.isLoaded && data.result
-						? <div className={`mt-3 rounded ${boxClassName}`}>
+						? <div className="mt-3 rounded box">
 							<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
 								<p className="font-bold">API Usage</p>
 								<Image src={data.showAPIUsage ? chevronUp : chevronDown} alt="Chevron down icon" width="16" />

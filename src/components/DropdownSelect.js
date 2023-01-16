@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { interactiveBoxClassName } from './shared';
 
 export default function DropdownSelect({ children, className, ...props }) {
 	return (
-		<select className={`w-full appearance-none text-center ${interactiveBoxClassName} outline-none cursor-pointer px-3 py-2 rounded ${className}`} {...props}>
+		<select className={`w-full appearance-none text-center interactive-box outline-none cursor-pointer px-3 py-2 rounded ${className}`} {...props}>
 			{children}
 		</select>
 	);
