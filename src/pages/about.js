@@ -28,7 +28,7 @@ export default function About({ user }) {
 			<Container>
 				<Header size={1} text="About" />
 				<p className="text-2xl font-light mt-2">A quick understanding of what we do</p>
-				<p className="mt-3">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">NextJS</a> and the back-end was built with <a href="https://golang.org" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">Carbon Ads</a> to help cover the hosting and development costs.</p>
+				<p className="mt-3">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="link">NextJS</a> and the back-end was built with <a href="https://golang.org" className="link">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="link">Carbon Ads</a> to help cover the hosting and development costs.</p>
 				<Ad className="mt-4" />
 				<Header size={2} text="Frequently Asked Questions" className="mt-12" />
 				<ul className="flex flex-col gap-3 mt-3">
@@ -59,7 +59,7 @@ export default function About({ user }) {
 					<li>
 						<details className={`p-4 rounded ${boxClassName}`}>
 							<summary className="font-bold cursor-pointer">How do I see all players on the server?</summary>
-							<p className="mt-1">Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <Link href="/status/java/play.purpleprison.net" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">play.purpleprison.net</Link> for example.</p>
+							<p className="mt-1">Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <Link href="/status/java/play.purpleprison.net" className="link">play.purpleprison.net</Link> for example.</p>
 						</details>
 					</li>
 					<li>
@@ -71,12 +71,12 @@ export default function About({ user }) {
 					<li>
 						<details className={`p-4 rounded ${boxClassName}`}>
 							<summary className="font-bold cursor-pointer">Is this service open-source?</summary>
-							<p className="mt-1">Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">our GitHub organization</a>.</p>
+							<p className="mt-1">Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="link">our GitHub organization</a>.</p>
 						</details>
 					</li>
 				</ul>
 				<Header size={2} text="Contact" className="mt-12" />
-				<p className="mt-1">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
+				<p className="mt-1">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
 			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`

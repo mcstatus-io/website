@@ -13,7 +13,7 @@ export default function Navbar({ active, user }) {
 	const [showMenu, setShowMenu] = useState(false);
 
 	return (
-		<nav className="sticky top-0 z-50 w-screen h-16 bg-neutral-900 bg-opacity-90 dark:bg-opacity-80 backdrop-blur-lg border-b border-b-neutral-700">
+		<nav className="text-white sticky top-0 z-50 w-screen h-16 bg-neutral-900 bg-opacity-90 dark:bg-opacity-80 backdrop-blur-lg border-b border-b-neutral-700">
 			<div className="container mx-auto md:px-6 h-full flex justify-between items-center">
 				<div className="flex items-center justify-between md:justify-start md:w-auto w-full">
 					<div className="block md:pr-6 md:border-r-2 md:border-r-neutral-700 dark:md:border-r-neutral-800">
@@ -65,11 +65,11 @@ export default function Navbar({ active, user }) {
 								? <a href={process.env.NEXT_PUBLIC_DASHBOARD_URL ?? 'https://dashboard.mcstatus.io'} className="flex items-center gap-3 p-2 pr-3 bg-neutral-800 hover:bg-neutral-900 hover:bg-opacity-70 transition-colors rounded-full">
 									<Image src={getAvatarURL(user)} className="rounded-full" alt="Profile icon" width="32" height="32" priority />
 									<span>
-										<span className="font-bold text-white">{user.username}</span>
+										<span className="font-bold">{user.username}</span>
 										<span className="text-neutral-300">#{user.discriminator}</span>
 									</span>
 								</a>
-								: <Link href="/auth" className="lg:ml-2 px-5 py-3 text-white bg-[#5865F2] hover:bg-opacity-80 transition-colors rounded-full">
+								: <Link href="/auth" className="lg:ml-2 px-5 py-3 bg-[#5865F2] hover:bg-opacity-80 transition-colors rounded-full">
 									Log in with Discord
 								</Link>
 						}
