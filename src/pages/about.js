@@ -28,7 +28,7 @@ export default function About({ user }) {
 				<Header size={1}>About</Header>
 				<p className="text-2xl font-light mt-2">A quick understanding of what we do</p>
 				<p className="mt-3">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="link">NextJS</a> and the back-end was built with <a href="https://golang.org" className="link">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="link">Carbon Ads</a> to help cover the hosting and development costs.</p>
-				<Ad className="mt-4" />
+				<Ad className="mt-5" />
 				<Header size={2} className="mt-12">Frequently Asked Questions</Header>
 				<ul className="flex flex-col gap-3 mt-3">
 					<li>

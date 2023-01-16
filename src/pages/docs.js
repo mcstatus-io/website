@@ -35,7 +35,7 @@ export default function Documentation({ user }) {
 					<div className="lg:basis-[75%]">
 						<Header size={1}>API Documentation</Header>
 						<p className="text-2xl font-light mt-2">Documentation on how to use our API in your service</p>
-						<Ad className="mt-4" />
+						<Ad className="mt-5" />
 						<Header size={2} id="overview" className="mt-12">Overview</Header>
 						<p className="mt-3">The goal of this API documentation is to accurately and precisely describe the functionality of this service in simple English. This page will go over everything you need to know before implementing our API into your service. If you believe there is anything missing, any typos, or incorrect information on this page, please reach out to us via email at <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>.</p>
 						<Header size={3} id="standards" className="mt-12">Standards</Header>
