@@ -101,7 +101,7 @@ export default function JavaStatus({ address, user }) {
 			</Head>
 			<Navbar user={user} />
 			<Container>
-				<Header size={1} text="Minecraft Server Status" />
+				<Header size={1}>Minecraft Server Status</Header>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search host={address} type="java" className="mt-4" />
 				<div className={`px-5 py-4 rounded mt-4 ${boxClassName}`}>

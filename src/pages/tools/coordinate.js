@@ -46,9 +46,9 @@ export default function CoordinateCalculatorTool({ user }) {
 			</Head>
 			<Navbar user={user} active="tools" />
 			<Container>
-				<Header size={1} text="Coordinate Calculator" />
+				<Header size={1}>Coordinate Calculator</Header>
 				<p className="text-2xl font-light mt-2">Calculate region, chunk and block coordinates</p>
-				<Header size={2} text="Block Coordinates" className="mt-6" />
+				<Header size={2} className="mt-6">Block Coordinates</Header>
 				<div className={`p-5 rounded mt-2 ${boxClassName}`}>
 					<div className="flex justify-between items-center gap-8">
 						<Input type="text" placeholder="X" defaultValue={block.x} onChange={(event) => onChange('block', 'x', event)} />
@@ -58,7 +58,7 @@ export default function CoordinateCalculatorTool({ user }) {
 					<p className="mt-3">Chunk: <code>({block.x >> 4}, {block.y >> 4}, {block.z >> 4})</code></p>
 					<p>Region: <code>({block.x >> 9}, {block.z >> 9})</code> &ndash; in file <code>r.{block.x >> 9}.{block.z >> 9}.mcr</code></p>
 				</div>
-				<Header size={2} text="Chunk Coordinates" className="mt-6" />
+				<Header size={2} className="mt-6">Chunk Coordinates</Header>
 				<div className={`p-5 rounded mt-2 ${boxClassName}`}>
 					<div className="flex justify-between items-center gap-8">
 						<Input type="text" placeholder="X" defaultValue={block.x} onChange={(event) => onChange('chunk', 'x', event)} />
@@ -68,7 +68,7 @@ export default function CoordinateCalculatorTool({ user }) {
 					<p className="mt-3">Blocks: <code>({chunk.x << 4}, {chunk.y << 4}, {chunk.z << 4})</code> to <code>({((chunk.x + 1) << 4) - 1}, {((chunk.y + 1) << 4) - 1}, {((chunk.z + 1) << 4) - 1})</code></p>
 					<p>Region: <code>({chunk.x >> 5}, {chunk.y >> 5})</code> (in file <code>r.{chunk.x >> 5}.{chunk.y >> 5}.mcr</code>)</p>
 				</div>
-				<Header size={2} text="Region Coordinates" className="mt-6" />
+				<Header size={2} className="mt-6">Region Coordinates</Header>
 				<div className={`p-5 rounded mt-2 ${boxClassName}`}>
 					<div className="flex justify-between items-center gap-8">
 						<Input type="text" placeholder="X" defaultValue={region.x} onChange={(event) => onChange('region', 'x', event)} />

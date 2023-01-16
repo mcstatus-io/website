@@ -24,14 +24,14 @@ export default function Tools({ user }) {
 			</Head>
 			<Navbar user={user} active="tools" />
 			<Container>
-				<Header size={1} text="Tools" />
+				<Header size={1}>Tools</Header>
 				<p className="text-2xl font-light mt-2">Quick tools to help Minecraft developers</p>
 				<BoxLink href="/tools/coordinate" className="mt-5">
-					<Header size={2} text="Coordinate Calculator" />
+					<Header size={2}>Coordinate Calculator</Header>
 					<p className="text-lg">Calculate region, chunk and block coordinates</p>
 				</BoxLink>
 				<BoxLink href="/tools/vote" className="mt-3">
-					<Header size={2} text="Votifier Tester" />
+					<Header size={2}>Votifier Tester</Header>
 					<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
 				</BoxLink>
 			</Container>

@@ -62,7 +62,7 @@ export default function VoteTestTool({ user }) {
 			</Head>
 			<Navbar user={user} active="tools" />
 			<Container>
-				<Header size={1} text="Votifier Tester" />
+				<Header size={1}>Votifier Tester</Header>
 				<p className="text-2xl font-light mt-2">Send a Votifier test vote to a Minecraft server</p>
 				{
 					form.isSubmitting

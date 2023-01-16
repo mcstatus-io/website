@@ -7,12 +7,12 @@ const headerClassNames = {
 	3: 'text-lg font-bold'
 };
 
-export default function Header({ size, text, className, ...props }) {
-	return React.createElement('h' + size, { ...props, className: 'relative ' + headerClassNames[size] + ' ' + className }, text);
+export default function Header({ size, className, children, ...props }) {
+	return React.createElement('h' + size, { ...props, className: 'relative ' + headerClassNames[size] + ' ' + className }, children);
 }
 
 Header.propTypes = {
 	size: PropTypes.oneOf([1, 2, 3, PropTypes.string]).isRequired,
-	text: PropTypes.string.isRequired,
+	children: PropTypes.any,
 	className: PropTypes.string
 };

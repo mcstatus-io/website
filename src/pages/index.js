@@ -28,12 +28,12 @@ export default function Home({ user, javaServers, bedrockServers }) {
 			</Head>
 			<Navbar user={user} active="home" />
 			<Container className="py-12 lg:pt-24" noMargin>
-				<Header size={1} text="Minecraft Server Status" />
+				<Header size={1}>Minecraft Server Status</Header>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search className="mt-4" />
 			</Container>
 			<Container className="mb-12 lg:mb-24 mt-0 lg:mt-0">
-				<Header size={2} text="Sample Servers" className="mt-12" />
+				<Header size={2} className="mt-12">Sample Servers</Header>
 				<p className="text-lg font-light">A few sample servers to test out our service</p>
 				<div className="md:columns-2 gap-3 mt-4">
 					<div>
@@ -57,7 +57,7 @@ export default function Home({ user, javaServers, bedrockServers }) {
 						}
 					</div>
 				</div>
-				<Header size={2} text="About Us" className="mt-12" />
+				<Header size={2} className="mt-12">About Us</Header>
 				<p className="text-xl font-light">A quick understanding of what we do</p>
 				<p className="mb-3 mt-4">This service was created after realizing the missing features of many other Minecraft server status websites, including services like <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a>. Their API and website was complex to navigate, and I found it easier to create my own service to fulfill this. This service is heavily focused on improving performance and optimizing latency when connecting to the server, that is why the API was built from the ground-up using the high performant Go language.</p>
 				<p className="mb-3">Our service offers many features that others do not, such as raw/clean/HTML formats of many values like the MOTD, version name, and sample player names. We also reduced the cache duration of every status down to only 1 minute. We intentionally chose not to use the query protocol, as it only slows down the time it takes to retrieve a Minecraft server status, and it does not provide any more relevant data than the more reliable status protocol does.</p>
