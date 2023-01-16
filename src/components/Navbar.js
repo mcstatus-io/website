@@ -62,10 +62,10 @@ export default function Navbar({ active, user }) {
 					<li>
 						{
 							user
-								? <a href={process.env.NEXT_PUBLIC_DASHBOARD_URL ?? 'https://dashboard.mcstatus.io'} className="flex items-center gap-3 p-2 pr-3 bg-neutral-800 hover:bg-neutral-700 hover:bg-opacity-70 transition-colors rounded-full">
+								? <a href={process.env.NEXT_PUBLIC_DASHBOARD_URL ?? 'https://dashboard.mcstatus.io'} className="flex items-center gap-3 p-2 pr-3 bg-neutral-800 hover:bg-neutral-900 hover:bg-opacity-70 transition-colors rounded-full">
 									<Image src={getAvatarURL(user)} className="rounded-full" alt="Profile icon" width="32" height="32" priority />
 									<span>
-										<span className="font-bold">{user.username}</span>
+										<span className="font-bold text-white">{user.username}</span>
 										<span className="text-neutral-300">#{user.discriminator}</span>
 									</span>
 								</a>

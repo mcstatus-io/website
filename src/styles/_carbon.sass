@@ -1,20 +1,20 @@
 #carbonads
-	@apply block relative bg-neutral-800 rounded max-w-full font-ubuntu border border-neutral-700 hover:border-neutral-600
+	@apply block relative bg-neutral-200 dark:bg-neutral-800 rounded max-w-full font-ubuntu border border-neutral-300 hover:border-neutral-400 dark:border-neutral-700 dark:hover:border-neutral-600 transition-colors
 
 	width: 420px
 
 	.carbon-wrap
-		@apply flex p-4
+		@apply flex
 
 		.carbon-img
-			@apply pr-4
+			@apply py-4 pl-4
 
 			min-width: 146px
 
 		.carbon-text
-			@apply text-sm
+			@apply text-sm p-4
 	
 	.carbon-poweredby
-		@apply absolute right-3 bottom-3 px-2 py-1 rounded bg-neutral-700 uppercase font-semibold tracking-widest
+		@apply absolute right-3 bottom-3 px-2 py-1 rounded bg-neutral-400 bg-opacity-40 dark:bg-neutral-700 uppercase font-semibold tracking-widest hover:bg-opacity-75
 
 		font-size: 8px

@@ -190,24 +190,24 @@ export default function BedrockStatus({ address, user }) {
 								/>
 							: <div className="flex gap-3">
 								<div className="w-1/4">
-									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full" />
 								</div>
 								<div className="w-3/4">
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 opacity-70 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full mb-3" />
-									<div className="block rounded bg-neutral-700 h-9 w-full" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full" />
 								</div>
 							</div>
 					}
