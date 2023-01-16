@@ -6,6 +6,7 @@ import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 import Container from '../../components/Container';
+import { boxClassName } from '../../components/shared';
 
 export default function CoordinateCalculatorTool({ user }) {
 	const [block, setBlock] = useState({ x: 0, y: 0, z: 0 });
@@ -48,7 +49,7 @@ export default function CoordinateCalculatorTool({ user }) {
 				<Header size={1} text="Coordinate Calculator" />
 				<p className="text-2xl font-light mt-2">Calculate region, chunk and block coordinates</p>
 				<Header size={2} text="Block Coordinates" className="mt-6" />
-				<div className="p-5 bg-neutral-800 border border-neutral-700 rounded mt-2">
+				<div className={`p-5 rounded mt-2 ${boxClassName}`}>
 					<div className="flex justify-between items-center gap-8">
 						<Input type="text" placeholder="X" defaultValue={block.x} onChange={(event) => onChange('block', 'x', event)} />
 						<Input type="text" placeholder="Y" defaultValue={block.y} onChange={(event) => onChange('block', 'y', event)} />
@@ -58,7 +59,7 @@ export default function CoordinateCalculatorTool({ user }) {
 					<p>Region: <code>({block.x >> 9}, {block.z >> 9})</code> &ndash; in file <code>r.{block.x >> 9}.{block.z >> 9}.mcr</code></p>
 				</div>
 				<Header size={2} text="Chunk Coordinates" className="mt-6" />
-				<div className="p-5 bg-neutral-800 border border-neutral-700 rounded mt-2">
+				<div className={`p-5 rounded mt-2 ${boxClassName}`}>
 					<div className="flex justify-between items-center gap-8">
 						<Input type="text" placeholder="X" defaultValue={block.x} onChange={(event) => onChange('chunk', 'x', event)} />
 						<Input type="text" placeholder="Y" defaultValue={block.y} onChange={(event) => onChange('chunk', 'y', event)} />
@@ -68,7 +69,7 @@ export default function CoordinateCalculatorTool({ user }) {
 					<p>Region: <code>({chunk.x >> 5}, {chunk.y >> 5})</code> (in file <code>r.{chunk.x >> 5}.{chunk.y >> 5}.mcr</code>)</p>
 				</div>
 				<Header size={2} text="Region Coordinates" className="mt-6" />
-				<div className="p-5 bg-neutral-800 border border-neutral-700 rounded mt-2">
+				<div className={`p-5 rounded mt-2 ${boxClassName}`}>
 					<div className="flex justify-between items-center gap-8">
 						<Input type="text" placeholder="X" defaultValue={region.x} onChange={(event) => onChange('region', 'x', event)} />
 						<Input type="text" placeholder="Z" defaultValue={region.z} onChange={(event) => onChange('region', 'z', event)} />

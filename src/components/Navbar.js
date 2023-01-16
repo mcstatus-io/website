@@ -13,13 +13,13 @@ export default function Navbar({ active, user }) {
 	const [showMenu, setShowMenu] = useState(false);
 
 	return (
-		<nav className="sticky top-0 z-50 w-screen h-16 bg-neutral-900 bg-opacity-90 backdrop-blur-lg border-b border-b-neutral-700">
+		<nav className="sticky top-0 z-50 w-screen h-16 bg-neutral-900 bg-opacity-90 dark:bg-opacity-80 backdrop-blur-lg border-b border-b-neutral-700">
 			<div className="container mx-auto md:px-6 h-full flex justify-between items-center">
 				<div className="flex items-center justify-between md:justify-start md:w-auto w-full">
-					<div className="block md:pr-6 md:border-r-2 md:border-r-neutral-800">
+					<div className="block md:pr-6 md:border-r-2 md:border-r-neutral-700 dark:md:border-r-neutral-800">
 						<Link href="/" className="flex items-center content-center p-1">
 							<Image src={icon} alt="mcstatus.io Icon" width="32" height="32" priority />
-							<span className="text-xl font-semibold ml-2 tracking-tighter">MCS</span>
+							<span className="text-white text-xl font-semibold ml-2 tracking-tighter">MCS</span>
 						</Link>
 					</div>
 					<button className="md:hidden" type="button" onClick={() => setShowMenu(!showMenu)}>
@@ -50,13 +50,13 @@ export default function Navbar({ active, user }) {
 				</div>
 				<ul className="ml-8 hidden md:flex gap-3 items-center">
 					<li>
-						<a href="https://github.com/mcstatus-io" className="text-blue-500 font-medium rounded-full hover:bg-neutral-800 p-2">
-							<Image src={githubIcon} width="24" height="24" alt="GitHub icon" priority />
+						<a href="https://github.com/mcstatus-io" className="block rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors p-2">
+							<Image src={githubIcon} width="24" height="24" className="w-[24px] h-[24px]" alt="GitHub icon" priority />
 						</a>
 					</li>
 					<li>
-						<a href="https://uptime.mcstatus.io" className="text-blue-500 font-medium rounded-full hover:bg-neutral-800 p-2">
-							<Image src={calendarIcon} width="20" height="20" alt="Calendar icon" priority />
+						<a href="https://uptime.mcstatus.io" className="block rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors p-2">
+							<Image src={calendarIcon} width="20" height="20" className="w-[24px] h-[24px]" alt="Calendar icon" priority />
 						</a>
 					</li>
 					<li>
@@ -69,7 +69,7 @@ export default function Navbar({ active, user }) {
 										<span className="text-neutral-300">#{user.discriminator}</span>
 									</span>
 								</a>
-								: <Link href="/auth" className="lg:ml-2 px-5 py-3 bg-[#5865F2] hover:bg-opacity-80 transition-colors rounded-full">
+								: <Link href="/auth" className="lg:ml-2 px-5 py-3 text-white bg-[#5865F2] hover:bg-opacity-80 transition-colors rounded-full">
 									Log in with Discord
 								</Link>
 						}

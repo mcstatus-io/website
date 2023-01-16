@@ -13,6 +13,7 @@ import Ad from '../../../components/Ad';
 import Header from '../../../components/Header';
 import { Button } from '../../../components/Button';
 import Container from '../../../components/Container';
+import { boxClassName } from '../../../components/shared';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
 
@@ -45,7 +46,7 @@ export default function JavaStatus({ address, user }) {
 
 		(async () => {
 			try {
-				const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/java/${address}`);
+				const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST ?? 'https://api.mcstatus.io/v2'}/status/java/${address}`);
 
 				if (result.status === 200) {
 					const body = await result.json();
@@ -103,7 +104,7 @@ export default function JavaStatus({ address, user }) {
 				<Header size={1} text="Minecraft Server Status" />
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search host={address} type="java" className="mt-4" />
-				<div className="px-5 py-4 bg-neutral-800 border border-neutral-700 rounded-md mt-4">
+				<div className={`px-5 py-4 rounded mt-4 ${boxClassName}`}>
 					{
 						data.isLoaded
 							? data.error
@@ -113,8 +114,8 @@ export default function JavaStatus({ address, user }) {
 										[
 											'Status',
 											data.result.online
-												? <span className="text-green-400">Online</span>
-												: <span className="text-red-400">Offline</span>
+												? <span className="text-green-600 dark:text-green-400">Online</span>
+												: <span className="text-red-600 dark:text-red-400">Offline</span>
 										],
 										[
 											'Host',
@@ -131,7 +132,7 @@ export default function JavaStatus({ address, user }) {
 														'Icon',
 														data.result.icon
 															? <Image src={data.result.icon} width="64" height="64" alt="Server icon" />
-															: <p className="text-neutral-400">N/A</p>
+															: <p className="text-neutral-500 dark:text-neutral-400">N/A</p>
 													],
 													[
 														'MOTD',
@@ -143,7 +144,7 @@ export default function JavaStatus({ address, user }) {
 															? data.result.version.name_raw === data.result.version.name_clean
 																? <span>{data.result.version.name_clean}</span>
 																: <MinecraftFormatted html={data.result.version.name_html} />
-															: <span className="text-neutral-400">N/A (&lt; 1.3)</span>
+															: <span className="text-neutral-500 dark:text-neutral-400">N/A (&lt; 1.3)</span>
 													],
 													[
 														'Players',
@@ -186,8 +187,8 @@ export default function JavaStatus({ address, user }) {
 													[
 														'EULA Blocked',
 														data.result.eula_blocked
-															? <span className="text-red-400">Yes</span>
-															: <span className="text-green-400">No</span>
+															? <span className="text-red-600 dark:text-red-400">Yes</span>
+															: <span className="text-green-600 dark:text-green-400">No</span>
 													],
 													[
 														'Protocol Version',
@@ -196,11 +197,11 @@ export default function JavaStatus({ address, user }) {
 																<span>{data.result.version.protocol}</span>
 																{
 																	protocolVersionName
-																		? <span className="text-neutral-400"> ({protocolVersionName.minecraftVersion})</span>
+																		? <span className="text-neutral-500 dark:text-neutral-400"> ({protocolVersionName.minecraftVersion})</span>
 																		: null
 																}
 															</span>
-															: <span className="text-neutral-400">N/A</span>
+															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 													],
 													[
 														'Cached Response',
@@ -237,16 +238,16 @@ export default function JavaStatus({ address, user }) {
 				</div>
 				{
 					data.isLoaded && data.result
-						? <div className="mt-3 bg-neutral-800 border border-neutral-700 rounded-md">
+						? <div className={`mt-3 rounded ${boxClassName}`}>
 							<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
 								<p className="font-bold">API Usage</p>
 								<Image src={data.showAPIUsage ? chevronUp : chevronDown} alt="Chevron down icon" width="16" />
 							</div>
 							{
 								data.showAPIUsage
-									? <div className="p-4 border-t border-t-neutral-700">
+									? <div className="p-4 border-t border-t-neutral-300 dark:border-t-neutral-700">
 										<p>
-											<span className="bg-green-600 text-sm px-2 py-1 rounded">GET</span>
+											<span className="bg-green-600 text-sm px-2 py-1 rounded text-white">GET</span>
 											<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/java/{address}</code>
 										</p>
 										<Highlight source={JSON.stringify(data.result, null, '    ')} className="border border-neutral-700 rounded mt-4" />

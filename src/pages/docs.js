@@ -13,6 +13,7 @@ import javaExample from '../assets/response/java.jsonc';
 import bedrockExample from '../assets/response/bedrock.jsonc';
 import iconExample from '../assets/response/icon.png';
 import formatDuration from '../util/formatDuration';
+import { boxClassName } from '../components/shared';
 
 export default function Documentation({ user }) {
 	return (
@@ -45,93 +46,93 @@ export default function Documentation({ user }) {
 						<Header size={3} text="Supported Versions" id="supported" className="mt-12" />
 						<p className="mt-3">All Minecraft servers, including pre-netty rewrite Java Edition and Bedrock Edition servers, are supported.Make sure you are using the correct endpoint when retrieving a server status, as attempting to use the Java Edition status route with a Bedrock Edition host (or vise-versa) will result in a response saying the server is offline unless the server explicitly has cross-play supported. If the server you specify does not use the standard port value (<code>25565</code> for Java Edition, <code>19132</code> for Bedrock Edition), then you will need to specify the port by using the following format: <code>host:port</code>.</p>
 						<Header size={2} text="Routes" id="routes" className="mt-12" />
-						<div className="rounded bg-neutral-800 bg-opacity-50 border border-neutral-700 p-5 shadow-lg mt-3">
+						<div className={`rounded ${boxClassName} p-5 mt-3`}>
 							<Header size={3} text="Java Status" id="java-status" />
 							<p className="flex items-center gap-2 mt-3">
-								<span className="bg-green-700 rounded px-2 py-1 text-xs">GET</span>
+								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
 								<code className="break-words">https://api.mcstatus.io/v2/status/java/&lt;address&gt;</code>
 							</p>
 							<p className="flex items-center gap-2 mt-3">
 								<span>Cache duration:</span>
-								<span className="bg-blue-600 rounded px-2 py-1 text-xs">{formatDuration(parseInt(process.env.NEXT_PUBLIC_JAVA_CACHE_TIME) * 1000)}</span>
+								<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_JAVA_CACHE_TIME) * 1000)}</span>
 							</p>
 							<Highlight source={javaExample} className="mt-3 border border-neutral-700 rounded" />
 						</div>
-						<div className="rounded bg-neutral-800 bg-opacity-50 border border-neutral-700 p-5 shadow-lg mt-3">
+						<div className={`rounded ${boxClassName} p-5 mt-3`}>
 							<Header size={3} text="Bedrock Status" id="bedrock-status" />
 							<p className="flex items-center gap-2 mt-3">
-								<span className="bg-green-700 rounded px-2 py-1 text-xs">GET</span>
+								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
 								<code className="break-words">https://api.mcstatus.io/v2/status/bedrock/&lt;address&gt;</code>
 							</p>
 							<p className="flex items-center gap-2 mt-3">
 								<span>Cache duration:</span>
-								<span className="bg-blue-600 rounded px-2 py-1 text-xs">{formatDuration(parseInt(process.env.NEXT_PUBLIC_BEDROCK_CACHE_TIME) * 1000)}</span>
+								<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_BEDROCK_CACHE_TIME) * 1000)}</span>
 							</p>
 							<Highlight source={bedrockExample} className="mt-3 border border-neutral-700 rounded" />
 						</div>
-						<div className="rounded bg-neutral-800 bg-opacity-50 border border-neutral-700 p-5 shadow-lg mt-3">
+						<div className={`rounded ${boxClassName} p-5 mt-3`}>
 							<Header size={3} text="Icon" id="icon" />
 							<p className="mt-3">
-								<span className="bg-green-700 rounded px-2 py-1 text-xs">GET</span>
+								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
 								<code className="ml-2 break-words">https://api.mcstatus.io/v2/icon/&lt;address&gt;</code>
 							</p>
 							<p className="flex items-center gap-2 mt-3">
 								<span>Cache duration:</span>
-								<span className="bg-blue-600 rounded px-2 py-1 text-xs">{formatDuration(parseInt(process.env.NEXT_PUBLIC_ICON_CACHE_TIME) * 1000)}</span>
+								<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_ICON_CACHE_TIME) * 1000)}</span>
 							</p>
 							<Image src={iconExample} width="128" height="128" alt="Sample server icon" className="mt-3" />
 						</div>
 						<Header size={2} text="Support" id="support" className="mt-12" />
 						<p className="mt-3">If you require any additional assistance or found a bug you would like to report, please send an email to <a href="mailto:api@mcstatus.io" className="text-blue-500 hover:text-blue-400 transition-colors duration-150">api@mcstatus.io</a>.</p>
 					</div>
-					<div className="lg:border-l-2 border-l-neutral-700 lg:ml-24 lg:pl-12 py-2 mb-8 lg:mb-0">
+					<div className="lg:border-l-2 border-l-neutral-200 dark:border-l-neutral-700 lg:ml-24 lg:pl-12 py-2 mb-8 lg:mb-0">
 						<ul>
 							<li>
-								<Link href="#overview" className="font-bold text-neutral-300 hover:text-white transition-colors duration-150">
+								<Link href="#overview" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white transition-colors duration-150">
 									Overview
 								</Link>
 								<ul className="pl-6">
 									<li className="mt-1">
-										<Link href="#standards" className="text-neutral-300 hover:text-white transition-colors duration-150">
+										<Link href="#standards" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white transition-colors duration-150">
 											Standards
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#cache" className="text-neutral-300 hover:text-white transition-colors duration-150">
+										<Link href="#cache" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white transition-colors duration-150">
 											Cache
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#supported" className="text-neutral-300 hover:text-white transition-colors duration-150">
+										<Link href="#supported" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white transition-colors duration-150">
 											Supported Versions
 										</Link>
 									</li>
 								</ul>
 							</li>
 							<li className="mt-1">
-								<Link href="#routes" className="font-bold text-neutral-300 hover:text-white transition-colors duration-150">
+								<Link href="#routes" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white transition-colors duration-150">
 									Routes
 								</Link>
 								<ul className="pl-6">
 									<li className="mt-1">
-										<Link href="#java-status" className="text-neutral-300 hover:text-white transition-colors duration-150">
+										<Link href="#java-status" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white transition-colors duration-150">
 											Java Status
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#bedrock-status" className="text-neutral-300 hover:text-white transition-colors duration-150">
+										<Link href="#bedrock-status" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white transition-colors duration-150">
 											Bedrock Status
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#icon" className="text-neutral-300 hover:text-white transition-colors duration-150">
+										<Link href="#icon" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white transition-colors duration-150">
 											Icon
 										</Link>
 									</li>
 								</ul>
 							</li>
 							<li className="mt-1">
-								<Link href="#support" className="font-bold text-neutral-300 hover:text-white transition-colors duration-150">
+								<Link href="#support" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white transition-colors duration-150">
 									Support
 								</Link>
 							</li>

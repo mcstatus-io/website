@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 import Input from '../../components/Input';
 import { Button } from '../../components/Button';
 import Container from '../../components/Container';
+import { boxClassName } from '../../components/shared';
 
 export default function VoteTestTool({ user }) {
 	const form = useFormik({
@@ -65,20 +66,20 @@ export default function VoteTestTool({ user }) {
 				<p className="text-2xl font-light mt-2">Send a Votifier test vote to a Minecraft server</p>
 				{
 					form.isSubmitting
-						? <div className="p-5 bg-neutral-800 border border-neutral-700 rounded mt-3">
+						? <div className={`p-5 rounded mt-3 ${boxClassName}`}>
 							<p>The vote is being processed by the server, please wait...</p>
 						</div>
 						: form.status?.success
-							? <div className="p-5 bg-green-500 rounded mt-3">
+							? <div className="p-5 bg-green-400 dark:bg-green-500 rounded mt-3">
 								<p>Successfully sent vote to the specified server, and the vote was processed.</p>
 							</div>
 							: form.status?.error
-								? <div className="p-5 bg-red-500 rounded mt-3">
+								? <div className="p-5 bg-red-400 dark:bg-red-500 rounded mt-3">
 									<p>Failed to send the vote to the specified server. Reason: <span className="font-bold">{form.status.error}</span></p>
 								</div>
 								: null
 				}
-				<div className="p-5 bg-neutral-800 border border-neutral-700 rounded mt-3">
+				<div className={`p-5 rounded mt-2 ${boxClassName}`}>
 					<form onSubmit={form.handleSubmit}>
 						<div className="flex items-center gap-3 mb-3">
 							<div className="grow">

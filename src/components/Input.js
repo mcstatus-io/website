@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { interactiveBoxClassName } from './shared';
 
 export default function Input({ type, error, className, ...props }) {
 	switch (type) {
 		case 'textarea':
-			return <textarea className={`block border ${error ? 'border-red-500' : 'border-neutral-600 hover:border-neutral-500 focus:border-neutral-500'} font-mono outline-none bg-transparent px-3 py-2 rounded w-full ${className}`} {...props} />;
+			return <textarea className={`block ${interactiveBoxClassName} font-mono px-3 py-2 rounded w-full ${className}`} {...props} data-error={!!error} />;
 		default:
-			return <input className={`block border ${error ? 'border-red-500' : 'border-neutral-600 hover:border-neutral-500 focus:border-neutral-500'} font-mono outline-none bg-transparent px-3 py-2 rounded w-full ${className}`} {...props} />;
+			return <input className={`block ${interactiveBoxClassName} font-mono px-3 py-2 rounded w-full ${className}`} {...props} data-error={!!error} />;
 	}
 }
 

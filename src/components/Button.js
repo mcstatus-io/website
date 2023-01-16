@@ -1,12 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-
-const getClassName = (className) => `border border-neutral-600 hover:border-neutral-500 focus:border-neutral-500 disabled:border-neutral-700 disabled:text-neutral-400 bg-transparent px-3 py-2 rounded ${className}`;
+import { interactiveBoxClassName } from './shared';
 
 export function Button({ children, className, ...props }) {
 	return (
-		<button type="submit" {...{ ...props, className: getClassName(className) }}>{children}</button>
+		<button type="submit" className={`${interactiveBoxClassName} px-3 py-2 rounded ${className}`} {...props}>{children}</button>
 	);
 }
 
@@ -17,7 +16,7 @@ Button.propTypes = {
 
 export function LinkButton({ children, href, className, ...props }) {
 	return (
-		<Link href={href} {...{ ...props, className: getClassName(className) }}>
+		<Link href={href} className={`${interactiveBoxClassName} px-3 py-2 rounded ${className}`} {...props}>
 			{children}
 		</Link>
 	);

@@ -14,6 +14,7 @@ import Header from '../../../components/Header';
 import Container from '../../../components/Container';
 import chevronDown from '../../../assets/icons/chevron-down.svg';
 import chevronUp from '../../../assets/icons/chevron-up.svg';
+import { boxClassName } from '../../../components/shared';
 
 export default function BedrockStatus({ address, user }) {
 	const reducer = (state, action) => {
@@ -40,7 +41,7 @@ export default function BedrockStatus({ address, user }) {
 
 		(async () => {
 			try {
-				const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/bedrock/${address}`);
+				const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST ?? 'https://api.mcstatus.io/v2'}/status/bedrock/${address}`);
 
 				if (result.status === 200) {
 					const body = await result.json();
@@ -98,19 +99,18 @@ export default function BedrockStatus({ address, user }) {
 				<Header size={1} text="Minecraft Server Status" />
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 				<Search host={address} type="bedrock" className="mt-4" />
-				<div className="px-5 py-4 bg-neutral-800 border border-neutral-700 rounded-md mt-4">
+				<div className={`px-5 py-4 mt-4 rounded ${boxClassName}`}>
 					{
 						data.isLoaded
 							? data.error
-								? <p className="text-red-400">{data.error}</p>
+								? <p className="text-red-600 dark:text-red-400">{data.error}</p>
 								: <StatusTable
 									rows={[
-
 										[
 											'Status',
 											data.result.online
-												? <span className="text-green-400">Online</span>
-												: <span className="text-red-400">Offline</span>
+												? <span className="text-green-600 dark:text-green-400">Online</span>
+												: <span className="text-red-600 dark:text-red-400">Offline</span>
 										],
 										[
 											'Host',
@@ -127,13 +127,13 @@ export default function BedrockStatus({ address, user }) {
 														'MOTD',
 														data.result.motd
 															? <MinecraftFormatted html={data.result.motd.html} key="motd" />
-															: <span className="text-neutral-400">N/A</span>
+															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 													],
 													[
 														'Version',
 														data.result.version?.name
 															? data.result.version.name
-															: <span className="text-neutral-400">N/A</span>
+															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 													],
 													[
 														'Players',
@@ -146,25 +146,25 @@ export default function BedrockStatus({ address, user }) {
 																		: null
 																}
 															</span>
-															: <span className="text-neutral-400">N/A</span>
+															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 													],
 													[
 														'Edition',
 														data.result.edition
 															? <span>{data.result.edition}</span>
-															: <span className="text-neutral-400">N/A</span>
+															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 													],
 													[
 														'Gamemode',
 														data.result.gamemode
 															? <span>{data.result.gamemode}</span>
-															: <span className="text-neutral-400">N/A</span>
+															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 													],
 													[
 														'EULA Blocked',
 														data.result.eula_blocked
-															? <span className="text-red-400">Yes</span>
-															: <span className="text-green-400">No</span>
+															? <span className="text-red-600 dark:text-red-400">Yes</span>
+															: <span className="text-green-600 dark:text-green-400">No</span>
 													],
 													[
 														'Protocol Version',
@@ -173,11 +173,11 @@ export default function BedrockStatus({ address, user }) {
 																<span>{data.result.version.protocol}</span>
 																{
 																	protocolVersionName
-																		? <span className="text-neutral-400"> ({protocolVersionName.minecraftVersion})</span>
+																		? <span className="text-neutral-500 dark:text-neutral-400"> ({protocolVersionName.minecraftVersion})</span>
 																		: null
 																}
 															</span>
-															: <span className="text-neutral-400">N/A</span>
+															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 													],
 													[
 														'Cached Response',
@@ -214,16 +214,16 @@ export default function BedrockStatus({ address, user }) {
 				</div>
 				{
 					data.isLoaded && data.result
-						? <div className="mt-3 bg-neutral-800 border border-neutral-700 rounded-md">
+						? <div className={`mt-3 rounded ${boxClassName}`}>
 							<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
 								<p className="font-bold">API Usage</p>
 								<Image src={data.showAPIUsage ? chevronUp : chevronDown} alt="Chevron down icon" width="16" />
 							</div>
 							{
 								data.showAPIUsage
-									? <div className="p-4 border-t border-t-neutral-700">
+									? <div className="p-4 border-t border-t-neutral-300 dark:border-t-neutral-700">
 										<p>
-											<span className="bg-green-600 text-sm px-2 py-1 rounded">GET</span>
+											<span className="bg-green-600 text-sm px-2 py-1 rounded text-white">GET</span>
 											<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/bedrock/{address}</code>
 										</p>
 										<Highlight source={JSON.stringify(data.result, null, '    ')} className="border border-neutral-700 rounded mt-4" />

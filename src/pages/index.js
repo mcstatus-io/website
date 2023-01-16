@@ -2,14 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
 import Head from 'next/head';
-import Image from 'next/image';
 import { exampleServers } from '../assets/servers';
 import PropTypes from 'prop-types';
 import Navbar from '../components/Navbar';
 import Search from '../components/Search';
 import Container from '../components/Container';
 import Ad from '../components/Ad';
-import wave from '../assets/img/wave.svg';
 import Header from '../components/Header';
 import BoxLink from '../components/BoxLink';
 
@@ -29,14 +27,11 @@ export default function Home({ user, javaServers, bedrockServers }) {
 				<link rel="canonical" href="https://mcstatus.io" />
 			</Head>
 			<Navbar user={user} active="home" />
-			<div className="bg-[#232323]">
-				<Container className="pt-24 pb-12" noPadding>
-					<Header size={1} text="Minecraft Server Status" />
-					<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
-					<Search className="mt-4" />
-				</Container>
-			</div>
-			<Image src={wave} alt="Wave" className="w-full h-32" priority />
+			<Container className="py-12 lg:pt-24" noMargin>
+				<Header size={1} text="Minecraft Server Status" />
+				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
+				<Search className="mt-4" />
+			</Container>
 			<Container className="mb-12 lg:mb-24 mt-0 lg:mt-0">
 				<Header size={2} text="Sample Servers" className="mt-12" />
 				<p className="text-lg font-light">A few sample servers to test out our service</p>
@@ -45,7 +40,7 @@ export default function Home({ user, javaServers, bedrockServers }) {
 						{
 							javaServers.map((server, index) => (
 								<BoxLink href={`/status/java/${server.address}`} className="mb-3" key={index}>
-									<span className="px-2 py-1 rounded mr-3 bg-green-700 text-xs">Java</span>
+									<span className="px-2 py-1 rounded mr-3 bg-green-700 text-xs text-white">Java</span>
 									<code>{server.address}</code>
 								</BoxLink>
 							))
@@ -55,7 +50,7 @@ export default function Home({ user, javaServers, bedrockServers }) {
 						{
 							bedrockServers.map((server, index) => (
 								<BoxLink href={`/status/bedrock/${server.address}`} className="mb-3" key={index}>
-									<span className="px-2 py-1 rounded mr-3 bg-blue-600 text-xs">Bedrock</span>
+									<span className="px-2 py-1 rounded mr-3 bg-blue-600 text-xs text-white">Bedrock</span>
 									<code>{server.address}</code>
 								</BoxLink>
 							))
