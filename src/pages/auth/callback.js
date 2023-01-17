@@ -52,7 +52,7 @@ export default function AuthCallback({ code }) {
 				{
 					error
 						? null
-						: <Image src={loadingSpinner} width="64" height="64" priority />
+						: <Image src={loadingSpinner} width="64" height="64" alt="Loading spinner" priority />
 				}
 				<Header size={1} className={error ? 'text-red-500' : ''}>{error ? 'Error' : 'Please wait...'}</Header>
 				{
