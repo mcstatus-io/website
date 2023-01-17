@@ -55,7 +55,7 @@ export default function Documentation({ user }) {
 								<span>Cache duration:</span>
 								<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_JAVA_CACHE_TIME) * 1000)}</span>
 							</p>
-							<Highlight source={javaExample} className="mt-3" />
+							<Highlight source={javaExample} className="mt-3 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 						</details>
 						<details className="rounded box p-5 mt-3" open>
 							<summary className="font-bold text-lg cursor-pointer" id="bedrock-status">Bedrock Status</summary>
@@ -67,7 +67,7 @@ export default function Documentation({ user }) {
 								<span>Cache duration:</span>
 								<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_BEDROCK_CACHE_TIME) * 1000)}</span>
 							</p>
-							<Highlight source={bedrockExample} className="mt-3" />
+							<Highlight source={bedrockExample} className="mt-3 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 						</details>
 						<details className="rounded box p-5 mt-3" open>
 							<summary className="font-bold text-lg cursor-pointer" id="icon">Icon</summary>

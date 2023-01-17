@@ -271,7 +271,7 @@ export default function JavaStatus({ address, user }) {
 											<span className="bg-green-600 text-sm px-2 py-1 rounded text-white">GET</span>
 											<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/java/{address}</code>
 										</p>
-										<Highlight source={JSON.stringify(data.result, null, '    ')} className="mt-4 box rounded" />
+										<Highlight source={JSON.stringify(data.result, null, '    ')} className="mt-4 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 										<p className="mt-3">Learn more about this response by viewing it in the <Link href="/docs#java-status" className="link">API documentation</Link>.</p>
 									</div>
 									: null
