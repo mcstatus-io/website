@@ -60,6 +60,26 @@ export const exampleServers = [
 		address: 'mc.herobrine.org'
 	},
 	{
+		type: 'java',
+		name: 'ZedarMC',
+		address: 'ms.zedarmc.com'
+	},
+	{
+		type: 'java',
+		name: 'JackpotMC',
+		address: 'play.jackpotmc.com'
+	},
+	{
+		type: 'java',
+		name: 'MineRival',
+		address: 'ms.minerival.org'
+	},
+	{
+		type: 'java',
+		name: 'Tulip Survival',
+		address: 'play.tulipsurvival.com'
+	},
+	{
 		type: 'bedrock',
 		name: 'NetherGames',
 		address: 'play.nethergames.org'
@@ -118,5 +138,25 @@ export const exampleServers = [
 		type: 'bedrock',
 		name: 'Mineseed',
 		address: 'bedrock.mineseed.org'
+	},
+	{
+		type: 'bedrock',
+		name: 'FallenTech',
+		address: 'play.fallentech.io'
+	},
+	{
+		type: 'bedrock',
+		name: 'RulerCraft',
+		address: 'play.rulercraft.com:25565'
+	},
+	{
+		type: 'bedrock',
+		name: 'LifeBlock',
+		address: 'play-lifeblock.net'
+	},
+	{
+		type: 'bedrock',
+		name: 'MC-SMP',
+		address: 'mcsmp.net'
 	}
 ];

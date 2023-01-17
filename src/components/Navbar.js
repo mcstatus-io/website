@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
-import calendarIcon from '../assets/icons/calendar.svg';
-import githubIcon from '../assets/icons/github.svg';
-import menuIcon from '../assets/icons/menu.svg';
-import closeIcon from '../assets/icons/x.svg';
+import CalendarIcon from '!!@svgr/webpack!../assets/icons/calendar.svg';
+import GithubIcon from '!!@svgr/webpack!../assets/icons/github.svg';
+import MenuIcon from '!!@svgr/webpack!../assets/icons/menu.svg';
+import CloseIcon from '!!@svgr/webpack!../assets/icons/x.svg';
 import icon from '../assets/img/icon.png';
 import getAvatarURL from '../util/getAvatarURL';
 
@@ -23,7 +23,11 @@ export default function Navbar({ active, user }) {
 						</Link>
 					</div>
 					<button className="md:hidden" type="button" onClick={() => setShowMenu(!showMenu)}>
-						<Image src={showMenu ? closeIcon : menuIcon} alt="Menu icon" width="32" height="32" priority />
+						{
+							showMenu
+								? <CloseIcon width="32" height="32" />
+								: <MenuIcon width="32" height="32" />
+						}
 					</button>
 					<ul className="md:ml-6 hidden md:flex gap-6 items-center">
 						<li>
@@ -51,12 +55,12 @@ export default function Navbar({ active, user }) {
 				<ul className="ml-8 hidden md:flex gap-3 items-center">
 					<li>
 						<a href="https://github.com/mcstatus-io" className="block rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors p-2">
-							<Image src={githubIcon} width="24" height="24" className="w-[24px] h-[24px]" alt="GitHub icon" priority />
+							<GithubIcon width="24" height="24" />
 						</a>
 					</li>
 					<li>
 						<a href="https://uptime.mcstatus.io" className="block rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors p-2">
-							<Image src={calendarIcon} width="20" height="20" className="w-[24px] h-[24px]" alt="Calendar icon" priority />
+							<CalendarIcon width="24" height="24" />
 						</a>
 					</li>
 					<li>

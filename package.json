@@ -33,6 +33,7 @@
 	"homepage": "https://github.com/mcstatus-io/Website#readme",
 	"dependencies": {
 		"@next/bundle-analyzer": "^13.1.1",
+		"@svgr/webpack": "^6.5.1",
 		"formik": "^2.2.9",
 		"highlight.js": "^11.7.0",
 		"humanize-duration": "^3.27.3",

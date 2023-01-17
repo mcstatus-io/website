@@ -26,14 +26,20 @@ export default function Tools({ user }) {
 			<Container>
 				<Header size={1}>Tools</Header>
 				<p className="text-2xl font-light mt-2">Quick tools to help Minecraft developers</p>
-				<BoxLink href="/tools/coordinate" className="mt-5">
-					<Header size={2}>Coordinate Calculator</Header>
-					<p className="text-lg">Calculate region, chunk and block coordinates</p>
-				</BoxLink>
-				<BoxLink href="/tools/vote" className="mt-3">
-					<Header size={2}>Votifier Tester</Header>
-					<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
-				</BoxLink>
+				<ul className="flex flex-col gap-3 mt-5">
+					<li>
+						<BoxLink href="/tools/coordinate">
+							<Header size={2}>Coordinate Calculator</Header>
+							<p className="text-lg">Calculate region, chunk and block coordinates</p>
+						</BoxLink>
+					</li>
+					<li>
+						<BoxLink href="/tools/vote">
+							<Header size={2}>Votifier Tester</Header>
+							<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
+						</BoxLink>
+					</li>
+				</ul>
 			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
@@ -47,6 +53,12 @@ export default function Tools({ user }) {
 				"position": 1,
 				"name": "Home",
 				"item": "https://mcstatus.io"
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"name": "Tools",
+				"item": "https://mcstatus.io/tools"
 			}
 		]
 	},

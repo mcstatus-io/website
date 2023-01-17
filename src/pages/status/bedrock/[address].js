@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer } from 'react';
-import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 import Script from 'next/script';
@@ -12,8 +11,8 @@ import StatusTable from '../../../components/StatusTable';
 import Ad from '../../../components/Ad';
 import Header from '../../../components/Header';
 import Container from '../../../components/Container';
-import chevronDown from '../../../assets/icons/chevron-down.svg';
-import chevronUp from '../../../assets/icons/chevron-up.svg';
+import ChevronDown from '!!@svgr/webpack!../../../assets/icons/chevron-down.svg';
+import ChevronUp from '!!@svgr/webpack!../../../assets/icons/chevron-up.svg';
 
 export default function BedrockStatus({ address, user }) {
 	const reducer = (state, action) => {
@@ -97,7 +96,7 @@ export default function BedrockStatus({ address, user }) {
 			<Container>
 				<Header size={1}>Minecraft Server Status</Header>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
-				<Search host={address} type="bedrock" className="mt-4" />
+				<Search host={address} type="bedrock" className="mt-5" />
 				<div className="px-5 py-4 mt-4 rounded box">
 					{
 						data.isLoaded
@@ -216,7 +215,11 @@ export default function BedrockStatus({ address, user }) {
 						? <div className="mt-3 rounded box">
 							<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
 								<p className="font-bold">API Usage</p>
-								<Image src={data.showAPIUsage ? chevronUp : chevronDown} alt="Chevron down icon" width="16" />
+								{
+									data.showAPIUsage
+										? <ChevronUp />
+										: <ChevronDown />
+								}
 							</div>
 							{
 								data.showAPIUsage

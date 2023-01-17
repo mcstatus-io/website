@@ -6,7 +6,7 @@ import { useCookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 import Header from '../../components/Header';
 import { LinkButton } from '../../components/Button';
-import loader from '../../assets/img/loader.svg';
+import loadingSpinner from '../../assets/img/loader.svg';
 
 export default function AuthCallback({ code }) {
 	const [error, setError] = useState(false);
@@ -52,7 +52,7 @@ export default function AuthCallback({ code }) {
 				{
 					error
 						? null
-						: <Image src={loader} alt="Loading spinner icon" width="64" height="64" priority />
+						: <Image src={loadingSpinner} width="64" height="64" priority />
 				}
 				<Header size={1} className={error ? 'text-red-500' : ''}>{error ? 'Error' : 'Please wait...'}</Header>
 				{

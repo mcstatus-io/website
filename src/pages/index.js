@@ -11,7 +11,7 @@ import Ad from '../components/Ad';
 import Header from '../components/Header';
 import BoxLink from '../components/BoxLink';
 
-export default function Home({ user, javaServers, bedrockServers }) {
+export default function Home({ user, servers }) {
 	return (
 		<>
 			<Head>
@@ -30,36 +30,31 @@ export default function Home({ user, javaServers, bedrockServers }) {
 			<Container className="py-12 lg:pt-24" noMargin>
 				<Header size={1}>Minecraft Server Status</Header>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
-				<Search className="mt-4" />
+				<Search className="mt-5" />
 			</Container>
 			<Container className="mb-12 lg:mb-24 mt-0 lg:mt-0">
 				<Header size={2} className="mt-12">Sample Servers</Header>
 				<p className="text-lg font-light">A few sample servers to test out our service</p>
-				<div className="md:columns-2 gap-3 mt-4">
-					<div>
-						{
-							javaServers.map((server, index) => (
-								<BoxLink href={`/status/java/${server.address}`} className="mb-3" key={index}>
-									<span className="px-2 py-1 rounded mr-3 bg-green-700 text-xs text-white">Java</span>
-									<code>{server.address}</code>
+				<ul className="flex gap-3 flex-wrap mt-5">
+					{
+						servers.map((server, index) => (
+							<li className="md:basis-[calc(50%-0.75rem)] basis-full" key={index}>
+								<BoxLink href={`/status/${server.type}/${server.address}`}>
+									<div className="flex justify-between">
+										<span>
+											<span className={`px-2 py-1 rounded mr-3 ${server.type === 'java' ? 'bg-green-700' : 'bg-blue-600'} text-xs text-white`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
+											<span className="font-bold">{server.name}</span>
+										</span>
+										<code>{server.address}</code>
+									</div>
 								</BoxLink>
-							))
-						}
-					</div>
-					<div>
-						{
-							bedrockServers.map((server, index) => (
-								<BoxLink href={`/status/bedrock/${server.address}`} className="mb-3" key={index}>
-									<span className="px-2 py-1 rounded mr-3 bg-blue-600 text-xs text-white">Bedrock</span>
-									<code>{server.address}</code>
-								</BoxLink>
-							))
-						}
-					</div>
-				</div>
+							</li>
+						))
+					}
+				</ul>
 				<Header size={2} className="mt-12">About Us</Header>
 				<p className="text-xl font-light">A quick understanding of what we do</p>
-				<p className="mb-3 mt-4">This service was created after realizing the missing features of many other Minecraft server status websites, including services like <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a>. Their API and website was complex to navigate, and I found it easier to create my own service to fulfill this. This service is heavily focused on improving performance and optimizing latency when connecting to the server, that is why the API was built from the ground-up using the high performant Go language.</p>
+				<p className="mb-3 mt-5">This service was created after realizing the missing features of many other Minecraft server status websites, including services like <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a>. Their API and website was complex to navigate, and I found it easier to create my own service to fulfill this. This service is heavily focused on improving performance and optimizing latency when connecting to the server, that is why the API was built from the ground-up using the high performant Go language.</p>
 				<p className="mb-3">Our service offers many features that others do not, such as raw/clean/HTML formats of many values like the MOTD, version name, and sample player names. We also reduced the cache duration of every status down to only 1 minute. We intentionally chose not to use the query protocol, as it only slows down the time it takes to retrieve a Minecraft server status, and it does not provide any more relevant data than the more reliable status protocol does.</p>
 				<p>We also offer an endpoint for quickly viewing the icon of any Java Edition Minecraft server. This makes it easy for server owners to display the continuously changing server icon on their own website without the hassle of updating their own code. Our service is entirely open source, and you can view it any time on our <a href="https://github.com/mcstatus-io" className="link">GitHub organization</a>. If you would like to use our API in your service, head over to the <Link href="/docs/v2" className="link">API documentation</Link> and easily implement our standardized API in any code environment.</p>
 				<Ad className="mt-6" />
@@ -101,13 +96,22 @@ export default function Home({ user, javaServers, bedrockServers }) {
 
 Home.propTypes = {
 	user: PropTypes.object,
-	javaServers: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-	bedrockServers: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
+	servers: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };
 
 export function getServerSideProps() {
 	const javaServers = exampleServers.filter((server) => server.type === 'java').sort(() => Math.random() - 0.5).slice(0, 4);
 	const bedrockServers = exampleServers.filter((server) => server.type === 'bedrock').sort(() => Math.random() - 0.5).slice(0, 4);
 
-	return { props: { javaServers, bedrockServers } };
+	const servers = [];
+
+	for (let i = 0; i < 8; i++) {
+		if (i % 2 === 0) {
+			servers.push(javaServers[i / 2]);
+		} else {
+			servers.push(bedrockServers[(i - 1) / 2]);
+		}
+	}
+
+	return { props: { servers } };
 }

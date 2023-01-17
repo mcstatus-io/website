@@ -13,8 +13,8 @@ import Ad from '../../../components/Ad';
 import Header from '../../../components/Header';
 import { Button } from '../../../components/Button';
 import Container from '../../../components/Container';
-import chevronDown from '../../../assets/icons/chevron-down.svg';
-import chevronUp from '../../../assets/icons/chevron-up.svg';
+import ChevronDown from '!!@svgr/webpack!../../../assets/icons/chevron-down.svg';
+import ChevronUp from '!!@svgr/webpack!../../../assets/icons/chevron-up.svg';
 
 export default function JavaStatus({ address, user }) {
 	const reducer = (state, action) => {
@@ -102,7 +102,7 @@ export default function JavaStatus({ address, user }) {
 			<Container>
 				<Header size={1}>Minecraft Server Status</Header>
 				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
-				<Search host={address} type="java" className="mt-4" />
+				<Search host={address} type="java" className="mt-5" />
 				<div className="px-5 py-4 rounded mt-4 box">
 					{
 						data.isLoaded
@@ -151,7 +151,16 @@ export default function JavaStatus({ address, user }) {
 															<span>{data.result.players.online} / {data.result.players.max}</span>
 															{
 																data.result.players.list.length > 0
-																	? <Button className="ml-3 w-auto text-sm" onClick={() => dispatch({ type: 'TOGGLE_SHOW_PLAYERS' })}>{data.showPlayers ? 'Hide' : 'Show'} player list</Button>
+																	? <Button className="ml-3 w-auto text-sm" onClick={() => dispatch({ type: 'TOGGLE_SHOW_PLAYERS' })}>
+																		<div className="flex items-center gap-1">
+																			<span>{data.showPlayers ? 'Hide' : 'Show'} player list</span>
+																			{
+																				data.showPlayers
+																					? <ChevronUp />
+																					: <ChevronDown />
+																			}
+																		</div>
+																	</Button>
 																	: null
 															}
 															{
@@ -167,7 +176,16 @@ export default function JavaStatus({ address, user }) {
 															<span>{data.result.mods.length} mod{data.result.mods.length === 1 ? '' : 's'} loaded</span>
 															{
 																data.result.mods.length > 0
-																	? <Button className="ml-3 w-auto text-sm" onClick={() => dispatch({ type: 'TOGGLE_SHOW_MODS' })}>{data.showMods ? 'Hide' : 'Show'} mod info</Button>
+																	? <Button className="ml-3 w-auto text-sm" onClick={() => dispatch({ type: 'TOGGLE_SHOW_MODS' })}>
+																		<div className="flex items-center gap-1">
+																			<span>{data.showMods ? 'Hide' : 'Show'} mod info</span>
+																			{
+																				data.showMods
+																					? <ChevronUp />
+																					: <ChevronDown />
+																			}
+																		</div>
+																	</Button>
 																	: null
 															}
 															{
@@ -240,7 +258,11 @@ export default function JavaStatus({ address, user }) {
 						? <div className="mt-3 rounded box">
 							<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
 								<p className="font-bold">API Usage</p>
-								<Image src={data.showAPIUsage ? chevronUp : chevronDown} alt="Chevron down icon" width="16" />
+								{
+									data.showAPIUsage
+										? <ChevronUp />
+										: <ChevronDown />
+								}
 							</div>
 							{
 								data.showAPIUsage
@@ -249,7 +271,7 @@ export default function JavaStatus({ address, user }) {
 											<span className="bg-green-600 text-sm px-2 py-1 rounded text-white">GET</span>
 											<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/java/{address}</code>
 										</p>
-										<Highlight source={JSON.stringify(data.result, null, '    ')} className="mt-4" />
+										<Highlight source={JSON.stringify(data.result, null, '    ')} className="mt-4 box rounded" />
 										<p className="mt-3">Learn more about this response by viewing it in the <Link href="/docs#java-status" className="link">API documentation</Link>.</p>
 									</div>
 									: null
