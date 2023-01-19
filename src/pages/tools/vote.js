@@ -80,16 +80,16 @@ export default function VoteTestTool({ user }) {
 				}
 				<div className="p-5 rounded mt-3 box">
 					<form onSubmit={form.handleSubmit}>
-						<div className="flex items-center gap-3 mb-3">
-							<div className="grow">
+						<div className="flex items-center flex-col lg:flex-row gap-3 mb-3 w-full">
+							<div className="grow w-full">
 								<label className="font-bold" htmlFor="host">Host</label>
 								<Input type="text" id="host" error={form.errors.host} placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
 							</div>
-							<div className="grow">
+							<div className="grow w-full">
 								<label className="font-bold" htmlFor="port">Port</label>
 								<Input type="number" id="port" min="0" max="65536" step="1" error={form.errors.port} defaultValue={form.values.port} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
 							</div>
-							<div className="grow">
+							<div className="grow w-full">
 								<label className="font-bold" htmlFor="username">Username</label>
 								<Input type="text" id="username" error={form.errors.username} placeholder="Notch" defaultValue={form.values.username} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
 							</div>
