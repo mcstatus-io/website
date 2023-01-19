@@ -22,22 +22,22 @@ export default function Navbar({ active, user }) {
 	}, [showMenu]);
 
 	return (
-		<nav className="text-white sticky top-0 z-50 w-screen h-16 bg-neutral-900 bg-opacity-90 dark:bg-opacity-80 backdrop-blur-lg border-b border-b-neutral-700">
+		<nav className={`text-white sticky top-0 z-50 w-screen h-16 ${showMenu ? 'bg-neutral-900 bg-opacity-80 backdrop-blur-lg' : 'bg-neutral-900 bg-opacity-90 dark:bg-opacity-80 backdrop-blur-lg border-b border-b-neutral-700'}`}>
 			<Container className="md:px-6 h-full flex items-center" noMargin>
-				<div className="md:max-lg:hidden md:pr-6 md:border-r-2 md:border-r-neutral-700 dark:md:border-r-neutral-800 mr-auto md:mr-0">
+				<div className={`${showMenu ? 'hidden' : 'md:max-lg:hidden'} md:pr-6 md:border-r-2 md:border-r-neutral-700 dark:md:border-r-neutral-800 md:mr-0`}>
 					<Link href="/" className="flex items-center content-center p-1">
 						<Image src={icon} alt="mcstatus.io Icon" width="32" height="32" priority />
 						<span className="text-white text-xl font-semibold ml-2 tracking-tighter">MCS</span>
 					</Link>
 				</div>
-				<button className="md:hidden p-2" type="button" onClick={() => setShowMenu(!showMenu)}>
+				<button className="ml-auto md:hidden p-2" type="button" onClick={() => setShowMenu(!showMenu)}>
 					{
 						showMenu
 							? <CloseIcon />
 							: <MenuIcon />
 					}
 				</button>
-				<ul className={`list-none lg:ml-6 ${showMenu ? 'flex flex-col justify-center absolute top-16 left-0 bg-neutral-900 bg-opacity-80 backdrop-blur-lg w-full h-[calc(100vh-4rem)] z-50' : 'hidden md:flex'} gap-6 items-center grow`}>
+				<ul className={`list-none lg:ml-6 ${showMenu ? 'flex flex-col justify-center absolute top-16 left-0 bg-neutral-900 bg-opacity-80 backdrop-blur-lg w-full h-[calc(100vh-4rem)] z-10' : 'hidden md:flex'} gap-6 items-center grow`}>
 					<li>
 						<Link href="/" className={active === 'home' ? 'text-white' : 'text-neutral-400 hover:text-white transition-colors duration-150'}>
 							Home
@@ -50,7 +50,8 @@ export default function Navbar({ active, user }) {
 					</li>
 					<li>
 						<Link href="/docs" className={active === 'api' ? 'text-white' : 'text-neutral-400 hover:text-white transition-colors duration-150'}>
-							API
+							<span className="hidden md:block">API</span>
+							<span className="block md:hidden">API Documentation</span>
 						</Link>
 					</li>
 					<li className="md:mr-auto">
