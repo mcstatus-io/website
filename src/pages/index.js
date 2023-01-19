@@ -40,12 +40,12 @@ export default function Home({ user, servers }) {
 						servers.map((server, index) => (
 							<li className="md:basis-[calc(50%-0.75rem)] basis-full" key={index}>
 								<BoxLink href={`/status/${server.type}/${server.address}`}>
-									<div className="flex justify-between">
+									<div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-0 justify-between">
 										<span>
 											<span className={`px-2 py-1 rounded mr-3 ${server.type === 'java' ? 'bg-green-700' : 'bg-blue-600'} text-xs text-white`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
 											<span className="font-bold">{server.name}</span>
 										</span>
-										<code>{server.address}</code>
+										<code className="text-sm">{server.address}</code>
 									</div>
 								</BoxLink>
 							</li>

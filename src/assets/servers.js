@@ -147,7 +147,7 @@ export const exampleServers = [
 	{
 		type: 'bedrock',
 		name: 'RulerCraft',
-		address: 'play.rulercraft.com:25565'
+		address: 'play.rulercraft.com'
 	},
 	{
 		type: 'bedrock',
