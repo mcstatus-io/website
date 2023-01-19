@@ -9,9 +9,14 @@ export default function MinecraftFormatted({ html, className }) {
 	useEffect(() => {
 		if (!containerElem || !containerElem.current) return;
 
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const obfuscatedElems = containerElem.current.querySelectorAll('.minecraft-format-obfuscated');
 
+		let interval;
+
 		const update = () => {
+			if (prefersReducedMotion.matches) return;
+
 			obfuscatedElems.forEach((elem) => {
 				let value = '';
 
@@ -23,9 +28,21 @@ export default function MinecraftFormatted({ html, className }) {
 			});
 		};
 
-		const interval = setInterval(update, 1000 / 60);
+		const onMotionPreferenceChange = () => {
+			if (prefersReducedMotion.matches) {
+				clearInterval(interval);
+			} else {
+				interval = setInterval(update, 1000 / 60);
+			}
+		};
 
-		return () => clearInterval(interval);
+		onMotionPreferenceChange();
+
+		prefersReducedMotion.addEventListener('change', onMotionPreferenceChange);
+
+		return () => {
+			clearInterval(interval);
+		};
 	}, [containerElem]);
 
 	return (

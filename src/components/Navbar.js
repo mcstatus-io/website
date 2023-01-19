@@ -39,34 +39,34 @@ export default function Navbar({ active, user }) {
 				</button>
 				<ul className={`list-none lg:ml-6 ${showMenu ? 'flex flex-col justify-center absolute top-16 left-0 bg-neutral-900 bg-opacity-80 backdrop-blur-lg w-full h-[calc(100vh-4rem)] z-10' : 'hidden md:flex'} gap-6 items-center grow`}>
 					<li>
-						<Link href="/" className={active === 'home' ? 'text-white' : 'text-neutral-400 hover:text-white transition-colors duration-150'}>
+						<Link href="/" className={active === 'home' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors motion-safe:duration-150'}>
 							Home
 						</Link>
 					</li>
 					<li>
-						<Link href="/tools" className={active === 'tools' ? 'text-white' : 'text-neutral-400 hover:text-white transition-colors duration-150'}>
+						<Link href="/tools" className={active === 'tools' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors motion-safe:duration-150'}>
 							Tools
 						</Link>
 					</li>
 					<li>
-						<Link href="/docs" className={active === 'api' ? 'text-white' : 'text-neutral-400 hover:text-white transition-colors duration-150'}>
+						<Link href="/docs" className={active === 'api' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors motion-safe:duration-150'}>
 							<span className="hidden md:block">API</span>
 							<span className="block md:hidden">API Documentation</span>
 						</Link>
 					</li>
 					<li className="md:mr-auto">
-						<Link href="/about" className={active === 'about' ? 'text-white' : 'text-neutral-400 hover:text-white transition-colors duration-150'}>
+						<Link href="/about" className={active === 'about' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors motion-safe:duration-150'}>
 							About
 						</Link>
 					</li>
 					<li>
-						<a href="https://github.com/mcstatus-io" className="flex gap-3 items-center rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors p-2">
+						<a href="https://github.com/mcstatus-io" className="flex gap-3 items-center rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-800 motion-safe:transition-colors p-2">
 							<GithubIcon width="24" height="24" />
 							<span className="md:sr-only font-bold">GitHub</span>
 						</a>
 					</li>
 					<li>
-						<a href="https://uptime.mcstatus.io" className="flex gap-3 items-center rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-800 transition-colors p-2">
+						<a href="https://uptime.mcstatus.io" className="flex gap-3 items-center rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-800 motion-safe:transition-colors p-2">
 							<CalendarIcon width="24" height="24" />
 							<span className="md:sr-only font-bold">Status</span>
 						</a>
@@ -74,14 +74,14 @@ export default function Navbar({ active, user }) {
 					<li>
 						{
 							user
-								? <a href={process.env.NEXT_PUBLIC_DASHBOARD_URL ?? 'https://dashboard.mcstatus.io'} className="flex items-center gap-3 py-2 pl-2 pr-3 bg-neutral-800 hover:bg-neutral-900 hover:bg-opacity-70 transition-colors rounded-full">
+								? <a href={process.env.NEXT_PUBLIC_DASHBOARD_URL ?? 'https://dashboard.mcstatus.io'} className="flex items-center gap-3 py-2 pl-2 pr-3 bg-neutral-800 hover:bg-neutral-900 hover:bg-opacity-70 motion-safe:transition-colors rounded-full">
 									<Image src={getAvatarURL(user)} className="rounded-full" alt="Profile icon" width="32" height="32" priority />
 									<span>
 										<span className="font-bold">{user.username}</span>
 										<span className="text-neutral-300">#{user.discriminator}</span>
 									</span>
 								</a>
-								: <Link href="/auth" className="lg:ml-2 px-5 py-3 bg-[#5865F2] hover:bg-opacity-80 transition-colors rounded-full">
+								: <Link href="/auth" className="lg:ml-2 px-5 py-3 bg-[#5865F2] hover:bg-opacity-80 motion-safe:transition-colors rounded-full">
 									Log in with Discord
 								</Link>
 						}
