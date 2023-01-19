@@ -28,35 +28,47 @@ export default function Home({ user, servers }) {
 			</Head>
 			<Navbar user={user} active="home" />
 			<Container className="py-12 lg:pt-24" noMargin>
-				<Header size={1}>Minecraft Server Status</Header>
-				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
-				<Search className="mt-5" />
+				<section>
+					<hgroup>
+						<Header size={1}>Minecraft Server Status</Header>
+						<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
+					</hgroup>
+					<Search className="mt-5" />
+				</section>
 			</Container>
 			<Container className="mb-12 lg:mb-24 mt-0 lg:mt-0">
-				<Header size={2} className="mt-12">Sample Servers</Header>
-				<p className="text-lg font-light">A few sample servers to test out our service</p>
-				<ul className="flex gap-3 flex-wrap mt-5">
-					{
-						servers.map((server, index) => (
-							<li className="md:basis-[calc(50%-0.75rem)] basis-full" key={index}>
-								<BoxLink href={`/status/${server.type}/${server.address}`}>
-									<div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-0 justify-between">
-										<span>
-											<span className={`px-2 py-1 rounded mr-3 ${server.type === 'java' ? 'bg-green-700' : 'bg-blue-600'} text-xs text-white`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
-											<span className="font-bold">{server.name}</span>
-										</span>
-										<code className="text-sm">{server.address}</code>
-									</div>
-								</BoxLink>
-							</li>
-						))
-					}
-				</ul>
-				<Header size={2} className="mt-12">About Us</Header>
-				<p className="text-xl font-light">A quick understanding of what we do</p>
-				<p className="mb-3 mt-5">This service was created after realizing the missing features of many other Minecraft server status websites, including services like <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a>. Their API and website was complex to navigate, and I found it easier to create my own service to fulfill this. This service is heavily focused on improving performance and optimizing latency when connecting to the server, that is why the API was built from the ground-up using the high performant Go language.</p>
-				<p className="mb-3">Our service offers many features that others do not, such as raw/clean/HTML formats of many values like the MOTD, version name, and sample player names. We also reduced the cache duration of every status down to only 1 minute. We intentionally chose not to use the query protocol, as it only slows down the time it takes to retrieve a Minecraft server status, and it does not provide any more relevant data than the more reliable status protocol does.</p>
-				<p>We also offer an endpoint for quickly viewing the icon of any Java Edition Minecraft server. This makes it easy for server owners to display the continuously changing server icon on their own website without the hassle of updating their own code. Our service is entirely open source, and you can view it any time on our <a href="https://github.com/mcstatus-io" className="link">GitHub organization</a>. If you would like to use our API in your service, head over to the <Link href="/docs/v2" className="link">API documentation</Link> and easily implement our standardized API in any code environment.</p>
+				<section>
+					<hgroup>
+						<Header size={2} className="mt-12">Sample Servers</Header>
+						<p className="text-lg font-light">A few sample servers to test out our service</p>
+					</hgroup>
+					<ul className="flex gap-3 flex-wrap mt-5">
+						{
+							servers.map((server, index) => (
+								<li className="md:basis-[calc(50%-0.75rem)] basis-full" key={index}>
+									<BoxLink href={`/status/${server.type}/${server.address}`}>
+										<div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-0 justify-between">
+											<span>
+												<span className={`px-2 py-1 rounded mr-3 ${server.type === 'java' ? 'bg-green-700' : 'bg-blue-600'} text-xs text-white`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
+												<span className="font-bold">{server.name}</span>
+											</span>
+											<code className="text-sm">{server.address}</code>
+										</div>
+									</BoxLink>
+								</li>
+							))
+						}
+					</ul>
+				</section>
+				<section>
+					<hgroup>
+						<Header size={2} className="mt-12">About Us</Header>
+						<p className="text-xl font-light">A quick understanding of what we do</p>
+					</hgroup>
+					<p className="mb-3 mt-5">This service was created after realizing the missing features of many other Minecraft server status websites, including services like <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a>. Their API and website was complex to navigate, and I found it easier to create my own service to fulfill this. This service is heavily focused on improving performance and optimizing latency when connecting to the server, that is why the API was built from the ground-up using the high performant Go language.</p>
+					<p className="mb-3">Our service offers many features that others do not, such as raw/clean/HTML formats of many values like the MOTD, version name, and sample player names. We also reduced the cache duration of every status down to only 1 minute. We intentionally chose not to use the query protocol, as it only slows down the time it takes to retrieve a Minecraft server status, and it does not provide any more relevant data than the more reliable status protocol does.</p>
+					<p>We also offer an endpoint for quickly viewing the icon of any Java Edition Minecraft server. This makes it easy for server owners to display the continuously changing server icon on their own website without the hassle of updating their own code. Our service is entirely open source, and you can view it any time on our <a href="https://github.com/mcstatus-io" className="link">GitHub organization</a>. If you would like to use our API in your service, head over to the <Link href="/docs/v2" className="link">API documentation</Link> and easily implement our standardized API in any code environment.</p>
+				</section>
 				<Ad className="mt-6" />
 			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">

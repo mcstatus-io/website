@@ -61,44 +61,48 @@ export default function VoteTestTool({ user }) {
 			</Head>
 			<Navbar user={user} active="tools" />
 			<Container>
-				<Header size={1}>Votifier Tester</Header>
-				<p className="text-2xl font-light mt-2 mb-5">Send a Votifier test vote to a Minecraft server</p>
-				{
-					form.isSubmitting
-						? <div className="p-5 rounded box">
-							<p>The vote is being processed by the server, please wait...</p>
-						</div>
-						: form.status?.success
-							? <div className="p-5 bg-green-400 dark:bg-green-500 rounded mt-3">
-								<p>Successfully sent vote to the specified server, and the vote was processed.</p>
+				<hgroup>
+					<Header size={1}>Votifier Tester</Header>
+					<p className="text-2xl font-light mt-2 mb-5">Send a Votifier test vote to a Minecraft server</p>
+				</hgroup>
+				<section>
+					{
+						form.isSubmitting
+							? <div className="p-5 rounded box">
+								<p>The vote is being processed by the server, please wait...</p>
 							</div>
-							: form.status?.error
-								? <div className="p-5 bg-red-400 dark:bg-red-500 rounded mt-3">
-									<p>Failed to send the vote to the specified server. Reason: <span className="font-bold">{form.status.error}</span></p>
+							: form.status?.success
+								? <div className="p-5 bg-green-400 dark:bg-green-500 rounded mt-3">
+									<p>Successfully sent vote to the specified server, and the vote was processed.</p>
 								</div>
-								: null
-				}
-				<div className="p-5 rounded mt-3 box">
-					<form onSubmit={form.handleSubmit}>
-						<div className="flex items-center flex-col lg:flex-row gap-3 mb-3 w-full">
-							<div className="grow w-full">
-								<label className="font-bold" htmlFor="host">Host</label>
-								<Input type="text" id="host" error={form.errors.host} placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
+								: form.status?.error
+									? <div className="p-5 bg-red-400 dark:bg-red-500 rounded mt-3">
+										<p>Failed to send the vote to the specified server. Reason: <span className="font-bold">{form.status.error}</span></p>
+									</div>
+									: null
+					}
+					<div className="p-5 rounded mt-3 box">
+						<form onSubmit={form.handleSubmit}>
+							<div className="flex items-center flex-col lg:flex-row gap-3 mb-3 w-full">
+								<div className="grow w-full">
+									<label className="font-bold" htmlFor="host">Host</label>
+									<Input type="text" id="host" error={form.errors.host} placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
+								</div>
+								<div className="grow w-full">
+									<label className="font-bold" htmlFor="port">Port</label>
+									<Input type="number" id="port" min="0" max="65536" step="1" error={form.errors.port} defaultValue={form.values.port} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
+								</div>
+								<div className="grow w-full">
+									<label className="font-bold" htmlFor="username">Username</label>
+									<Input type="text" id="username" error={form.errors.username} placeholder="Notch" defaultValue={form.values.username} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
+								</div>
 							</div>
-							<div className="grow w-full">
-								<label className="font-bold" htmlFor="port">Port</label>
-								<Input type="number" id="port" min="0" max="65536" step="1" error={form.errors.port} defaultValue={form.values.port} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
-							</div>
-							<div className="grow w-full">
-								<label className="font-bold" htmlFor="username">Username</label>
-								<Input type="text" id="username" error={form.errors.username} placeholder="Notch" defaultValue={form.values.username} onChange={form.handleChange} onBlur={form.handleBlur} className="mt-1" />
-							</div>
-						</div>
-						<label className="font-bold" htmlFor="token">Token</label>
-						<Input type="textarea" id="token" error={form.errors.token} className="h-36 mt-1" defaultValue={form.values.token} onChange={form.handleChange} onBlur={form.handleBlur} />
-						<Button type="submit" disabled={form.isSubmitting || !form.isValid} className="mt-3 w-auto">Send Vote</Button>
-					</form>
-				</div>
+							<label className="font-bold" htmlFor="token">Token</label>
+							<Input type="textarea" id="token" error={form.errors.token} className="h-36 mt-1" defaultValue={form.values.token} onChange={form.handleChange} onBlur={form.handleBlur} />
+							<Button type="submit" disabled={form.isSubmitting || !form.isValid} className="mt-3 w-auto">Send Vote</Button>
+						</form>
+					</div>
+				</section>
 			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`

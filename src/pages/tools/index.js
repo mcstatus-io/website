@@ -24,22 +24,28 @@ export default function Tools({ user }) {
 			</Head>
 			<Navbar user={user} active="tools" />
 			<Container>
-				<Header size={1}>Tools</Header>
-				<p className="text-2xl font-light mt-2">Quick tools to help Minecraft developers</p>
-				<ul className="flex flex-col gap-3 mt-5">
-					<li>
-						<BoxLink href="/tools/coordinate">
-							<Header size={2}>Coordinate Calculator</Header>
-							<p className="text-lg">Calculate region, chunk and block coordinates</p>
-						</BoxLink>
-					</li>
-					<li>
-						<BoxLink href="/tools/vote">
-							<Header size={2}>Votifier Tester</Header>
-							<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
-						</BoxLink>
-					</li>
-				</ul>
+				<section>
+					<hgroup>
+						<Header size={1}>Tools</Header>
+						<p className="text-2xl font-light mt-2">Quick tools to help Minecraft developers</p>
+					</hgroup>
+					<nav>
+						<ul className="flex flex-col gap-3 mt-5">
+							<li>
+								<BoxLink href="/tools/coordinate">
+									<Header size={2}>Coordinate Calculator</Header>
+									<p className="text-lg">Calculate region, chunk and block coordinates</p>
+								</BoxLink>
+							</li>
+							<li>
+								<BoxLink href="/tools/vote">
+									<Header size={2}>Votifier Tester</Header>
+									<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
+								</BoxLink>
+							</li>
+						</ul>
+					</nav>
+				</section>
 			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`

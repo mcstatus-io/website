@@ -45,14 +45,25 @@ export default function CoordinateCalculatorTool({ user }) {
 			</Head>
 			<Navbar user={user} active="tools" />
 			<Container>
-				<Header size={1}>Coordinate Calculator</Header>
-				<p className="text-2xl font-light mt-2">Calculate region, chunk and block coordinates</p>
+				<hgroup>
+					<Header size={1}>Coordinate Calculator</Header>
+					<p className="text-2xl font-light mt-2">Calculate region, chunk and block coordinates</p>
+				</hgroup>
 				<Header size={2} className="mt-6">Block Coordinates</Header>
 				<div className="p-5 rounded mt-2 box">
 					<div className="flex justify-between items-center gap-8">
-						<Input type="text" placeholder="X" defaultValue={block.x} onChange={(event) => onChange('block', 'x', event)} />
-						<Input type="text" placeholder="Y" defaultValue={block.y} onChange={(event) => onChange('block', 'y', event)} />
-						<Input type="text" placeholder="Z" defaultValue={block.z} onChange={(event) => onChange('block', 'z', event)} />
+						<div className="grow">
+							<label className="sr-only" htmlFor="block-x">X Coordinate</label>
+							<Input type="text" id="block-x" placeholder="X" defaultValue={block.x} onChange={(event) => onChange('block', 'x', event)} />
+						</div>
+						<div className="grow">
+							<label className="sr-only" htmlFor="block-y">Y Coordinate</label>
+							<Input type="text" id="block-y" placeholder="Y" defaultValue={block.y} onChange={(event) => onChange('block', 'y', event)} />
+						</div>
+						<div className="grow">
+							<label className="sr-only" htmlFor="block-z">Z Coordinate</label>
+							<Input type="text" id="block-z" placeholder="Z" defaultValue={block.z} onChange={(event) => onChange('block', 'z', event)} />
+						</div>
 					</div>
 					<p className="mt-3">Chunk: <code>({block.x >> 4}, {block.y >> 4}, {block.z >> 4})</code></p>
 					<p>Region: <code>({block.x >> 9}, {block.z >> 9})</code> &ndash; in file <code>r.{block.x >> 9}.{block.z >> 9}.mcr</code></p>
@@ -60,9 +71,18 @@ export default function CoordinateCalculatorTool({ user }) {
 				<Header size={2} className="mt-6">Chunk Coordinates</Header>
 				<div className="p-5 rounded mt-2 box">
 					<div className="flex justify-between items-center gap-8">
-						<Input type="text" placeholder="X" defaultValue={block.x} onChange={(event) => onChange('chunk', 'x', event)} />
-						<Input type="text" placeholder="Y" defaultValue={block.y} onChange={(event) => onChange('chunk', 'y', event)} />
-						<Input type="text" placeholder="Z" defaultValue={block.z} onChange={(event) => onChange('chunk', 'z', event)} />
+						<div className="grow">
+							<label className="sr-only" htmlFor="chunk-x">X Coordinate</label>
+							<Input type="text" id="chunk-x" placeholder="X" defaultValue={block.x} onChange={(event) => onChange('chunk', 'x', event)} />
+						</div>
+						<div className="grow">
+							<label className="sr-only" htmlFor="chunk-y">Y Coordinate</label>
+							<Input type="text" id="chunk-y" placeholder="Y" defaultValue={block.y} onChange={(event) => onChange('chunk', 'y', event)} />
+						</div>
+						<div className="grow">
+							<label className="sr-only" htmlFor="chunk-z">Z Coordinate</label>
+							<Input type="text" id="chunk-z" placeholder="Z" defaultValue={block.z} onChange={(event) => onChange('chunk', 'z', event)} />
+						</div>
 					</div>
 					<p className="mt-3">Blocks: <code>({chunk.x << 4}, {chunk.y << 4}, {chunk.z << 4})</code> to <code>({((chunk.x + 1) << 4) - 1}, {((chunk.y + 1) << 4) - 1}, {((chunk.z + 1) << 4) - 1})</code></p>
 					<p>Region: <code>({chunk.x >> 5}, {chunk.y >> 5})</code> (in file <code>r.{chunk.x >> 5}.{chunk.y >> 5}.mcr</code>)</p>
@@ -70,8 +90,14 @@ export default function CoordinateCalculatorTool({ user }) {
 				<Header size={2} className="mt-6">Region Coordinates</Header>
 				<div className="p-5 rounded mt-2 box">
 					<div className="flex justify-between items-center gap-8">
-						<Input type="text" placeholder="X" defaultValue={region.x} onChange={(event) => onChange('region', 'x', event)} />
-						<Input type="text" placeholder="Z" defaultValue={region.z} onChange={(event) => onChange('region', 'z', event)} />
+						<div className="grow">
+							<label className="sr-only" htmlFor="region-x">Y Coordinate</label>
+							<Input type="text" id="region-x" placeholder="X" defaultValue={region.x} onChange={(event) => onChange('region', 'x', event)} />
+						</div>
+						<div className="grow">
+							<label className="sr-only" htmlFor="region-z">Z Coordinate</label>
+							<Input type="text" id="region-z" placeholder="Z" defaultValue={region.z} onChange={(event) => onChange('region', 'z', event)} />
+						</div>
 					</div>
 					<p className="mt-3">Blocks: <code>({region.x << 9}, 0, {region.z << 9})</code> to <code>({((region.x + 1) << 9) - 1}, 255, {((region.z + 1) << 9) - 1})</code></p>
 					<p>Chunks: <code>({region.x << 5}, 0, {region.z << 5})</code> to <code>({((region.x + 1) << 5) - 1}, 15, {((region.z + 1) << 5) - 1})</code></p>

@@ -91,65 +91,73 @@ export default function BedrockStatus({ address, user }) {
 			</Head>
 			<Navbar user={user} />
 			<Container>
-				<Header size={1}>Minecraft Server Status</Header>
-				<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
-				<Search host={address} type="bedrock" className="mt-5" />
-				<div className="px-5 py-4 mt-4 rounded box">
+				<section>
+					<hgroup>
+						<Header size={1}>Minecraft Server Status</Header>
+						<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
+					</hgroup>
+					<Search host={address} type="bedrock" className="mt-5" />
+				</section>
+				<section>
+					<div className="px-5 py-4 mt-4 rounded box">
+						{
+							data.isLoaded
+								? data.error
+									? <p className="text-red-600 dark:text-red-400">{data.error}</p>
+									: <StatusTable data={data} />
+								: <div className="flex gap-3">
+									<div className="w-1/4">
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full" />
+									</div>
+									<div className="w-3/4">
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
+										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full" />
+									</div>
+								</div>
+						}
+					</div>
+				</section>
+				<section>
 					{
-						data.isLoaded
-							? data.error
-								? <p className="text-red-600 dark:text-red-400">{data.error}</p>
-								: <StatusTable data={data} />
-							: <div className="flex gap-3">
-								<div className="w-1/4">
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full" />
+						data.isLoaded && data.result
+							? <div className="mt-3 rounded box">
+								<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
+									<p className="font-bold">API Usage</p>
+									{
+										data.showAPIUsage
+											? <ChevronUp />
+											: <ChevronDown />
+									}
 								</div>
-								<div className="w-3/4">
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full mb-3" />
-									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 h-12 w-full" />
-								</div>
-							</div>
-					}
-				</div>
-				{
-					data.isLoaded && data.result
-						? <div className="mt-3 rounded box">
-							<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
-								<p className="font-bold">API Usage</p>
 								{
 									data.showAPIUsage
-										? <ChevronUp />
-										: <ChevronDown />
+										? <div className="p-4 border-t border-t-neutral-300 dark:border-t-neutral-700">
+											<p>
+												<span className="bg-green-600 text-sm px-2 py-1 rounded text-white">GET</span>
+												<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/bedrock/{address}</code>
+											</p>
+											<Highlight source={JSON.stringify(data.result, null, '    ')} className="mt-4 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
+											<p className="mt-3">Learn more about this response by viewing it in the <Link href="/docs#bedrock-status" className="link">API documentation</Link>.</p>
+										</div>
+										: null
 								}
 							</div>
-							{
-								data.showAPIUsage
-									? <div className="p-4 border-t border-t-neutral-300 dark:border-t-neutral-700">
-										<p>
-											<span className="bg-green-600 text-sm px-2 py-1 rounded text-white">GET</span>
-											<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/bedrock/{address}</code>
-										</p>
-										<Highlight source={JSON.stringify(data.result, null, '    ')} className="mt-4 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
-										<p className="mt-3">Learn more about this response by viewing it in the <Link href="/docs#bedrock-status" className="link">API documentation</Link>.</p>
-									</div>
-									: null
-							}
-						</div>
-						: null
-				}
+							: null
+					}
+				</section>
 				<Ad className="mt-4" />
 			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">

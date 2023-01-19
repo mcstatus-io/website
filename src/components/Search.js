@@ -25,12 +25,14 @@ export default function Search({ host, type, className }) {
 	return (
 		<form className={`block md:flex items-center gap-5 ${className ?? ''}`} onSubmit={form.handleSubmit}>
 			<div className="mb-3 md:mb-0">
+				<label className="sr-only" htmlFor="type">Server Type</label>
 				<DropdownSelect className="md:w-auto" id="type" defaultValue={form.values.type} onChange={form.handleChange} onBlur={form.handleBlur}>
 					<option value="java" className="text-neutral-800">Java Edition</option>
 					<option value="bedrock" className="text-neutral-800">Bedrock Edition</option>
 				</DropdownSelect>
 			</div>
 			<div className="grow mb-3 md:mb-0">
+				<label className="sr-only" htmlFor="host">Host</label>
 				<Input type="text" id="host" placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} error={form.errors.host} />
 			</div>
 			<div>

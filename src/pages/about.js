@@ -25,57 +25,65 @@ export default function About({ user }) {
 			</Head>
 			<Navbar user={user} active="about" />
 			<Container>
-				<Header size={1}>About</Header>
-				<p className="text-2xl font-light mt-2">A quick understanding of what we do</p>
-				<p className="mt-5">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="link">NextJS</a> and the back-end was built with <a href="https://golang.org" className="link">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="link">Carbon Ads</a> to help cover the hosting and development costs.</p>
+				<section>
+					<hgroup>
+						<Header size={1}>About</Header>
+						<p className="text-2xl font-light mt-2">A quick understanding of what we do</p>
+					</hgroup>
+					<p className="mt-5">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="link">NextJS</a> and the back-end was built with <a href="https://golang.org" className="link">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="link">Carbon Ads</a> to help cover the hosting and development costs.</p>
+				</section>
 				<Ad className="mt-5" />
-				<Header size={2} className="mt-12">Frequently Asked Questions</Header>
-				<ul className="flex flex-col gap-3 mt-3">
-					<li>
-						<details className="p-4 rounded box">
-							<summary className="font-bold cursor-pointer">How do I check the status of a server?</summary>
-							<p className="mt-1">Simply paste the address of the server into the address box on the home page. The address is in the form of <code>host:port</code> but the port is optional and defaults to <code>25565</code> for Java Edition servers and <code>19132</code> for Bedrock Edition servers.</p>
-						</details>
-					</li>
-					<li>
-						<details className="p-4 rounded box">
-							<summary className="font-bold cursor-pointer">What is an SRV record?</summary>
-							<p className="mt-1">An SRV record is created by the server admin to tell Minecraft clients to connect to a specific server by default. This is typically done by network servers to initially connect players to the lobby, or to specify which server a player should connect to by default if the admin is also hosting other servers on the same network.</p>
-						</details>
-					</li>
-					<li>
-						<details className="p-4 rounded box">
-							<summary className="font-bold cursor-pointer">How do I hide the status of my server?</summary>
-							<p className="mt-1">Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable this, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu.</p>
-						</details>
-					</li>
-					<li>
-						<details className="p-4 rounded box">
-							<summary className="font-bold cursor-pointer">Does this service use query?</summary>
-							<p className="mt-1">We intentionally chose not to use query in this service because it slows down any status retrieval, and it also does not provide much more information than the data sent by the status protocol.</p>
-						</details>
-					</li>
-					<li>
-						<details className="p-4 rounded box">
-							<summary className="font-bold cursor-pointer">How do I see all players on the server?</summary>
-							<p className="mt-1">Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <Link href="/status/java/play.purpleprison.net" className="link">play.purpleprison.net</Link> for example.</p>
-						</details>
-					</li>
-					<li>
-						<details className="p-4 rounded box">
-							<summary className="font-bold cursor-pointer">Why don&apos;t you show the ping to the server?</summary>
-							<p className="mt-1">The latency to the server is only measured from the location of our service hosting provider, which is irrelevant to show because your connection to the server is going to be a lot different. It would not make sense to show this data in the response.</p>
-						</details>
-					</li>
-					<li>
-						<details className="p-4 rounded box">
-							<summary className="font-bold cursor-pointer">Is this service open-source?</summary>
-							<p className="mt-1">Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="link">our GitHub organization</a>.</p>
-						</details>
-					</li>
-				</ul>
-				<Header size={2} className="mt-12">Contact</Header>
-				<p className="mt-1">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
+				<section>
+					<Header size={2} className="mt-12">Frequently Asked Questions</Header>
+					<ul className="flex flex-col gap-3 mt-3">
+						<li>
+							<details className="p-4 rounded box">
+								<summary className="font-bold cursor-pointer">How do I check the status of a server?</summary>
+								<p className="mt-1">Simply paste the address of the server into the address box on the home page. The address is in the form of <code>host:port</code> but the port is optional and defaults to <code>25565</code> for Java Edition servers and <code>19132</code> for Bedrock Edition servers.</p>
+							</details>
+						</li>
+						<li>
+							<details className="p-4 rounded box">
+								<summary className="font-bold cursor-pointer">What is an SRV record?</summary>
+								<p className="mt-1">An SRV record is created by the server admin to tell Minecraft clients to connect to a specific server by default. This is typically done by network servers to initially connect players to the lobby, or to specify which server a player should connect to by default if the admin is also hosting other servers on the same network.</p>
+							</details>
+						</li>
+						<li>
+							<details className="p-4 rounded box">
+								<summary className="font-bold cursor-pointer">How do I hide the status of my server?</summary>
+								<p className="mt-1">Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable this, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu.</p>
+							</details>
+						</li>
+						<li>
+							<details className="p-4 rounded box">
+								<summary className="font-bold cursor-pointer">Does this service use query?</summary>
+								<p className="mt-1">We intentionally chose not to use query in this service because it slows down any status retrieval, and it also does not provide much more information than the data sent by the status protocol.</p>
+							</details>
+						</li>
+						<li>
+							<details className="p-4 rounded box">
+								<summary className="font-bold cursor-pointer">How do I see all players on the server?</summary>
+								<p className="mt-1">Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <Link href="/status/java/play.purpleprison.net" className="link">play.purpleprison.net</Link> for example.</p>
+							</details>
+						</li>
+						<li>
+							<details className="p-4 rounded box">
+								<summary className="font-bold cursor-pointer">Why don&apos;t you show the ping to the server?</summary>
+								<p className="mt-1">The latency to the server is only measured from the location of our service hosting provider, which is irrelevant to show because your connection to the server is going to be a lot different. It would not make sense to show this data in the response.</p>
+							</details>
+						</li>
+						<li>
+							<details className="p-4 rounded box">
+								<summary className="font-bold cursor-pointer">Is this service open-source?</summary>
+								<p className="mt-1">Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="link">our GitHub organization</a>.</p>
+							</details>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<Header size={2} className="mt-12">Contact</Header>
+					<p className="mt-1">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>. We accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
+				</section>
 			</Container>
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
