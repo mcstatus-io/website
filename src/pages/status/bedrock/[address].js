@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import Navbar from '../../../components/Navbar';
 import Search from '../../../components/Search';
 import Highlight from '../../../components/Highlight';
-import MinecraftFormatted from '../../../components/MinecraftFormatted';
 import StatusTable from '../../../components/StatusTable';
 import Ad from '../../../components/Ad';
 import Header from '../../../components/Header';
@@ -76,8 +75,6 @@ export default function BedrockStatus({ address, user }) {
 		})();
 	}, [address]);
 
-	const protocolVersionName = data.result?.version?.protocol && data.protocolVersions ? data.protocolVersions.find((version) => version.version === data.result.version.protocol) : null;
-
 	return (
 		<>
 			<Head>
@@ -102,90 +99,7 @@ export default function BedrockStatus({ address, user }) {
 						data.isLoaded
 							? data.error
 								? <p className="text-red-600 dark:text-red-400">{data.error}</p>
-								: <StatusTable
-									rows={[
-										[
-											'Status',
-											data.result.online
-												? <span className="text-green-600 dark:text-green-400">Online</span>
-												: <span className="text-red-600 dark:text-red-400">Offline</span>
-										],
-										[
-											'Host',
-											data.result.host
-										],
-										[
-											'Port',
-											data.result.port
-										],
-										...(
-											data.result.online
-												? [
-													[
-														'MOTD',
-														data.result.motd
-															? <MinecraftFormatted html={data.result.motd.html} key="motd" />
-															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-													],
-													[
-														'Version',
-														data.result.version?.name
-															? data.result.version.name
-															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-													],
-													[
-														'Players',
-														data.result.players
-															? <span>
-																{data.result.players.online}
-																{
-																	data.result.players.max
-																		? <span> / {data.result.players.max}</span>
-																		: null
-																}
-															</span>
-															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-													],
-													[
-														'Edition',
-														data.result.edition
-															? <span>{data.result.edition}</span>
-															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-													],
-													[
-														'Gamemode',
-														data.result.gamemode
-															? <span>{data.result.gamemode}</span>
-															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-													],
-													[
-														'EULA Blocked',
-														data.result.eula_blocked
-															? <span className="text-red-600 dark:text-red-400">Yes</span>
-															: <span className="text-green-600 dark:text-green-400">No</span>
-													],
-													[
-														'Protocol Version',
-														data.result.version?.protocol
-															? <span>
-																<span>{data.result.version.protocol}</span>
-																{
-																	protocolVersionName
-																		? <span className="text-neutral-500 dark:text-neutral-400"> ({protocolVersionName.minecraftVersion})</span>
-																		: null
-																}
-															</span>
-															: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-													],
-													[
-														'Cached Response',
-														data.cached ? 'Yes' : 'No'
-													]
-												]
-												: []
-										)
-									]}
-								/>
+								: <StatusTable data={data} />
 							: <div className="flex gap-3">
 								<div className="w-1/4">
 									<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
