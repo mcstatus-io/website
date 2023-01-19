@@ -150,7 +150,7 @@ export default function StatusTable({ data }) {
 			],
 			[
 				'Cached Response',
-				data.cached ? 'Yes' : 'No'
+				<span title={data.cacheTime ? `${data.cacheTime} second${data.cacheTime !== '1' ? 's' : ''} remaining` : null} key="cache-time">{data.cacheTime ? 'Yes' : 'No'}</span>
 			]
 		);
 	}

@@ -17,13 +17,13 @@ export default function BedrockStatus({ address, user }) {
 	const reducer = (state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
-				return { ...state, isLoaded: true, result: action.result, cached: action.cached, error: null, showAPIUsage: false };
+				return { ...state, isLoaded: true, result: action.result, cacheTime: action.cacheTime, error: null, showAPIUsage: false };
 			case 'SET_ERROR':
-				return { ...state, isLoaded: true, result: null, cached: false, error: action.error, showAPIUsage: false };
+				return { ...state, isLoaded: true, result: null, cacheTime: false, error: action.error, showAPIUsage: false };
 			case 'SET_PROTOCOL_VERSIONS':
 				return { ...state, protocolVersions: action.data };
 			case 'RESET_ALL':
-				return { ...state, isLoaded: false, result: null, cached: false, error: null, showAPIUsage: false };
+				return { ...state, isLoaded: false, result: null, cacheTime: false, error: null, showAPIUsage: false };
 			case 'TOGGLE_SHOW_API_USAGE':
 				return { ...state, showAPIUsage: !state.showAPIUsage };
 			default:
@@ -31,7 +31,7 @@ export default function BedrockStatus({ address, user }) {
 		}
 	};
 
-	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cached: false, showAPIUsage: false, protocolVersions: null });
+	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cacheTime: false, showAPIUsage: false, protocolVersions: null });
 
 	useEffect(() => {
 		dispatch({ type: 'RESET_ALL' });
@@ -43,7 +43,7 @@ export default function BedrockStatus({ address, user }) {
 				if (result.status === 200) {
 					const body = await result.json();
 
-					dispatch({ type: 'SET_RESULT', result: body, cached: result.headers.has('X-Cache-Time-Remaining') });
+					dispatch({ type: 'SET_RESULT', result: body, cacheTime: result.headers.get('X-Cache-Time-Remaining') });
 				} else {
 					const body = await result.text();
 
