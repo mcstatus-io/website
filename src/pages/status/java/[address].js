@@ -24,6 +24,8 @@ export default function JavaStatus({ address, user }) {
 				return { ...state, protocolVersions: action.data };
 			case 'RESET_ALL':
 				return { ...state, isLoaded: false, result: null, cached: false, error: null, showAPIUsage: false };
+			case 'TOGGLE_SHOW_API_USAGE':
+				return { ...state, showAPIUsage: !state.showAPIUsage };
 			default:
 				return state;
 		}
