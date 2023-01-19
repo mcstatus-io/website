@@ -1,6 +1,6 @@
 @mixin box
-    @apply border bg-black bg-opacity-5 border-black border-opacity-10 dark:bg-white dark:bg-opacity-5 dark:border-white dark:border-opacity-10
+    @apply border bg-black bg-opacity-5 contrast-more:bg-opacity-0 border-black border-opacity-10 contrast-more:border-opacity-50 dark:bg-white dark:bg-opacity-5 contrast-more:dark:bg-opacity-0 dark:border-white dark:border-opacity-10 contrast-more:dark:border-opacity-50
 
 @mixin interactive-box
     @include box
-    @apply hover:border-opacity-25 focus:border-opacity-25 disabled:border-opacity-0 outline-none error:border-red-500 motion-safe:transition-colors
+    @apply hover:border-opacity-25 contrast-more:hover:border-opacity-100 focus:border-opacity-25 contrast-more:focus:border-opacity-100 disabled:border-opacity-0 outline-none error:border-red-500 contrast-more:error:border-[#ff0000] motion-safe:transition-colors

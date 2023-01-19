@@ -81,7 +81,7 @@ export default function Navbar({ active, user }) {
 										<span className="text-neutral-300">#{user.discriminator}</span>
 									</span>
 								</a>
-								: <Link href="/auth" className="lg:ml-2 px-5 py-3 bg-[#5865F2] hover:bg-opacity-80 motion-safe:transition-colors rounded-full">
+								: <Link href="/auth" className="lg:ml-2 px-5 py-3 bg-[#5865F2] contrast-more:bg-[#002bd9] hover:bg-opacity-80 motion-safe:transition-colors rounded-full">
 									Log in with Discord
 								</Link>
 						}
