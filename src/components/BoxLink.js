@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default function BoxLink({ children, href, className, ...props }) {
 	return (
-		<Link href={href} className={`interactive-box block p-5 rounded-md outline-none ${className}`} {...props}>
+		<Link href={href} className={`interactive-box block p-5 rounded-md outline-none ${className ?? ''}`} {...props}>
 			{children}
 		</Link>
 	);

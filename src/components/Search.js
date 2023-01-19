@@ -23,7 +23,7 @@ export default function Search({ host, type, className }) {
 	});
 
 	return (
-		<form className={`block md:flex items-center gap-5 ${className}`} onSubmit={form.handleSubmit}>
+		<form className={`block md:flex items-center gap-5 ${className ?? ''}`} onSubmit={form.handleSubmit}>
 			<div className="mb-3 md:mb-0">
 				<DropdownSelect className="md:w-auto" id="type" defaultValue={form.values.type} onChange={form.handleChange} onBlur={form.handleBlur}>
 					<option value="java" className="text-neutral-800">Java Edition</option>
@@ -34,7 +34,7 @@ export default function Search({ host, type, className }) {
 				<Input type="text" id="host" placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} error={form.errors.host} />
 			</div>
 			<div>
-				<Button className="block w-full md:w-auto" disabled={!form.isValid || form.isSubmitting || (form.values.type === type && form.values.host === host)}>
+				<Button type="submit" className="block w-full md:w-auto" disabled={!form.isValid || form.isSubmitting || (form.values.type === type && form.values.host === host)}>
 					Submit
 				</Button>
 			</div>

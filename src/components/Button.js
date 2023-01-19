@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export function Button({ children, className, ...props }) {
 	return (
-		<button type="submit" className={`interactive-box px-3 py-2 rounded ${className}`} {...props}>{children}</button>
+		<button className={`interactive-box px-3 py-2 rounded ${className ?? ''}`} {...props}>{children}</button>
 	);
 }
 
@@ -15,7 +15,7 @@ Button.propTypes = {
 
 export function LinkButton({ children, href, className, ...props }) {
 	return (
-		<Link href={href} className={`interactive-box px-3 py-2 rounded ${className}`} {...props}>
+		<Link href={href} className={`interactive-box px-3 py-2 rounded ${className ?? ''}`} {...props}>
 			{children}
 		</Link>
 	);

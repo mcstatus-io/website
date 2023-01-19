@@ -8,7 +8,7 @@ const headerClassNames = {
 };
 
 export default function Header({ size, className, children, ...props }) {
-	return React.createElement('h' + size, { ...props, className: 'relative ' + headerClassNames[size] + ' ' + className }, children);
+	return React.createElement('h' + size, { ...props, className: 'relative ' + headerClassNames[size] + ' ' + (className ?? '') }, children);
 }
 
 Header.propTypes = {
