@@ -95,51 +95,51 @@ export default function Documentation({ user }) {
 					<nav className="lg:border-l-2 border-l-neutral-200 dark:border-l-neutral-700 lg:ml-24 lg:pl-12 py-2 mb-8 lg:mb-0">
 						<ol>
 							<li>
-								<Link href="#overview" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors motion-safe:duration-150">
+								<Link href="#overview" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 									Overview
 								</Link>
 								<ol className="pl-6">
 									<li className="mt-1">
-										<Link href="#standards" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors motion-safe:duration-150">
+										<Link href="#standards" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Standards
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#cache" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors motion-safe:duration-150">
+										<Link href="#cache" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Cache
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#supported" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors motion-safe:duration-150">
+										<Link href="#supported" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Supported Versions
 										</Link>
 									</li>
 								</ol>
 							</li>
 							<li className="mt-1">
-								<Link href="#routes" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors motion-safe:duration-150">
+								<Link href="#routes" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 									Routes
 								</Link>
 								<ol className="pl-6">
 									<li className="mt-1">
-										<Link href="#java-status" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors motion-safe:duration-150">
+										<Link href="#java-status" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Java Status
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#bedrock-status" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors motion-safe:duration-150">
+										<Link href="#bedrock-status" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Bedrock Status
 										</Link>
 									</li>
 									<li className="mt-1">
-										<Link href="#icon" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors motion-safe:duration-150">
+										<Link href="#icon" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Icon
 										</Link>
 									</li>
 								</ol>
 							</li>
 							<li className="mt-1">
-								<Link href="#support" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors motion-safe:duration-150">
+								<Link href="#support" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 									Support
 								</Link>
 							</li>

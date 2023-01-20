@@ -37,25 +37,25 @@ export default function Navbar({ active, user }) {
 							: <MenuIcon />
 					}
 				</button>
-				<ul className={`list-none lg:ml-6 ${showMenu ? 'flex flex-col justify-center absolute top-16 left-0 bg-neutral-900 bg-opacity-80 backdrop-blur-lg w-full h-[calc(100vh-4rem)] z-10' : 'hidden md:flex'} gap-6 items-center grow`}>
+				<ul className={`list-none lg:ml-6 ${showMenu ? 'flex flex-col justify-center absolute top-16 left-0 bg-neutral-900 bg-opacity-80 backdrop-blur-lg w-full h-[calc(100vh-4rem)] z-10' : 'hidden md:flex'} gap-3 items-center grow`}>
 					<li>
-						<Link href="/" className={active === 'home' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors motion-safe:duration-150'}>
+						<Link href="/" className={`mr-1 p-1 ${active === 'home' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors'}`}>
 							Home
 						</Link>
 					</li>
 					<li>
-						<Link href="/tools" className={active === 'tools' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors motion-safe:duration-150'}>
+						<Link href="/tools" className={`mr-1 p-1 ${active === 'tools' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors'}`}>
 							Tools
 						</Link>
 					</li>
 					<li>
-						<Link href="/docs" className={active === 'api' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors motion-safe:duration-150'}>
+						<Link href="/docs" className={`block mr-1 p-1 ${active === 'api' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors'}`}>
 							<span className="hidden md:block">API</span>
 							<span className="block md:hidden">API Documentation</span>
 						</Link>
 					</li>
 					<li className="md:mr-auto">
-						<Link href="/about" className={active === 'about' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors motion-safe:duration-150'}>
+						<Link href="/about" className={`mr-1 p-1 ${active === 'about' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors'}`}>
 							About
 						</Link>
 					</li>
