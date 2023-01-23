@@ -18,7 +18,7 @@ export default function AuthCallback({ code }) {
 
 		(async () => {
 			try {
-				const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/auth/login?code=${encodeURIComponent(code)}`, {
+				const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST ?? 'https://mcstatus.io/api'}/auth/login?code=${encodeURIComponent(code)}`, {
 					method: 'POST'
 				});
 

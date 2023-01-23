@@ -1,37 +1,32 @@
 import React, { useEffect, useReducer } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import Script from 'next/script';
 import PropTypes from 'prop-types';
 import Navbar from '../../../components/Navbar';
 import Search from '../../../components/Search';
-import Highlight from '../../../components/Highlight';
 import StatusTable from '../../../components/StatusTable';
 import Ad from '../../../components/Ad';
 import Header from '../../../components/Header';
 import Container from '../../../components/Container';
-import ChevronDown from '!!@svgr/webpack!../../../assets/icons/chevron-down.svg';
-import ChevronUp from '!!@svgr/webpack!../../../assets/icons/chevron-up.svg';
+import APIUsage from '../../../components/APIUsage';
 
 export default function JavaStatus({ address, user }) {
 	const reducer = (state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
-				return { ...state, isLoaded: true, result: action.result, cacheTime: action.cacheTime, error: null, showAPIUsage: false };
+				return { ...state, isLoaded: true, result: action.result, cacheTime: action.cacheTime, error: null };
 			case 'SET_ERROR':
-				return { ...state, isLoaded: true, result: null, cacheTime: false, error: action.error, showAPIUsage: false };
+				return { ...state, isLoaded: true, result: null, cacheTime: null, error: action.error };
 			case 'SET_PROTOCOL_VERSIONS':
 				return { ...state, protocolVersions: action.data };
 			case 'RESET_ALL':
-				return { ...state, isLoaded: false, result: null, cacheTime: false, error: null, showAPIUsage: false };
-			case 'TOGGLE_SHOW_API_USAGE':
-				return { ...state, showAPIUsage: !state.showAPIUsage };
+				return { ...state, isLoaded: false, result: null, cacheTime: null, error: null };
 			default:
 				return state;
 		}
 	};
 
-	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cacheTime: false, showAPIUsage: false, protocolVersions: null });
+	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cacheTime: null, protocolVersions: null });
 
 	useEffect(() => {
 		dispatch({ type: 'RESET_ALL' });
@@ -133,28 +128,7 @@ export default function JavaStatus({ address, user }) {
 				<section>
 					{
 						data.isLoaded && data.result
-							? <div className="mt-3 rounded box">
-								<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => dispatch({ type: 'TOGGLE_SHOW_API_USAGE' })}>
-									<p className="font-bold">API Usage</p>
-									{
-										data.showAPIUsage
-											? <ChevronUp />
-											: <ChevronDown />
-									}
-								</div>
-								{
-									data.showAPIUsage
-										? <div className="p-4 border-t border-t-neutral-300 dark:border-t-neutral-700">
-											<p>
-												<span className="bg-green-600 text-sm px-2 py-1 rounded text-white">GET</span>
-												<code className="ml-2 break-words">https://api.mcstatus.io/v2/status/java/{address}</code>
-											</p>
-											<Highlight source={JSON.stringify(data.result, null, '    ')} className="mt-4 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
-											<p className="mt-3">Learn more about this response by viewing it in the <Link href="/docs#java-status" className="link">API documentation</Link>.</p>
-										</div>
-										: null
-								}
-							</div>
+							? <APIUsage type="java" address={address} data={data.result} />
 							: null
 					}
 				</section>

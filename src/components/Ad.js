@@ -5,6 +5,8 @@ export default function Ad({ className }) {
 	const reference = useRef();
 
 	useEffect(() => {
+		if (!process.env.NEXT_PUBLIC_CARBON_CODE) return;
+
 		reference.current.innerHTML = '';
 		const s = document.createElement('script');
 		s.id = '_carbonads_js';
@@ -12,7 +14,9 @@ export default function Ad({ className }) {
 		reference.current.appendChild(s);
 	}, []);
 
-	return <div className={className} ref={reference} />;
+	return process.env.NEXT_PUBLIC_CARBON_CODE
+		? <div className={className} ref={reference} />
+		: null;
 }
 
 Ad.propTypes = {
