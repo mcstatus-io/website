@@ -6,6 +6,8 @@ import Navbar from '../../components/Navbar';
 import Header from '../../components/Header';
 import BoxLink from '../../components/BoxLink';
 import Container from '../../components/Container';
+import MapPinIcon from '!!@svgr/webpack!../../assets/icons/map-pin.svg';
+import ThumbsUpIcon from '!!@svgr/webpack!../../assets/icons/thumbs-up.svg';
 
 export default function Tools({ user }) {
 	return (
@@ -33,14 +35,24 @@ export default function Tools({ user }) {
 						<ul className="flex flex-col gap-3 mt-5">
 							<li>
 								<BoxLink href="/tools/coordinate">
-									<Header size={2}>Coordinate Calculator</Header>
-									<p className="text-lg">Calculate region, chunk and block coordinates</p>
+									<div className="flex items-center gap-8">
+										<MapPinIcon width="24" height="24" className="hidden sm:block ml-4" />
+										<hgroup>
+											<Header size={2}>Coordinate Calculator</Header>
+											<p className="text-lg">Calculate region, chunk and block coordinates</p>
+										</hgroup>
+									</div>
 								</BoxLink>
 							</li>
 							<li>
 								<BoxLink href="/tools/vote">
-									<Header size={2}>Votifier Tester</Header>
-									<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
+									<div className="flex items-center gap-8">
+										<ThumbsUpIcon width="24" height="24" className="hidden sm:block ml-4" />
+										<hgroup>
+											<Header size={2}>Votifier Tester</Header>
+											<p className="text-lg">Send a Votifier test vote to a Minecraft server</p>
+										</hgroup>
+									</div>
 								</BoxLink>
 							</li>
 						</ul>

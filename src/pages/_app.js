@@ -4,6 +4,7 @@ import Script from 'next/script';
 import PropTypes from 'prop-types';
 import { useCookies } from 'react-cookie';
 import '../styles/global.sass';
+import Footer from '../components/Footer';
 
 export default function MyApp({ Component, pageProps }) {
 	const [user, setUser] = useState(undefined);
@@ -46,7 +47,12 @@ export default function MyApp({ Component, pageProps }) {
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<Component {...pageProps} user={user} refreshUser={fetchUser} />
+			<div className="flex flex-col min-h-screen">
+				<div className="grow">
+					<Component {...pageProps} user={user} refreshUser={fetchUser} />
+				</div>
+				<Footer />
+			</div>
 			<Script async src="https://www.googletagmanager.com/gtag/js?id=UA-104913718-10" strategy="afterInteractive" />
 			<Script id="google-analytics" strategy="afterInteractive">
 				{`window.dataLayer = window.dataLayer || [];
