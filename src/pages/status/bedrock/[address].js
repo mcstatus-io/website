@@ -11,7 +11,7 @@ import Container from '../../../components/Container';
 import APIUsage from '../../../components/APIUsage';
 
 export default function BedrockStatus({ address, user }) {
-	const reducer = (state, action) => {
+	const [data, dispatch] = useReducer((state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
 				return { ...state, isLoaded: true, result: action.result, cacheTime: action.cacheTime, error: null };
@@ -24,9 +24,7 @@ export default function BedrockStatus({ address, user }) {
 			default:
 				return state;
 		}
-	};
-
-	const [data, dispatch] = useReducer(reducer, { isLoaded: false, result: null, cacheTime: null, protocolVersions: null });
+	}, { isLoaded: false, result: null, cacheTime: null, protocolVersions: null });
 
 	useEffect(() => {
 		dispatch({ type: 'RESET_ALL' });
