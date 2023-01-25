@@ -18,7 +18,7 @@ export default function MyApp({ Component, pageProps }) {
 		if (!cookies.session) return setUser(null);
 
 		try {
-			const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/users/@me`, {
+			const result = await fetch(`${process.env.NEXT_PUBLIC_API_HOST ?? 'https://mcstatus.io/api'}/users/@me`, {
 				headers: {
 					Authorization: cookies.session
 				}

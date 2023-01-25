@@ -28,7 +28,7 @@ export default function VoteTestTool({ user }) {
 			}).required(),
 		onSubmit: async (values, { setStatus }) => {
 			try {
-				const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/vote`, {
+				const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST ?? 'https://api.mcstatus.io/v2'}/vote`, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'

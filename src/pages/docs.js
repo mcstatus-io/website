@@ -50,7 +50,7 @@ export default function Documentation({ user }) {
 						</section>
 						<section>
 							<Header size={2} id="routes" className="mt-12">Routes</Header>
-							<details className="rounded box p-5 mt-3" open>
+							<details className="rounded interactive-box p-5 mt-3" open>
 								<summary className="font-bold text-lg cursor-pointer" id="java-status">Java Status</summary>
 								<p className="flex items-center gap-2 mt-5">
 									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
@@ -58,11 +58,11 @@ export default function Documentation({ user }) {
 								</p>
 								<p className="flex items-center gap-2 mt-3">
 									<span>Cache duration:</span>
-									<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_JAVA_CACHE_TIME) * 1000)}</span>
+									<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_JAVA_CACHE_TIME ?? '60') * 1000)}</span>
 								</p>
 								<Highlight source={javaExample} className="mt-3 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 							</details>
-							<details className="rounded box p-5 mt-3" open>
+							<details className="rounded interactive-box p-5 mt-3" open>
 								<summary className="font-bold text-lg cursor-pointer" id="bedrock-status">Bedrock Status</summary>
 								<p className="flex items-center gap-2 mt-5">
 									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
@@ -70,11 +70,11 @@ export default function Documentation({ user }) {
 								</p>
 								<p className="flex items-center gap-2 mt-3">
 									<span>Cache duration:</span>
-									<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_BEDROCK_CACHE_TIME) * 1000)}</span>
+									<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_BEDROCK_CACHE_TIME ?? '60') * 1000)}</span>
 								</p>
 								<Highlight source={bedrockExample} className="mt-3 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 							</details>
-							<details className="rounded box p-5 mt-3" open>
+							<details className="rounded interactive-box p-5 mt-3" open>
 								<summary className="font-bold text-lg cursor-pointer" id="icon">Icon</summary>
 								<p className="mt-5">
 									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
@@ -82,7 +82,7 @@ export default function Documentation({ user }) {
 								</p>
 								<p className="flex items-center gap-2 mt-3">
 									<span>Cache duration:</span>
-									<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_ICON_CACHE_TIME) * 1000)}</span>
+									<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_ICON_CACHE_TIME ?? '600') * 1000)}</span>
 								</p>
 								<Image src={iconExample} width="128" height="128" alt="Sample server icon" className="mt-3" />
 							</details>

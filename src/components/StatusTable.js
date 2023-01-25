@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import semver from 'semver';
 import MinecraftFormatted from './MinecraftFormatted';
 import { Button } from './Button';
 import ChevronDown from '!!@svgr/webpack!../assets/icons/chevron-down.svg';
@@ -126,7 +127,15 @@ export default function StatusTable({ data }) {
 			);
 		}
 
-		const protocolVersionName = data.result?.version?.protocol && data.protocolVersions ? data.protocolVersions.find((version) => version.version === data.result.version.protocol) : null;
+		let protocolVersion = null;
+
+		if (data.result?.version?.protocol && data?.protocolVersions) {
+			protocolVersion = data.protocolVersions
+				.reverse()
+				.filter((version) => !/^\d+w\d+\w$/.test(version.minecraftVersion) && ((typeof version.usesNetty === 'boolean' && version.usesNetty) || version.releaseType === 'release'))
+				.sort((a, b) => semver.gt(semver.coerce(a.minecraftVersion), semver.coerce(b.minecraftVersion)) ? 1 : -1)
+				.find((version) => version.version === data.result.version.protocol);
+		}
 
 		rows.push(
 			[
@@ -141,8 +150,8 @@ export default function StatusTable({ data }) {
 					? <span>
 						<span>{data.result.version.protocol}</span>
 						{
-							protocolVersionName
-								? <span className="text-neutral-500 dark:text-neutral-400"> ({protocolVersionName.minecraftVersion})</span>
+							protocolVersion
+								? <span className="text-neutral-500 dark:text-neutral-400"> ({protocolVersion.minecraftVersion}+)</span>
 								: null
 						}
 					</span>
