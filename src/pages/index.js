@@ -13,20 +13,7 @@ import BoxLink from '../components/BoxLink';
 import GiftIcon from '!!@svgr/webpack!../assets/icons/gift.svg';
 import InfoIcon from '!!@svgr/webpack!../assets/icons/info.svg';
 
-export default function Home({ user }) {
-	const servers = [];
-
-	const javaServers = exampleServers.filter((server) => server.type === 'java').sort(() => Math.random() - 0.5).slice(0, 4);
-	const bedrockServers = exampleServers.filter((server) => server.type === 'bedrock').sort(() => Math.random() - 0.5).slice(0, 4);
-
-	for (let i = 0; i < 8; i++) {
-		if (i % 2 === 0) {
-			servers.push(javaServers[i / 2]);
-		} else {
-			servers.push(bedrockServers[(i - 1) / 2]);
-		}
-	}
-
+export default function Home({ user, servers }) {
 	return (
 		<>
 			<Head>
@@ -128,5 +115,23 @@ export default function Home({ user }) {
 }
 
 Home.propTypes = {
-	user: PropTypes.object
+	user: PropTypes.object,
+	servers: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 };
+
+export function getServerSideProps() {
+	const servers = [];
+
+	const javaServers = exampleServers.filter((server) => server.type === 'java').sort(() => Math.random() - 0.5).slice(0, 4);
+	const bedrockServers = exampleServers.filter((server) => server.type === 'bedrock').sort(() => Math.random() - 0.5).slice(0, 4);
+
+	for (let i = 0; i < 8; i++) {
+		if (i % 2 === 0) {
+			servers.push(javaServers[i / 2]);
+		} else {
+			servers.push(bedrockServers[(i - 1) / 2]);
+		}
+	}
+
+	return { props: { servers } };
+}

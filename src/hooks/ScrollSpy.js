@@ -5,7 +5,7 @@ export default function useScrollSpy(ids, opts = undefined) {
 
 	useEffect(() => {
 		const observer = new IntersectionObserver((targets) => {
-			const newEntries = targets.filter((target) => target.isIntersecting).map((target) => target.target.id);
+			const newEntries = targets.filter((target) => target.isIntersecting).sort((a, b) => a.intersectionRect.y - b.intersectionRect.y).map((target) => target.target.id);
 
 			if (JSON.stringify(entries) !== JSON.stringify(newEntries)) {
 				setEntries(newEntries);
