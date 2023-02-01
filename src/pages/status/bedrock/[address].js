@@ -10,7 +10,7 @@ import Header from '../../../components/Header';
 import Container from '../../../components/Container';
 import APIUsage from '../../../components/APIUsage';
 
-export default function BedrockStatus({ address, user }) {
+export default function BedrockStatus({ now, address, user }) {
 	const [data, dispatch] = useReducer((state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
@@ -97,7 +97,7 @@ export default function BedrockStatus({ address, user }) {
 							data.isLoaded
 								? data.error
 									? <p className="text-red-600 dark:text-red-400">{data.error}</p>
-									: <StatusTable data={data} />
+									: <StatusTable now={now} data={data} />
 								: <div className="flex gap-3">
 									<div className="w-1/4">
 										<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
@@ -180,10 +180,11 @@ export default function BedrockStatus({ address, user }) {
 }
 
 BedrockStatus.propTypes = {
+	now: PropTypes.number.isRequired,
 	user: PropTypes.object,
 	address: PropTypes.string.isRequired
 };
 
 export function getServerSideProps({ params: { address } }) {
-	return { props: { address } };
+	return { props: { now: Date.now(), address } };
 }

@@ -6,8 +6,9 @@ import MinecraftFormatted from './MinecraftFormatted';
 import { Button } from './Button';
 import ChevronDown from '!!@svgr/webpack!../assets/icons/chevron-down.svg';
 import ChevronUp from '!!@svgr/webpack!../assets/icons/chevron-up.svg';
+import Timer from './Timer';
 
-export default function StatusTable({ data }) {
+export default function StatusTable({ now, data }) {
 	const [showMods, setShowMods] = useState(false);
 	const [showPlayers, setShowPlayers] = useState(false);
 
@@ -159,7 +160,14 @@ export default function StatusTable({ data }) {
 			],
 			[
 				'Cached Response',
-				<span title={data.cacheTime ? `${data.cacheTime} second${data.cacheTime !== '1' ? 's' : ''} remaining` : null} key="cache-time">{data.cacheTime ? 'Yes' : 'No'}</span>
+				<div className="flex items-center gap-3" key="cache-time">
+					<span title={data.cacheTime ? `${data.cacheTime} second${data.cacheTime !== '1' ? 's' : ''} remaining` : null} className="block bg-blue-500 px-2 py-1 rounded text-sm text-white">{data.cacheTime ? 'Yes' : 'No'}</span>
+					{
+						data.cacheTime
+							? <Timer now={now} target={data.result.expires_at} format={(text) => `Expires in ${text}`} endedText="Expired" />
+							: null
+					}
+				</div>
 			]
 		);
 	}
@@ -181,5 +189,6 @@ export default function StatusTable({ data }) {
 }
 
 StatusTable.propTypes = {
+	now: PropTypes.number.isRequired,
 	data: PropTypes.object
 };
