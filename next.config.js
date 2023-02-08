@@ -20,7 +20,7 @@ module.exports = withBundleAnalyzer({
 		},
 		{
 			source: '/auth',
-			destination: `https://discord.com/api/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.NEXT_PUBLIC_DISCORD_REDIRECT_URI)}&response_type=code&scope=identify`,
+			destination: `https://discord.com/api/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.NEXT_PUBLIC_DISCORD_REDIRECT_URI)}&response_type=code&scope=${encodeURIComponent(['identify', 'email'].join(' '))}`,
 			permanent: false
 		}
 	],
