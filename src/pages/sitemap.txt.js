@@ -1,7 +1,7 @@
-import React from 'react';
+import { Component } from 'react';
 import { exampleServers } from '../assets/servers';
 
-class Sitemap extends React.Component {
+export default class Sitemap extends Component {
 	static async getInitialProps({ res }) {
 		res.setHeader('Content-Type', 'text/plain');
 		res.write([
@@ -15,5 +15,3 @@ class Sitemap extends React.Component {
 		res.end();
 	}
 }
-
-export default Sitemap;

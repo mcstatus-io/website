@@ -11,7 +11,7 @@ import Footer from '../components/Footer';
 import HelpCircleIcon from '!!@svgr/webpack!../assets/icons/help-circle.svg';
 import MailIcon from '!!@svgr/webpack!../assets/icons/mail.svg';
 
-export default function About({ user }) {
+export default function About() {
 	return (
 		<>
 			<Head>
@@ -26,7 +26,7 @@ export default function About({ user }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io/about" />
 			</Head>
-			<Navbar user={user} active="about" />
+			<Navbar active="about" />
 			<Container>
 				<section>
 					<hgroup>

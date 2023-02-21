@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
 import Head from 'next/head';
-import { exampleServers } from '../assets/servers';
 import PropTypes from 'prop-types';
 import Navbar from '../components/Navbar';
 import Search from '../components/Search';
@@ -10,10 +9,11 @@ import Container from '../components/Container';
 import Ad from '../components/Ad';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { exampleServers } from '../assets/servers';
 import GiftIcon from '!!@svgr/webpack!../assets/icons/gift.svg';
 import InfoIcon from '!!@svgr/webpack!../assets/icons/info.svg';
 
-export default function Home({ user, servers }) {
+export default function Home({ servers }) {
 	return (
 		<>
 			<Head>
@@ -28,7 +28,7 @@ export default function Home({ user, servers }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io" />
 			</Head>
-			<Navbar user={user} active="home" />
+			<Navbar active="home" />
 			<Container className="py-12 lg:pt-24" noMargin>
 				<section>
 					<hgroup>

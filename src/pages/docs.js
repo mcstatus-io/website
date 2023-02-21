@@ -16,7 +16,7 @@ import iconExample from '../assets/response/icon.png';
 import formatDuration from '../util/formatDuration';
 import useScrollSpy from '../hooks/ScrollSpy';
 
-export default function Documentation({ user }) {
+export default function Documentation() {
 	const entries = useScrollSpy([
 		'overview-section',
 		'standards-section',
@@ -43,7 +43,7 @@ export default function Documentation({ user }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href="https://mcstatus.io/docs" />
 			</Head>
-			<Navbar user={user} active="api" />
+			<Navbar active="api" />
 			<Container>
 				<div className="flex flex-col-reverse lg:flex-row">
 					<div className="lg:basis-[75%]">
