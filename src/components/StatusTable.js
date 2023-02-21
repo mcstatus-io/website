@@ -3,10 +3,9 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 import semver from 'semver';
 import MinecraftFormatted from './MinecraftFormatted';
-import { Button } from './Button';
+import Timer from './Timer';
 import ChevronDown from '!!@svgr/webpack!../assets/icons/chevron-down.svg';
 import ChevronUp from '!!@svgr/webpack!../assets/icons/chevron-up.svg';
-import Timer from './Timer';
 
 export default function StatusTable({ now, data }) {
 	const [showMods, setShowMods] = useState(false);
@@ -58,16 +57,16 @@ export default function StatusTable({ now, data }) {
 					<span>{data.result.players.online} / {data.result.players.max}</span>
 					{
 						data.result.players.list?.length > 0
-							? <Button className="ml-3 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)}>
+							? <button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)}>
 								<div className="flex items-center gap-1">
 									<span>{showPlayers ? 'Hide' : 'Show'} player list</span>
 									{
 										showPlayers
-											? <ChevronUp />
-											: <ChevronDown />
+											? <ChevronUp width="20" height="20" />
+											: <ChevronDown width="20" height="20" />
 									}
 								</div>
-							</Button>
+							</button>
 							: null
 					}
 					{
@@ -86,16 +85,16 @@ export default function StatusTable({ now, data }) {
 					<span>{data.result.mods.length} mod{data.result.mods.length === 1 ? '' : 's'} loaded</span>
 					{
 						data.result.mods.length > 0
-							? <Button className="ml-3 w-auto text-sm" onClick={() => setShowMods(!showMods)}>
+							? <button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowMods(!showMods)}>
 								<div className="flex items-center gap-1">
 									<span>{showMods ? 'Hide' : 'Show'} mod info</span>
 									{
 										showMods
-											? <ChevronUp />
-											: <ChevronDown />
+											? <ChevronUp width="20" height="20" />
+											: <ChevronDown width="20" height="20" />
 									}
 								</div>
-							</Button>
+							</button>
 							: null
 					}
 					{

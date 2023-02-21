@@ -3,9 +3,6 @@ import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
-import Input from './Input';
-import DropdownSelect from './DropdownSelect';
-import { Button } from './Button';
 
 export default function Search({ host, type, className }) {
 	const { push } = useRouter();
@@ -26,19 +23,19 @@ export default function Search({ host, type, className }) {
 		<form className={`block md:flex items-center gap-5 ${className ?? ''}`} onSubmit={form.handleSubmit}>
 			<div className="mb-3 md:mb-0">
 				<label className="sr-only" htmlFor="type">Server Type</label>
-				<DropdownSelect className="md:w-auto" id="type" defaultValue={form.values.type} onChange={form.handleChange} onBlur={form.handleBlur}>
+				<select className="select md:w-auto" id="type" defaultValue={form.values.type} onChange={form.handleChange} onBlur={form.handleBlur}>
 					<option value="java" className="text-neutral-800">Java Edition</option>
 					<option value="bedrock" className="text-neutral-800">Bedrock Edition</option>
-				</DropdownSelect>
+				</select>
 			</div>
 			<div className="grow mb-3 md:mb-0">
 				<label className="sr-only" htmlFor="host">Host</label>
-				<Input type="text" id="host" placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} error={form.errors.host} />
+				<input type="text" className="input" id="host" placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} data-error={form.errors.host} />
 			</div>
 			<div>
-				<Button type="submit" className="block w-full md:w-auto" disabled={!form.isValid || form.isSubmitting || (form.values.type === type && form.values.host === host)}>
+				<button type="submit" className="button block w-full md:w-auto" disabled={!form.isValid || form.isSubmitting || (form.values.type === type && form.values.host === host)}>
 					Submit
-				</Button>
+				</button>
 			</div>
 		</form>
 	);

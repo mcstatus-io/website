@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import Ad from '../components/Ad';
 import Header from '../components/Header';
 import Container from '../components/Container';
+import Footer from '../components/Footer';
 import HelpCircleIcon from '!!@svgr/webpack!../assets/icons/help-circle.svg';
 import MailIcon from '!!@svgr/webpack!../assets/icons/mail.svg';
 
@@ -99,6 +100,7 @@ export default function About({ user }) {
 				</section>
 				<Ad className="mt-5" />
 			</Container>
+			<Footer />
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [

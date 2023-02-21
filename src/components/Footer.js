@@ -14,7 +14,7 @@ export default function Footer() {
 					<CoffeeIcon width="18" height="18" />
 					<span>by <a className="link" href="https://passthemayo.dev" rel="noreferrer">Jacob Gunther</a></span>
 				</p>
-				<a className="text-sm bg-blue-600 hover:bg-blue-700 motion-safe:transition-colors px-2 py-1 rounded text-white" href={`https://github.com/mcstatus-io/website/commit/${process.env.NEXT_PUBLIC_COMMIT_ID}`} title="Current Live Commit ID">MCS-{process.env.NEXT_PUBLIC_COMMIT_ID.substring(0, 8)}</a>
+				<a className="text-sm bg-blue-600 hover:bg-blue-700 motion-safe:transition-colors px-2 py-1 rounded text-white" href={`https://github.com/mcstatus-io/website/commit/${process.env.NEXT_PUBLIC_COMMIT_ID}`} title="Current Live Commit ID">MCS-{process.env.NEXT_PUBLIC_COMMIT_ID.substring(0, 7)}</a>
 			</div>
 		</Container>
 	);

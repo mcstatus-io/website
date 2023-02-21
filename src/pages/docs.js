@@ -9,6 +9,7 @@ import Highlight from '../components/Highlight';
 import Ad from '../components/Ad';
 import Header from '../components/Header';
 import Container from '../components/Container';
+import Footer from '../components/Footer';
 import javaExample from '../assets/response/java.jsonc';
 import bedrockExample from '../assets/response/bedrock.jsonc';
 import iconExample from '../assets/response/icon.png';
@@ -168,6 +169,7 @@ export default function Documentation({ user }) {
 					</nav>
 				</div>
 			</Container>
+			<Footer />
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [

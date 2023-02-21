@@ -17,11 +17,6 @@ module.exports = withBundleAnalyzer({
 			source: '/docs/:revision',
 			destination: '/docs',
 			permanent: true
-		},
-		{
-			source: '/auth',
-			destination: `https://discord.com/api/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.NEXT_PUBLIC_DISCORD_REDIRECT_URI)}&response_type=code&scope=${encodeURIComponent(['identify', 'email'].join(' '))}`,
-			permanent: false
 		}
 	],
 	webpack: (config) => {
@@ -33,9 +28,6 @@ module.exports = withBundleAnalyzer({
 		});
 
 		return config;
-	},
-	images: {
-		domains: ['cdn.discordapp.com']
 	},
 	env: {
 		NEXT_PUBLIC_COMMIT_ID: commitID

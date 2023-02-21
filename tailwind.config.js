@@ -17,7 +17,7 @@ module.exports = {
 	},
 	plugins: [
 		plugin(({ addVariant }) => {
-			addVariant('error', '&[data-error="true"]');
+			addVariant('error', '&[data-error]');
 		})
 	]
 };

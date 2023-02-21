@@ -14,8 +14,8 @@ export default function APIUsage({ address, data, type }) {
 				<p className="font-bold">API Usage</p>
 				{
 					isExpanded
-						? <ChevronUp />
-						: <ChevronDown />
+						? <ChevronUp width="24" height="24" />
+						: <ChevronDown width="24" height="24" />
 				}
 			</div>
 			{

@@ -7,10 +7,9 @@ import GithubIcon from '!!@svgr/webpack!../assets/icons/github.svg';
 import MenuIcon from '!!@svgr/webpack!../assets/icons/menu.svg';
 import CloseIcon from '!!@svgr/webpack!../assets/icons/x.svg';
 import icon from '../assets/img/icon.png';
-import getAvatarURL from '../util/getAvatarURL';
 import Container from './Container';
 
-export default function Navbar({ active, user }) {
+export default function Navbar({ active }) {
 	const [showMenu, setShowMenu] = useState(false);
 
 	useEffect(() => {
@@ -44,11 +43,6 @@ export default function Navbar({ active, user }) {
 						</Link>
 					</li>
 					<li>
-						<Link href="/tools" className={`mr-1 p-1 ${active === 'tools' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors'}`}>
-							Tools
-						</Link>
-					</li>
-					<li>
 						<Link href="/docs" className={`block mr-1 p-1 ${active === 'api' ? 'text-white' : 'text-neutral-400 hover:text-white motion-safe:transition-colors'}`}>
 							<span className="hidden md:block">API</span>
 							<span className="block md:hidden">API Documentation</span>
@@ -61,30 +55,15 @@ export default function Navbar({ active, user }) {
 					</li>
 					<li>
 						<a href="https://github.com/mcstatus-io" className="flex gap-3 items-center rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-800 motion-safe:transition-colors p-2">
-							<GithubIcon width="24" height="24" />
+							<GithubIcon width="24" height="24" title="GitHub" />
 							<span className="md:sr-only font-bold">GitHub</span>
 						</a>
 					</li>
 					<li>
 						<a href="https://uptime.mcstatus.io" className="flex gap-3 items-center rounded-full hover:bg-neutral-900 dark:hover:bg-neutral-800 motion-safe:transition-colors p-2">
-							<CalendarIcon width="24" height="24" />
+							<CalendarIcon width="24" height="24" title="Status" />
 							<span className="md:sr-only font-bold">Status</span>
 						</a>
-					</li>
-					<li>
-						{
-							user
-								? <a href={process.env.NEXT_PUBLIC_DASHBOARD_URL ?? 'https://dashboard.mcstatus.io'} className="flex items-center gap-3 py-2 pl-2 pr-3 bg-neutral-800 hover:bg-neutral-900 hover:bg-opacity-70 motion-safe:transition-colors rounded-full">
-									<Image src={getAvatarURL(user)} className="rounded-full" alt="Profile icon" width="32" height="32" priority />
-									<span>
-										<span className="font-bold">{user.username}</span>
-										<span className="text-neutral-300">#{user.discriminator}</span>
-									</span>
-								</a>
-								: <Link href="/auth" className="lg:ml-2 px-5 py-3 bg-[#5865F2] contrast-more:bg-[#002bd9] hover:bg-opacity-80 motion-safe:transition-colors rounded-full">
-									Log in with Discord
-								</Link>
-						}
 					</li>
 				</ul>
 			</Container>
@@ -93,6 +72,5 @@ export default function Navbar({ active, user }) {
 }
 
 Navbar.propTypes = {
-	active: PropTypes.string,
-	user: PropTypes.object
+	active: PropTypes.string
 };

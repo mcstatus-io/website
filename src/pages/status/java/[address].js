@@ -9,6 +9,7 @@ import Ad from '../../../components/Ad';
 import Header from '../../../components/Header';
 import Container from '../../../components/Container';
 import APIUsage from '../../../components/APIUsage';
+import Footer from '../../../components/Footer';
 
 export default function JavaStatus({ now, address, user }) {
 	const [data, dispatch] = useReducer((state, action) => {
@@ -132,6 +133,7 @@ export default function JavaStatus({ now, address, user }) {
 				</section>
 				<Ad className="mt-4" />
 			</Container>
+			<Footer />
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [

@@ -9,7 +9,7 @@ import Search from '../components/Search';
 import Container from '../components/Container';
 import Ad from '../components/Ad';
 import Header from '../components/Header';
-import BoxLink from '../components/BoxLink';
+import Footer from '../components/Footer';
 import GiftIcon from '!!@svgr/webpack!../assets/icons/gift.svg';
 import InfoIcon from '!!@svgr/webpack!../assets/icons/info.svg';
 
@@ -51,7 +51,7 @@ export default function Home({ user, servers }) {
 						{
 							servers.map((server, index) => (
 								<li className="md:basis-[calc(50%-0.75rem)] basis-full" key={index}>
-									<BoxLink href={`/status/${server.type}/${server.address}`}>
+									<Link href={`/status/${server.type}/${server.address}`} className="button block p-5">
 										<div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-0 justify-between">
 											<span>
 												<span className={`px-2 py-1 rounded mr-3 ${server.type === 'java' ? 'bg-green-700 contrast-more:bg-green-900' : 'bg-blue-600 contrast-more:bg-blue-900'} text-xs text-white`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
@@ -59,7 +59,7 @@ export default function Home({ user, servers }) {
 											</span>
 											<code className="text-sm">{server.address}</code>
 										</div>
-									</BoxLink>
+									</Link>
 								</li>
 							))
 						}
@@ -79,6 +79,7 @@ export default function Home({ user, servers }) {
 				</section>
 				<Ad className="mt-6" />
 			</Container>
+			<Footer />
 			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
 				{`
 [
