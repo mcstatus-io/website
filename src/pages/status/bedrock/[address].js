@@ -11,7 +11,7 @@ import Container from '../../../components/Container';
 import APIUsage from '../../../components/APIUsage';
 import Footer from '../../../components/Footer';
 
-export default function BedrockStatus({ now, address, user }) {
+export default function BedrockStatus({ now, address }) {
 	const [data, dispatch] = useReducer((state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
@@ -83,7 +83,7 @@ export default function BedrockStatus({ now, address, user }) {
 				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
 				<link rel="canonical" href={`https://mcstatus.io/status/bedrock/${address}`} />
 			</Head>
-			<Navbar user={user} />
+			<Navbar />
 			<Container>
 				<section>
 					<hgroup>

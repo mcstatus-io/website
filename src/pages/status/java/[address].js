@@ -11,7 +11,7 @@ import Container from '../../../components/Container';
 import APIUsage from '../../../components/APIUsage';
 import Footer from '../../../components/Footer';
 
-export default function JavaStatus({ now, address, user }) {
+export default function JavaStatus({ now, address }) {
 	const [data, dispatch] = useReducer((state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
@@ -83,7 +83,7 @@ export default function JavaStatus({ now, address, user }) {
 				<meta property="og:image" content={data.result?.favicon ?? 'https://mcstatus.io/img/icon.png'} />
 				<link rel="canonical" href={`https://mcstatus.io/status/java/${address}`} />
 			</Head>
-			<Navbar user={user} />
+			<Navbar />
 			<Container>
 				<section>
 					<hgroup>
