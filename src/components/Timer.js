@@ -8,8 +8,6 @@ const calculateText = (now, target, ago, format, endedText) => !ago && now >= ta
 export default function Timer({ now, target, ago, endedText, format }) {
 	const [text, setText] = useState(calculateText(now, target, ago, format, endedText));
 
-	console.log(humanizeDuration(Math.abs(now - target), { largest: 1, round: true }));
-
 	useEffect(() => {
 		const interval = setInterval(() => setText(calculateText(Date.now(), target, ago, format, endedText)), 500);
 
