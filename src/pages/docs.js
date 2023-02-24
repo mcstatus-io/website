@@ -46,7 +46,7 @@ export default function Documentation() {
 			<Navbar active="api" />
 			<Container>
 				<div className="flex flex-col-reverse lg:flex-row">
-					<div className="lg:basis-[75%]">
+					<div className="lg:basis-[calc(100%-20rem)]">
 						<hgroup>
 							<Header size={1}>API Documentation</Header>
 							<p className="text-2xl font-light mt-2">Documentation on how to use our API in your service</p>
@@ -74,7 +74,9 @@ export default function Documentation() {
 							<Header size={2} id="routes" className="mt-12">Routes</Header>
 							<details className="rounded interactive-box p-5 mt-3" id="java-section" open>
 								<summary className="font-bold text-lg cursor-pointer" id="java-status">Java Status</summary>
-								<p className="flex items-center gap-2 mt-5">
+								<p className="mt-3">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
+								<hr className="border-neutral-300 dark:border-neutral-700 my-5" />
+								<p className="flex items-center gap-2 mt-3">
 									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
 									<code className="break-words">https://api.mcstatus.io/v2/status/java/&lt;address&gt;</code>
 								</p>
@@ -86,7 +88,9 @@ export default function Documentation() {
 							</details>
 							<details className="rounded interactive-box p-5 mt-3" id="bedrock-section" open>
 								<summary className="font-bold text-lg cursor-pointer" id="bedrock-status">Bedrock Status</summary>
-								<p className="flex items-center gap-2 mt-5">
+								<p className="mt-3">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
+								<hr className="border-neutral-300 dark:border-neutral-700 my-5" />
+								<p className="flex items-center gap-2 mt-3">
 									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
 									<code className="break-words">https://api.mcstatus.io/v2/status/bedrock/&lt;address&gt;</code>
 								</p>
@@ -98,7 +102,9 @@ export default function Documentation() {
 							</details>
 							<details className="rounded interactive-box p-5 mt-3" id="icon-section" open>
 								<summary className="font-bold text-lg cursor-pointer" id="icon">Icon</summary>
-								<p className="mt-5">
+								<p className="mt-3">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
+								<hr className="border-neutral-300 dark:border-neutral-700 my-5" />
+								<p className="mt-3">
 									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
 									<code className="ml-2 break-words">https://api.mcstatus.io/v2/icon/&lt;address&gt;</code>
 								</p>
