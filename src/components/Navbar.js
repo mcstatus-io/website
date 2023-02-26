@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import Container from './Container';
 import CalendarIcon from '!!@svgr/webpack!../assets/icons/calendar.svg';
 import GithubIcon from '!!@svgr/webpack!../assets/icons/github.svg';
 import MenuIcon from '!!@svgr/webpack!../assets/icons/menu.svg';
 import CloseIcon from '!!@svgr/webpack!../assets/icons/x.svg';
 import icon from '../assets/img/icon.png';
-import Container from './Container';
 
 export default function Navbar({ active }) {
 	const [showMenu, setShowMenu] = useState(false);

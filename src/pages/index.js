@@ -40,8 +40,8 @@ export default function Home({ servers }) {
 			</Container>
 			<Container className="mb-12 lg:mb-24 mt-0 lg:mt-0">
 				<section>
-					<div className="flex items-center gap-6 ml-6 mt-12">
-						<GiftIcon width="28" height="28" />
+					<div className="flex items-center gap-6 md:ml-6 mt-12">
+						<GiftIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
 							<Header size={2}>Sample Servers</Header>
 							<p className="text-lg font-light">A few sample servers to test out our service</p>
@@ -66,8 +66,8 @@ export default function Home({ servers }) {
 					</ul>
 				</section>
 				<section>
-					<div className="flex items-center gap-6 ml-6 mt-12">
-						<InfoIcon width="28" height="28" />
+					<div className="flex items-center gap-6 md:ml-6 mt-12">
+						<InfoIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
 							<Header size={2}>About Us</Header>
 							<p className="text-xl font-light">A quick understanding of what we do</p>

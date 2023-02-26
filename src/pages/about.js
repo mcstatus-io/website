@@ -36,8 +36,8 @@ export default function About() {
 					<p className="mt-5">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="link">NextJS</a> and the back-end was built with <a href="https://golang.org" className="link">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="link">Carbon Ads</a> to help cover the hosting and development costs.</p>
 				</section>
 				<section>
-					<div className="flex items-center gap-6 ml-6 mt-12">
-						<HelpCircleIcon width="28" height="28" />
+					<div className="flex items-center gap-6 md:ml-6 mt-12">
+						<HelpCircleIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
 							<Header size={2}>Frequently Asked Questions</Header>
 							<p className="text-lg font-light">Answers to commonly asked questions</p>
@@ -89,8 +89,8 @@ export default function About() {
 					</ul>
 				</section>
 				<section>
-					<div className="flex items-center gap-6 ml-6 mt-12">
-						<MailIcon width="28" height="28" />
+					<div className="flex items-center gap-6 md:ml-6 mt-12">
+						<MailIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
 							<Header size={2}>Contact</Header>
 							<p className="text-lg font-light">How to contact me if needed</p>
