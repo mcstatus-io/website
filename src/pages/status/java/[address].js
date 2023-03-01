@@ -1,45 +1,47 @@
 import React, { useEffect, useReducer } from 'react';
 import Head from 'next/head';
 import Script from 'next/script';
-import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
+import Ad from '../../../components/Ad';
 import Navbar from '../../../components/Navbar';
 import Search from '../../../components/Search';
-import StatusTable from '../../../components/StatusTable';
-import Ad from '../../../components/Ad';
 import Header from '../../../components/Header';
-import Container from '../../../components/Container';
-import APIUsage from '../../../components/APIUsage';
 import Footer from '../../../components/Footer';
+import APIUsage from '../../../components/APIUsage';
+import Container from '../../../components/Container';
+import StatusTable from '../../../components/StatusTable';
 
-export default function JavaStatus({ now, address, initialState }) {
+export default function JavaStatus() {
+	const { query } = useRouter();
+
 	const [data, dispatch] = useReducer((state, action) => {
 		switch (action.type) {
 			case 'SET_RESULT':
-				return { ...state, result: action.result, cacheTime: action.cacheTime, error: null };
+				return { ...state, result: action.result, cacheHit: action.cacheHit, error: null };
 			case 'SET_ERROR':
-				return { ...state, result: null, cacheTime: null, error: action.error };
+				return { ...state, result: null, cacheHit: null, error: action.error };
 			case 'SET_PROTOCOL_VERSIONS':
 				return { ...state, protocolVersions: action.data };
 			case 'RESET_ALL':
-				return { ...state, result: null, cacheTime: null, error: null };
+				return { ...state, result: null, cacheHit: null, error: null };
 			default:
 				return state;
 		}
-	}, initialState ?? { result: null, cacheTime: null, protocolVersions: null });
+	}, { result: null, cacheHit: null, protocolVersions: null });
 
 	useEffect(() => {
-		if (data.error || (data.result && initialState?.result?.host === data.result.host && initialState?.result?.port === data.result.port)) return;
+		if (!query.address) return;
 
 		dispatch({ type: 'RESET_ALL' });
 
 		(async () => {
 			try {
-				const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST ?? 'https://api.mcstatus.io/v2'}/status/java/${address}`);
+				const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST ?? 'https://api.mcstatus.io/v2'}/status/java/${query.address}`);
 
 				if (result.status === 200) {
 					const body = await result.json();
 
-					dispatch({ type: 'SET_RESULT', result: body, cacheTime: result.headers.get('X-Cache-Time-Remaining') });
+					dispatch({ type: 'SET_RESULT', result: body, cacheHit: result.headers.get('X-Cache-Hit') == 'true' });
 				} else {
 					const body = await result.text();
 
@@ -69,21 +71,21 @@ export default function JavaStatus({ now, address, initialState }) {
 				console.error(e);
 			}
 		})();
-	}, [address]);
+	}, [query.address]);
 
 	return (
 		<>
 			<Head>
-				<title>{`${address} - Minecraft Server Status`}</title>
+				<title>{`${query.address ?? 'Loading'} - Minecraft Server Status`}</title>
 				<meta name="robots" content="index,follow" />
-				<meta name="title" content={`${address} - Minecraft Server Status`} />
-				<meta name="description" content={data.result?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${address} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
+				<meta name="title" content={`${query.address ?? 'Loading'} - Minecraft Server Status`} />
+				<meta name="description" content={data.result?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${query.address ?? 'n/a'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content={`https://mcstatus.io/status/java/${address}`} />
-				<meta property="og:title" content={`${address} - Minecraft Server Status`} />
-				<meta property="og:description" content={data.result?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${address} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
+				<meta property="og:url" content={`https://mcstatus.io/status/java/${query.address}`} />
+				<meta property="og:title" content={`${query.address ?? 'Loading'} - Minecraft Server Status`} />
+				<meta property="og:description" content={data.result?.motd?.clean?.replace?.(/ +/g, ' ')?.trim() ?? `Easily and quickly retrieve the status of ${query.address ?? 'n/a'} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`} />
 				<meta property="og:image" content={data.result?.favicon ?? 'https://mcstatus.io/img/icon.png'} />
-				<link rel="canonical" href={`https://mcstatus.io/status/java/${address}`} />
+				<link rel="canonical" href={`https://mcstatus.io/status/java/${query.address}`} />
 			</Head>
 			<Navbar />
 			<Container>
@@ -92,7 +94,7 @@ export default function JavaStatus({ now, address, initialState }) {
 						<Header size={1}>Minecraft Server Status</Header>
 						<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 					</hgroup>
-					<Search host={address} type="java" className="mt-5" />
+					<Search host={query.address} type="java" className="mt-5" />
 				</section>
 				<section>
 					<div className="px-5 py-4 rounded mt-4 box">
@@ -100,7 +102,7 @@ export default function JavaStatus({ now, address, initialState }) {
 							data.error
 								? <p className="text-red-400">{data.error}</p>
 								: data.result
-									? <StatusTable now={now} data={data} />
+									? <StatusTable data={data} />
 									: <div className="flex gap-3">
 										<div className="w-1/4">
 											<div className="block rounded bg-neutral-300 dark:bg-neutral-700 opacity-70 h-12 w-full mb-3" />
@@ -129,7 +131,7 @@ export default function JavaStatus({ now, address, initialState }) {
 				<section>
 					{
 						data.result
-							? <APIUsage type="java" address={address} data={data.result} />
+							? <APIUsage type="java" address={query.address} data={data.result} />
 							: null
 					}
 				</section>
@@ -158,8 +160,8 @@ export default function JavaStatus({ now, address, initialState }) {
 			{
 				"@type": "ListItem",
 				"position": 3,
-				"name": "${address}",
-				"item": "https://mcstatus.io/status/java/${address}"
+				"name": "${query.address}",
+				"item": "https://mcstatus.io/status/java/${query.address}"
 			}
 		]
 	},
@@ -181,42 +183,4 @@ export default function JavaStatus({ now, address, initialState }) {
 			</Script>
 		</>
 	);
-}
-
-JavaStatus.propTypes = {
-	now: PropTypes.number.isRequired,
-	user: PropTypes.object,
-	address: PropTypes.string.isRequired,
-	initialState: PropTypes.object
-};
-
-export async function getServerSideProps({ params: { address }, req: { url } }) {
-	let initialState = null;
-
-	if (!url.startsWith('/_next')) {
-		initialState = { result: null, cacheTime: null, protocolVersions: null };
-
-		try {
-			const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/java/${address}`);
-
-			if (result.status === 200) {
-				initialState.result = await result.json();
-				initialState.cacheTime = result.headers.get('X-Cache-Time-Remaining');
-			}
-		} catch {
-			// Ignore
-		}
-
-		try {
-			const result = await fetch('https://raw.githubusercontent.com/PrismarineJS/minecraft-data/master/data/pc/common/protocolVersions.json');
-
-			if (result.status === 200) {
-				initialState.protocolVersions = await result.json();
-			}
-		} catch {
-			// Ignore
-		}
-	}
-
-	return { props: { now: Date.now(), address, initialState } };
 }

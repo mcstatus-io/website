@@ -17,6 +17,7 @@ export default function Document() {
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 				<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&family=Fira+Mono&family=Inter:wght@200;300;400;500;700;900&display=swap" rel="stylesheet" />
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css" />
 			</Head>
 			<body className="bg-white dark:bg-neutral-900 dark:text-white overflow-x-hidden w-[100vw] scroll-smooth">
 				<Main />

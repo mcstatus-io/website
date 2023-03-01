@@ -42,8 +42,8 @@ export default function Search({ host, type, className }) {
 }
 
 Search.propTypes = {
-	host: PropTypes.string.isRequired,
-	type: PropTypes.string.isRequired,
+	host: PropTypes.string,
+	type: PropTypes.string,
 	className: PropTypes.string
 };
 

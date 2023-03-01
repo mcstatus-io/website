@@ -1,25 +1,14 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
+import React from 'react';
 import hljs from 'highlight.js/lib/core';
 import json from 'highlight.js/lib/languages/json';
 import PropTypes from 'prop-types';
 
-/* eslint-disable @next/next/no-css-tags */
+hljs.registerLanguage('json', json);
+hljs.configure({ ignoreUnescapedHTML: true });
 
 export default function Highlight({ source, className }) {
-	useEffect(() => {
-		hljs.registerLanguage('json', json);
-		hljs.configure({ ignoreUnescapedHTML: true });
-		hljs.highlightAll();
-	}, []);
-
 	return (
-		<>
-			<Head>
-				<link rel="stylesheet" href="/css/atom-one-dark.min.css" />
-			</Head>
-			<pre className="language-json"><code className={className}>{source}</code></pre>
-		</>
+		<pre><code className={`hljs ${className}`} dangerouslySetInnerHTML={{ __html: hljs.highlight(source, { language: 'json' }).value }} /></pre>
 	);
 }
 

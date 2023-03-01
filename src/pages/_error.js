@@ -9,7 +9,7 @@ export default function ErrorPage({ statusCode }) {
 				<title>{`${statusCode} - mcstatus.io`}</title>
 			</Head>
 			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-				<h1 className="font-black text-9xl retro">{statusCode}</h1>
+				<h1 className="font-black text-9xl retro">{statusCode ?? 500}</h1>
 			</div>
 		</>
 	);
