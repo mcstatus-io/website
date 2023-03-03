@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
-import semver from 'semver';
+import gt from 'semver/functions/gt';
+import coerce from 'semver/functions/coerce';
 import MinecraftFormatted from './MinecraftFormatted';
 import ChevronDown from '!!@svgr/webpack!../assets/icons/chevron-down.svg';
 import ChevronUp from '!!@svgr/webpack!../assets/icons/chevron-up.svg';
@@ -132,7 +133,7 @@ export default function StatusTable({ data }) {
 			protocolVersion = data.protocolVersions
 				.reverse()
 				.filter((version) => !/^\d+w\d+\w$/.test(version.minecraftVersion) && ((typeof version.usesNetty === 'boolean' && version.usesNetty) || version.releaseType === 'release'))
-				.sort((a, b) => semver.gt(semver.coerce(a.minecraftVersion), semver.coerce(b.minecraftVersion)) ? 1 : -1)
+				.sort((a, b) => gt(coerce(a.minecraftVersion), coerce(b.minecraftVersion)) ? 1 : -1)
 				.find((version) => version.version === data.result.version.protocol);
 		}
 

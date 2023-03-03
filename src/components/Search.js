@@ -1,39 +1,48 @@
-import React from 'react';
+import { useReducer } from 'react';
 import { useRouter } from 'next/router';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import PropTypes from 'prop-types';
+
+const validHostRegEx = /^[A-Za-z0-9-_]+(\.[A-Za-z0-9-_]+)*(:\d{1,5})?$/;
+
+const reducer = (state, action) => {
+	console.log(action);
+
+	switch (action.type) {
+		case 'SET_HOST':
+			return { ...state, host: action.value, isValid: validHostRegEx.test(action.value) };
+		case 'SET_TYPE':
+			return { ...state, type: action.value, isValid: validHostRegEx.test(action.value) };
+		default:
+			return state;
+	}
+};
 
 export default function Search({ host, type, className }) {
 	const { push } = useRouter();
 
-	const form = useFormik({
-		initialValues: { host, type },
-		validationSchema: Yup
-			.object()
-			.shape({
-				host: Yup.string().min(1).matches(/^[A-Za-z0-9-_]+(\.[A-Za-z0-9-_]+)*(:\d{1,5})?$/).required(),
-				type: Yup.string().oneOf(['java', 'bedrock']).required()
-			})
-			.required(),
-		onSubmit: ({ host, type }) => push(`/status/${type}/${host.toLowerCase()}`)
-	});
+	const [data, dispatch] = useReducer(reducer, { host, type, isValid: false });
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		push(`/status/${data.type}/${data.host.toLowerCase()}`);
+	};
 
 	return (
-		<form className={`block md:flex items-center gap-5 ${className ?? ''}`} onSubmit={form.handleSubmit}>
+		<form className={`block md:flex items-center gap-5 ${className ?? ''}`} onSubmit={handleSubmit}>
 			<div className="mb-3 md:mb-0">
 				<label className="sr-only" htmlFor="type">Server Type</label>
-				<select className="select md:w-auto" id="type" defaultValue={form.values.type} onChange={form.handleChange} onBlur={form.handleBlur}>
+				<select className="select md:w-auto" id="type" defaultValue={type} onChange={(event) => dispatch({ type: 'SET_TYPE', value: event.target.value })}>
 					<option value="java" className="text-neutral-800">Java Edition</option>
 					<option value="bedrock" className="text-neutral-800">Bedrock Edition</option>
 				</select>
 			</div>
 			<div className="grow mb-3 md:mb-0">
 				<label className="sr-only" htmlFor="host">Host</label>
-				<input type="text" className="input" id="host" placeholder="play.hypixel.net" defaultValue={form.values.host} onChange={form.handleChange} onBlur={form.handleBlur} data-error={form.errors.host} />
+				<input type="text" className="input" id="host" placeholder="play.hypixel.net" defaultValue={host} onChange={(event) => dispatch({ type: 'SET_HOST', value: event.target.value })} />
 			</div>
 			<div>
-				<button type="submit" className="button block w-full md:w-auto" disabled={!form.isValid || form.isSubmitting || (form.values.type === type && form.values.host === host)}>
+				<button type="submit" className="button block w-full md:w-auto" disabled={!data.isValid || (data.type === type && data.host === host)}>
 					Submit
 				</button>
 			</div>

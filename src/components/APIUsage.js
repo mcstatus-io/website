@@ -9,7 +9,7 @@ export default function APIUsage({ address, data, type }) {
 	const [isExpanded, setExpanded] = useState(false);
 
 	return (
-		<div className="mt-3 rounded interactive-box">
+		<div className="mt-3 rounded box">
 			<div className="p-4 flex justify-between items-center cursor-pointer" onClick={() => setExpanded(!isExpanded)}>
 				<p className="font-bold">API Usage</p>
 				{

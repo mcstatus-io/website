@@ -34,7 +34,6 @@
 	"dependencies": {
 		"@next/bundle-analyzer": "^13.1.1",
 		"@svgr/webpack": "^6.5.1",
-		"formik": "^2.2.9",
 		"highlight.js": "^11.7.0",
 		"humanize-duration": "^3.27.3",
 		"next": "^13.1.1",
@@ -44,11 +43,12 @@
 		"react-dom": "^18.2.0",
 		"sass": "^1.57.1",
 		"semver": "^7.3.8",
-		"sharp": "^0.31.3",
-		"yup": "^0.32.11"
+		"sharp": "^0.31.3"
 	},
 	"devDependencies": {
 		"@next/eslint-plugin-next": "^13.1.1",
+		"@types/prop-types": "^15.7.5",
+		"@types/semver": "^7.3.13",
 		"autoprefixer": "^10.4.13",
 		"cross-env": "^7.0.3",
 		"cssnano": "^5.1.14",
