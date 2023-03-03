@@ -14,6 +14,13 @@
     .retro
         text-shadow: -6px 0 #FE0505, 6px 0 #0EFFFF
 
+    .offset-anchor::before
+        content: ""
+        display: block
+        height: 6rem
+        margin-top: -6rem
+        visibility: hidden
+
 @layer components
     .button
         @include interactive-box

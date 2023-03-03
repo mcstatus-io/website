@@ -14,10 +14,5 @@ module.exports = {
 			mono: ['Fira Mono', 'monospace'],
 			ubuntu: ['Ubuntu', 'sans-serif']
 		}
-	},
-	plugins: [
-		plugin(({ addVariant }) => {
-			addVariant('error', '&[data-error]');
-		})
-	]
+	}
 };
