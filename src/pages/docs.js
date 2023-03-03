@@ -72,7 +72,7 @@ export default function Documentation() {
 						</section>
 						<section>
 							<Header size={2} id="routes" className="mt-12">Routes</Header>
-							<details className="rounded interactive-box p-5 mt-3" id="java-section" open>
+							<details className="rounded box p-5 mt-3" id="java-section" open>
 								<summary className="font-bold text-lg cursor-pointer" id="java-status">Java Status</summary>
 								<p className="mt-3">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
 								<hr className="border-neutral-300 dark:border-neutral-700 my-5" />
@@ -86,7 +86,7 @@ export default function Documentation() {
 								</p>
 								<Highlight source={javaExample} className="mt-3 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 							</details>
-							<details className="rounded interactive-box p-5 mt-3" id="bedrock-section" open>
+							<details className="rounded box p-5 mt-3" id="bedrock-section" open>
 								<summary className="font-bold text-lg cursor-pointer" id="bedrock-status">Bedrock Status</summary>
 								<p className="mt-3">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
 								<hr className="border-neutral-300 dark:border-neutral-700 my-5" />
@@ -100,7 +100,7 @@ export default function Documentation() {
 								</p>
 								<Highlight source={bedrockExample} className="mt-3 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 							</details>
-							<details className="rounded interactive-box p-5 mt-3" id="icon-section" open>
+							<details className="rounded box p-5 mt-3" id="icon-section" open>
 								<summary className="font-bold text-lg cursor-pointer" id="icon">Icon</summary>
 								<p className="mt-3">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
 								<hr className="border-neutral-300 dark:border-neutral-700 my-5" />

@@ -14,7 +14,7 @@ import StatusTable from '../components/StatusTable';
 const reducer = (state, action) => {
 	switch (action.type) {
 		case 'SET_RESULT':
-			return { ...state, result: action.result, cacheHit: action.cacheHit, error: null };
+			return { ...state, result: action.data, cacheHit: action.cacheHit, error: null };
 		case 'SET_ERROR':
 			return { ...state, result: null, cacheHit: null, error: action.error };
 		case 'SET_PROTOCOL_VERSIONS':
@@ -27,12 +27,12 @@ const reducer = (state, action) => {
 };
 
 export default function StatusLayout({ type, address }) {
-	const [data, dispatch] = useReducer(reducer, { result: null, cacheHit: null, protocolVersions: null });
+	const [data, dispatch] = useReducer(reducer, { result: null, cacheHit: null, protocolVersions: null, error: null });
 
 	useEffect(() => {
-		if (!address) return;
-
 		dispatch({ type: 'RESET_ALL' });
+
+		if (!address) return;
 
 		(async () => {
 			try {
@@ -41,7 +41,7 @@ export default function StatusLayout({ type, address }) {
 				if (result.status === 200) {
 					const body = await result.json();
 
-					dispatch({ type: 'SET_RESULT', result: body, cacheHit: result.headers.get('X-Cache-Hit') == 'true' });
+					dispatch({ type: 'SET_RESULT', data: body, cacheHit: result.headers.get('X-Cache-Hit') == 'true' });
 				} else {
 					const body = await result.text();
 
@@ -55,20 +55,22 @@ export default function StatusLayout({ type, address }) {
 				dispatch({ type: 'SET_ERROR', error: e.message ?? e.toString() });
 			}
 
-			try {
-				const result = await fetch(`https://raw.githubusercontent.com/PrismarineJS/minecraft-data/master/data/${type === 'java' ? 'pc' : 'bedrock'}/common/protocolVersions.json`);
+			if (!data.protocolVersions) {
+				try {
+					const result = await fetch(`https://raw.githubusercontent.com/PrismarineJS/minecraft-data/master/data/${type === 'java' ? 'pc' : 'bedrock'}/common/protocolVersions.json`);
 
-				if (result.status < 400) {
-					const body = await result.json();
+					if (result.status < 400) {
+						const body = await result.json();
 
-					dispatch({ type: 'SET_PROTOCOL_VERSIONS', data: body });
-				} else {
-					const body = await result.text();
+						dispatch({ type: 'SET_PROTOCOL_VERSIONS', data: body });
+					} else {
+						const body = await result.text();
 
-					console.error(body);
+						console.error(body);
+					}
+				} catch (e) {
+					console.error(e);
 				}
-			} catch (e) {
-				console.error(e);
 			}
 		})();
 	}, [address]);

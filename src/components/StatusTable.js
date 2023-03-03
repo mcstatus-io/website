@@ -57,7 +57,7 @@ export default function StatusTable({ data }) {
 					<span>{data.result.players.online} / {data.result.players.max}</span>
 					{
 						data.result.players.list?.length > 0
-							? <button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)}>
+							? <button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
 								<div className="flex items-center gap-1">
 									<span>{showPlayers ? 'Hide' : 'Show'} player list</span>
 									{
@@ -69,11 +69,9 @@ export default function StatusTable({ data }) {
 							</button>
 							: null
 					}
-					{
-						showPlayers
-							? <MinecraftFormatted html={data.result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
-							: null
-					}
+					<div className={showPlayers ? 'block' : 'hidden'} id="players-list">
+						<MinecraftFormatted html={data.result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
+					</div>
 				</>
 			]
 		);
@@ -85,7 +83,7 @@ export default function StatusTable({ data }) {
 					<span>{data.result.mods.length} mod{data.result.mods.length === 1 ? '' : 's'} loaded</span>
 					{
 						data.result.mods.length > 0
-							? <button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowMods(!showMods)}>
+							? <button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
 								<div className="flex items-center gap-1">
 									<span>{showMods ? 'Hide' : 'Show'} mod info</span>
 									{
@@ -97,17 +95,13 @@ export default function StatusTable({ data }) {
 							</button>
 							: null
 					}
-					{
-						showMods
-							? <div className="tags mt-2">
-								{
-									data.result.mods.map((mod, index) => (
-										<span className="tag is-link" key={index}>{mod.name}: v{mod.version}</span>
-									))
-								}
-							</div>
-							: null
-					}
+					<div className={`${showMods ? 'block' : 'hidden'} tags mt-2`} id="mods-list">
+						{
+							data.result.mods.map((mod, index) => (
+								<span className="tag is-link" key={index}>{mod.name}: v{mod.version}</span>
+							))
+						}
+					</div>
 				</>
 			]);
 		} else {
