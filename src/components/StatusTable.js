@@ -57,21 +57,23 @@ export default function StatusTable({ data }) {
 					<span>{data.result.players.online} / {data.result.players.max}</span>
 					{
 						data.result.players.list?.length > 0
-							? <button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
-								<div className="flex items-center gap-1">
-									<span>{showPlayers ? 'Hide' : 'Show'} player list</span>
-									{
-										showPlayers
-											? <ChevronUp width="20" height="20" />
-											: <ChevronDown width="20" height="20" />
-									}
+							? <>
+								<button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
+									<div className="flex items-center gap-1">
+										<span>{showPlayers ? 'Hide' : 'Show'} player list</span>
+										{
+											showPlayers
+												? <ChevronUp width="20" height="20" />
+												: <ChevronDown width="20" height="20" />
+										}
+									</div>
+								</button>
+								<div className={showPlayers ? 'block' : 'hidden'} id="players-list">
+									<MinecraftFormatted html={data.result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
 								</div>
-							</button>
+							</>
 							: null
 					}
-					<div className={showPlayers ? 'block' : 'hidden'} id="players-list">
-						<MinecraftFormatted html={data.result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
-					</div>
 				</>
 			]
 		);
