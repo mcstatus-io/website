@@ -17,7 +17,7 @@ import iconExample from '../assets/response/icon.png';
 import formatDuration from '../util/formatDuration';
 import useScrollSpy from '../hooks/ScrollSpy';
 
-export default function Documentation() {
+export default function Documentation({ statistics }) {
 	const entries = useScrollSpy([
 		'overview-section',
 		'standards-section',
@@ -83,7 +83,7 @@ export default function Documentation() {
 									</p>
 									<p className="flex items-center gap-2 mt-3">
 										<span>Cache duration:</span>
-										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_JAVA_CACHE_TIME ?? '60') * 1000)}</span>
+										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(statistics.cache.java_status_duration / (1000 * 1000))}</span>
 									</p>
 									<Highlight source={javaExample} className="mt-3 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 								</Collapsible>
@@ -98,7 +98,7 @@ export default function Documentation() {
 									</p>
 									<p className="flex items-center gap-2 mt-3">
 										<span>Cache duration:</span>
-										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_BEDROCK_CACHE_TIME ?? '60') * 1000)}</span>
+										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(statistics.cache.bedrock_status_duration / (1000 * 1000))}</span>
 									</p>
 									<Highlight source={bedrockExample} className="mt-3 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 								</Collapsible>
@@ -113,7 +113,7 @@ export default function Documentation() {
 									</p>
 									<p className="flex items-center gap-2 mt-3">
 										<span>Cache duration:</span>
-										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.NEXT_PUBLIC_ICON_CACHE_TIME ?? '600') * 1000)}</span>
+										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(statistics.cache.icon_duration / (1000 * 1000))}</span>
 									</p>
 									<Image src={iconExample} width="128" height="128" alt="Sample server icon" className="mt-3" />
 								</Collapsible>
@@ -222,5 +222,12 @@ export default function Documentation() {
 }
 
 Documentation.propTypes = {
-	user: PropTypes.object
+	statistics: PropTypes.object.isRequired
 };
+
+export async function getStaticProps() {
+	const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/statistics`);
+	const body = await result.json();
+
+	return { props: { statistics: body } };
+}

@@ -18,10 +18,6 @@ const frequentlyAskedQuestions = [
 		content: <p>Simply paste the address of the server into the address box on the home page. The address is in the form of <code>host:port</code> but the port is optional and defaults to <code>25565</code> for Java Edition servers and <code>19132</code> for Bedrock Edition servers.</p>
 	},
 	{
-		title: 'What is an SRV record?',
-		content: <p>An SRV record is created by the server admin to tell Minecraft clients to connect to a specific server by default. This is typically done by network servers to initially connect players to the lobby, or to specify which server a player should connect to by default if the admin is also hosting other servers on the same network.</p>
-	},
-	{
 		title: 'How do I hide the status of my server?',
 		content: <p>Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable this, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu.</p>
 	},
@@ -36,6 +32,10 @@ const frequentlyAskedQuestions = [
 	{
 		title: 'Why don\'t you show the ping to the server?',
 		content: <p>The latency to the server is only measured from the location of our service hosting provider, which is irrelevant to show because your connection to the server is going to be a lot different. It would not make sense to show this data in the response.</p>
+	},
+	{
+		title: 'Why is there not a new-line character in some MOTDs?',
+		content: <p>Some servers will use character overflows to write text onto the second line of the MOTD. Since Minecraft uses a non-monospaced font, it is almost impossible to figure out where the MOTD splits into a new line outside of the game itself. An example of this is <Link href="/status/java/play.purpleprison.net" className="link">play.purpleprison.net</Link>, notice how the entire MOTD is one line.</p>
 	},
 	{
 		title: 'Is this service open-source?',
