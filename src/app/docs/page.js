@@ -1,49 +1,44 @@
-import React from 'react';
-import Link from 'next/link';
-import Head from 'next/head';
-import Script from 'next/script';
 import Image from 'next/image';
-import PropTypes from 'prop-types';
-import Navbar from '../components/Navbar';
-import Highlight from '../components/Highlight';
-import Ad from '../components/Ad';
-import Header from '../components/Header';
-import Container from '../components/Container';
-import Footer from '../components/Footer';
-import Collapsible from '../components/Collapsible';
-import javaExample from '../assets/response/java.jsonc';
-import bedrockExample from '../assets/response/bedrock.jsonc';
-import iconExample from '../assets/response/icon.png';
-import formatDuration from '../util/formatDuration';
-import useScrollSpy from '../hooks/ScrollSpy';
+import Container from '../../components/Container';
+import Navbar from '../../components/Navbar';
+import Highlight from '../../components/Highlight';
+import Ad from '../../components/Ad';
+import Header from '../../components/Header';
+import Collapsible from '../../components/Collapsible';
+import javaExample from '../../assets/response/java.jsonc';
+import bedrockExample from '../../assets/response/bedrock.jsonc';
+import iconExample from '../../assets/response/icon.png';
 
-export default function Documentation({ statistics }) {
-	const entries = useScrollSpy([
-		'overview-section',
-		'standards-section',
-		'cache-section',
-		'supported-section',
-		'routes',
-		'java-section',
-		'bedrock-section',
-		'icon-section',
-		'support-section'
-	], { threshold: 0, rootMargin: '-64px 0px 0px 0px' });
+const formatDuration = (duration) => {
+	if (duration < 1000) {
+		return Math.trunc(duration) + 'ms';
+	} else if (duration < 1000 * 60) {
+		const value = Math.trunc(duration / 1000);
 
+		return value + ' second' + (value !== 1 ? 's' : '');
+	} else if (duration < 1000 * 60 * 60) {
+		const value = Math.trunc(duration / (1000 * 60));
+
+		return value + ' minute' + (value !== 1 ? 's' : '');
+	} else if (duration < 1000 * 60 * 60 * 24) {
+		const value = Math.trunc(duration / (1000 * 60 * 60));
+
+		return value + ' hour' + (value !== 1 ? 's' : '');
+	}
+
+	const value = Math.trunc(duration / (1000 * 60 * 60 * 24));
+
+	return value + ' day' + (value !== 1 ? 's' : '');
+};
+
+export const metadata = {
+	title: 'API Documentation',
+	description: 'Detailed documentation about our API and how to fetch the status of any Minecraft server through your service.'
+};
+
+export default function Page() {
 	return (
 		<>
-			<Head>
-				<title>API Documentation - Minecraft Server Status</title>
-				<meta name="robots" content="index,follow" />
-				<meta name="title" content="API Documentation - Minecraft Server Status" />
-				<meta name="description" content="Detailed documentation about our API and how to fetch the status of any Minecraft server through your service." />
-				<meta property="og:type" content="website" />
-				<meta property="og:url" content="https://mcstatus.io/docs" />
-				<meta property="og:title" content="API Documentation - Minecraft Server Status" />
-				<meta property="og:description" content="Detailed documentation about our API and how to fetch the status of any Minecraft server through your service." />
-				<meta property="og:image" content="https://mcstatus.io/img/icon.png" />
-				<link rel="canonical" href="https://mcstatus.io/docs" />
-			</Head>
 			<Navbar active="api" />
 			<Container>
 				<div className="flex flex-col-reverse lg:flex-row">
@@ -83,7 +78,7 @@ export default function Documentation({ statistics }) {
 									</p>
 									<p className="flex items-center gap-2 mt-3">
 										<span>Cache duration:</span>
-										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(statistics.cache.java_status_duration / (1000 * 1000))}</span>
+										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.JAVA_CACHE_TIME ?? '60000'))}</span>
 									</p>
 									<Highlight source={javaExample} className="mt-3 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 								</Collapsible>
@@ -98,7 +93,7 @@ export default function Documentation({ statistics }) {
 									</p>
 									<p className="flex items-center gap-2 mt-3">
 										<span>Cache duration:</span>
-										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(statistics.cache.bedrock_status_duration / (1000 * 1000))}</span>
+										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.BEDROCK_CACHE_TIME ?? '60000'))}</span>
 									</p>
 									<Highlight source={bedrockExample} className="mt-3 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
 								</Collapsible>
@@ -113,7 +108,7 @@ export default function Documentation({ statistics }) {
 									</p>
 									<p className="flex items-center gap-2 mt-3">
 										<span>Cache duration:</span>
-										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(statistics.cache.icon_duration / (1000 * 1000))}</span>
+										<span className="bg-blue-600 rounded px-2 py-1 text-xs text-white">{formatDuration(parseInt(process.env.ICON_CACHE_TIME ?? '900000'))}</span>
 									</p>
 									<Image src={iconExample} width="128" height="128" alt="Sample server icon" className="mt-3" />
 								</Collapsible>
@@ -127,107 +122,58 @@ export default function Documentation({ statistics }) {
 					<nav className="lg:border-l-2 border-l-neutral-200 dark:border-l-neutral-700 lg:ml-24 lg:pl-12 py-2 mb-8 lg:mb-0">
 						<ol className="sticky top-24">
 							<li>
-								<Link href="#overview" className={`font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors ${entries[0] === 'overview-section' ? 'text-black underline' : ''}`}>
+								<a href="#overview" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 									Overview
-								</Link>
+								</a>
 								<ol className="pl-6">
 									<li className="mt-1">
-										<Link href="#standards" className={`text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors ${entries[0] === 'standards-section' ? 'text-black underline' : ''}`}>
+										<a href="#standards" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Standards
-										</Link>
+										</a>
 									</li>
 									<li className="mt-1">
-										<Link href="#cache" className={`text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors ${entries[0] === 'cache-section' ? 'text-black underline' : ''}`}>
+										<a href="#cache" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Cache
-										</Link>
+										</a>
 									</li>
 									<li className="mt-1">
-										<Link href="#supported" className={`text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors ${entries[0] === 'supported-section' ? 'text-black underline' : ''}`}>
+										<a href="#supported" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Supported Versions
-										</Link>
+										</a>
 									</li>
 								</ol>
 							</li>
 							<li className="mt-1">
-								<Link href="#routes" className={`font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors ${entries[0] === 'routes' ? 'text-black underline' : ''}`}>
+								<a href="#routes" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 									Routes
-								</Link>
+								</a>
 								<ol className="pl-6">
 									<li className="mt-1">
-										<Link href="#java-status" className={`text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors ${entries[0] === 'java-section' ? 'text-black underline' : ''}`}>
+										<a href="#java-status" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Java Status
-										</Link>
+										</a>
 									</li>
 									<li className="mt-1">
-										<Link href="#bedrock-status" className={`text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors ${entries[0] === 'bedrock-section' ? 'text-black underline' : ''}`}>
+										<a href="#bedrock-status" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Bedrock Status
-										</Link>
+										</a>
 									</li>
 									<li className="mt-1">
-										<Link href="#icon" className={`text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors ${entries[0] === 'icon-section' ? 'text-black underline' : ''}`}>
+										<a href="#icon" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Icon
-										</Link>
+										</a>
 									</li>
 								</ol>
 							</li>
 							<li className="mt-1">
-								<Link href="#support" className={`font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors ${entries[0] === 'support-section' ? 'text-black underline' : ''}`}>
+								<a href="#support" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 									Support
-								</Link>
+								</a>
 							</li>
 						</ol>
 					</nav>
 				</div>
 			</Container>
-			<Footer />
-			<Script type="application/ld+json" strategy="afterInteractive" id="google-structured">
-				{`
-[
-	{
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		"itemListElement": [
-			{
-				"@type": "ListItem",
-				"position": 1,
-				"name": "Home",
-				"item": "https://mcstatus.io"
-			},
-			{
-				"@type": "ListItem",
-				"position": 2,
-				"name": "API Documentation",
-				"item": "https://mcstatus.io/docs"
-			}
-		]
-	},
-	{
-		"@context": "https://schema.org",
-		"@type": "WebSite",
-		"url": "https://mcstatus.io",
-		"potentialAction": {
-			"@type": "SearchAction",
-			"target": {
-				"@type": "EntryPoint",
-				"urlTemplate": "https://mcstatus.io/status/java/{host}"
-			},
-			"query-input": "required name=host"
-		}
-	}
-]
-				`}
-			</Script>
 		</>
 	);
-}
-
-Documentation.propTypes = {
-	statistics: PropTypes.object.isRequired
-};
-
-export async function getStaticProps() {
-	const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/statistics`);
-	const body = await result.json();
-
-	return { props: { statistics: body } };
 }

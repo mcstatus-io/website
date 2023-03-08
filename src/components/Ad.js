@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+'use client';
+
+import { useEffect, useRef } from 'react';
 
 export default function Ad({ className }) {
 	const reference = useRef();
@@ -15,10 +16,6 @@ export default function Ad({ className }) {
 	}, []);
 
 	return process.env.NEXT_PUBLIC_CARBON_CODE
-		? <div className={className} ref={reference} />
+		? <div className={`${className ?? ''} [&>*:not([id="carbonads"])]:hidden`} ref={reference} /> // FIXME Hacky workaround for preventing double rendering of ads, will fix soon
 		: null;
 }
-
-Ad.propTypes = {
-	className: PropTypes.string
-};

@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
 
 const obfuscatedCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+[]"\';:<>,./?';
 
@@ -49,8 +48,3 @@ export default function MinecraftFormatted({ html, className }) {
 		<pre className={`block bg-black text-white p-4 w-full overflow-x-auto ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: html }} ref={containerElem} />
 	);
 }
-
-MinecraftFormatted.propTypes = {
-	html: PropTypes.string.isRequired,
-	className: PropTypes.string
-};

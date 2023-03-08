@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+'use client';
+
+import { useState } from 'react';
 import ChevronDown from '!!@svgr/webpack!../assets/icons/chevron-down.svg';
 import ChevronUp from '!!@svgr/webpack!../assets/icons/chevron-up.svg';
 
 export default function Collapsible({ className, title, children, autoExpanded, id }) {
-	const [isExpanded, setExpanded] = useState(autoExpanded);
+	const [isExpanded, setExpanded] = useState(autoExpanded || false);
 
 	return (
 		<div className={className}>
@@ -22,15 +23,3 @@ export default function Collapsible({ className, title, children, autoExpanded, 
 		</div>
 	);
 }
-
-Collapsible.propTypes = {
-	title: PropTypes.string.isRequired,
-	children: PropTypes.any.isRequired,
-	autoExpanded: PropTypes.bool,
-	id: PropTypes.string.isRequired,
-	className: PropTypes.string
-};
-
-Collapsible.defaultProps = {
-	autoExpanded: false
-};

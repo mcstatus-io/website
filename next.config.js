@@ -31,5 +31,8 @@ module.exports = withBundleAnalyzer({
 	},
 	env: {
 		NEXT_PUBLIC_COMMIT_ID: commitID
+	},
+	experimental: {
+		appDir: true
 	}
 });

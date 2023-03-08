@@ -1,0 +1,67 @@
+@mixin box
+    @apply border bg-black bg-opacity-5 contrast-more:bg-opacity-0 border-black border-opacity-10 contrast-more:border-opacity-50 dark:bg-white dark:bg-opacity-5 contrast-more:dark:bg-opacity-0 dark:border-white dark:border-opacity-10 contrast-more:dark:border-opacity-50
+
+@mixin interactive-box
+    @include box
+    @apply hover:[&:not(:disabled)]:bg-opacity-10 focus:bg-opacity-10 hover:border-opacity-25 contrast-more:hover:border-opacity-100 focus:border-opacity-25 contrast-more:focus:border-opacity-100 disabled:border-opacity-0 motion-safe:transition-colors
+    
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+.flex *
+    min-width: 0
+
+@layer utilities
+    .link
+        @apply text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 motion-safe:transition-colors
+    
+    .retro
+        text-shadow: -6px 0 #FE0505, 6px 0 #0EFFFF
+
+    .offset-anchor::before
+        content: ""
+        display: block
+        height: 6rem
+        margin-top: -6rem
+        visibility: hidden
+
+@layer components
+    .button
+        @include interactive-box
+        @apply px-3 py-2 rounded
+
+    .select
+        @include interactive-box
+        @apply px-3 py-2 rounded w-full appearance-none text-center cursor-pointer
+
+    .input
+        @include interactive-box
+        @apply px-3 py-2 rounded block font-mono w-full
+        
+    .box
+        @include box
+
+    .interactive-box
+        @include interactive-box
+
+#carbonads
+    @apply block relative rounded max-w-full font-ubuntu interactive-box
+
+    width: 420px
+
+    .carbon-wrap
+        @apply flex
+
+        .carbon-img
+            @apply py-4 pl-4
+
+            min-width: 146px
+
+        .carbon-text
+            @apply text-sm p-4
+    
+    .carbon-poweredby
+        @apply absolute right-2 bottom-2 px-2 py-1 uppercase font-semibold tracking-widest hover:text-blue-600 motion-safe:transition-colors
+
+        font-size: 8px

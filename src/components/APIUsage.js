@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import PropTypes from 'prop-types';
 import Highlight from './Highlight';
 import Collapsible from './Collapsible';
 
@@ -16,9 +15,3 @@ export default function APIUsage({ address, data, type }) {
 		</Collapsible>
 	);
 }
-
-APIUsage.propTypes = {
-	address: PropTypes.string.isRequired,
-	data: PropTypes.any.isRequired,
-	type: PropTypes.string.isRequired
-};

@@ -38,7 +38,8 @@
             "error",
             "always"
         ],
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off"
     },
     "globals": {
         "process": true
@@ -58,6 +59,12 @@
             "globals": {
                 "require": true,
                 "module": true
+            }
+        },
+        {
+            "files": "src/app/**/*.js",
+            "rules": {
+                "@next/next/no-page-custom-font": "off"
             }
         }
     ]

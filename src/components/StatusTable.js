@@ -1,39 +1,40 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
-import PropTypes from 'prop-types';
 import gt from 'semver/functions/gt';
 import coerce from 'semver/functions/coerce';
 import MinecraftFormatted from './MinecraftFormatted';
 import ChevronDown from '!!@svgr/webpack!../assets/icons/chevron-down.svg';
 import ChevronUp from '!!@svgr/webpack!../assets/icons/chevron-up.svg';
 
-export default function StatusTable({ data }) {
+export default function StatusTable({ result, protocolVersions, cacheHit }) {
 	const [showMods, setShowMods] = useState(false);
 	const [showPlayers, setShowPlayers] = useState(false);
 
 	const rows = [
 		[
 			'Status',
-			data.result.online
+			result.online
 				? <span className="text-green-600 dark:text-green-400">Online</span>
 				: <span className="text-red-600 dark:text-red-400">Offline</span>
 		],
 		[
 			'Host',
-			data.result.host
+			result.host
 		],
 		[
 			'Port',
-			data.result.port
+			result.port
 		]
 	];
 
-	if (data.result.online) {
-		if (data.result.icon) {
+	if (result.online) {
+		if (result.icon) {
 			rows.push([
 				'Icon',
-				data.result.icon
-					? <Image src={data.result.icon} width="64" height="64" alt="Server icon" />
+				result.icon
+					? <Image src={result.icon} width="64" height="64" alt="Server icon" />
 					: <p className="text-neutral-500 dark:text-neutral-400">N/A</p>
 			]);
 		}
@@ -41,22 +42,22 @@ export default function StatusTable({ data }) {
 		rows.push(
 			[
 				'MOTD',
-				<MinecraftFormatted html={data.result.motd.html} key="motd" />
+				<MinecraftFormatted html={result.motd.html} key="motd" />
 			],
 			[
 				'Version',
-				data.result.version?.name_raw || data.result.version?.name
-					? data.result.version.name_raw === data.result.version.name_clean || data.result.version?.name
-						? <span>{data.result.version.name_clean ?? data.result.version.name}</span>
-						: <MinecraftFormatted html={data.result.version.name_html} />
+				result.version?.name_raw || result.version?.name
+					? result.version.name_raw === result.version.name_clean || result.version?.name
+						? <span>{result.version.name_clean ?? result.version.name}</span>
+						: <MinecraftFormatted html={result.version.name_html} />
 					: <span className="text-neutral-500 dark:text-neutral-400">N/A (&lt; 1.3)</span>
 			],
 			[
 				'Players',
 				<>
-					<span>{data.result.players.online} / {data.result.players.max}</span>
+					<span>{result.players.online} / {result.players.max}</span>
 					{
-						data.result.players.list?.length > 0
+						result.players.list?.length > 0
 							? <>
 								<button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
 									<div className="flex items-center gap-1">
@@ -69,7 +70,7 @@ export default function StatusTable({ data }) {
 									</div>
 								</button>
 								<div className={showPlayers ? 'block' : 'hidden'} id="players-list">
-									<MinecraftFormatted html={data.result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
+									<MinecraftFormatted html={result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
 								</div>
 							</>
 							: null
@@ -78,13 +79,13 @@ export default function StatusTable({ data }) {
 			]
 		);
 
-		if (typeof data.result.mods !== 'undefined') {
+		if (typeof result.mods !== 'undefined') {
 			rows.push([
 				'Mods',
 				<>
-					<span>{data.result.mods.length} mod{data.result.mods.length === 1 ? '' : 's'} loaded</span>
+					<span>{result.mods.length} mod{result.mods.length === 1 ? '' : 's'} loaded</span>
 					{
-						data.result.mods.length > 0
+						result.mods.length > 0
 							? <button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
 								<div className="flex items-center gap-1">
 									<span>{showMods ? 'Hide' : 'Show'} mod info</span>
@@ -99,7 +100,7 @@ export default function StatusTable({ data }) {
 					}
 					<div className={`${showMods ? 'block' : 'hidden'} tags mt-2`} id="mods-list">
 						{
-							data.result.mods.map((mod, index) => (
+							result.mods.map((mod, index) => (
 								<span className="tag is-link" key={index}>{mod.name}: v{mod.version}</span>
 							))
 						}
@@ -110,14 +111,14 @@ export default function StatusTable({ data }) {
 			rows.push(
 				[
 					'Edition',
-					data.result.edition
-						? <span>{data.result.edition}</span>
+					result.edition
+						? <span>{result.edition}</span>
 						: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 				],
 				[
 					'Gamemode',
-					data.result.gamemode
-						? <span>{data.result.gamemode}</span>
+					result.gamemode
+						? <span>{result.gamemode}</span>
 						: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 				]
 			);
@@ -125,26 +126,26 @@ export default function StatusTable({ data }) {
 
 		let protocolVersion = null;
 
-		if (data.result?.version?.protocol && data?.protocolVersions) {
-			protocolVersion = data.protocolVersions
+		if (result?.version?.protocol && protocolVersions) {
+			protocolVersion = protocolVersions
 				.reverse()
 				.filter((version) => !/^\d+w\d+\w$/.test(version.minecraftVersion) && ((typeof version.usesNetty === 'boolean' && version.usesNetty) || version.releaseType === 'release'))
 				.sort((a, b) => gt(coerce(a.minecraftVersion), coerce(b.minecraftVersion)) ? 1 : -1)
-				.find((version) => version.version === data.result.version.protocol);
+				.find((version) => version.version === result.version.protocol);
 		}
 
 		rows.push(
 			[
 				'EULA Blocked',
-				data.result.eula_blocked
+				result.eula_blocked
 					? <span className="text-red-600 dark:text-red-400">Yes</span>
 					: <span className="text-green-600 dark:text-green-400">No</span>
 			],
 			[
 				'Protocol Version',
-				data.result.version?.protocol
+				result.version?.protocol
 					? <span>
-						<span>{data.result.version.protocol}</span>
+						<span>{result.version.protocol}</span>
 						{
 							protocolVersion
 								? <span className="text-neutral-500 dark:text-neutral-400"> ({protocolVersion.minecraftVersion}+)</span>
@@ -155,7 +156,7 @@ export default function StatusTable({ data }) {
 			],
 			[
 				'Cached Response',
-				data.cacheHit ? 'Yes' : 'No'
+				cacheHit ? 'Yes' : 'No'
 			]
 		);
 	}
@@ -175,7 +176,3 @@ export default function StatusTable({ data }) {
 		</div>
 	);
 }
-
-StatusTable.propTypes = {
-	data: PropTypes.object
-};

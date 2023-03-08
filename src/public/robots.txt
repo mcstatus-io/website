@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /auth
+
+Sitemap: https://mcstatus.io/sitemap.xml

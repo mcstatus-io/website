@@ -1,6 +1,7 @@
+'use client';
+
 import { useReducer } from 'react';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
+import { useRouter } from 'next/navigation';
 
 const validHostRegEx = /^[A-Za-z0-9-_]+(\.[A-Za-z0-9-_]+)*(:\d{1,5})?$/;
 
@@ -20,7 +21,7 @@ const reducer = (state, action) => {
 export default function Search({ host, type, className }) {
 	const { push } = useRouter();
 
-	const [data, dispatch] = useReducer(reducer, { host, type, isValid: false });
+	const [data, dispatch] = useReducer(reducer, { host: host ?? '', type: type ?? 'java', isValid: false });
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -49,14 +50,3 @@ export default function Search({ host, type, className }) {
 		</form>
 	);
 }
-
-Search.propTypes = {
-	host: PropTypes.string,
-	type: PropTypes.string,
-	className: PropTypes.string
-};
-
-Search.defaultProps = {
-	host: '',
-	type: 'java'
-};

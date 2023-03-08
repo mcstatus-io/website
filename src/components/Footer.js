@@ -1,4 +1,3 @@
-import React from 'react';
 import Container from './Container';
 import RedHeartIcon from '!!@svgr/webpack!../assets/icons/heart-red.svg';
 

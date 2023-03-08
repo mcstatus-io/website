@@ -32,29 +32,29 @@
 	},
 	"homepage": "https://github.com/mcstatus-io/Website#readme",
 	"dependencies": {
-		"@next/bundle-analyzer": "^13.1.1",
+		"@next/bundle-analyzer": "^13.2.3",
 		"@svgr/webpack": "^6.5.1",
 		"highlight.js": "^11.7.0",
-		"humanize-duration": "^3.27.3",
-		"next": "^13.1.1",
+		"humanize-duration": "^3.28.0",
+		"next": "^13.2.3",
 		"prop-types": "^15.8.1",
 		"raw-loader": "^4.0.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"sass": "^1.57.1",
+		"sass": "^1.58.3",
 		"semver": "^7.3.8",
 		"sharp": "^0.31.3"
 	},
 	"devDependencies": {
-		"@next/eslint-plugin-next": "^13.1.1",
+		"@next/eslint-plugin-next": "^13.2.3",
 		"@types/prop-types": "^15.7.5",
 		"@types/semver": "^7.3.13",
 		"autoprefixer": "^10.4.13",
 		"cross-env": "^7.0.3",
-		"cssnano": "^5.1.14",
-		"eslint": "^8.30.0",
-		"eslint-plugin-react": "^7.31.11",
-		"postcss": "^8.4.20",
-		"tailwindcss": "^3.2.4"
+		"cssnano": "^5.1.15",
+		"eslint": "^8.35.0",
+		"eslint-plugin-react": "^7.32.2",
+		"postcss": "^8.4.21",
+		"tailwindcss": "^3.2.7"
 	}
 }
