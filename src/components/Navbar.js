@@ -30,14 +30,15 @@ export default function Navbar({ active }) {
 						<span className="text-xl font-extrabold ml-2 tracking-tighter">MCS</span>
 					</Link>
 				</div>
-				<button className="absolute top-4 right-4 z-20 text-black dark:text-white ml-auto md:hidden p-2" type="button" onClick={() => setShowMenu(!showMenu)}>
+				<button className="absolute top-4 right-4 z-50 text-black dark:text-white ml-auto md:hidden p-2" type="button" onClick={() => setShowMenu(!showMenu)}>
 					{
 						showMenu
 							? <CloseIcon width="24" height="24" className="text-white" />
 							: <MenuIcon width="24" height="24" />
 					}
+					<span className="sr-only">{showMenu ? 'Close Menu' : 'Open Menu'}</span>
 				</button>
-				<ul className={`list-none lg:ml-6 text-neutral-600 dark:text-neutral-400 ${showMenu ? 'flex flex-col justify-center absolute top-0 left-0 bg-neutral-900 bg-opacity-90 backdrop-blur-lg w-full h-[100vh] z-10' : 'hidden md:flex'} gap-4 items-center grow`}>
+				<ul className={`list-none lg:ml-6 text-neutral-600 dark:text-neutral-400 ${showMenu ? 'flex flex-col justify-center absolute top-0 left-0 bg-neutral-900 bg-opacity-90 backdrop-blur-lg w-full h-[100vh] z-40' : 'hidden md:flex'} gap-4 items-center grow`}>
 					<li>
 						<Link href="/" className={`block md:mr-1 p-1 ${showMenu && active === 'home' ? 'text-white' : (active === 'home' ? 'text-black dark:text-white' : (showMenu ? 'text-neutral-400' : 'hover:text-black hover:dark:text-white motion-safe:transition-colors'))}`}>
 							Home
