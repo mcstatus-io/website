@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Minecraft Server Status",
+    "short_name": "MCS",
     "icons": [
         {
             "src": "/img/android-chrome-36x36.png",

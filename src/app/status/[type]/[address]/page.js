@@ -1,4 +1,3 @@
-import React from 'react';
 import StatusTable from '../../../../components/StatusTable';
 import APIUsage from '../../../../components/APIUsage';
 

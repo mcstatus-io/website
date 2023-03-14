@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import Navbar from '../../../../components/Navbar';
 import Container from '../../../../components/Container';
 import Header from '../../../../components/Header';
@@ -5,6 +6,8 @@ import Search from '../../../../components/Search';
 import Ad from '../../../../components/Ad';
 
 export default function RootLayout({ children, params: { type, address } }) {
+	if (type !== 'java' && type !== 'bedrock') return notFound();
+
 	return (
 		<>
 			<Navbar />

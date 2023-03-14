@@ -95,8 +95,14 @@ export default function RootLayout({ children }) {
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css" />
 			</head>
 			<body className="bg-white dark:bg-neutral-900 dark:text-white overflow-x-hidden w-[100vw] scroll-smooth">
-				{children}
-				<Footer />
+				<div className="flex flex-col min-h-[100lvh]">
+					<div className="grow">
+						{children}
+					</div>
+					<div>
+						<Footer />
+					</div>
+				</div>
 			</body>
 		</html>
 	);
