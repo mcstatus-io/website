@@ -47,10 +47,14 @@ export default async function Page({ params: { type, address } }) {
 
 	return (
 		<>
-			<div className="px-5 py-4 rounded mt-4 box">
-				<StatusTable result={result} protocolVersions={protocolVersions} />
-			</div>
-			<APIUsage type={type} address={address} data={result} />
+			<section>
+				<div className="px-5 py-4 rounded mt-4 box">
+					<StatusTable result={result} protocolVersions={protocolVersions} />
+				</div>
+			</section>
+			<section>
+				<APIUsage type={type} address={address} data={result} />
+			</section>
 		</>
 	);
 }
