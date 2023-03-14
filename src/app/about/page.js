@@ -40,7 +40,25 @@ const frequentlyAskedQuestions = [
 
 export const metadata = {
 	title: 'About',
-	description: 'Learn about our Minecraft server status retrieval tool and what you can do with it, or read into our frequently asked questions and answers.'
+	description: 'Learn about our Minecraft server status retrieval tool and what you can do with it, or read into our frequently asked questions and answers.',
+	openGraph: {
+		title: 'About - Minecraft Server Status',
+		description: 'Learn about our Minecraft server status retrieval tool and what you can do with it, or read into our frequently asked questions and answers.',
+		url: 'https://mcstatus.io/about',
+		siteName: 'Minecraft Server Status',
+		images: [
+			{
+				url: 'https://mcstatus.io/img/icon.png',
+				width: 300,
+				height: 300
+			}
+		],
+		locale: 'en-US',
+		type: 'website'
+	},
+	alternates: {
+		canonical: 'https://mcstatus.io/about'
+	}
 };
 
 export default function Page() {

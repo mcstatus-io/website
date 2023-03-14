@@ -16,6 +16,31 @@ const getProtocolVersionData = async (type) => {
 	return body;
 };
 
+export async function generateMetadata({ params: { type, address } }) {
+	return {
+		title: address,
+		description: `Easily and quickly retrieve the status of ${address} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`,
+		openGraph: {
+			title: `${address} - Minecraft Server Status`,
+			description: `Easily and quickly retrieve the status of ${address} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`,
+			url: `https://mcstatus.io/${type}/${address}`,
+			siteName: 'Minecraft Server Status',
+			images: [
+				{
+					url: 'https://mcstatus.io/img/icon.png',
+					width: 300,
+					height: 300
+				}
+			],
+			locale: 'en-US',
+			type: 'website'
+		},
+		alternates: {
+			canonical: `https://mcstatus.io/${type}/${address}`
+		}
+	};
+}
+
 export default async function Page({ params: { type, address } }) {
 	const result = await getStatusData(type, address);
 	const protocolVersions = await getProtocolVersionData(type);

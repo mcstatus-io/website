@@ -33,7 +33,25 @@ const formatDuration = (duration) => {
 
 export const metadata = {
 	title: 'API Documentation',
-	description: 'Detailed documentation about our API and how to fetch the status of any Minecraft server through your service.'
+	description: 'Detailed documentation about our API and how to fetch the status of any Minecraft server through your service.',
+	openGraph: {
+		title: 'API Documentation - Minecraft Server Status',
+		description: 'Detailed documentation about our API and how to fetch the status of any Minecraft server through your service.',
+		url: 'https://mcstatus.io/docs',
+		siteName: 'Minecraft Server Status',
+		images: [
+			{
+				url: 'https://mcstatus.io/img/icon.png',
+				width: 300,
+				height: 300
+			}
+		],
+		locale: 'en-US',
+		type: 'website'
+	},
+	alternates: {
+		canonical: 'https://mcstatus.io/docs'
+	}
 };
 
 export default function Page() {

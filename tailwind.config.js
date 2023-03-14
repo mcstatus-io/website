@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	important: true,
 	content: [
 		'./src/app/**/*.{js,ts,jsx,tsx}',
 		'./src/pages/**/*.{js,ts,jsx,tsx}',
@@ -9,9 +10,9 @@ module.exports = {
 	theme: {
 		extend: {},
 		fontFamily: {
-			sans: ['Inter', 'sans-serif'],
-			mono: ['Fira Mono', 'monospace'],
-			ubuntu: ['Ubuntu', 'sans-serif']
+			sans: ['var(--font-inter)'],
+			mono: ['var(--font-fira-mono)'],
+			ubuntu: ['var(--font-ubuntu)']
 		}
 	}
 };
