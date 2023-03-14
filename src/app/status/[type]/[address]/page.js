@@ -78,7 +78,7 @@ export default async function Page({ params: { type, address } }) {
 							{
 								'@type': 'ListItem',
 								'position': 3,
-								'name': '${address}',
+								'name': address,
 								'item': `https://mcstatus.io/status/${type}/${address}`
 							}
 						]
