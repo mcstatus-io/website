@@ -32,7 +32,7 @@ export default function SampleServers() {
 									<span className={`px-2 py-1 rounded mr-3 ${server.type === 'java' ? 'bg-green-700 contrast-more:bg-green-900' : 'bg-blue-600 contrast-more:bg-blue-900'} text-xs text-white`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
 									<span className="font-bold">{server.name}</span>
 								</span>
-								<code className="text-sm">{server.address}</code>
+								<code className="text-sm text-neutral-700">{server.address}</code>
 							</div>
 						</Link>
 					</li>

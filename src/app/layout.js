@@ -1,4 +1,4 @@
-import { Inter, Fira_Mono, Ubuntu } from 'next/font/google';
+import { Inter, Fira_Code, Ubuntu } from 'next/font/google';
 import Footer from '../components/Footer';
 import './global.sass';
 
@@ -13,8 +13,8 @@ const ubuntuFont = Ubuntu({
 	display: 'swap'
 });
 
-const firaMonoFont = Fira_Mono({
-	variable: '--font-fira-mono',
+const firaMonoFont = Fira_Code({
+	variable: '--font-fira-code',
 	weight: '400',
 	display: 'swap'
 });

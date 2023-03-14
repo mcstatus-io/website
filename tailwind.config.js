@@ -11,7 +11,7 @@ module.exports = {
 		extend: {},
 		fontFamily: {
 			sans: ['var(--font-inter)'],
-			mono: ['var(--font-fira-mono)'],
+			mono: ['var(--font-fira-code)'],
 			ubuntu: ['var(--font-ubuntu)']
 		}
 	}
