@@ -9,15 +9,9 @@
 @tailwind components
 @tailwind utilities
 
-.flex *
-    min-width: 0
-
 @layer utilities
     .link
         @apply text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 motion-safe:transition-colors
-    
-    .retro
-        text-shadow: -6px 0 #FE0505, 6px 0 #0EFFFF
 
     .offset-anchor::before
         content: ""
@@ -44,6 +38,9 @@
 
     .interactive-box
         @include interactive-box
+
+.flex *
+    min-width: 0
 
 #carbonads
     @apply block relative rounded max-w-full font-ubuntu interactive-box
