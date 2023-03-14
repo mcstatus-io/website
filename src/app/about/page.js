@@ -10,31 +10,38 @@ import MailIcon from '!!@svgr/webpack!../../assets/icons/mail.svg';
 const frequentlyAskedQuestions = [
 	{
 		title: 'How do I check the status of a server?',
-		content: <p>Simply paste the address of the server into the address box on the home page. The address is in the form of <code>host:port</code> but the port is optional and defaults to <code>25565</code> for Java Edition servers and <code>19132</code> for Bedrock Edition servers.</p>
+		content: <p>Simply paste the address of the server into the address box on the home page. The address is in the form of <code>host:port</code> but the port is optional and defaults to <code>25565</code> for Java Edition servers and <code>19132</code> for Bedrock Edition servers.</p>,
+		textContent: '<p>Simply paste the address of the server into the address box on the home page. The address is in the form of <code>host:port</code> but the port is optional and defaults to <code>25565</code> for Java Edition servers and <code>19132</code> for Bedrock Edition servers.</p>'
 	},
 	{
 		title: 'How do I hide the status of my server?',
-		content: <p>Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable this, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu.</p>
+		content: <p>Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable this, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu.</p>,
+		textContent: '<p>Status is enabled by default in the <code>server.properties</code> file of your server. In order to disable this, set the <code>enable-status</code> property to <code>false</code>. Please note that this will also prevent actual Minecraft clients from seeing your MOTD in the in-game multiplayer menu.</p>'
 	},
 	{
 		title: 'Does this service use query?',
-		content: <p>We intentionally chose not to use query in this service because it slows down any status retrieval, and it also does not provide much more information than the data sent by the status protocol.</p>
+		content: <p>We intentionally chose not to use query in this service because it slows down any status retrieval, and it also does not provide much more information than the data sent by the status protocol.</p>,
+		textContent: '<p>We intentionally chose not to use query in this service because it slows down any status retrieval, and it also does not provide much more information than the data sent by the status protocol.</p>'
 	},
 	{
 		title: 'How do I see all players on the server?',
-		content: <p>Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <Link href="/status/java/play.purpleprison.net" className="link">play.purpleprison.net</Link> for example.</p>
+		content: <p>Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <Link href="/status/java/play.purpleprison.net" className="link">play.purpleprison.net</Link> for example.</p>,
+		textContent: '<p>Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <a href="https://mcstatus.io/status/java/play.purpleprison.net">play.purpleprison.net</a> for example.</p>'
 	},
 	{
 		title: 'Why don\'t you show the ping to the server?',
-		content: <p>The latency to the server is only measured from the location of our service hosting provider, which is irrelevant to show because your connection to the server is going to be a lot different. It would not make sense to show this data in the response.</p>
+		content: <p>The latency to the server is only measured from the location of our service hosting provider, which is irrelevant to show because your connection to the server is going to be a lot different. It would not make sense to show this data in the response.</p>,
+		textContent: '<p>The latency to the server is only measured from the location of our service hosting provider, which is irrelevant to show because your connection to the server is going to be a lot different. It would not make sense to show this data in the response.</p>'
 	},
 	{
 		title: 'Why is there not a new-line character in some MOTDs?',
-		content: <p>Some servers will use character overflows to write text onto the second line of the MOTD. Since Minecraft uses a non-monospaced font, it is almost impossible to figure out where the MOTD splits into a new line outside of the game itself. An example of this is <Link href="/status/java/play.purpleprison.net" className="link">play.purpleprison.net</Link>, notice how the entire MOTD is one line.</p>
+		content: <p>Some servers will use character overflows to write text onto the second line of the MOTD. Since Minecraft uses a non-monospaced font, it is almost impossible to figure out where the MOTD splits into a new line outside of the game itself. An example of this is <Link href="/status/java/play.purpleprison.net" className="link">play.purpleprison.net</Link>, notice how the entire MOTD is one line.</p>,
+		textContent: '<p>Some servers will use character overflows to write text onto the second line of the MOTD. Since Minecraft uses a non-monospaced font, it is almost impossible to figure out where the MOTD splits into a new line outside of the game itself. An example of this is <a href="https://mcstatus.io/status/java/play.purpleprison.net">play.purpleprison.net</a>, notice how the entire MOTD is one line.</p>'
 	},
 	{
 		title: 'Is this service open-source?',
-		content: <p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="link">our GitHub organization</a>.</p>
+		content: <p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="link">our GitHub organization</a>.</p>,
+		textContent: '<p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io">our GitHub organization</a>.</p>'
 	}
 ];
 
@@ -105,6 +112,53 @@ export default function Page() {
 				</section>
 				<Ad className="mt-5" />
 			</Container>
+			<script type="application/ld+json" dangerouslySetInnerHTML={{
+				__html: JSON.stringify([
+					{
+						'@context': 'https://schema.org',
+						'@type': 'BreadcrumbList',
+						'itemListElement': [
+							{
+								'@type': 'ListItem',
+								'position': 1,
+								'name': 'Home',
+								'item': 'https://mcstatus.io'
+							},
+							{
+								'@type': 'ListItem',
+								'position': 2,
+								'name': 'About',
+								'item': 'https://mcstatus.io/about'
+							}
+						]
+					},
+					{
+						'@context': 'https://schema.org',
+						'@type': 'FAQPage',
+						'mainEntity': frequentlyAskedQuestions.map((item) => ({
+							'@type': 'Question',
+							'name': item.title,
+							'acceptedAnswer': {
+								'@type': 'Answer',
+								'text': item.textContent
+							}
+						}))
+					},
+					{
+						'@context': 'https://schema.org',
+						'@type': 'WebSite',
+						'url': 'https://mcstatus.io',
+						'potentialAction': {
+							'@type': 'SearchAction',
+							'target': {
+								'@type': 'EntryPoint',
+								'urlTemplate': 'https://mcstatus.io/status/java/{host}'
+							},
+							'query-input': 'required name=host'
+						}
+					}
+				])
+			}} />
 		</>
 	);
 }

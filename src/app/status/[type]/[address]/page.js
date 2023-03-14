@@ -55,6 +55,47 @@ export default async function Page({ params: { type, address } }) {
 			<section>
 				<APIUsage type={type} address={address} data={result} />
 			</section>
+			<script type="application/ld+json" dangerouslySetInnerHTML={{
+				__html: JSON.stringify([
+					{
+						'@context': 'https://schema.org',
+						'@type': 'BreadcrumbList',
+						'itemListElement': [
+							{
+								'@type': 'ListItem',
+								'position': 1,
+								'name': 'Home',
+								'item': 'https://mcstatus.io'
+							},
+							{
+								'@type': 'ListItem',
+								'position': 2,
+								'name': `${type === 'java' ? 'Java' : 'Bedrock'} Status`,
+								'item': 'https://mcstatus.io/status/java'
+							},
+							{
+								'@type': 'ListItem',
+								'position': 3,
+								'name': '${address}',
+								'item': 'https://mcstatus.io/status/${type}/${address}'
+							}
+						]
+					},
+					{
+						'@context': 'https://schema.org',
+						'@type': 'WebSite',
+						'url': 'https://mcstatus.io',
+						'potentialAction': {
+							'@type': 'SearchAction',
+							'target': {
+								'@type': 'EntryPoint',
+								'urlTemplate': 'https://mcstatus.io/status/java/{host}'
+							},
+							'query-input': 'required name=host'
+						}
+					}
+				])
+			}} />
 		</>
 	);
 }
