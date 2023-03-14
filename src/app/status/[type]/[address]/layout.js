@@ -17,7 +17,7 @@ export default function RootLayout({ children, params: { type, address } }) {
 						<Header size={1}>Minecraft Server Status</Header>
 						<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 					</hgroup>
-					<Search type={type} host={address} className="mt-5" />
+					<Search type={type} host={decodeURIComponent(address)} className="mt-5" />
 				</section>
 				{children}
 				<Ad className="mt-4" />

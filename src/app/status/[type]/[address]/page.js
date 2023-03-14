@@ -16,6 +16,8 @@ const getProtocolVersionData = async (type) => {
 };
 
 export async function generateMetadata({ params: { type, address } }) {
+	address = decodeURIComponent(address);
+
 	return {
 		title: address,
 		description: `Easily and quickly retrieve the status of ${address} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`,
@@ -41,6 +43,8 @@ export async function generateMetadata({ params: { type, address } }) {
 }
 
 export default async function Page({ params: { type, address } }) {
+	address = decodeURIComponent(address);
+
 	const result = await getStatusData(type, address);
 	const protocolVersions = await getProtocolVersionData(type);
 
@@ -70,7 +74,7 @@ export default async function Page({ params: { type, address } }) {
 								'@type': 'ListItem',
 								'position': 2,
 								'name': `${type === 'java' ? 'Java' : 'Bedrock'} Status`,
-								'item': 'https://mcstatus.io/status/java'
+								'item': 'https://mcstatus.io'
 							},
 							{
 								'@type': 'ListItem',
