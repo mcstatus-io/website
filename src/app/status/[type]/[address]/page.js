@@ -73,7 +73,8 @@ export default async function Page({ params: { type, address } }) {
 							{
 								'@type': 'ListItem',
 								'position': 2,
-								'name': `${type === 'java' ? 'Java' : 'Bedrock'} Status`
+								'name': `${type === 'java' ? 'Java' : 'Bedrock'} Status`,
+								'item': 'https://mcstatus.io'
 							},
 							{
 								'@type': 'ListItem',
