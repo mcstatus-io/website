@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Navbar from '../components/Navbar';
-import ChevronsLeft from '!!@svgr/webpack!../assets/icons/chevrons-left.svg';
+import ChevronsLeft from '../assets/icons/chevrons-left.svg';
 
 export default function NotFound() {
 	return (

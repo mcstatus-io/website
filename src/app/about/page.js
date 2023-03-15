@@ -4,8 +4,8 @@ import Container from '../../components/Container';
 import Navbar from '../../components/Navbar';
 import Ad from '../../components/Ad';
 import Collapsible from '../../components/Collapsible';
-import HelpCircleIcon from '!!@svgr/webpack!../../assets/icons/help-circle.svg';
-import MailIcon from '!!@svgr/webpack!../../assets/icons/mail.svg';
+import HelpCircleIcon from '../../assets/icons/help-circle.svg';
+import MailIcon from '../../assets/icons/mail.svg';
 
 const frequentlyAskedQuestions = [
 	{

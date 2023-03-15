@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import ChevronDown from '!!@svgr/webpack!../assets/icons/chevron-down.svg';
-import ChevronUp from '!!@svgr/webpack!../assets/icons/chevron-up.svg';
+import ChevronDown from '../assets/icons/chevron-down.svg';
+import ChevronUp from '../assets/icons/chevron-up.svg';
 
 export default function Collapsible({ className, title, children, autoExpanded, id }) {
 	const [isExpanded, setExpanded] = useState(autoExpanded || false);
@@ -10,7 +10,7 @@ export default function Collapsible({ className, title, children, autoExpanded, 
 	return (
 		<div className={className}>
 			<button type="button" className={`interactive-box rounded-t ${isExpanded ? '' : 'rounded-b'} p-4 flex justify-between items-center cursor-pointer w-full`} aria-controls={id} aria-expanded={isExpanded} onClick={() => setExpanded(!isExpanded)}>
-				<p className="font-bold">{title}</p>
+				<span className="font-bold text-left">{title}</span>
 				{
 					isExpanded
 						? <ChevronUp width="24" height="24" />

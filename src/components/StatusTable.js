@@ -5,8 +5,8 @@ import Image from 'next/image';
 import gt from 'semver/functions/gt';
 import coerce from 'semver/functions/coerce';
 import MinecraftFormatted from './MinecraftFormatted';
-import ChevronDown from '!!@svgr/webpack!../assets/icons/chevron-down.svg';
-import ChevronUp from '!!@svgr/webpack!../assets/icons/chevron-up.svg';
+import ChevronDown from '../assets/icons/chevron-down.svg';
+import ChevronUp from '../assets/icons/chevron-up.svg';
 
 export default function StatusTable({ result, protocolVersions, cacheHit }) {
 	const [showMods, setShowMods] = useState(false);

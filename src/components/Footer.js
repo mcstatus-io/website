@@ -1,5 +1,5 @@
 import Container from './Container';
-import RedHeartIcon from '!!@svgr/webpack!../assets/icons/heart-red.svg';
+import RedHeartIcon from '../assets/icons/heart-red.svg';
 
 export default function Footer() {
 	return (

@@ -20,12 +20,20 @@ module.exports = withBundleAnalyzer({
 		}
 	],
 	webpack: (config) => {
-		config.module.rules.push({
-			test: /\.jsonc$/,
-			use: [
-				{ loader: 'raw-loader' }
-			]
-		});
+		config.module.rules.push(
+			{
+				test: /\.jsonc$/,
+				use: [
+					{ loader: 'raw-loader' }
+				]
+			},
+			{
+				test: /\.svg$/,
+				use: [
+					{ loader: '@svgr/webpack' }
+				]
+			}
+		);
 
 		return config;
 	},

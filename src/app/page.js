@@ -5,8 +5,8 @@ import Search from '../components/Search';
 import Header from '../components/Header';
 import Container from '../components/Container';
 import SampleServers from '../components/SampleServers';
-import GiftIcon from '!!@svgr/webpack!../assets/icons/gift.svg';
-import InfoIcon from '!!@svgr/webpack!../assets/icons/info.svg';
+import GiftIcon from '../assets/icons/gift.svg';
+import InfoIcon from '../assets/icons/info.svg';
 
 export default function Page() {
 	return (

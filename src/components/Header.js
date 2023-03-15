@@ -1,4 +1,4 @@
-import LinkIcon from '!!@svgr/webpack!../assets/icons/link.svg';
+import LinkIcon from '../assets/icons/link.svg';
 
 export default function Header({ linkable, size, className, id, children, ...props }) {
 	if (linkable) {

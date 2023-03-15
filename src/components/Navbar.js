@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from './Container';
-import CalendarIcon from '!!@svgr/webpack!../assets/icons/calendar.svg';
-import GithubIcon from '!!@svgr/webpack!../assets/icons/github.svg';
-import MenuIcon from '!!@svgr/webpack!../assets/icons/menu.svg';
-import CloseIcon from '!!@svgr/webpack!../assets/icons/x.svg';
+import CalendarIcon from '../assets/icons/calendar.svg';
+import GithubIcon from '../assets/icons/github.svg';
+import MenuIcon from '../assets/icons/menu.svg';
+import CloseIcon from '../assets/icons/x.svg';
 import icon from '../assets/img/icon.png';
 
 export default function Navbar({ active }) {
