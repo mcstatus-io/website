@@ -86,49 +86,53 @@ export default function StatusTable({ result, protocolVersions }) {
 					<span>{result.mods.length} mod{result.mods.length === 1 ? '' : 's'} loaded</span>
 					{
 						result.mods.length > 0
-							? <button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
-								<div className="flex items-center gap-1">
-									<span>{showMods ? 'Hide' : 'Show'} mod info</span>
+							? <>
+								<button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
+									<div className="flex items-center gap-1">
+										<span>{showMods ? 'Hide' : 'Show'} mod info</span>
+										{
+											showMods
+												? <ChevronUp width="20" height="20" />
+												: <ChevronDown width="20" height="20" />
+										}
+									</div>
+								</button>
+								<div className={`${showMods ? 'block' : 'hidden'} tags mt-2`} id="mods-list">
 									{
-										showMods
-											? <ChevronUp width="20" height="20" />
-											: <ChevronDown width="20" height="20" />
+										result.mods.map((mod, index) => (
+											<span className="tag is-link" key={index}>{mod.name}: v{mod.version}</span>
+										))
 									}
 								</div>
-							</button>
+							</>
 							: null
 					}
-					<div className={`${showMods ? 'block' : 'hidden'} tags mt-2`} id="mods-list">
-						{
-							result.mods.map((mod, index) => (
-								<span className="tag is-link" key={index}>{mod.name}: v{mod.version}</span>
-							))
-						}
-					</div>
 				</>
 			]);
-		} else {
-			rows.push(
-				[
-					'Edition',
-					result.edition
-						? <span>{result.edition}</span>
-						: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-				],
-				[
-					'Gamemode',
-					result.gamemode
-						? <span>{result.gamemode}</span>
-						: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-				]
-			);
+		}
+
+		if (typeof result.edition !== 'undefined') {
+			rows.push([
+				'Edition',
+				result.edition
+					? <span>{result.edition}</span>
+					: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
+			]);
+		}
+
+		if (typeof result.gamemode !== 'undefined') {
+			rows.push([
+				'Gamemode',
+				result.gamemode
+					? <span>{result.gamemode}</span>
+					: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
+			]);
 		}
 
 		let protocolVersion = null;
 
 		if (result?.version?.protocol && protocolVersions) {
 			protocolVersion = protocolVersions
-				.reverse()
 				.filter((version) => !/^\d+w\d+\w$/.test(version.minecraftVersion) && ((typeof version.usesNetty === 'boolean' && version.usesNetty) || version.releaseType === 'release'))
 				.sort((a, b) => gt(coerce(a.minecraftVersion), coerce(b.minecraftVersion)) ? 1 : -1)
 				.find((version) => version.version === result.version.protocol);

@@ -2,7 +2,7 @@
 	"name": "website",
 	"version": "1.0.0",
 	"description": "The NextJS server that powers the mcstatus.io public website.",
-	"main": "index.js",
+	"private": true,
 	"browserslist": [
 		"defaults"
 	],
