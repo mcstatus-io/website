@@ -8,7 +8,7 @@ import MinecraftFormatted from './MinecraftFormatted';
 import ChevronDown from '../assets/icons/chevron-down.svg';
 import ChevronUp from '../assets/icons/chevron-up.svg';
 
-export default function StatusTable({ result, protocolVersions, cacheHit }) {
+export default function StatusTable({ result, protocolVersions }) {
 	const [showMods, setShowMods] = useState(false);
 	const [showPlayers, setShowPlayers] = useState(false);
 
@@ -153,10 +153,6 @@ export default function StatusTable({ result, protocolVersions, cacheHit }) {
 						}
 					</span>
 					: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-			],
-			[
-				'Cached Response',
-				cacheHit ? 'Yes' : 'No'
 			]
 		);
 	}
