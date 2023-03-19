@@ -1,6 +1,6 @@
 import { Inter, Fira_Mono, Ubuntu } from 'next/font/google';
 import Footer from '../components/Footer';
-import './global.sass';
+import '../styles/global.sass';
 
 const interFont = Inter({
 	variable: '--font-inter',
@@ -83,7 +83,7 @@ export const metadata = {
 			{ rel: 'mask-icon', url: '/img/safari-pinned-tab.svg', color: '#303030' }
 		]
 	},
-	themeColor: '#232323',
+	themeColor: '#303030',
 	manifest: '/site.webmanifest',
 	alternates: {
 		canonical: 'https://mcstatus.io'

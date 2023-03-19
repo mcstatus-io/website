@@ -39,6 +39,11 @@ const frequentlyAskedQuestions = [
 		textContent: '<p>Some servers will use character overflows to write text onto the second line of the MOTD. Since Minecraft uses a non-monospaced font, it is almost impossible to figure out where the MOTD splits into a new line outside of the game itself. An example of this is <a href="https://mcstatus.io/status/java/play.purpleprison.net">play.purpleprison.net</a>, notice how the entire MOTD is one line.</p>'
 	},
 	{
+		title: 'I made a library, how do I add it to the API docs?',
+		content: <p>You can <a href="https://github.com/mcstatus-io/website/issues/new" className="link">open a GitHub issue</a> with details about your library and I will get it added to the website for you.</p>,
+		textContent: '<p>You can <a href="https://github.com/mcstatus-io/website/issues/new">open a GitHub issue</a> with details about your library and I will get it added to the website for you.</p>'
+	},
+	{
 		title: 'Is this service open-source?',
 		content: <p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="link">our GitHub organization</a>.</p>,
 		textContent: '<p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io">our GitHub organization</a>.</p>'
