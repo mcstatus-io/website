@@ -12,7 +12,7 @@ export default function Page() {
 	return (
 		<>
 			<Navbar active="home" />
-			<Container className="py-12 lg:pt-24" noMargin>
+			<Container>
 				<section>
 					<hgroup>
 						<Header size={1}>Minecraft Server Status</Header>
@@ -20,10 +20,8 @@ export default function Page() {
 					</hgroup>
 					<Search className="mt-5" />
 				</section>
-			</Container>
-			<Container className="mb-12 lg:mb-24 mt-0 lg:mt-0">
 				<section>
-					<div className="flex items-center gap-6 md:ml-6 mt-12">
+					<div className="flex items-center gap-6 md:ml-6 mt-24">
 						<GiftIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
 							<Header size={2}>Sample Servers</Header>

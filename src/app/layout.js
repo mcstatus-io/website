@@ -1,4 +1,5 @@
 import { Inter, Fira_Mono, Ubuntu } from 'next/font/google';
+import Container from '../components/Container';
 import Footer from '../components/Footer';
 import '../styles/global.sass';
 
@@ -99,6 +100,14 @@ export default function RootLayout({ children }) {
 			<body className="bg-white dark:bg-neutral-900 dark:text-white overflow-x-hidden w-[100vw] scroll-smooth">
 				<div className="flex flex-col min-h-[100lvh]">
 					<div className="grow">
+						<noscript>
+							<Container className="my-12" noMargin>
+								<alert className="block box p-4 rounded bg-red-200 border-red-400">
+									<span className="font-bold">Please note!</span>
+									<span> It looks like JavaScript is not supported by your browser. This is most likely because you are using an outdated browser or your browser has disabled it for this website. Many crucial functions of this website relies on JavaScript to work properly. <a href="https://www.enable-javascript.com/" className="link">Click here</a> to learn how to enable JavaScript for this website.</span>
+								</alert>
+							</Container>
+						</noscript>
 						{children}
 					</div>
 					<div>
