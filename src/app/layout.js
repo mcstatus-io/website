@@ -1,4 +1,5 @@
 import { Inter, Fira_Mono, Ubuntu } from 'next/font/google';
+import ServiceWorker from '../components/ServiceWorker';
 import Container from '../components/Container';
 import Footer from '../components/Footer';
 import '../styles/global.sass';
@@ -109,6 +110,7 @@ export default function RootLayout({ children }) {
 							</Container>
 						</noscript>
 						{children}
+						<ServiceWorker />
 					</div>
 					<div>
 						<Footer />
