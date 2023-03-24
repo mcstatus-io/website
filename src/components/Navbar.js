@@ -15,15 +15,15 @@ export default function Navbar({ active }) {
 
 	useEffect(() => {
 		if (showMenu) {
-			document.body.classList.add('fixed');
+			document.body.classList.add('overflow-hidden');
 		} else {
-			document.body.classList.remove('fixed');
+			document.body.classList.remove('overflow-hidden');
 		}
 	}, [showMenu]);
 
 	return (
-		<nav className={`text-black dark:text-white sticky top-0 z-50 w-screen h-[4.25rem] ${showMenu ? 'bg-transparent' : 'bg-white dark:bg-[#121212] bg-opacity-75 backdrop-blur-lg border-b border-b-neutral-200 dark:border-b-neutral-800'}`}>
-			<Container className="md:px-6 h-full flex items-center" noMargin>
+		<nav className={`text-black dark:text-white w-screen h-[4.25rem] sticky top-0 ${showMenu ? 'bg-transparent' : 'z-50 bg-white dark:bg-[#121212] bg-opacity-75 backdrop-blur-lg border-b border-b-neutral-200 dark:border-b-neutral-800'}`}>
+			<Container className="relative md:px-6 h-full flex items-center" noMargin>
 				<div className={`${showMenu ? 'hidden' : 'md:max-lg:hidden'} md:pr-6 md:border-r-2 md:border-r-neutral-200 md:dark:border-r-neutral-700 md:mr-0`}>
 					<Link href="/" className="flex items-center content-center p-1">
 						<Image src={icon} alt="mcstatus.io Icon" width="32" height="32" priority />
@@ -38,7 +38,7 @@ export default function Navbar({ active }) {
 					}
 					<span className="sr-only">{showMenu ? 'Close Menu' : 'Open Menu'}</span>
 				</button>
-				<ul className={`list-none lg:ml-6 text-neutral-600 dark:text-neutral-400 ${showMenu ? 'flex flex-col justify-center absolute top-0 left-0 bg-neutral-900 bg-opacity-90 backdrop-blur-lg w-full h-[100vh] z-40' : 'hidden md:flex'} gap-4 items-center grow`}>
+				<ul className={`list-none lg:ml-6 text-neutral-600 dark:text-neutral-400 ${showMenu ? 'flex flex-col justify-center absolute top-0 left-0 bg-neutral-900 bg-opacity-90 backdrop-blur-lg w-[100vw] h-[100vh] z-40' : 'hidden md:flex'} gap-4 items-center grow`}>
 					<li>
 						<Link href="/" className={`block md:mr-1 p-1 ${showMenu && active === 'home' ? 'text-white' : (active === 'home' ? 'text-black dark:text-white' : (showMenu ? 'text-neutral-400' : 'hover:text-black hover:dark:text-white motion-safe:transition-colors'))}`}>
 							Home

@@ -110,7 +110,7 @@ export default function Page() {
 						</section>
 					</div>
 					<nav className="lg:border-l-2 border-l-neutral-200 dark:border-l-neutral-700 lg:ml-24 lg:pl-12 py-2 mb-8 lg:mb-0">
-						<ol className="sticky top-24">
+						<ol className="lg:sticky lg:top-24">
 							<li>
 								<a href="#overview" className="font-bold text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 									Overview
