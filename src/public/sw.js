@@ -5,15 +5,18 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-	event.respondWith(caches.open(cacheName).then(async (cache) => {
-		return fetch(event.request).then((fetchedResponse) => {
-			if (/^https?/.test(new URL(event.request.url).protocol)) {
-				cache.put(event.request, fetchedResponse.clone());
-			}
+	event.respondWith(
+		caches.open(cacheName)
+			.then((cache) => fetch(event.request)
+				.then((fetchedResponse) => {
+					const url = new URL(event.request.url);
 
-			return fetchedResponse;
-		}).catch(() => {
-			return cache.match(event.request.url);
-		});
-	}));
+					if (/^https?/.test(url.protocol) && ['127.0.0.1', 'localhost', 'mcstatus.io'].includes(url.hostname)) {
+						cache.put(event.request, fetchedResponse.clone());
+					}
+
+					return fetchedResponse;
+				})
+				.catch(() => cache.match(event.request))
+			));
 });
