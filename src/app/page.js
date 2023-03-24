@@ -35,7 +35,7 @@ export default function Page() {
 						<InfoIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
 							<Header size={2}>About Us</Header>
-							<p className="text-xl font-light">A quick understanding of what we do</p>
+							<p className="text-lg font-light">A quick understanding of what we do</p>
 						</hgroup>
 					</div>
 					<p className="mb-3 mt-5">This service was created after realizing the missing features of many other Minecraft server status websites, including services like <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a>. Their API and website was complex to navigate, and I found it easier to create my own service to fulfill this. This service is heavily focused on improving performance and optimizing latency when connecting to the server, that is why the API was built from the ground-up using the high performant Go language.</p>
