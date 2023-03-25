@@ -1,9 +1,8 @@
-import React from 'react';
 import Link from 'next/link';
 import Highlight from './Highlight';
 import Collapsible from './Collapsible';
 
-export default function APIUsage({ address, data, type }) {
+export default function APIUsage({ type, address, data }) {
 	return (
 		<Collapsible title="API Usage" id="api-usage" className="mt-3">
 			<p>

@@ -5,8 +5,7 @@ import Image from 'next/image';
 import gt from 'semver/functions/gt';
 import coerce from 'semver/functions/coerce';
 import MinecraftFormatted from './MinecraftFormatted';
-import ChevronDown from '../assets/icons/chevron-down.svg';
-import ChevronUp from '../assets/icons/chevron-up.svg';
+import Chevron from './Chevron';
 
 export default function StatusTable({ result, protocolVersions }) {
 	const [showMods, setShowMods] = useState(false);
@@ -62,11 +61,7 @@ export default function StatusTable({ result, protocolVersions }) {
 								<button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
 									<div className="flex items-center gap-1">
 										<span>{showPlayers ? 'Hide' : 'Show'} player list</span>
-										{
-											showPlayers
-												? <ChevronUp width="20" height="20" />
-												: <ChevronDown width="20" height="20" />
-										}
+										<Chevron width="20" height="20" isFlipped={showPlayers} />
 									</div>
 								</button>
 								<div className={showPlayers ? 'block' : 'hidden'} id="players-list">
@@ -90,11 +85,7 @@ export default function StatusTable({ result, protocolVersions }) {
 								<button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
 									<div className="flex items-center gap-1">
 										<span>{showMods ? 'Hide' : 'Show'} mod info</span>
-										{
-											showMods
-												? <ChevronUp width="20" height="20" />
-												: <ChevronDown width="20" height="20" />
-										}
+										<Chevron width="20" height="20" isFlipped={showMods} />
 									</div>
 								</button>
 								<div className={`${showMods ? 'block' : 'hidden'} tags mt-2`} id="mods-list">
