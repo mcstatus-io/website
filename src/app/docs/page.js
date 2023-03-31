@@ -85,10 +85,10 @@ export default function Page() {
 							</section>
 							<section>
 								<Header size={3} id="java-widget" className="mt-12" linkable>Java Widget</Header>
-								<p className="mt-2">Returns a widget image containing information about the server. This widget can be embedded into any website or any source that allows images via URL.</p>
-								<p className="mt-3">
+								<p className="mt-2">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL.</p>
+								<p className="flex items-center gap-2 mt-3">
 									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-									<code className="ml-2 break-words">https://api.mcstatus.io/v2/widget/java/&lt;address&gt;?dark=&lt;true/false&gt;</code>
+									<code className="break-words">https://api.mcstatus.io/v2/widget/java/&lt;address&gt;?dark=&lt;true/false&gt;</code>
 								</p>
 								<div className="flex items-center gap-3">
 									<Image src={javaWidgetLightExample} alt="Sample Java Edition server light widget" className="mt-4" />
@@ -98,9 +98,9 @@ export default function Page() {
 							<section>
 								<Header size={3} id="icon" className="mt-12" linkable>Icon</Header>
 								<p className="mt-2">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
-								<p className="mt-3">
+								<p className="flex items-center gap-2 mt-3">
 									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-									<code className="ml-2 break-words">https://api.mcstatus.io/v2/icon/&lt;address&gt;</code>
+									<code className="break-words">https://api.mcstatus.io/v2/icon/&lt;address&gt;</code>
 								</p>
 								<Image src={iconExample} width="128" height="128" alt="Sample server icon" className="mt-4" />
 							</section>
