@@ -7,6 +7,8 @@ import Header from '../../components/Header';
 import javaExample from '../../assets/response/java.jsonc';
 import bedrockExample from '../../assets/response/bedrock.jsonc';
 import iconExample from '../../assets/response/icon.png';
+import javaWidgetLightExample from '../../assets/response/java-widget-light.png';
+import javaWidgetDarkExample from '../../assets/response/java-widget-dark.png';
 
 export const metadata = {
 	title: 'API Documentation',
@@ -50,7 +52,7 @@ export default function Page() {
 							</section>
 							<section>
 								<Header size={3} id="standards" className="mt-12" linkable>Standards</Header>
-								<p className="mt-3">The entirety of this API uses the standardized REST API, which in simple terms means you will be making HTTP requests to our service. We currently only support endpoints using the <code>GET</code> method. You will never have to use <code>POST</code> or any other method with requires you to send body data or headers with your request. All status endpoints return a response body in <a href="https://www.json.org/json-en.html" className="link">JSON format</a>. No other data formatting standard is available at this time, and there is currently no future plan to support anything other than JSON. All JSON returned from this service will have whitespace and any unnecessary characters removed to reduce network bandwidth and wasted information. You may learn more about the properties you receive from these routes by reading the documented response body from the route on this page.</p>
+								<p className="mt-3">The majority of this API uses the standardized REST API, which in simple terms means you will be making HTTP requests to our service. We currently only support endpoints using the <code>GET</code> method. You will never have to use <code>POST</code> or any other method with requires you to send body data or headers with your request. All status endpoints return a response body in <a href="https://www.json.org/json-en.html" className="link">JSON format</a>. No other data formatting standard is available at this time, and there is currently no future plan to support anything other than JSON. All JSON returned from this service will have whitespace and any unnecessary characters removed to reduce network bandwidth and wasted information. You may learn more about the properties you receive from these routes by reading the documented response body from the route on this page.</p>
 							</section>
 							<section>
 								<Header size={3} id="cache" className="mt-12" linkable>Cache</Header>
@@ -80,6 +82,18 @@ export default function Page() {
 									<code className="break-words">https://api.mcstatus.io/v2/status/bedrock/&lt;address&gt;</code>
 								</p>
 								<Highlight source={bedrockExample} className="mt-4 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
+							</section>
+							<section>
+								<Header size={3} id="java-widget" className="mt-12" linkable>Java Widget</Header>
+								<p className="mt-2">Returns a widget image containing information about the server. This widget can be embedded into any website or any source that allows images via URL.</p>
+								<p className="mt-3">
+									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
+									<code className="ml-2 break-words">https://api.mcstatus.io/v2/widget/java/&lt;address&gt;?dark=&lt;true/false&gt;</code>
+								</p>
+								<div className="flex items-center gap-3">
+									<Image src={javaWidgetLightExample} alt="Sample Java Edition server light widget" className="mt-4" />
+									<Image src={javaWidgetDarkExample} alt="Sample Java Edition server dark widget" className="mt-4" />
+								</div>
 							</section>
 							<section>
 								<Header size={3} id="icon" className="mt-12" linkable>Icon</Header>
@@ -146,6 +160,11 @@ export default function Page() {
 									<li className="mt-1">
 										<a href="#bedrock-status" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
 											Bedrock Status
+										</a>
+									</li>
+									<li className="mt-1">
+										<a href="#java-widget" className="text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white motion-safe:transition-colors">
+											Java Widget
 										</a>
 									</li>
 									<li className="mt-1">
