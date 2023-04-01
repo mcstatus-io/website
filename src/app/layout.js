@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import { Inter, Fira_Mono, Ubuntu } from 'next/font/google';
 import ServiceWorker from '../components/ServiceWorker';
 import Container from '../components/Container';
@@ -23,12 +24,12 @@ const firaMonoFont = Fira_Mono({
 
 export const metadata = {
 	title: {
-		default: 'Minecraft Server Status - Quickly retrieve the status of any Minecraft server',
+		default: 'Minecraft Server Status - Get the status of any Minecraft server',
 		template: '%s - Minecraft Server Status'
 	},
 	description: 'Easily and quickly retrieve the status of any Java or Bedrock Edition Minecraft server by using our tool.',
 	openGraph: {
-		title: 'Minecraft Server Status - Quickly retrieve the status of any Minecraft server',
+		title: 'Minecraft Server Status - Get the status of any Minecraft server',
 		description: 'Easily and quickly retrieve the status of any Java or Bedrock Edition Minecraft server by using our tool.',
 		url: 'https://mcstatus.io',
 		siteName: 'Minecraft Server Status',
@@ -113,6 +114,8 @@ export default function RootLayout({ children }) {
 						<Footer />
 					</div>
 				</div>
+				<Script src="https://www.googletagmanager.com/gtag/js?id=G-76CZV53176" strategy="afterInteractive" />
+				<Script src="/js/ga.js" id="google-analytics" strategy="afterInteractive" />
 			</body>
 		</html>
 	);

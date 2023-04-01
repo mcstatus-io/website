@@ -62,9 +62,9 @@
             }
         },
         {
-            "files": "src/app/**/*.js",
-            "rules": {
-                "@next/next/no-page-custom-font": "off"
+            "files": "src/public/js/ga.js",
+            "globals": {
+                "dataLayer": true
             }
         }
     ]
