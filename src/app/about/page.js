@@ -44,6 +44,11 @@ const frequentlyAskedQuestions = [
 		textContent: '<p>You can <a href="https://github.com/mcstatus-io/website/issues/new">open a GitHub issue</a> with details about your library and I will get it added to the website for you.</p>'
 	},
 	{
+		title: 'My IP address was banned from the API, how do I appeal?',
+		content: <p>Most IP bans are because of mass spam requests to the API. Mass requests may cause a disruption in service for other developers who are looking to use the API. You may request to be unbanned by providing an explanation when you email <a href="mailto:api@mcstatus.io" className="link">api@mcstatus.io</a>.</p>,
+		textContent: '<p>Most IP bans are because of mass spam requests to the API. Mass requests may cause a disruption in service for other developers who are looking to use the API. You may request to be unbanned by providing an explanation when you email <a href="mailto:api@mcstatus.io">api@mcstatus.io</a>.</p>'
+	},
+	{
 		title: 'Is this service open-source?',
 		content: <p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="link">our GitHub organization</a>.</p>,
 		textContent: '<p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io">our GitHub organization</a>.</p>'
