@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Chevron from './Chevron';
 
-export default function Collapsible({ className, title, children, autoExpanded, id }) {
+export default function Collapsible({ className, title, children, autoExpanded, id, noPadding }) {
 	const [isExpanded, setExpanded] = useState(autoExpanded || false);
 
 	return (
@@ -12,7 +12,7 @@ export default function Collapsible({ className, title, children, autoExpanded, 
 				<span className="font-bold text-left">{title}</span>
 				<Chevron width="24" height="24" isFlipped={isExpanded} />
 			</button>
-			<div className={`${isExpanded ? 'block' : 'hidden'} box p-4 rounded-b border-t-0`} id={id}>
+			<div className={`${isExpanded ? 'block' : 'hidden'} box ${noPadding ? '' : 'p-4'} rounded-b border-t-0`} id={id}>
 				{children}
 			</div>
 		</div>

@@ -15,13 +15,6 @@
     .link
         @apply text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 motion-safe:transition-colors
 
-    .offset-anchor::before
-        content: ""
-        display: block
-        height: 6rem
-        margin-top: -6rem
-        visibility: hidden
-
 @layer components
     .button
         @include interactive-box
@@ -45,25 +38,22 @@ code
     @apply text-red-600 dark:text-red-400 font-mono
 
 .flex *
-    min-width: 0
+    @apply min-w-0
+
+h1[id], h2[id], h3[id], h4[id], h5[id]
+    @apply scroll-mt-24
 
 #carbonads
-    @apply block relative rounded max-w-full font-ubuntu interactive-box
-
-    width: 420px
+    @apply block relative rounded max-w-full font-ubuntu interactive-box w-[420px]
 
     .carbon-wrap
         @apply flex
 
         .carbon-img
-            @apply py-4 pl-4
-
-            min-width: 146px
+            @apply py-4 pl-4 min-w-[146px]
 
         .carbon-text
             @apply text-sm p-4
     
     .carbon-poweredby
-        @apply absolute right-2 bottom-2 px-2 py-1 uppercase font-bold tracking-widest hover:text-blue-600 motion-safe:transition-colors
-
-        font-size: 8px
+        @apply absolute right-2 bottom-2 px-2 py-1 uppercase font-bold tracking-widest hover:text-blue-600 motion-safe:transition-colors text-[8px]

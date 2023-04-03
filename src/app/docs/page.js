@@ -9,6 +9,7 @@ import bedrockExample from '../../assets/response/bedrock.jsonc';
 import iconExample from '../../assets/response/icon.png';
 import javaWidgetLightExample from '../../assets/response/java-widget-light.png';
 import javaWidgetDarkExample from '../../assets/response/java-widget-dark.png';
+import Collapsible from '../../components/Collapsible';
 
 export const metadata = {
 	title: 'API Documentation',
@@ -72,7 +73,9 @@ export default function Page() {
 									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
 									<code className="break-words">https://api.mcstatus.io/v2/status/java/&lt;address&gt;</code>
 								</p>
-								<Highlight source={javaExample} className="mt-4 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
+								<Collapsible title="Response Body" className="block mt-4" noPadding>
+									<Highlight source={javaExample} className="bg-transparent" />
+								</Collapsible>
 							</section>
 							<section>
 								<Header size={3} id="bedrock-status" className="mt-12" linkable>Bedrock Status</Header>
@@ -81,7 +84,9 @@ export default function Page() {
 									<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
 									<code className="break-words">https://api.mcstatus.io/v2/status/bedrock/&lt;address&gt;</code>
 								</p>
-								<Highlight source={bedrockExample} className="mt-4 bg-neutral-800 dark:border dark:border-neutral-700 rounded" />
+								<Collapsible title="Response Body" className="block mt-4" noPadding>
+									<Highlight source={bedrockExample} className="bg-transparent" />
+								</Collapsible>
 							</section>
 							<section>
 								<Header size={3} id="java-widget" className="mt-12" linkable>Java Widget</Header>
