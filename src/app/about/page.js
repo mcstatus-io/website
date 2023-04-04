@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Header from '../../components/Header';
 import Container from '../../components/Container';
 import Navbar from '../../components/Navbar';
 import Ad from '../../components/Ad';
@@ -85,7 +84,7 @@ export default function Page() {
 			<Container>
 				<section>
 					<hgroup>
-						<Header size={1}>About</Header>
+						<h1 className="h1">About</h1>
 						<p className="text-2xl font-light mt-2">A quick understanding of what we do</p>
 					</hgroup>
 					<p className="mt-5">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="link">NextJS</a> and the back-end was built with <a href="https://golang.org" className="link">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="link">Carbon Ads</a> to help cover the hosting and development costs.</p>
@@ -94,7 +93,7 @@ export default function Page() {
 					<div className="flex items-center gap-6 md:ml-6 mt-12">
 						<HelpCircleIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
-							<Header size={2}>Frequently Asked Questions</Header>
+							<h2 className="h2">Frequently Asked Questions</h2>
 							<p className="text-lg font-light">Answers to commonly asked questions</p>
 						</hgroup>
 					</div>
@@ -114,7 +113,7 @@ export default function Page() {
 					<div className="flex items-center gap-6 md:ml-6 mt-12">
 						<MailIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
-							<Header size={2}>Contact</Header>
+							<h2 className="h2">Contact</h2>
 							<p className="text-lg font-light">How to contact me if needed</p>
 						</hgroup>
 					</div>

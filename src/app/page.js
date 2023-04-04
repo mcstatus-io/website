@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Ad from '../components/Ad';
 import Navbar from '../components/Navbar';
 import Search from '../components/Search';
-import Header from '../components/Header';
 import Container from '../components/Container';
 import SampleServers from '../components/SampleServers';
 import GiftIcon from '../assets/icons/gift.svg';
@@ -15,7 +14,7 @@ export default function Page() {
 			<Container>
 				<section>
 					<hgroup>
-						<Header size={1}>Minecraft Server Status</Header>
+						<h1 className="h1">Minecraft Server Status</h1>
 						<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 					</hgroup>
 					<Search className="mt-5" />
@@ -24,7 +23,7 @@ export default function Page() {
 					<div className="flex items-center gap-6 md:ml-6 mt-24">
 						<GiftIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
-							<Header size={2}>Sample Servers</Header>
+							<h2 className="h2">Sample Servers</h2>
 							<p className="text-lg font-light">A few sample servers to test out our service</p>
 						</hgroup>
 					</div>
@@ -34,7 +33,7 @@ export default function Page() {
 					<div className="flex items-center gap-6 md:ml-6 mt-12">
 						<InfoIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
-							<Header size={2}>About Us</Header>
+							<h2 className="h2">About Us</h2>
 							<p className="text-lg font-light">A quick understanding of what we do</p>
 						</hgroup>
 					</div>
