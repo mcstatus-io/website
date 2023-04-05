@@ -22,7 +22,7 @@ The NextJS server that powers the mcstatus.io website. This repository is open s
 4. Create a `.env.local` file in the `src` folder
     - The file will have the following contents, you can adjust as needed:
 ```
-PING_HOST=http://localhost:3001
+NEXT_PUBLIC_PING_HOST=http://localhost:3001
 NEXT_PUBLIC_CARBON_CODE=abc123
 ```
 5. Start the development server
