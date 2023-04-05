@@ -8,21 +8,24 @@ import '../styles/global.sass';
 const interFont = Inter({
 	variable: '--font-inter',
 	display: 'swap',
-	subsets: ['latin']
+	subsets: ['latin'],
+	fallback: ['Arial', 'sans-serif']
 });
 
 const ubuntuFont = Ubuntu({
 	variable: '--font-ubuntu',
 	weight: ['400', '700'],
 	display: 'swap',
-	subsets: ['latin']
+	subsets: ['latin'],
+	fallback: ['Verdana', 'sans-serif']
 });
 
 const firaMonoFont = Fira_Mono({
 	variable: '--font-fira-mono',
 	weight: '400',
 	display: 'swap',
-	subsets: ['latin']
+	subsets: ['latin'],
+	fallback: ['Courier New', 'monospace']
 });
 
 export const metadata = {

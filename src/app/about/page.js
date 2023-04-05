@@ -24,7 +24,7 @@ const frequentlyAskedQuestions = [
 	},
 	{
 		title: 'How do I see all players on the server?',
-		content: <p className="leading-7">Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <Link href="/status/java/play.purpleprison.net" className="link">play.purpleprison.net</Link> for example.</p>,
+		content: <p className="leading-7">Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <Link href="/status/java/play.purpleprison.net" className="link link-contrast">play.purpleprison.net</Link> for example.</p>,
 		textContent: '<p>Minecraft limits the amount of player names sent by the server to 12 players, picked at random. Most public servers have this feature disabled entirely, or they modify the player names to customized information about the server. Just look at the player list of <a href="https://mcstatus.io/status/java/play.purpleprison.net">play.purpleprison.net</a> for example.</p>'
 	},
 	{
@@ -34,22 +34,22 @@ const frequentlyAskedQuestions = [
 	},
 	{
 		title: 'Why is there not a new-line character in some MOTDs?',
-		content: <p className="leading-7">Some servers will use character overflows to write text onto the second line of the MOTD. Since Minecraft uses a non-monospaced font, it is almost impossible to figure out where the MOTD splits into a new line outside of the game itself. An example of this is <Link href="/status/java/play.purpleprison.net" className="link">play.purpleprison.net</Link>, notice how the entire MOTD is one line.</p>,
+		content: <p className="leading-7">Some servers will use character overflows to write text onto the second line of the MOTD. Since Minecraft uses a non-monospaced font, it is almost impossible to figure out where the MOTD splits into a new line outside of the game itself. An example of this is <Link href="/status/java/play.purpleprison.net" className="link link-contrast">play.purpleprison.net</Link>, notice how the entire MOTD is one line.</p>,
 		textContent: '<p>Some servers will use character overflows to write text onto the second line of the MOTD. Since Minecraft uses a non-monospaced font, it is almost impossible to figure out where the MOTD splits into a new line outside of the game itself. An example of this is <a href="https://mcstatus.io/status/java/play.purpleprison.net">play.purpleprison.net</a>, notice how the entire MOTD is one line.</p>'
 	},
 	{
 		title: 'I made a library, how do I add it to the API docs?',
-		content: <p className="leading-7">You can <a href="https://github.com/mcstatus-io/website/issues/new" className="link">open a GitHub issue</a> with details about your library and I will get it added to the website for you.</p>,
+		content: <p className="leading-7">You can <a href="https://github.com/mcstatus-io/website/issues/new" className="link link-contrast">open a GitHub issue</a> with details about your library and I will get it added to the website for you.</p>,
 		textContent: '<p>You can <a href="https://github.com/mcstatus-io/website/issues/new">open a GitHub issue</a> with details about your library and I will get it added to the website for you.</p>'
 	},
 	{
 		title: 'My IP address was banned from the API, how do I appeal?',
-		content: <p className="leading-7">Most IP bans are because of mass spam requests to the API. Mass requests may cause a disruption in service for other developers who are looking to use the API. You may request to be unbanned by providing an explanation when you email <a href="mailto:api@mcstatus.io" className="link">api@mcstatus.io</a>.</p>,
+		content: <p className="leading-7">Most IP bans are because of mass spam requests to the API. Mass requests may cause a disruption in service for other developers who are looking to use the API. You may request to be unbanned by providing an explanation when you email <a href="mailto:api@mcstatus.io" className="link link-contrast">api@mcstatus.io</a>.</p>,
 		textContent: '<p>Most IP bans are because of mass spam requests to the API. Mass requests may cause a disruption in service for other developers who are looking to use the API. You may request to be unbanned by providing an explanation when you email <a href="mailto:api@mcstatus.io">api@mcstatus.io</a>.</p>'
 	},
 	{
 		title: 'Is this service open-source?',
-		content: <p className="leading-7">Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="link">our GitHub organization</a>.</p>,
+		content: <p className="leading-7">Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="link link-contrast">our GitHub organization</a>.</p>,
 		textContent: '<p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io">our GitHub organization</a>.</p>'
 	}
 ];
