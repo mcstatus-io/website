@@ -22,10 +22,10 @@ export default function SampleServers() {
 	const servers = getSampleServers();
 
 	return (
-		<ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
+		<ul className="list-none grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
 			{
 				servers.map((server, index) => (
-					<li className="md:basis-[calc(50%-0.75rem)] basis-full" key={index}>
+					<li key={index}>
 						<Link href={`/status/${server.type}/${server.address}`} className="button flex flex-col sm:flex-row items-start sm:items-center gap-3 p-5">
 							<div className="flex items-center gap-3">
 								<span className={`px-2 py-1 rounded ${server.type === 'java' ? 'bg-green-700 contrast-more:bg-green-900' : 'bg-blue-600 contrast-more:bg-blue-900'} text-xs text-white`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
