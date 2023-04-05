@@ -42,14 +42,6 @@ module.exports = withBundleAnalyzer({
 		NEXT_PUBLIC_COMMIT_ID: commitID
 	},
 	experimental: {
-		appDir: true,
-		fontLoaders: [
-			{
-				loader: 'next/font/google',
-				options: {
-					subsets: ['latin']
-				}
-			}
-		]
+		appDir: true
 	}
 });

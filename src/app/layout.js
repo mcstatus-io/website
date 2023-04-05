@@ -7,19 +7,22 @@ import '../styles/global.sass';
 
 const interFont = Inter({
 	variable: '--font-inter',
-	display: 'swap'
+	display: 'swap',
+	subsets: ['latin']
 });
 
 const ubuntuFont = Ubuntu({
 	variable: '--font-ubuntu',
 	weight: ['400', '700'],
-	display: 'swap'
+	display: 'swap',
+	subsets: ['latin']
 });
 
 const firaMonoFont = Fira_Mono({
 	variable: '--font-fira-mono',
 	weight: '400',
-	display: 'swap'
+	display: 'swap',
+	subsets: ['latin']
 });
 
 export const metadata = {
