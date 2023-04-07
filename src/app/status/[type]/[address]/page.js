@@ -28,9 +28,9 @@ export async function generateMetadata({ params: { type, address } }) {
 			siteName: 'Minecraft Server Status',
 			images: [
 				{
-					url: '/img/icon.png',
-					width: 300,
-					height: 300
+					url: type === 'java' ? `${process.env.NEXT_PUBLIC_PING_HOST}/icon/${address}` : '/img/icon.png',
+					width: 64,
+					height: 64
 				}
 			],
 			locale: 'en-US',
