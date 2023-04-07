@@ -1,8 +1,8 @@
 import StatusTable from '../../../../components/StatusTable';
 import APIUsage from '../../../../components/APIUsage';
 
-const getStatusData = async (type, address) => {
-	const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/${type}/${address}`, { cache: 'no-store' });
+export const getStatusData = async (type, address) => {
+	const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/${type}/${address}`);
 	const body = await result.json();
 
 	return body;

@@ -1,4 +1,4 @@
-export const sampleServers = [
+export default [
 	{ type: 'java', name: 'Hypixel', address: 'play.hypixel.net' },
 	{ type: 'java', name: 'ArchonHQ', address: 'mp.archonhq.net' },
 	{ type: 'java', name: 'MCHub', address: 'mchub.com' },

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { sampleServers } from '../assets/servers';
+import sampleServers from '../assets/servers';
 
 const getSampleServers = () => {
 	const servers = [];

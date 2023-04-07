@@ -66,6 +66,12 @@
             "globals": {
                 "dataLayer": true
             }
+        },
+        {
+            "files": "**/icon.js",
+            "rules": {
+                "@next/next/no-img-element": "off"
+            }
         }
     ]
 }
