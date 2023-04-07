@@ -15,8 +15,8 @@ export default function StatusTable({ result, protocolVersions }) {
 		[
 			'Status',
 			result.online
-				? <span className="text-green-600 dark:text-green-400">Online</span>
-				: <span className="text-red-600 dark:text-red-400">Offline</span>
+				? <span className="bg-green-700 dark:bg-green-400 text-white px-2 py-1 rounded text-sm">Online</span>
+				: <span className="bg-red-600 dark:bg-red-400 text-white px-2 py-1 rounded text-sm">Offline</span>
 		],
 		[
 			'Host',
@@ -134,7 +134,7 @@ export default function StatusTable({ result, protocolVersions }) {
 				'EULA Blocked',
 				result.eula_blocked
 					? <span className="text-red-600 dark:text-red-400">Yes</span>
-					: <span className="text-green-600 dark:text-green-400">No</span>
+					: <span>No</span>
 			],
 			[
 				'Protocol Version',
