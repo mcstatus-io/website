@@ -19,8 +19,9 @@ export default function Page() {
 					</hgroup>
 					<Search className="mt-5" />
 				</section>
+				<Ad className="mt-5" />
 				<section>
-					<div className="flex items-center gap-6 md:ml-6 mt-24">
+					<div className="flex items-center gap-6 md:ml-6 mt-12">
 						<GiftIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
 							<h2 className="h2">Sample Servers</h2>
@@ -41,7 +42,6 @@ export default function Page() {
 					<p className="mb-3 leading-7">Our service offers many features that others do not, such as raw, clean, or HTML formats of many values like the MOTD, version name, and sample player names. We also reduced the cache duration of every status down to only 1 minute. We intentionally chose not to use the query protocol, as it only slows down the time it takes to retrieve a Minecraft server status, and it does not provide any more relevant data than the more reliable status protocol does.</p>
 					<p className="mb-3 leading-7">We also offer an endpoint for quickly viewing the icon of any Java Edition Minecraft server, as well as generating a widget image of the status of a Java Edition Minecraft server. This makes it easy for server owners to display the continuously changing server icon on their own website without the hassle of updating their own code, or display a high quality widget of the server status, which includes the icon, hostname and the player count. Our service is entirely open source, and you can view it any time on our <a href="https://github.com/mcstatus-io" className="link">GitHub organization</a>. If you would like to use our API in your service, head over to the <Link href="/docs/v2" className="link">API documentation</Link> and easily implement our standardized API in any code environment.</p>
 				</section>
-				<Ad className="mt-6" />
 			</Container>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{
 				__html: JSON.stringify([
