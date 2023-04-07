@@ -17,11 +17,11 @@ export const metadata = {
 	openGraph: {
 		title: 'API Documentation - Minecraft Server Status',
 		description: 'Detailed documentation about our API and how to fetch the status of any Minecraft server through your service.',
-		url: 'https://mcstatus.io/docs',
+		url: '/docs',
 		siteName: 'Minecraft Server Status',
 		images: [
 			{
-				url: 'https://mcstatus.io/img/icon.png',
+				url: '/img/icon.png',
 				width: 300,
 				height: 300
 			}
@@ -30,7 +30,7 @@ export const metadata = {
 		type: 'website'
 	},
 	alternates: {
-		canonical: 'https://mcstatus.io/docs'
+		canonical: '/docs'
 	}
 };
 

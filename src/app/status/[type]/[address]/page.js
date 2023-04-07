@@ -24,11 +24,11 @@ export async function generateMetadata({ params: { type, address } }) {
 		openGraph: {
 			title: `${address} - Minecraft Server Status`,
 			description: `Easily and quickly retrieve the status of ${address} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`,
-			url: `https://mcstatus.io/${type}/${address}`,
+			url: `/status/${type}/${address}`,
 			siteName: 'Minecraft Server Status',
 			images: [
 				{
-					url: 'https://mcstatus.io/img/icon.png',
+					url: '/img/icon.png',
 					width: 300,
 					height: 300
 				}
@@ -37,7 +37,7 @@ export async function generateMetadata({ params: { type, address } }) {
 			type: 'website'
 		},
 		alternates: {
-			canonical: `https://mcstatus.io/${type}/${address}`
+			canonical: `/status/${type}/${address}`
 		}
 	};
 }

@@ -3,6 +3,10 @@ import Container from '../components/Container';
 import Navbar from '../components/Navbar';
 import ChevronsLeft from '../assets/icons/chevrons-left.svg';
 
+export const metadata = {
+	title: 'Page Not Found - Minecraft Server Status'
+};
+
 export default function NotFound() {
 	return (
 		<>

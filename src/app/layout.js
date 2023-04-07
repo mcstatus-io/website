@@ -34,14 +34,15 @@ export const metadata = {
 		template: '%s - Minecraft Server Status'
 	},
 	description: 'Easily and quickly retrieve the status of any Java or Bedrock Edition Minecraft server by using our tool.',
+	metadataBase: new URL('https://mcstatus.io'),
 	openGraph: {
 		title: 'Minecraft Server Status - Get the status of any Minecraft server',
 		description: 'Easily and quickly retrieve the status of any Java or Bedrock Edition Minecraft server by using our tool.',
-		url: 'https://mcstatus.io',
+		url: '/',
 		siteName: 'Minecraft Server Status',
 		images: [
 			{
-				url: 'https://mcstatus.io/img/icon.png',
+				url: '/img/icon.png',
 				width: 300,
 				height: 300
 			}
@@ -95,7 +96,7 @@ export const metadata = {
 	themeColor: '#303030',
 	manifest: '/site.webmanifest',
 	alternates: {
-		canonical: 'https://mcstatus.io'
+		canonical: '/'
 	}
 };
 

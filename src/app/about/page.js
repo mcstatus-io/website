@@ -60,11 +60,11 @@ export const metadata = {
 	openGraph: {
 		title: 'About - Minecraft Server Status',
 		description: 'Learn about our Minecraft server status retrieval tool and what you can do with it, or read into our frequently asked questions and answers.',
-		url: 'https://mcstatus.io/about',
+		url: '/about',
 		siteName: 'Minecraft Server Status',
 		images: [
 			{
-				url: 'https://mcstatus.io/img/icon.png',
+				url: '/img/icon.png',
 				width: 300,
 				height: 300
 			}
@@ -73,7 +73,7 @@ export const metadata = {
 		type: 'website'
 	},
 	alternates: {
-		canonical: 'https://mcstatus.io/about'
+		canonical: '/about'
 	}
 };
 
