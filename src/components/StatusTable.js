@@ -15,8 +15,8 @@ export default function StatusTable({ result, protocolVersions }) {
 		[
 			'Status',
 			result.online
-				? <span className="bg-green-700 dark:bg-green-400 text-white px-2 py-1 rounded text-sm">Online</span>
-				: <span className="bg-red-600 dark:bg-red-400 text-white px-2 py-1 rounded text-sm">Offline</span>
+				? <span className="bg-green-700 text-white px-2 py-1 rounded text-sm">Online</span>
+				: <span className="bg-red-600 text-white px-2 py-1 rounded text-sm">Offline</span>
 		],
 		[
 			'Host',
