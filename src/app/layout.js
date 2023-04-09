@@ -22,7 +22,7 @@ const ubuntuFont = Ubuntu({
 
 const firaMonoFont = Fira_Mono({
 	variable: '--font-fira-mono',
-	weight: '400',
+	weight: ['400', '700'],
 	display: 'swap',
 	subsets: ['latin'],
 	fallback: ['Courier New', 'monospace']
