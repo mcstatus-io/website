@@ -65,58 +65,70 @@ export default function Page() {
 				<section>
 					<AnchorHeader size={2} id="routes" className="mt-12">Routes</AnchorHeader>
 					<section>
-						<AnchorHeader size={3} id="java-status" className="mt-12">Java Status</AnchorHeader>
-						<p className="mt-2 leading-7">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
-						<p className="flex items-center gap-2 mt-3">
-							<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-							<code className="break-words">https://api.mcstatus.io/v2/status/java/&lt;address&gt;</code>
-						</p>
-						<Collapsible title="Response Body" className="block mt-4" noPadding>
-							<Highlight source={javaExample} className="bg-neutral-800 dark:bg-transparent" />
-						</Collapsible>
-					</section>
-					<section>
-						<AnchorHeader size={3} id="bedrock-status" className="mt-12">Bedrock Status</AnchorHeader>
-						<p className="mt-2 leading-7">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
-						<p className="flex items-center gap-2 mt-3">
-							<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-							<code className="break-words">https://api.mcstatus.io/v2/status/bedrock/&lt;address&gt;</code>
-						</p>
-						<Collapsible title="Response Body" className="block mt-4" noPadding>
-							<Highlight source={bedrockExample} className="bg-neutral-800 dark:bg-transparent" />
-						</Collapsible>
-					</section>
-					<section>
-						<AnchorHeader size={3} id="java-widget" className="mt-12">Java Widget</AnchorHeader>
-						<p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL.</p>
-						<p className="flex items-center gap-2 mt-3">
-							<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-							<code className="break-words">https://api.mcstatus.io/v2/widget/java/&lt;address&gt;?dark=&lt;true/false&gt;</code>
-						</p>
-						<div className="flex items-center gap-3">
-							<Image src={javaWidgetLightExample} alt="Sample Java Edition server light widget" className="mt-4" />
-							<Image src={javaWidgetDarkExample} alt="Sample Java Edition server dark widget" className="mt-4" />
+						<div className="box p-4 rounded mt-3">
+							<AnchorHeader size={3} id="java-status">Java Status</AnchorHeader>
+							<p className="mt-2 leading-7">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
+							<p className="flex items-center gap-2 mt-3">
+								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
+								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/java/&lt;address&gt;</span></code>
+							</p>
+							<Collapsible title="Response Body" className="block mt-4" noPadding>
+								<Highlight source={javaExample} className="bg-neutral-800 dark:bg-transparent" />
+							</Collapsible>
 						</div>
 					</section>
 					<section>
-						<AnchorHeader size={3} id="icon" className="mt-12">Icon</AnchorHeader>
-						<p className="mt-2 leading-7">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
-						<p className="flex items-center gap-2 mt-3">
-							<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-							<code className="break-words">https://api.mcstatus.io/v2/icon/&lt;address&gt;</code>
-						</p>
-						<Image src={iconExample} width="128" height="128" alt="Sample server icon" className="mt-4" />
+						<div className="box p-4 rounded mt-3">
+							<AnchorHeader size={3} id="bedrock-status">Bedrock Status</AnchorHeader>
+							<p className="mt-2 leading-7">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
+							<p className="flex items-center gap-2 mt-3">
+								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
+								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/bedrock/&lt;address&gt;</span></code>
+							</p>
+							<Collapsible title="Response Body" className="block mt-4" noPadding>
+								<Highlight source={bedrockExample} className="bg-neutral-800 dark:bg-transparent" />
+							</Collapsible>
+						</div>
 					</section>
-				</section>
+					<section>
+						<div className="box p-4 rounded mt-3">
+							<AnchorHeader size={3} id="java-widget">Java Widget</AnchorHeader>
+							<p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL.</p>
+							<p className="flex items-center gap-2 mt-3">
+								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
+								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/widget/java/&lt;address&gt;?dark=&lt;true/false&gt;</span></code>
+							</p>
+							<Collapsible title="Response Body" className="block mt-4">
+								<div className="flex items-center gap-3">
+									<Image src={javaWidgetLightExample} alt="Sample Java Edition server light widget" />
+									<Image src={javaWidgetDarkExample} alt="Sample Java Edition server dark widget" />
+								</div>
+							</Collapsible>
+						</div>
+					</section>
+					<section>
+						<div className="box p-4 rounded mt-3">
+							<AnchorHeader size={3} id="icon">Icon</AnchorHeader>
+							<p className="mt-2 leading-7">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
+							<p className="flex items-center gap-2 mt-3">
+								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
+								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/icon/&lt;address&gt;</span></code>
+							</p>
+							<Collapsible title="Response Body" className="block mt-4">
+								<Image src={iconExample} width="128" height="128" alt="Sample server icon" />
+							</Collapsible>
+						</div>
+					</section>
+				</section >
 				<section>
 					<AnchorHeader size={2} id="libraries" className="mt-12">Libraries</AnchorHeader>
 					<p className="mt-3 leading-7">We try and provide official support for integrating our service into many languages. The list of official and unofficial libraries are below.</p>
-					<ul className="list-none flex flex-col gap-3 mt-5">
+					<ul className="list-none flex flex-col gap-3 mt-3">
 						<li>
 							<a href="https://npmjs.com/package/node-mcstatus" className="button p-4 flex items-center gap-2">
 								<span className="text-sm rounded px-2 py-1 bg-green-700 text-white">Official</span>
 								<span className="text-sm rounded px-2 py-1 bg-[#f7df1e] text-black font-bold">JavaScript</span>
-								<code className="text-white">node-mcstatus</code>
+								<code className="text-black dark:text-white">node-mcstatus</code>
 							</a>
 						</li>
 					</ul>
