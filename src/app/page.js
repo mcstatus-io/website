@@ -7,6 +7,8 @@ import SampleServers from '../components/SampleServers';
 import GiftIcon from '../assets/icons/gift.svg';
 import InfoIcon from '../assets/icons/info.svg';
 
+export const revalidate = 30;
+
 export default function Page() {
 	return (
 		<>
