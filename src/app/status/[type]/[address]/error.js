@@ -2,10 +2,10 @@
 
 import { useEffect } from 'react';
 
-export default function Error(...props) {
+export default function Error({ error }) {
 	useEffect(() => {
-		console.error(props);
-	}, [props?.[0]?.error]);
+		console.error(error);
+	}, [error]);
 
 	return (
 		<section>
