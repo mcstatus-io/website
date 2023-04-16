@@ -4,8 +4,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import gt from 'semver/functions/gt';
 import coerce from 'semver/functions/coerce';
+import valid from 'semver/functions/valid';
 import MinecraftFormatted from './MinecraftFormatted';
 import Chevron from './Chevron';
+import internalMods from '../assets/internal-mods';
 
 export default function StatusTable({ result, protocolVersions }) {
 	const [showMods, setShowMods] = useState(false);
@@ -84,16 +86,31 @@ export default function StatusTable({ result, protocolVersions }) {
 							? <>
 								<button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
 									<div className="flex items-center gap-1">
-										<span>{showMods ? 'Hide' : 'Show'} mod info</span>
+										<span>{showMods ? 'Hide' : 'Show'} mod list</span>
 										<Chevron width="20" height="20" isFlipped={showMods} />
 									</div>
 								</button>
 								<div className={`${showMods ? 'block' : 'hidden'} tags mt-2`} id="mods-list">
-									{
-										result.mods.map((mod, index) => (
-											<span className="tag is-link" key={index}>{mod.name}: v{mod.version}</span>
-										))
-									}
+									<ul className="font-mono bg-black p-4">
+										{
+											result.mods.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0).map((mod, index) => (
+												<li key={index}>
+													{
+														internalMods.includes(mod.name)
+															? <p className="text-white">{mod.name}</p>
+															: <a className="link" href={`https://curseforge.com/minecraft/mc-mods/${mod.name}`}>
+																<span>{mod.name}</span>
+																{
+																	mod.version.length > 0 && valid(coerce(mod.version))
+																		? <span> v{mod.version}</span>
+																		: null
+																}
+															</a>
+													}
+												</li>
+											))
+										}
+									</ul>
 								</div>
 							</>
 							: null
