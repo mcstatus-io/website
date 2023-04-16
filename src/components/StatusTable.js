@@ -7,11 +7,16 @@ import coerce from 'semver/functions/coerce';
 import valid from 'semver/functions/valid';
 import MinecraftFormatted from './MinecraftFormatted';
 import Chevron from './Chevron';
+import UserIcon from '../assets/icons/user.svg';
+import ListIcon from '../assets/icons/list.svg';
 import internalMods from '../assets/internal-mods';
+
+const hasDuplicateValues = (arr) => arr.length > new Set(arr).size;
 
 export default function StatusTable({ result, protocolVersions }) {
 	const [showMods, setShowMods] = useState(false);
 	const [showPlayers, setShowPlayers] = useState(false);
+	const [showAvatars, setShowAvatars] = useState(false);
 
 	const rows = [
 		[
@@ -31,6 +36,8 @@ export default function StatusTable({ result, protocolVersions }) {
 	];
 
 	if (result.online) {
+		const allowAvatars = !hasDuplicateValues(result.players?.list?.map((player) => player.uuid) ?? []);
+
 		if (result.icon) {
 			rows.push([
 				'Icon',
@@ -56,20 +63,59 @@ export default function StatusTable({ result, protocolVersions }) {
 			[
 				'Players',
 				<>
-					<span>{result.players.online} / {result.players.max}</span>
+					<div className="flex items-center gap-3">
+						<span>{result.players.online} / {result.players.max}</span>
+						{
+							result.players.list?.length > 0
+								? <>
+									<span className="flex items-center gap-3">
+										<button type="button" className="button w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
+											<div className="flex items-center gap-1">
+												<span>{showPlayers ? 'Hide' : 'Show'} player list</span>
+												<Chevron width="20" height="20" isFlipped={showPlayers} />
+											</div>
+										</button>
+										{
+											showPlayers && allowAvatars
+												? <button type="button" className="button flex gap-2 items-center text-sm" onClick={() => setShowAvatars(!showAvatars)}>
+													{
+														showAvatars
+															? <ListIcon width="20" height="20" />
+															: <UserIcon width="20" height="20" />
+													}
+													{
+														showAvatars
+															? <span>List</span>
+															: <span>Avatars</span>
+													}
+												</button>
+												: null
+										}
+									</span>
+								</>
+								: null
+						}
+					</div>
 					{
 						result.players.list?.length > 0
-							? <>
-								<button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
-									<div className="flex items-center gap-1">
-										<span>{showPlayers ? 'Hide' : 'Show'} player list</span>
-										<Chevron width="20" height="20" isFlipped={showPlayers} />
-									</div>
-								</button>
-								<div className={showPlayers ? 'block' : 'hidden'} id="players-list">
-									<MinecraftFormatted html={result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
-								</div>
-							</>
+							? <div className={showPlayers ? 'block' : 'hidden'} id="players-list">
+								{
+									showAvatars && allowAvatars
+										? <ul className="list-none flex flex-wrap gap-3 mt-3">
+											{
+												result.players.list.map((player, index) => (
+													<li key={index}>
+														<div className="flex gap-3 items-center">
+															<Image src={`https://api.mineatar.io/head/${player.uuid}`} width="32" height="32" />
+															<span>{player.name_clean}</span>
+														</div>
+													</li>
+												))
+											}
+										</ul>
+										: <MinecraftFormatted html={result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
+								}
+							</div>
 							: null
 					}
 				</>
