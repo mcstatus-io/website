@@ -15,6 +15,8 @@ export default [
 	{ type: 'java', name: 'JackpotMC', address: 'play.jackpotmc.com' },
 	{ type: 'java', name: 'MineRival', address: 'ms.minerival.org' },
 	{ type: 'java', name: 'Tulip Survival', address: 'play.tulipsurvival.com' },
+	{ type: 'java', name: 'GRM Pixelmon', address: 'grmpixelmon.com' },
+	{ type: 'java', name: 'Penguin.GG', address: 'hub.penguin.gg' },
 	{ type: 'bedrock', name: 'NetherGames', address: 'play.nethergames.org' },
 	{ type: 'bedrock', name: 'Vortex Network', address: 'bedrock.vortexnetwork.net' },
 	{ type: 'bedrock', name: 'Emperials', address: 'play.emperials.net' },

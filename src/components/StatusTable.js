@@ -28,11 +28,11 @@ export default function StatusTable({ result, protocolVersions }) {
 		],
 		[
 			'Host',
-			result.host
+			<span className="font-mono" key="host">{result.host}</span>
 		],
 		[
 			'Port',
-			result.port
+			<span className="font-mono" key="port">{result.port}</span>
 		]
 	];
 
@@ -136,7 +136,7 @@ export default function StatusTable({ result, protocolVersions }) {
 											: <MinecraftFormatted html={result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
 								}
 								{
-									result.players.online > result.players.list.length
+									result.players.online > result.players.list.length && allowAvatars
 										? <p className="text-neutral-500 dark:text-neutral-400 mt-3 italic">Note that not all online players are shown. Standard Java Edition servers limit sample players to 12 by default.</p>
 										: null
 								}
@@ -151,7 +151,11 @@ export default function StatusTable({ result, protocolVersions }) {
 			rows.push([
 				'Mods',
 				<>
-					<span>{result.mods.length} mod{result.mods.length === 1 ? '' : 's'} loaded</span>
+					{
+						result.mods.length > 0
+							? <span>{result.mods.length} mod{result.mods.length === 1 ? '' : 's'} loaded</span>
+							: <span>No mods detected</span>
+					}
 					{
 						result.mods.length > 0
 							? <>
