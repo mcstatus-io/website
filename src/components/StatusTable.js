@@ -12,6 +12,7 @@ import ListIcon from '../assets/icons/list.svg';
 import internalMods from '../assets/internal-mods';
 
 const hasDuplicateValues = (arr) => arr.length > new Set(arr).size;
+const sortAscendingCaseInsensitive = (prop) => (a, b) => a[prop].toLowerCase() > b[prop].toLowerCase() ? 1 : b[prop].toLowerCase() > a[prop].toLowerCase() ? -1 : 0;
 
 export default function StatusTable({ result, protocolVersions }) {
 	const [showMods, setShowMods] = useState(false);
@@ -103,17 +104,41 @@ export default function StatusTable({ result, protocolVersions }) {
 									showAvatars && allowAvatars
 										? <ul className="list-none flex flex-wrap gap-3 mt-3">
 											{
-												result.players.list.map((player, index) => (
+												result.players.list.sort(sortAscendingCaseInsensitive('name_clean')).map((player, index) => (
 													<li key={index}>
 														<div className="flex gap-3 items-center">
 															<Image src={`https://api.mineatar.io/head/${player.uuid}`} width="32" height="32" />
-															<span>{player.name_clean}</span>
+															<span title={player.uuid}>{player.name_clean}</span>
 														</div>
 													</li>
 												))
 											}
 										</ul>
-										: <MinecraftFormatted html={result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
+										: allowAvatars
+											? <ul className="font-mono whitespace-pre bg-black p-4 mt-3">
+												{
+													result.players.list.sort(sortAscendingCaseInsensitive('name_clean')).map((player, index) => (
+														<li key={index}>
+															<p className="text-white flex flex-col md:flex-row md:items-center md:justify-between md:gap-3">
+																<span>
+																	<span className="text-neutral-500">{Array((result.players.list.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
+																	<a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}`} className="link">{player.name_clean}</a>
+																</span>
+																<span className="hidden sm:block text-neutral-500">
+																	<span className="md:hidden">{Array(result.players.list.length.toString().length + 3).join(' ')}</span>
+																	<span>{player.uuid}</span>
+																</span>
+															</p>
+														</li>
+													))
+												}
+											</ul>
+											: <MinecraftFormatted html={result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
+								}
+								{
+									result.players.online > result.players.list.length
+										? <p className="text-neutral-500 dark:text-neutral-400 mt-3 italic">Note that not all online players are shown. Standard Java Edition servers limit sample players to 12 by default.</p>
+										: null
 								}
 							</div>
 							: null
@@ -137,22 +162,25 @@ export default function StatusTable({ result, protocolVersions }) {
 									</div>
 								</button>
 								<div className={`${showMods ? 'block' : 'hidden'} tags mt-2`} id="mods-list">
-									<ul className="font-mono bg-black p-4">
+									<ul className="font-mono whitespace-pre bg-black p-4">
 										{
-											result.mods.sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0).map((mod, index) => (
+											result.mods.sort(sortAscendingCaseInsensitive('name')).map((mod, index) => (
 												<li key={index}>
-													{
-														internalMods.includes(mod.name)
-															? <p className="text-white">{mod.name}</p>
-															: <a className="link" href={`https://www.curseforge.com/minecraft/mc-mods/search?search=${encodeURIComponent(mod.name)}`}>
-																<span>{mod.name}</span>
-																{
-																	mod.version.length > 0 && valid(coerce(mod.version))
-																		? <span> v{mod.version}</span>
-																		: null
-																}
-															</a>
-													}
+													<p className="text-white">
+														<span className="text-neutral-500">{Array((result.mods.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
+														{
+															internalMods.includes(mod.name)
+																? <span className="text-white">{mod.name}</span>
+																: <a className="link" href={`https://www.curseforge.com/minecraft/mc-mods/search?search=${encodeURIComponent(mod.name)}`}>
+																	<span>{mod.name}</span>
+																</a>
+														}
+														{
+															mod.version.length > 0 && valid(coerce(mod.version))
+																? <span className="text-neutral-400"> v{mod.version}</span>
+																: null
+														}
+													</p>
 												</li>
 											))
 										}
