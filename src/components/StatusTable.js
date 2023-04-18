@@ -17,6 +17,7 @@ const sortAscendingCaseInsensitive = (prop) => (a, b) => a[prop].toLowerCase() >
 export default function StatusTable({ result, protocolVersions }) {
 	const [showMods, setShowMods] = useState(false);
 	const [showPlayers, setShowPlayers] = useState(false);
+	const [showPlugins, setShowPlugins] = useState(false);
 	const [showAvatars, setShowAvatars] = useState(false);
 
 	const rows = [
@@ -197,6 +198,52 @@ export default function StatusTable({ result, protocolVersions }) {
 			]);
 		}
 
+		if (typeof result.plugins !== 'undefined') {
+			rows.push([
+				'Plugins',
+				<>
+					{
+						result.plugins.length > 0
+							? <span>{result.plugins.length} plugin{result.plugins.length === 1 ? '' : 's'} loaded</span>
+							: <span>No plugins detected</span>
+					}
+					{
+						result.plugins.length > 0
+							? <>
+								<button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowPlugins(!showPlugins)} aria-controls="plugin-list" aria-expanded={showPlugins}>
+									<div className="flex items-center gap-1">
+										<span>{showPlugins ? 'Hide' : 'Show'} plugin list</span>
+										<Chevron width="20" height="20" isFlipped={showPlugins} />
+									</div>
+								</button>
+								<div className={`${showPlugins ? 'block' : 'hidden'} tags mt-2`} id="plugin-list">
+									<ul className="font-mono whitespace-pre bg-black p-4">
+										{
+											result.plugins.sort(sortAscendingCaseInsensitive('name')).map((plugin, index) => (
+												<li key={index}>
+													<p className="text-white">
+														<span className="text-neutral-500">{Array((result.plugins.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
+														<a className="link" href={`https://dev.bukkit.org/search?search=${encodeURIComponent(plugin.name)}`}>
+															<span>{plugin.name}</span>
+														</a>
+														{
+															plugin.version.length > 0 && valid(coerce(plugin.version))
+																? <span className="text-neutral-400"> v{plugin.version}</span>
+																: null
+														}
+													</p>
+												</li>
+											))
+										}
+									</ul>
+								</div>
+							</>
+							: null
+					}
+				</>
+			]);
+		}
+
 		if (typeof result.edition !== 'undefined') {
 			rows.push([
 				'Edition',
@@ -242,6 +289,12 @@ export default function StatusTable({ result, protocolVersions }) {
 								: null
 						}
 					</span>
+					: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
+			],
+			[
+				'Software',
+				result.software
+					? <span>{result.software}</span>
 					: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 			]
 		);

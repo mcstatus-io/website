@@ -18,9 +18,14 @@ const getProtocolVersionData = async (type) => {
 export async function generateMetadata({ params: { type, address } }) {
 	address = decodeURIComponent(address);
 
+	const result = await getStatusData(type, address);
+
 	return {
 		title: address,
 		description: `Easily and quickly retrieve the status of ${address} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`,
+		icons: {
+			icon: result?.icon ?? 'https://mcstatus.io/img/icon.png'
+		},
 		openGraph: {
 			title: `${address} - Minecraft Server Status`,
 			description: `Easily and quickly retrieve the status of ${address} or any Minecraft server by using our tool. Just type or paste in the address and get full information about the server within a fraction of a second.`,
