@@ -285,14 +285,17 @@ export default function StatusTable({ result, protocolVersions }) {
 						}
 					</span>
 					: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-			],
-			[
+			]
+		);
+
+		if (typeof result.software !== 'undefined') {
+			rows.push([
 				'Software',
 				result.software
 					? <span>{result.software}</span>
 					: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-			]
-		);
+			]);
+		}
 	}
 
 	return (
