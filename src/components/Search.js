@@ -41,7 +41,7 @@ export default function Search({ host = '', type = 'java', className }) {
 				</div>
 				<div className="grow w-full sm:w-auto">
 					<label className="sr-only" htmlFor="host">Host</label>
-					<input type="text" className="input text-center md:text-left w-full" id="host" placeholder="play.hypixel.net" defaultValue={host} onChange={(event) => dispatch({ type: 'SET_HOST', value: event.target.value })} />
+					<input type="text" className="input text-center md:text-left w-full" id="host" placeholder="demo.mcstatus.io" defaultValue={host} onChange={(event) => dispatch({ type: 'SET_HOST', value: event.target.value })} />
 				</div>
 			</div>
 			<div className="w-full md:w-auto">
