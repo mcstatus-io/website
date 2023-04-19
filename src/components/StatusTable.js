@@ -65,12 +65,12 @@ export default function StatusTable({ result, protocolVersions }) {
 			[
 				'Players',
 				<>
-					<div className="flex items-center gap-3">
+					<div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
 						<span>{result.players.online} / {result.players.max}</span>
 						{
 							result.players.list?.length > 0
 								? <>
-									<span className="flex items-center gap-3">
+									<div className="flex flex-wrap items-center gap-3">
 										<button type="button" className="button w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
 											<div className="flex items-center gap-1">
 												<span>{showPlayers ? 'Hide' : 'Show'} player list</span>
@@ -93,7 +93,7 @@ export default function StatusTable({ result, protocolVersions }) {
 												</button>
 												: null
 										}
-									</span>
+									</div>
 								</>
 								: null
 						}
@@ -116,24 +116,23 @@ export default function StatusTable({ result, protocolVersions }) {
 											}
 										</ul>
 										: allowAvatars
-											? <ul className="font-mono whitespace-pre bg-black p-4 mt-3">
-												{
-													result.players.list.sort(sortAscendingCaseInsensitive('name_clean')).map((player, index) => (
-														<li key={index}>
-															<p className="text-white flex flex-col md:flex-row md:items-center md:justify-between md:gap-3">
-																<span>
-																	<span className="text-neutral-500">{Array((result.players.list.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
-																	<a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}`} className="link">{player.name_clean}</a>
-																</span>
-																<span className="hidden sm:block text-neutral-500">
-																	<span className="md:hidden">{Array(result.players.list.length.toString().length + 3).join(' ')}</span>
-																	<span>{player.uuid}</span>
-																</span>
-															</p>
-														</li>
-													))
-												}
-											</ul>
+											? <div className="font-mono whitespace-pre bg-black overflow-x-auto p-4 mt-3">
+												<ul className="list-none">
+													{
+														result.players.list.sort(sortAscendingCaseInsensitive('name_clean')).map((player, index) => (
+															<li key={index}>
+																<p className="text-white flex items-center justify-start md:justify-between gap-2 md:gap-3">
+																	<span className="min-w-fit">
+																		<span className="text-neutral-500">{Array((result.players.list.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
+																		<a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}`} className="link">{player.name_clean}</a>
+																	</span>
+																	<span className="min-w-fit text-neutral-500 pr-4 md:pr-0">{player.uuid}</span>
+																</p>
+															</li>
+														))
+													}
+												</ul>
+											</div>
 											: <MinecraftFormatted html={result.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
 								}
 								{
@@ -154,20 +153,18 @@ export default function StatusTable({ result, protocolVersions }) {
 				<>
 					{
 						result.mods.length > 0
-							? <span>{result.mods.length} mod{result.mods.length === 1 ? '' : 's'} loaded</span>
-							: <span>No mods detected</span>
-					}
-					{
-						result.mods.length > 0
 							? <>
-								<button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
-									<div className="flex items-center gap-1">
-										<span>{showMods ? 'Hide' : 'Show'} mod list</span>
-										<Chevron width="20" height="20" isFlipped={showMods} />
-									</div>
-								</button>
-								<div className={`${showMods ? 'block' : 'hidden'} tags mt-2`} id="mods-list">
-									<ul className="font-mono whitespace-pre bg-black p-4">
+								<div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
+									<span>{result.mods.length} mod{result.mods.length === 1 ? '' : 's'} loaded</span>
+									<button type="button" className="button w-fit text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
+										<div className="flex items-center gap-1">
+											<span>{showMods ? 'Hide' : 'Show'} mod list</span>
+											<Chevron width="20" height="20" isFlipped={showMods} />
+										</div>
+									</button>
+								</div>
+								<div className={`${showMods ? 'block' : 'hidden'} tags mt-2 font-mono whitespace-pre bg-black overflow-x-auto p-4`} id="mods-list">
+									<ul className="list-none">
 										{
 											result.mods.sort(sortAscendingCaseInsensitive('name')).map((mod, index) => (
 												<li key={index}>
@@ -182,7 +179,7 @@ export default function StatusTable({ result, protocolVersions }) {
 														}
 														{
 															mod.version.length > 0 && valid(coerce(mod.version))
-																? <span className="text-neutral-400"> v{mod.version}</span>
+																? <span className="text-neutral-400 pr-4"> v{mod.version}</span>
 																: null
 														}
 													</p>
@@ -192,7 +189,7 @@ export default function StatusTable({ result, protocolVersions }) {
 									</ul>
 								</div>
 							</>
-							: null
+							: <span>No mods detected</span>
 					}
 				</>
 			]);
@@ -204,20 +201,18 @@ export default function StatusTable({ result, protocolVersions }) {
 				<>
 					{
 						result.plugins.length > 0
-							? <span>{result.plugins.length} plugin{result.plugins.length === 1 ? '' : 's'} loaded</span>
-							: <span>No plugins detected</span>
-					}
-					{
-						result.plugins.length > 0
 							? <>
-								<button type="button" className="button ml-3 w-auto text-sm" onClick={() => setShowPlugins(!showPlugins)} aria-controls="plugin-list" aria-expanded={showPlugins}>
-									<div className="flex items-center gap-1">
-										<span>{showPlugins ? 'Hide' : 'Show'} plugin list</span>
-										<Chevron width="20" height="20" isFlipped={showPlugins} />
-									</div>
-								</button>
-								<div className={`${showPlugins ? 'block' : 'hidden'} tags mt-2`} id="plugin-list">
-									<ul className="font-mono whitespace-pre bg-black p-4">
+								<div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
+									<span>{result.plugins.length} plugin{result.plugins.length === 1 ? '' : 's'} loaded</span>
+									<button type="button" className="button w-fit text-sm" onClick={() => setShowPlugins(!showPlugins)} aria-controls="plugin-list" aria-expanded={showPlugins}>
+										<div className="flex items-center gap-1">
+											<span>{showPlugins ? 'Hide' : 'Show'} plugin list</span>
+											<Chevron width="20" height="20" isFlipped={showPlugins} />
+										</div>
+									</button>
+								</div>
+								<div className={`${showPlugins ? 'block' : 'hidden'} tags mt-2 font-mono whitespace-pre bg-black overflow-x-auto p-4`} id="plugin-list">
+									<ul className="list-none">
 										{
 											result.plugins.sort(sortAscendingCaseInsensitive('name')).map((plugin, index) => (
 												<li key={index}>
@@ -228,7 +223,7 @@ export default function StatusTable({ result, protocolVersions }) {
 														</a>
 														{
 															plugin.version.length > 0 && valid(coerce(plugin.version))
-																? <span className="text-neutral-400"> v{plugin.version}</span>
+																? <span className="text-neutral-400 pr-4 md:pr-0"> v{plugin.version}</span>
 																: null
 														}
 													</p>
@@ -238,7 +233,7 @@ export default function StatusTable({ result, protocolVersions }) {
 									</ul>
 								</div>
 							</>
-							: null
+							: <span>No plugins detected</span>
 					}
 				</>
 			]);
