@@ -4,7 +4,7 @@
     "online": true,
     // The hostname of the server that was resolved from the address string.
     // @type {string}
-    "host": "play.hypixel.net",
+    "host": "demo.mcstatus.io",
     // The port of the server that was resolved from the address string.
     // @type {number}
     "port": 25565,
@@ -16,11 +16,11 @@
     // The timestamp in Unix milliseconds of when the status was retrieved from
     // the Minecraft server itself.
     // @type {number}
-    "retrieved_at": 1673774293240,
+    "retrieved_at": 1681883645007,
     // The Unix milliseconds timestamp at which the cache will expire for this
     // status. The first proceeding request made after this timestamp will
     // return an up-to-date status of the server.
-    "expires_at": 1673774353240,
+    "expires_at": 1681883705007,
     // The version data of the server. This will be null if the server 
     // version is pre-1.3.2. This property will be missing if the server
     // is offline.
@@ -30,21 +30,21 @@
         // itself to show version range. This value may contain special formatting
         // characters.
         // @type {string}
-        "name_raw": "Requires MC 1.8 / 1.19",
+        "name_raw": "§f1.19.4",
         // The version name of the server, typically modified by the server
         // itself to show version range. This value will have all formatting
         // characters removed.
         // @type {string}
-        "name_clean": "Requires MC 1.8 / 1.19",
+        "name_clean": "1.19.4",
         // The version name of the server, typically modified by the server
         // itself to show version range, as an HTML string with proper
         // formatting applied.
         // @type {string}
-        "name_html": "<span><span style=\"color: #ffffff;\">Requires MC 1.8 / 1.19</span></span>",
+        "name_html": "<span><span style=\"color: #ffffff;\">1.19.4</span></span>",
         // The protocol version of the server which is used to identify
         // what client versions are supported.
         // @type {number}
-        "protocol": 47
+        "protocol": 762
     },
     // Information about the amount of players online and *some* sample
     // players if provided. This property will be missing if the server
@@ -53,10 +53,10 @@
     "players": {
         // The amount of online players in the server.
         // @type {number}
-        "online": 66870,
+        "online": 71,
         // The maximum number of allowed players in the server.
         // @type {number}
-        "max": 200000,
+        "max": 100,
         // Some sample players online in the server. Most (if not all) major
         // servers disable this or modify the data for custom formatting. If you
         // do not have any items in this array, it is because the server has
@@ -66,21 +66,21 @@
             {
                 // The UUID of the player logged into the server.
                 // @type {string}
-                "uuid": "78d78fb0-eb86-3dde-a9fc-203ecf33072b",
+                "uuid": "069a79f4-44e9-4726-a5be-fca90e38aaf5",
                 // The username of the player logged into the server. The server
                 // may have plugins that modify this data to show special
                 // formatting. This value may have formatting characters.
                 // @type {string}
-                "name_raw": "§5§m               §d§m          §7§m        §d§m          §5§m               ",
+                "name_raw": "Notch",
                 // The username of the player logged into the server. The server
                 // may have plugins that modify this data to show special
                 // formatting. This value will not have any formatting characters.
                 // @type {string}
-                "name_clean": "                                                          ",
+                "name_clean": "Notch",
                 // The username of the player logged into the server, as an HTML
                 // string with proper formatting applied.
                 // @type {string}
-                "name_html": "<span><span style=\"color: #aa00aa; text-decoration: line-through;\">               </span><span style=\"text-decoration: line-through; color: #ff55ff;\">          </span><span style=\"color: #aaaaaa; text-decoration: line-through;\">        </span><span style=\"color: #ff55ff; text-decoration: line-through;\">          </span><span style=\"color: #aa00aa; text-decoration: line-through;\">               </span></span>"
+                "name_html": "<span><span style=\"color: #ffffff;\">Notch</span></span>"
             }
         ]
     },
@@ -93,16 +93,16 @@
         // https://minecraft.fandom.com/wiki/Formatting_codes for information
         // on how to use formatting codes.
         // @type {string}
-        "raw": "                §aHypixel Network §c[1.8-1.19]\n       §b§lNEW: DROPPER §7§l| §6§lSUMMER EVENT§7§l+§e§lSALE",
+        "raw": "    §c§k;;; §c§l>§6§l>§e§l> §lMinecraft Server Status §e§l<§6§l<§c§l< §c§k;;;\n             §6§nhttps://mcstatus.io/",
         // A clean text-only version of the MOTD with all formatting codes removed.
         // @type {string}
-        "clean": "                Hypixel Network [1.8-1.19]\n       NEW: DROPPER | SUMMER EVENT+SALE",
+        "clean": "    ;;; >>> Minecraft Server Status <<< ;;;\n             https://mcstatus.io/",
         // An HTML representation of the MOTD with proper formatting. All formatting
         // codes are supported and are equal to their value in the Minecraft fandom wiki.
         // Magic/obfuscated formatting codes are a <span> with the class `.minecraft-format-obfuscated`.
         // Line breaks are encoded as the "\n" escape code and may be replaced with <br> by the user.
         // @type {string}
-        "html": "<span><span style=\"color: #ffffff;\">                </span><span style=\"color: #55ff55;\">Hypixel Network </span><span style=\"color: #ff5555;\">[1.8-1.19]</span><span style=\"color: #ffffff;\">\n       </span><span style=\"color: #55ffff; font-weight: bold;\">NEW: DROPPER </span><span style=\"color: #aaaaaa; font-weight: bold;\">| </span><span style=\"color: #ffaa00; font-weight: bold;\">SUMMER EVENT</span><span style=\"color: #aaaaaa; font-weight: bold;\">+</span><span style=\"font-weight: bold; color: #ffff55;\">SALE</span></span>"
+        "html": "<span><span style=\"color: #ffffff;\">    </span><span class=\"minecraft-format-obfuscated\" style=\"color: #ff5555;\">;;;</span><span style=\"color: #ffffff;\"> </span><span style=\"color: #ff5555; font-weight: bold;\">&gt;</span><span style=\"color: #ffaa00; font-weight: bold;\">&gt;</span><span style=\"color: #ffff55; font-weight: bold;\">&gt;</span><span style=\"color: #ffffff;\"> </span><span style=\"color: #ffffff; font-weight: bold;\">Minecraft Server Status</span><span style=\"color: #ffffff;\"> </span><span style=\"color: #ffff55; font-weight: bold;\">&lt;</span><span style=\"color: #ffaa00; font-weight: bold;\">&lt;</span><span style=\"color: #ff5555; font-weight: bold;\">&lt;</span><span style=\"color: #ffffff;\"> </span><span class=\"minecraft-format-obfuscated\" style=\"color: #ff5555;\">;;;</span><span style=\"color: #ffffff;\"></span><span style=\"color: #ffffff;\">\n             </span><span style=\"color: #ffaa00; text-decoration: underline;\">https://mcstatus.io/</span></span>"
     },
     // The base64-encoded PNG data of the 64x64 server icon. You may require
     // additional libraries or utilities for using this property. There are
@@ -110,18 +110,38 @@
     // not set an icon image. This property will also be missing if the server
     // is offline.
     // @type {string | null}
-    "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAttklEQV...",
+    "icon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABAEAYAAAD6...",
     // Any Forge mods loaded if provided by the server. Most servers do not
     // have Forge installed so this property will be empty a majority of the time.
+    // Legacy FML and FML2 are supported.
     // @type {Array.<object>}
     "mods": [
         {
             // The name of the mod that is loaded on the server.
             // @type {string}
-            "name": "Forge",
+            "name": "applied-energistics-2",
             // The version of the mod that is loaded on the server.
             // @type {string}
-            "version": "v1.0.0"
+            "version": "11.7.2"
+        }
+    ],
+    // If query lookup is successful, then this property will contain the
+    // software that the server is running. This will be missing if the server
+    // is offline.
+    // @type {string}
+    "software": "github.com/mcstatus-io/demo-server",
+    // If query lookup is successful, then this property will contain the
+    // list of plugins that the server is running. This will be missing if the
+    // server is offline.
+    // @type {Array.<object>}
+    "plugins": [
+        {
+            // The name of the plugin.
+            // @type {string}
+            "name": "WorldEdit",
+            // The semantic version of the plugin.
+            // @type {string}
+            "version": "7.2.14"
         }
     ]
 }

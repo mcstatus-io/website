@@ -19,8 +19,8 @@ const frequentlyAskedQuestions = [
 	},
 	{
 		title: 'Does this service use query?',
-		content: <p className="leading-7">We intentionally chose not to use query in this service because it slows down any status retrieval, and it also does not provide much more information than the data sent by the status protocol.</p>,
-		textContent: '<p>We intentionally chose not to use query in this service because it slows down any status retrieval, and it also does not provide much more information than the data sent by the status protocol.</p>'
+		content: <p className="leading-7">Yes, the Java Edition status route checks the query information of the server at the same time it is checking the status information. If the information is available, it is added to the response.</p>,
+		textContent: '<p>Yes, the Java Edition status route checks the query information of the server at the same time it is checking the status information. If the information is available, it is added to the response.</p>'
 	},
 	{
 		title: 'How do I see all players on the server?',
