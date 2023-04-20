@@ -173,7 +173,7 @@ export default function StatusTable({ result, protocolVersions }) {
 														{
 															internalMods.includes(mod.name)
 																? <span className="text-white">{mod.name}</span>
-																: <a className="link" href={`https://www.curseforge.com/minecraft/mc-mods/search?search=${encodeURIComponent(mod.name)}`}>
+																: <a className="link" href={`https://www.curseforge.com/minecraft/search?search=${encodeURIComponent(mod.name)}&class=mc-mods`}>
 																	<span>{mod.name}</span>
 																</a>
 														}
