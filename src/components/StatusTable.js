@@ -103,13 +103,13 @@ export default function StatusTable({ result, protocolVersions }) {
 							? <div className={showPlayers ? 'block' : 'hidden'} id="players-list">
 								{
 									showAvatars && allowAvatars
-										? <ul className="list-none flex flex-wrap gap-3 mt-3">
+										? <ul className="list-none flex flex-wrap gap-5 mt-3">
 											{
 												result.players.list.sort(sortAscendingCaseInsensitive('name_clean')).map((player, index) => (
 													<li key={index}>
 														<div className="flex gap-3 items-center">
 															<Image src={`https://api.mineatar.io/head/${player.uuid}`} width="32" height="32" />
-															<span title={player.uuid}>{player.name_clean}</span>
+															<a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}`} className="link" title={player.uuid}>{player.name_clean}</a>
 														</div>
 													</li>
 												))

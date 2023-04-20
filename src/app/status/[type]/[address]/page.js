@@ -1,6 +1,8 @@
 import StatusTable from '../../../../components/StatusTable';
 import APIUsage from '../../../../components/APIUsage';
 
+export const revalidate = 5;
+
 export const getStatusData = async (type, address) => {
 	const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/${type}/${address}`, { next: { revalidate: 5 } });
 	const body = await result.json();
