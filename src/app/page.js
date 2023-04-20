@@ -19,7 +19,7 @@ export default function Page() {
 						<h1 className="h1">Minecraft Server Status</h1>
 						<p className="text-2xl font-light mt-2">Quickly retrieve the status of any Minecraft server</p>
 					</hgroup>
-					<Search className="mt-5" autoFocus="true" />
+					<Search className="mt-5" autoFocus />
 				</section>
 				<Ad className="mt-5" />
 				<section>
