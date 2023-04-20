@@ -13,10 +13,13 @@
 
 @layer utilities
     .link
-        @apply text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 motion-safe:transition-colors
+        @apply text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 motion-safe:transition-colors underline-offset-2
 
         &.link-contrast
             @apply dark:text-blue-400 dark:hover:text-blue-600
+
+        &:hover
+            @apply underline
 
 @layer components
     .h1
