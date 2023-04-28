@@ -128,7 +128,7 @@
     // If query lookup is successful, then this property will contain the
     // software that the server is running. This will be missing if the server
     // is offline.
-    // @type {string}
+    // @type {string | null}
     "software": "github.com/mcstatus-io/demo-server",
     // If query lookup is successful, then this property will contain the
     // list of plugins that the server is running. This will be missing if the
