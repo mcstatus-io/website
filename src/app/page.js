@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Ad from '../components/Ad';
 import Navbar from '../components/Navbar';
 import Search from '../components/Search';
@@ -6,6 +7,8 @@ import Container from '../components/Container';
 import SampleServers from '../components/SampleServers';
 import GiftIcon from '../assets/icons/gift.svg';
 import InfoIcon from '../assets/icons/info.svg';
+import ToolIcon from '../assets/icons/tool.svg';
+import mineatarIcon from '../assets/img/mineatar.png';
 
 export const revalidate = 30;
 
@@ -44,6 +47,26 @@ export default function Page() {
 					<p className="mb-3 leading-7">Some of our competitors use unnecessarily long cache times, meaning it could take up to 5 minutes to get the up-to-date status of any server you requested. This duration was entirely unnecessary, which is why we only cache statuses for up to 1 minute from the last retrieval. We also offer many features that our competitors do not, such as formatting options for the MOTD, version name, and sample player names. This allows you to embed this information on your website exactly as you see it in-game.</p>
 					<p className="mb-3 leading-7">In addition to just retrieving the Minecraft server status, we also use the query protocol for Java Edition servers, allowing us to get extra information about the servers like plugins and software information. While statuses are our main focus, we also offer additional routes like <Link href="/docs#icon" className="link">retrieving an server icon</Link> and a <Link href="/docs#java-widget" className="link">generated status widget</Link>. The icon route allows you to embed your server&apos;s icon directly into your website without ever having to worry about updating it, and the widget route shows your users a preview of your server without them having to open the game.</p>
 					<p className="mb-3 leading-7">Our API is built from the ground up using Go &mdash; a high performance programming language &mdash; and we directly communicate with the Minecraft server using the official networking protocol. We also utilize Redis to store and retrieve cached statuses extremely fast. All of our services are open source, and available for you to view on our <a href="https://github.com/mcstatus-io" className="link">GitHub organization</a>. If you would like to implement our API into your service, head over to the <Link href="/docs" className="link">API documentation</Link> page to read up on the API routes.</p>
+				</section>
+				<section>
+					<div className="flex items-center gap-6 md:ml-6 mt-12">
+						<ToolIcon width="28" height="28" className="hidden md:block" />
+						<hgroup>
+							<h2 className="h2">Other Tools</h2>
+							<p className="text-lg font-light">Other services we have also made</p>
+						</hgroup>
+					</div>
+					<div className="grid grid-cols-3 gap-3 mt-5">
+						<a href="https://mineatar.io" className="flex gap-5 interactive-box rounded p-5">
+							<div className="w-16">
+								<Image src={mineatarIcon} className="mx-auto" alt="Mineatar Icon" />
+							</div>
+							<div>
+								<p className="font-bold">Mineatar</p>
+								<p className="mt-1">An image rendering API to view the 2D and 3D skin of any Minecraft player.</p>
+							</div>
+						</a>
+					</div>
 				</section>
 			</Container>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{
