@@ -67,7 +67,7 @@ export default function Page() {
 					<section>
 						<div className="box p-4 rounded mt-3">
 							<AnchorHeader size={3} id="java-status">Java Status</AnchorHeader>
-							<p className="mt-2 leading-7">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
+							<p className="mt-2 leading-7">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>. You can also set <code>?query=false</code> in the URL query parameters to disable query lookup for faster status retrieval at the expense of missing <code>software</code> and <code>plugins</code> properties.</p>
 							<p className="flex items-center gap-2 mt-3">
 								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
 								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/java/&lt;address&gt;</span></code>
