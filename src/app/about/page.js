@@ -51,6 +51,11 @@ const frequentlyAskedQuestions = [
 		title: 'Is this service open-source?',
 		content: <p className="leading-7">Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io" className="link link-contrast">our GitHub organization</a>.</p>,
 		textContent: '<p>Yes, this service is entirely open source and available for anybody to review or host your own. The source code is available on <a href="https://github.com/mcstatus-io">our GitHub organization</a>.</p>'
+	},
+	{
+		title: 'What is demo.mcstatus.io?',
+		content: <p className="leading-7"><Link href="/status/java/demo.mcstatus.io" className="link">demo.mcstatus.io</Link> is a fake Minecraft server hosted on our network with the intention of showing off all features our service supports. You are not able to connect to this server because it was built from scratch with only the status and query protocol supported. If you do try to connect, your player name is put into the sample players response and you can view it on our website. Go ahead and give it a try if you really want to. If you would like to learn more about how this demo server works, it is <a href="https://github.com/mcstatus-io/demo-server" className="link">open-sourced on our GitHub organization</a>.</p>,
+		textContent: '<p><a href="https://mcstatus.io/status/java/demo.mcstatus.io">demo.mcstatus.io</a> is a fake Minecraft server hosted on our network with the intention of showing off all features our service supports. You are not able to connect to this server because it was built from scratch with only the status and query protocol supported. If you do try to connect, your player name is put into the sample players response and you can view it on our website. Go ahead and give it a try if you really want to. If you would like to learn more about how this demo server works, it is <a href="https://github.com/mcstatus-io/demo-server">open-sourced on our GitHub organization</a>.</p>'
 	}
 ];
 
