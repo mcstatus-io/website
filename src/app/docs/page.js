@@ -7,8 +7,8 @@ import AnchorHeader from '../../components/AnchorHeader';
 import javaExample from '../../assets/response/java.jsonc';
 import bedrockExample from '../../assets/response/bedrock.jsonc';
 import iconExample from '../../assets/response/icon.png';
-import javaWidgetLightExample from '../../assets/response/java-widget-light.png';
-import javaWidgetDarkExample from '../../assets/response/java-widget-dark.png';
+// import javaWidgetLightExample from '../../assets/response/java-widget-light.png';
+// import javaWidgetDarkExample from '../../assets/response/java-widget-dark.png';
 import Collapsible from '../../components/Collapsible';
 
 export const metadata = {
@@ -90,7 +90,7 @@ export default function Page() {
 							</Collapsible>
 						</div>
 					</section>
-					<section>
+					{/*<section>
 						<div className="box p-4 rounded mt-3">
 							<AnchorHeader size={3} id="java-widget">Java Widget</AnchorHeader>
 							<p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL.</p>
@@ -105,7 +105,7 @@ export default function Page() {
 								</div>
 							</Collapsible>
 						</div>
-					</section>
+	</section>*/}
 					<section>
 						<div className="box p-4 rounded mt-3">
 							<AnchorHeader size={3} id="icon">Icon</AnchorHeader>

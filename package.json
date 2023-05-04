@@ -8,9 +8,8 @@
 	],
 	"scripts": {
 		"start": "next start src/",
-		"build": "npm run update && next build src/",
+		"build": "next build src/",
 		"dev": "next dev src/",
-		"update": "npx browserslist@latest --update-db",
 		"analyze": "cross-env ANALYZE=true next build src/",
 		"analyze:server": "cross-env BUNDLE_ANALYZE=server next build src/",
 		"analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build src/"
