@@ -20,7 +20,7 @@ jobs:
       with:
         path: |
           ~/.npm
-          ${{ github.workspace }}/.next/cache
+          ${{ github.workspace }}/src/.next/cache
         key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
         restore-keys: |
           ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
