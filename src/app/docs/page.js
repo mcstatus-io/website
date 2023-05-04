@@ -45,6 +45,9 @@ export default function Page() {
 				</hgroup>
 				<Ad className="mt-5" />
 				<section>
+					<div className="box bg-red-500 border-red-500 bg-opacity-20 border-opacity-50 rounded p-5 mt-12">
+						<p>The documentation for the widget route has been temporarily removed while a fix is being implemented prevent bugs and improve rendering efficiency. We are sorry for the inconvenience.</p>
+					</div>
 					<section>
 						<AnchorHeader size={2} id="overview" className="mt-12">Overview</AnchorHeader>
 						<p className="mt-3 leading-7">The goal of this API documentation is to accurately and precisely describe the functionality of this service in plain terms. This page will go over everything you need to know before implementing our API into your service. If you believe there is anything missing, any typos, or incorrect information on this page, please reach out to me via email at <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>.</p>
