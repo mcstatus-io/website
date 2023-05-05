@@ -56,11 +56,6 @@ export default function Navbar({ active }) {
 						</Link>
 					</li>
 					<li>
-						<a href="https://mqc2flnlawa.typeform.com/to/K2Ol7ipZ" className={`block md:mr-1 p-1 ${showMenu ? 'text-neutral-400' : 'hover:text-black hover:dark:text-white motion-safe:transition-colors'}`}>
-							Feedback
-						</a>
-					</li>
-					<li>
 						<a href="https://github.com/mcstatus-io" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 motion-safe:transition-colors'} p-2`}>
 							<GithubIcon width="24" height="24" title="GitHub" />
 							<span className="md:sr-only font-bold">GitHub</span>
