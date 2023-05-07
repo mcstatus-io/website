@@ -134,6 +134,13 @@ export default function Page() {
 								<code className="text-black dark:text-white">node-mcstatus</code>
 							</a>
 						</li>
+						<li>
+							<a href="https://pkg.go.dev/github.com/mcstatus-io/mcutil" className="button p-4 flex items-center gap-2">
+								<span className="text-sm rounded px-2 py-1 bg-green-700 text-white">Official</span>
+								<span className="text-sm rounded px-2 py-1 bg-[#02bceb] text-black font-bold">Go</span>
+								<code className="text-black dark:text-white">mcutil</code>
+							</a>
+						</li>
 					</ul>
 				</section>
 				<section>
