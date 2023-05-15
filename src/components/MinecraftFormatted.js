@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import linkifyHtml from 'linkify-html';
 
 const obfuscatedCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+[]"\';:<>,./?';
 
@@ -13,9 +14,9 @@ export default function MinecraftFormatted({ html, className }) {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 		const obfuscatedElems = containerElem.current.querySelectorAll('.minecraft-format-obfuscated');
 
-		let interval;
+		let renderRequest;
 
-		const update = () => {
+		const render = () => {
 			if (prefersReducedMotion.matches) return;
 
 			obfuscatedElems.forEach((elem) => {
@@ -27,13 +28,15 @@ export default function MinecraftFormatted({ html, className }) {
 
 				elem.innerText = value;
 			});
+
+			renderRequest = requestAnimationFrame(render);
 		};
 
 		const onMotionPreferenceChange = () => {
 			if (prefersReducedMotion.matches) {
-				clearInterval(interval);
+				cancelAnimationFrame(render);
 			} else {
-				interval = setInterval(update, 1000 / 60);
+				render();
 			}
 		};
 
@@ -42,11 +45,13 @@ export default function MinecraftFormatted({ html, className }) {
 		prefersReducedMotion.addEventListener('change', onMotionPreferenceChange);
 
 		return () => {
-			clearInterval(interval);
+			cancelAnimationFrame(renderRequest);
+
+			prefersReducedMotion.removeEventListener('change', onMotionPreferenceChange);
 		};
-	}, [containerElem]);
+	});
 
 	return (
-		<pre className={`block bg-black text-white p-4 w-full overflow-x-auto ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: html }} ref={containerElem} />
+		<pre className={`block bg-black text-white p-4 w-full overflow-x-auto ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: linkifyHtml(html, { className: 'hover:underline underline-offset-2 transition-colors', rel: 'noreferrer' }) }} ref={containerElem} />
 	);
 }
