@@ -7,8 +7,8 @@ import AnchorHeader from '../../components/AnchorHeader';
 import javaExample from '../../assets/response/java.jsonc';
 import bedrockExample from '../../assets/response/bedrock.jsonc';
 import iconExample from '../../assets/response/icon.png';
-// import javaWidgetLightExample from '../../assets/response/java-widget-light.png';
-// import javaWidgetDarkExample from '../../assets/response/java-widget-dark.png';
+import javaWidgetLightExample from '../../assets/response/java-widget-light.png';
+import javaWidgetDarkExample from '../../assets/response/java-widget-dark.png';
 import Collapsible from '../../components/Collapsible';
 
 export const metadata = {
@@ -45,9 +45,6 @@ export default function Page() {
 				</hgroup>
 				<Ad className="mt-5" />
 				<section>
-					<div className="box bg-red-500 border-red-500 bg-opacity-20 border-opacity-50 rounded p-5 mt-12">
-						<p>The documentation for the widget route has been temporarily removed while a fix is being implemented prevent bugs and improve rendering efficiency. We are sorry for the inconvenience.</p>
-					</div>
 					<section>
 						<AnchorHeader size={2} id="overview" className="mt-12">Overview</AnchorHeader>
 						<p className="mt-3 leading-7">The goal of this API documentation is to accurately and precisely describe the functionality of this service in plain terms. This page will go over everything you need to know before implementing our API into your service. If you believe there is anything missing, any typos, or incorrect information on this page, please reach out to me via email at <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>.</p>
@@ -93,13 +90,13 @@ export default function Page() {
 							</Collapsible>
 						</div>
 					</section>
-					{/*<section>
+					<section>
 						<div className="box p-4 rounded mt-3">
 							<AnchorHeader size={3} id="java-widget">Java Widget</AnchorHeader>
-							<p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL.</p>
+							<p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL. All query parameters are optional.</p>
 							<p className="flex items-center gap-2 mt-3">
 								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/widget/java/&lt;address&gt;?dark=&lt;true/false&gt;</span></code>
+								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/widget/java/&lt;address&gt;?dark=&lt;true/false&gt;&rounded=&lt;true/false&gt;</span></code>
 							</p>
 							<Collapsible title="Response Body" className="block mt-4">
 								<div className="flex items-center gap-3">
@@ -108,7 +105,7 @@ export default function Page() {
 								</div>
 							</Collapsible>
 						</div>
-	</section>*/}
+					</section>
 					<section>
 						<div className="box p-4 rounded mt-3">
 							<AnchorHeader size={3} id="icon">Icon</AnchorHeader>
