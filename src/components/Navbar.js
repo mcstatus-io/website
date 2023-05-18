@@ -62,7 +62,7 @@ export default function Navbar({ active }) {
 						</a>
 					</li>
 					<li>
-						<a href="https://uptime.mcstatus.io" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 motion-safe:transition-colors'} p-2`}>
+						<a href="https://status.mcstatus.io" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 motion-safe:transition-colors'} p-2`}>
 							<CalendarIcon width="24" height="24" title="Status" />
 							<span className="md:sr-only font-bold">Status Page</span>
 						</a>
