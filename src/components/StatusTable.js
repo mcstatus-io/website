@@ -52,12 +52,14 @@ export default function StatusTable({ result, protocolVersions }) {
 		rows.push(
 			[
 				'MOTD',
-				<MinecraftFormatted html={result.motd.html} key="motd" />
+				result.motd?.html
+					? <MinecraftFormatted html={result.motd.html} key="motd" />
+					: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 			],
 			[
 				'Version',
 				result.version?.name_raw || result.version?.name
-					? result.version.name_raw === result.version.name_clean || result.version?.name
+					? result.version.name_raw === result.version.name_clean || result.version.name
 						? <span>{result.version.name_clean ?? result.version.name}</span>
 						: <MinecraftFormatted html={result.version.name_html} />
 					: <span className="text-neutral-500 dark:text-neutral-400">N/A (&lt; 1.3)</span>
@@ -66,7 +68,13 @@ export default function StatusTable({ result, protocolVersions }) {
 				'Players',
 				<>
 					<div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
-						<span>{result.players.online} / {result.players.max}</span>
+						{
+							typeof result.players?.online === 'number' && typeof result.players?.max === 'number'
+								? <span>{result.players.online} / {result.players.max}</span>
+								: typeof result.players?.online === 'number'
+									? <span>{result.players.online}</span>
+									: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
+						}
 						{
 							result.players.list?.length > 0
 								? <>
@@ -189,7 +197,7 @@ export default function StatusTable({ result, protocolVersions }) {
 									</ul>
 								</div>
 							</>
-							: <span>No mods detected</span>
+							: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 					}
 				</>
 			]);
@@ -233,7 +241,7 @@ export default function StatusTable({ result, protocolVersions }) {
 									</ul>
 								</div>
 							</>
-							: <span>No plugins detected</span>
+							: <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
 					}
 				</>
 			]);
