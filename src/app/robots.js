@@ -2,7 +2,10 @@ export default function generateRobots() {
 	return {
 		rules: {
 			userAgent: '*',
-			allow: '/'
+			allow: '/',
+			disallow: [
+				'/status/*/*/icon'
+			]
 		},
 		sitemap: 'https://mcstatus.io/sitemap.xml'
 	};

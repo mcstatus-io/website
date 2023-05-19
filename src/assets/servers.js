@@ -17,6 +17,7 @@ export default [
 	{ type: 'java', name: 'Tulip Survival', address: 'play.tulipsurvival.com' },
 	{ type: 'java', name: 'GRM Pixelmon', address: 'grmpixelmon.com' },
 	{ type: 'java', name: 'Penguin.GG', address: 'hub.penguin.gg' },
+	{ type: 'java', name: 'Demo Server', address: 'demo.mcstatus.io' },
 	{ type: 'bedrock', name: 'NetherGames', address: 'play.nethergames.org' },
 	{ type: 'bedrock', name: 'Vortex Network', address: 'bedrock.vortexnetwork.net' },
 	{ type: 'bedrock', name: 'Emperials', address: 'play.emperials.net' },
@@ -32,5 +33,6 @@ export default [
 	{ type: 'bedrock', name: 'FallenTech', address: 'play.fallentech.io' },
 	{ type: 'bedrock', name: 'RulerCraft', address: 'play.rulercraft.com' },
 	{ type: 'bedrock', name: 'LifeBlock', address: 'play-lifeblock.net' },
-	{ type: 'bedrock', name: 'MC-SMP', address: 'mcsmp.net' }
+	{ type: 'bedrock', name: 'MC-SMP', address: 'mcsmp.net' },
+	{ type: 'bedrock', name: 'Demo Server', address: 'demo.mcstatus.io' }
 ];
