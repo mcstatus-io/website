@@ -22,7 +22,7 @@ export default function Navbar({ active }) {
 	}, [showMenu]);
 
 	return (
-		<nav className={`text-black dark:text-white w-screen h-[4.25rem] sticky top-0 z-50 ${!showMenu ? 'bg-white dark:bg-[#121212dd] bg-opacity-80 backdrop-blur backdrop-saturate-150 border-b border-b-neutral-200 dark:border-b-neutral-800' : ''}`}>
+		<nav className={`text-black dark:text-white w-screen h-[4.25rem] sticky top-0 z-50 ${!showMenu ? 'bg-white dark:bg-[#121212dd] bg-opacity-80 backdrop-blur-[6px] backdrop-saturate-150 border-b border-b-neutral-200 dark:border-b-neutral-800' : ''}`}>
 			<Container className="relative md:px-6 h-full flex items-center" noMargin>
 				<header className={`${showMenu ? 'hidden' : 'md:max-lg:hidden'} md:pr-6 md:border-r-2 md:border-r-[rgba(0,0,0,0.1)] md:dark:border-r-neutral-700 mr-6`}>
 					<Link href="/" className="flex items-center content-center p-1">
