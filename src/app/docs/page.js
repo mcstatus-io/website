@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { languageColors, languageNames, libraryList } from '@/assets/libraries';
 import bedrockExample from '@/assets/response/bedrock.jsonc';
 import iconExample from '@/assets/response/icon.png';
 import javaWidgetDarkExample from '@/assets/response/java-widget-dark.png';
@@ -124,13 +125,17 @@ export default function Page() {
 					<AnchorHeader size={2} id="libraries" className="mt-12">Libraries</AnchorHeader>
 					<p className="mt-3 leading-7">We try and provide official support for integrating our service into many languages. The list of official and unofficial libraries are below.</p>
 					<ul className="list-none flex flex-col gap-3 mt-3">
-						<li>
-							<a href="https://npmjs.com/package/node-mcstatus" className="button p-4 flex items-center gap-2">
-								<span className="text-sm rounded px-2 py-1 bg-green-700 text-white">Official</span>
-								<span className="text-sm rounded px-2 py-1 bg-[#f7df1e] text-black font-bold">JavaScript</span>
-								<code className="text-black dark:text-white">node-mcstatus</code>
-							</a>
-						</li>
+						{
+							libraryList.map((library, index) => (
+								<li key={index}>
+									<a href={library.url} className="button p-4 flex items-center gap-2">
+										<span className="text-sm rounded px-2 py-1 bg-neutral-500 text-white">{library.official ? 'Official' : 'Unofficial'}</span>
+										<span className="text-sm rounded px-2 py-1" style={{ color: languageColors[library.language][0], backgroundColor: languageColors[library.language][1] }}>{languageNames[library.language]}</span>
+										<code className="text-black dark:text-white">{library.name}</code>
+									</a>
+								</li>
+							))
+						}
 					</ul>
 				</section>
 				<section>
