@@ -18,7 +18,7 @@ const reducer = (state, action) => {
 	}
 };
 
-export default function Search({ host = '', type = 'java', className, autoFocus }) {
+export default function Search({ host = '', type = 'java', className = '', autoFocus }) {
 	const { push } = useRouter();
 
 	const [data, dispatch] = useReducer(reducer, { host, type });
@@ -30,7 +30,7 @@ export default function Search({ host = '', type = 'java', className, autoFocus 
 	};
 
 	return (
-		<form className={`flex flex-col md:flex-row items-center gap-3 ${className ?? ''}`} onSubmit={handleSubmit}>
+		<form className={`flex flex-col md:flex-row items-center gap-3 ${className}`} onSubmit={handleSubmit}>
 			<div className="flex flex-col sm:flex-row items-center gap-3 grow w-full md:w-auto">
 				<div className="w-full sm:w-auto">
 					<label className="sr-only" htmlFor="type">Server Type</label>

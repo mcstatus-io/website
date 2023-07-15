@@ -1,3 +1,4 @@
+const path = require('path');
 const childProcess = require('child_process');
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -22,6 +23,8 @@ module.exports = withBundleAnalyzer({
 		}
 	],
 	webpack: (config) => {
+		config.resolve.alias['@'] = path.resolve(__dirname, 'src');
+
 		config.module.rules.push(
 			{
 				test: /\.jsonc$/,

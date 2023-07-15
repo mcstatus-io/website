@@ -5,7 +5,7 @@ import linkifyHtml from 'linkify-html';
 
 const obfuscatedCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+[]"\';:<>,./?';
 
-export default function MinecraftFormatted({ html, className }) {
+export default function MinecraftFormatted({ html, className = '' }) {
 	const containerElem = useRef();
 
 	useEffect(() => {
@@ -52,6 +52,6 @@ export default function MinecraftFormatted({ html, className }) {
 	});
 
 	return (
-		<pre className={`block bg-black text-white p-4 w-full overflow-x-auto ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: linkifyHtml(html, { className: 'hover:underline underline-offset-2 transition-colors', rel: 'noreferrer' }) }} ref={containerElem} />
+		<pre className={`block bg-black text-white p-4 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: linkifyHtml(html, { className: 'hover:underline underline-offset-2 transition-colors', rel: 'noreferrer' }) }} ref={containerElem} />
 	);
 }

@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import Highlight from './Highlight';
-import Collapsible from './Collapsible';
+import Collapsible from '@/components/Collapsible';
+import Highlight from '@/components/Highlight';
 
-export default function APIUsage({ type, address, data }) {
+export default function APIUsage({ type, address, data, ...props }) {
 	return (
-		<Collapsible title="API Usage" id="api-usage" className="mt-3">
+		<Collapsible title="API Usage" id="api-usage" {...props}>
 			<p>
 				<span className="bg-green-600 text-sm px-2 py-1 rounded text-white">GET</span>
 				<code className="ml-2 break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/{type}/{address}</span></code>

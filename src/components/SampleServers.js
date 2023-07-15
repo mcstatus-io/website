@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import sampleServers from '../assets/servers';
+import sampleServers from '@/assets/servers';
 
 const getSampleServers = () => {
 	const servers = [];
@@ -18,11 +18,11 @@ const getSampleServers = () => {
 	return servers;
 };
 
-export default function SampleServers() {
+export default function SampleServers({ className = '' }) {
 	const servers = getSampleServers();
 
 	return (
-		<ul className="list-none grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
+		<ul className={`list-none grid grid-cols-1 md:grid-cols-2 gap-3 ${className}`}>
 			{
 				servers.map((server, index) => (
 					<li key={index}>

@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import Container from '../../components/Container';
-import Navbar from '../../components/Navbar';
-import Ad from '../../components/Ad';
-import Collapsible from '../../components/Collapsible';
-import HelpCircleIcon from '../../assets/icons/help-circle.svg';
-import MailIcon from '../../assets/icons/mail.svg';
+import HelpCircleIcon from '@/assets/icons/help-circle.svg';
+import MailIcon from '@/assets/icons/mail.svg';
+import Ad from '@/components/Ad';
+import Collapsible from '@/components/Collapsible';
+import Container from '@/components/Container';
+import Navbar from '@/components/Navbar';
 
 const frequentlyAskedQuestions = [
 	{

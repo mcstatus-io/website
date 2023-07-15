@@ -1,13 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import Chevron from './Chevron';
+import Chevron from '@/components/Chevron';
 
-export default function Collapsible({ className, title, children, autoExpanded, id, noPadding }) {
+export default function Collapsible({ title, autoExpanded, id, noPadding = false, children, ...props }) {
 	const [isExpanded, setExpanded] = useState(autoExpanded || false);
 
 	return (
-		<div className={className}>
+		<div {...props}>
 			<button type="button" className={`interactive-box rounded-t ${isExpanded ? '' : 'rounded-b'} p-4 flex justify-between items-center cursor-pointer w-full`} aria-controls={id} aria-expanded={isExpanded} onClick={() => setExpanded(!isExpanded)}>
 				<span className="font-bold text-left">{title}</span>
 				<Chevron width="24" height="24" isFlipped={isExpanded} />

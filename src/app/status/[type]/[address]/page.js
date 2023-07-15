@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import StatusTable from '../../../../components/StatusTable';
-import APIUsage from '../../../../components/APIUsage';
-import InfoIcon from '../../../../assets/icons/info.svg';
+import StatusTable from '@/components/StatusTable';
+import APIUsage from '@/components/APIUsage';
+import InfoIcon from '@/assets/icons/info.svg';
 
 export const revalidate = 0;
 
@@ -73,7 +73,7 @@ export default async function Page({ params: { type, address } }) {
 				</div>
 			</section>
 			<section>
-				<APIUsage type={type} address={address} data={result} />
+				<APIUsage type={type} address={address} data={result} className="mt-3" />
 			</section>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{
 				__html: JSON.stringify([

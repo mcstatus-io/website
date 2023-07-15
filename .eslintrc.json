@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2020": true
+        "es2020": true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
@@ -50,17 +51,6 @@
         }
     },
     "overrides": [
-        {
-            "files": [
-                "next.config.js",
-                "postcss.config.js",
-                "tailwind.config.js"
-            ],
-            "globals": {
-                "require": true,
-                "module": true
-            }
-        },
         {
             "files": "src/public/js/ga.js",
             "globals": {

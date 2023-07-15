@@ -1,4 +1,4 @@
-import servers from '../assets/servers';
+import servers from '@/assets/servers';
 
 export default function generateSitemap() {
 	const lastModified = new Date().toISOString();

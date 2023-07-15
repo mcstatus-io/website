@@ -1,14 +1,14 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import Ad from '../components/Ad';
-import Navbar from '../components/Navbar';
-import Search from '../components/Search';
-import Container from '../components/Container';
-import SampleServers from '../components/SampleServers';
-import GiftIcon from '../assets/icons/gift.svg';
-import InfoIcon from '../assets/icons/info.svg';
-import ToolIcon from '../assets/icons/tool.svg';
-import mineatarIcon from '../assets/img/mineatar.png';
+import Link from 'next/link';
+import GiftIcon from '@/assets/icons/gift.svg';
+import InfoIcon from '@/assets/icons/info.svg';
+import ToolIcon from '@/assets/icons/tool.svg';
+import mineatarIcon from '@/assets/img/mineatar.png';
+import Ad from '@/components/Ad';
+import Container from '@/components/Container';
+import Navbar from '@/components/Navbar';
+import SampleServers from '@/components/SampleServers';
+import Search from '@/components/Search';
 
 export const revalidate = 30;
 
@@ -33,7 +33,7 @@ export default function Page() {
 							<p className="text-lg font-light">A few sample servers to test out our service</p>
 						</hgroup>
 					</div>
-					<SampleServers />
+					<SampleServers className="mt-5" />
 				</section>
 				<section>
 					<div className="flex items-center gap-6 md:ml-6 mt-12">

@@ -1,9 +1,9 @@
-import Container from './Container';
-import RedHeartIcon from '../assets/icons/heart-red.svg';
+import Container from '@/components/Container';
+import RedHeartIcon from '@/assets/icons/heart-red.svg';
 
-export default function Footer() {
+export default function Footer(props) {
 	return (
-		<Container noMargin>
+		<Container noMargin {...props}>
 			<footer className="flex flex-col sm:flex-row gap-3 sm:gap-0 items-center justify-between mb-12 pt-5 border-t-2 border-t-neutral-200 dark:border-t-neutral-800">
 				<p className="flex items-center gap-2">
 					<span>Made with</span>

@@ -1,15 +1,15 @@
 import Image from 'next/image';
-import Container from '../../components/Container';
-import Navbar from '../../components/Navbar';
-import Highlight from '../../components/Highlight';
-import Ad from '../../components/Ad';
-import AnchorHeader from '../../components/AnchorHeader';
-import javaExample from '../../assets/response/java.jsonc';
-import bedrockExample from '../../assets/response/bedrock.jsonc';
-import iconExample from '../../assets/response/icon.png';
-import javaWidgetLightExample from '../../assets/response/java-widget-light.png';
-import javaWidgetDarkExample from '../../assets/response/java-widget-dark.png';
-import Collapsible from '../../components/Collapsible';
+import bedrockExample from '@/assets/response/bedrock.jsonc';
+import iconExample from '@/assets/response/icon.png';
+import javaWidgetDarkExample from '@/assets/response/java-widget-dark.png';
+import javaWidgetLightExample from '@/assets/response/java-widget-light.png';
+import javaExample from '@/assets/response/java.jsonc';
+import Ad from '@/components/Ad';
+import AnchorHeader from '@/components/AnchorHeader';
+import Collapsible from '@/components/Collapsible';
+import Container from '@/components/Container';
+import Highlight from '@/components/Highlight';
+import Navbar from '@/components/Navbar';
 
 export const metadata = {
 	title: 'API Documentation',

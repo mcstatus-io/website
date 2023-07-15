@@ -5,16 +5,16 @@ import Image from 'next/image';
 import gt from 'semver/functions/gt';
 import coerce from 'semver/functions/coerce';
 import valid from 'semver/functions/valid';
-import MinecraftFormatted from './MinecraftFormatted';
-import Chevron from './Chevron';
-import UserIcon from '../assets/icons/user.svg';
-import ListIcon from '../assets/icons/list.svg';
-import internalMods from '../assets/internal-mods';
+import MinecraftFormatted from '@/components/MinecraftFormatted';
+import Chevron from '@/components/Chevron';
+import UserIcon from '@/assets/icons/user.svg';
+import ListIcon from '@/assets/icons/list.svg';
+import internalMods from '@/assets/mods';
 
 const hasDuplicateValues = (arr) => arr.length > new Set(arr).size;
 const sortAscendingCaseInsensitive = (prop) => (a, b) => a[prop].toLowerCase() > b[prop].toLowerCase() ? 1 : b[prop].toLowerCase() > a[prop].toLowerCase() ? -1 : 0;
 
-export default function StatusTable({ result, protocolVersions }) {
+export default function StatusTable({ result, protocolVersions, ...props }) {
 	const [showMods, setShowMods] = useState(false);
 	const [showPlayers, setShowPlayers] = useState(false);
 	const [showPlugins, setShowPlugins] = useState(false);
@@ -307,7 +307,7 @@ export default function StatusTable({ result, protocolVersions }) {
 	}
 
 	return (
-		<div>
+		<div {...props}>
 			{
 				rows.map(([label, content], index) => (
 					<div className={`block lg:flex w-full p-4 ${index + 1 !== rows.length ? 'border-b border-b-black/10 dark:border-b-white/10 contrast-more:border-b-black/50 contrast-more:dark:border-b-white/50' : ''}`} key={index}>
