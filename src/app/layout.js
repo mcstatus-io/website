@@ -1,9 +1,10 @@
+import '@/styles/global.sass';
+
+import { Fira_Mono, Inter, Ubuntu } from 'next/font/google';
 import Script from 'next/script';
-import { Inter, Fira_Mono, Ubuntu } from 'next/font/google';
-import ServiceWorker from '@/components/ServiceWorker';
 import Container from '@/components/Container';
 import Footer from '@/components/Footer';
-import '@/styles/global.sass';
+import ServiceWorker from '@/components/ServiceWorker';
 
 const interFont = Inter({
 	variable: '--font-inter',

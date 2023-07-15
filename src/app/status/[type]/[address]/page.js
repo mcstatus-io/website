@@ -3,8 +3,6 @@ import InfoIcon from '@/assets/icons/info.svg';
 import APIUsage from '@/components/APIUsage';
 import StatusTable from '@/components/StatusTable';
 
-export const revalidate = 0;
-
 export const getStatusData = async (type, address) => {
 	const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/${type}/${address}`, { next: { revalidate: 15 } });
 
