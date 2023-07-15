@@ -1,22 +1,24 @@
 import Link from 'next/link';
-import StatusTable from '@/components/StatusTable';
-import APIUsage from '@/components/APIUsage';
 import InfoIcon from '@/assets/icons/info.svg';
+import APIUsage from '@/components/APIUsage';
+import StatusTable from '@/components/StatusTable';
 
 export const revalidate = 0;
 
 export const getStatusData = async (type, address) => {
-	const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/${type}/${address}`, { cache: 'no-store' });
-	const body = await result.json();
+	const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/${type}/${address}`, { next: { revalidate: 15 } });
 
-	return body;
+	if (!result.ok) throw new Error(await result.text());
+
+	return await result.json();
 };
 
 const getProtocolVersionData = async (type) => {
 	const result = await fetch(`https://raw.githubusercontent.com/PrismarineJS/minecraft-data/master/data/${type === 'java' ? 'pc' : 'bedrock'}/common/protocolVersions.json`);
-	const body = await result.json();
 
-	return body;
+	if (!result.ok) throw new Error(await result.text());
+
+	return await result.json();
 };
 
 export async function generateMetadata({ params: { type, address } }) {
