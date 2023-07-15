@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import Container from '@/components/Container';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import CalendarIcon from '@/assets/icons/calendar.svg';
+import DiscordIcon from '@/assets/icons/discord.svg';
 import GithubIcon from '@/assets/icons/github.svg';
 import MenuIcon from '@/assets/icons/menu.svg';
 import CloseIcon from '@/assets/icons/x.svg';
 import icon from '@/assets/img/icon.png';
+import Container from '@/components/Container';
 
 export default function Navbar({ active }) {
 	const [showMenu, setShowMenu] = useState(false);
@@ -54,6 +55,12 @@ export default function Navbar({ active }) {
 						<Link href="/about" className={`block md:mr-1 p-1 ${showMenu && active === 'about' ? 'text-white' : (active === 'about' ? 'text-black dark:text-white' : (showMenu ? 'text-neutral-400' : 'hover:text-black hover:dark:text-white motion-safe:transition-colors'))}`}>
 							About
 						</Link>
+					</li>
+					<li>
+						<a href="https://discord.gg/Tf4xwK3Ke7" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 motion-safe:transition-colors'} p-2`}>
+							<DiscordIcon width="24" height="24" title="Discord" />
+							<span className="md:sr-only font-bold">Discord</span>
+						</a>
 					</li>
 					<li>
 						<a href="https://github.com/mcstatus-io" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 motion-safe:transition-colors'} p-2`}>
