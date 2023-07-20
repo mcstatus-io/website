@@ -42,7 +42,7 @@ export default function Page() {
 			<Container>
 				<hgroup>
 					<h1 className="h1">API Documentation</h1>
-					<p className="text-2xl font-light mt-2">Documentation on how to use our API in your service</p>
+					<p className="text-2xl font-light mt-2 text-neutral-300">Documentation on how to use our API in your service</p>
 				</hgroup>
 				<Ad className="mt-5" />
 				<section>
@@ -66,20 +66,52 @@ export default function Page() {
 				<section>
 					<AnchorHeader size={2} id="routes" className="mt-12">Routes</AnchorHeader>
 					<section>
-						<div className="box p-4 rounded mt-3">
+						<div className="box p-5 rounded mt-3">
 							<AnchorHeader size={3} id="java-status">Java Status</AnchorHeader>
-							<p className="mt-2 leading-7">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>. You can also set <code>?query=false</code> in the URL query parameters to disable query lookup for faster status retrieval at the expense of missing <code>software</code> and <code>plugins</code> properties.</p>
+							<p className="mt-2 leading-7">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
 							<p className="flex items-center gap-2 mt-3">
 								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
 								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/java/&lt;address&gt;</span></code>
 							</p>
-							<Collapsible title="Response Body" className="block mt-4" noPadding>
+							<Collapsible title="Query Parameters" className="block mt-4">
+								<table className="table table-auto text-center w-full border-x border-t border-neutral-700">
+									<thead>
+										<tr>
+											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Value</th>
+											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Data Type</th>
+											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Optional</th>
+											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Default</th>
+											<th className="p-3 border-b border-neutral-700 w-[60%]">Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th className="p-3 border-r border-b border-neutral-700">
+												<code>query</code>
+											</th>
+											<td className="p-3 border-r border-b border-neutral-700">
+												Boolean
+											</td>
+											<td className="p-3 border-r border-b border-neutral-700">
+												Yes
+											</td>
+											<td className="p-3 border-r border-b border-neutral-700">
+												<code>true</code>
+											</td>
+											<td className="p-3 border-b border-neutral-700">
+												<span>Enables query lookup on the server, which provides additional information such as the <code>software</code> and <code>plugins</code> properties on the response. Disabling this may also speed up status lookup times.</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</Collapsible>
+							<Collapsible title="Response Body" className="block mt-2" noPadding>
 								<Highlight source={javaExample} className="bg-neutral-800 dark:bg-transparent" />
 							</Collapsible>
 						</div>
 					</section>
 					<section>
-						<div className="box p-4 rounded mt-3">
+						<div className="box p-5 rounded mt-3">
 							<AnchorHeader size={3} id="bedrock-status">Bedrock Status</AnchorHeader>
 							<p className="mt-2 leading-7">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
 							<p className="flex items-center gap-2 mt-3">
@@ -92,14 +124,63 @@ export default function Page() {
 						</div>
 					</section>
 					<section>
-						<div className="box p-4 rounded mt-3">
+						<div className="box p-5 rounded mt-3">
 							<AnchorHeader size={3} id="java-widget">Java Widget</AnchorHeader>
-							<p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL. All query parameters are optional.</p>
+							<p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL. The image is generated on every request, but the status of the server may be cached.</p>
 							<p className="flex items-center gap-2 mt-3">
 								<span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/widget/java/&lt;address&gt;?dark=&lt;true/false&gt;&rounded=&lt;true/false&gt;</span></code>
+								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/widget/java/&lt;address&gt;</span></code>
 							</p>
-							<Collapsible title="Response Body" className="block mt-4">
+							<Collapsible title="Query Parameters" className="block mt-4">
+								<table className="table table-auto text-center w-full border-x border-t border-neutral-700">
+									<thead>
+										<tr>
+											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Value</th>
+											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Data Type</th>
+											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Optional</th>
+											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Default</th>
+											<th className="p-3 border-b border-neutral-700 w-[60%]">Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th className="p-3 border-r border-b border-neutral-700">
+												<code>dark</code>
+											</th>
+											<td className="p-3 border-r border-b border-neutral-700">
+												Boolean
+											</td>
+											<td className="p-3 border-r border-b border-neutral-700">
+												Yes
+											</td>
+											<td className="p-3 border-r border-b border-neutral-700">
+												<code>true</code>
+											</td>
+											<td className="p-3 border-b border-neutral-700">
+												<span>Enables dark mode for the widget image, making the background a dark gray color with the foreground text white.</span>
+											</td>
+										</tr>
+										<tr>
+											<th className="p-3 border-r border-b border-neutral-700">
+												<code>rounded</code>
+											</th>
+											<td className="p-3 border-r border-b border-neutral-700">
+												Boolean
+											</td>
+											<td className="p-3 border-r border-b border-neutral-700">
+												Yes
+											</td>
+											<td className="p-3 border-r border-b border-neutral-700">
+												<code>true</code>
+											</td>
+											<td className="p-3 border-b border-neutral-700">
+												<span>Makes the corners of the widget card rounded, leaving the missing corner area transparent.</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</Collapsible>
+							<Collapsible title="Response Body" className="block mt-2">
 								<div className="flex items-center gap-3">
 									<Image src={javaWidgetLightExample} alt="Sample Java Edition server light widget" />
 									<Image src={javaWidgetDarkExample} alt="Sample Java Edition server dark widget" />
@@ -108,7 +189,7 @@ export default function Page() {
 						</div>
 					</section>
 					<section>
-						<div className="box p-4 rounded mt-3">
+						<div className="box p-5 rounded mt-3">
 							<AnchorHeader size={3} id="icon">Icon</AnchorHeader>
 							<p className="mt-2 leading-7">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
 							<p className="flex items-center gap-2 mt-3">

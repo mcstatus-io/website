@@ -5,7 +5,7 @@
 
 @mixin interactive-box
     @include box
-    @apply hover:[&:not(:disabled)]:bg-opacity-10 focus:bg-opacity-10 hover:border-opacity-25 contrast-more:hover:border-opacity-100 focus:border-opacity-25 contrast-more:focus:border-opacity-100 disabled:border-opacity-0 motion-safe:transition-colors outline-none
+    @apply hover:[&:not(:disabled)]:bg-opacity-10 focus:bg-opacity-10 hover:border-opacity-25 contrast-more:hover:border-opacity-100 focus:border-opacity-25 contrast-more:focus:border-opacity-100 disabled:border-opacity-0 outline-none
 
 @tailwind base
 @tailwind components
@@ -13,7 +13,7 @@
 
 @layer utilities
     .link
-        @apply text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 motion-safe:transition-colors underline-offset-2
+        @apply text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 underline-offset-2
 
         &.link-contrast
             @apply dark:text-blue-400 dark:hover:text-blue-600
@@ -49,6 +49,9 @@
     .interactive-box
         @include interactive-box
 
+    .carbon > *:not([id="carbonads"])
+        @apply hidden
+
 code
     @apply text-red-700 dark:text-red-400 font-mono
 
@@ -71,7 +74,7 @@ h1[id], h2[id], h3[id], h4[id], h5[id]
             @apply text-sm p-4
     
     .carbon-poweredby
-        @apply absolute right-2 bottom-2 px-2 py-1 uppercase font-bold tracking-widest hover:text-blue-600 motion-safe:transition-colors text-[8px]
+        @apply absolute right-2 bottom-2 px-2 py-1 uppercase font-bold tracking-widest hover:text-blue-600 text-[8px]
 
 :not(.button, .select, .input, .interactive-box):is(:focus-visible)
     @apply outline-1 outline-offset-4 outline-white outline-dashed
