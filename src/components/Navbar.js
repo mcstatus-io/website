@@ -57,7 +57,7 @@ export default function Navbar({ active }) {
 						</Link>
 					</li>
 					<li>
-						<a href="https://discord.gg/Tf4xwK3Ke7" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 motion-safe:transition-colors'} p-2`}>
+						<a href="https://discord.gg/QwvzbA9KGz" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800 motion-safe:transition-colors'} p-2`}>
 							<DiscordIcon width="22" height="22" title="Discord" />
 							<span className="md:sr-only font-bold">Discord</span>
 						</a>
