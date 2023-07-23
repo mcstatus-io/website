@@ -4,14 +4,14 @@ export default function AnchorHeader({ size, id, className = '', children, ...pr
 	switch (size) {
 		case 2:
 			return (
-				<h2 className={`flex flex-row items-center gap-2 h2 ${className}`} id={id} {...props}>
+				<h2 className={`title flex items-center gap-2 ${className}`} id={id} {...props}>
 					<a href={`#${id}`} className="border-b border-b-transparent hover:border-b-black dark:hover:border-b-white border-dotted [&:hover~svg]:block">{children}</a>
 					<LinkIcon width="16" height="16" className="hidden" />
 				</h2>
 			);
 		case 3:
 			return (
-				<h3 className={`flex flex-row items-center gap-2 h3 ${className}`} id={id} {...props}>
+				<h3 className={`title flex items-center gap-2 ${className}`} id={id} {...props}>
 					<a href={`#${id}`} className="border-b border-b-transparent hover:border-b-black dark:hover:border-b-white border-dotted [&:hover~svg]:block">{children}</a>
 					<LinkIcon width="14" height="14" className="hidden" />
 				</h3>

@@ -31,26 +31,22 @@ export default function Search({ host = '', type = 'java', className = '', autoF
 	};
 
 	return (
-		<form className={`flex flex-col md:flex-row items-center gap-3 ${className}`} onSubmit={handleSubmit}>
-			<div className="flex flex-col sm:flex-row items-center gap-3 grow w-full md:w-auto">
-				<div className="w-full sm:w-auto">
-					<label className="sr-only" htmlFor="type">Server Type</label>
-					<select className="select w-full md:w-auto" id="type" defaultValue={type} onChange={(event) => dispatch({ type: 'SET_TYPE', value: event.target.value })}>
-						<option value="java" className="text-neutral-800">Java Edition</option>
-						<option value="bedrock" className="text-neutral-800">Bedrock Edition</option>
-					</select>
-				</div>
-				<div className="grow w-full sm:w-auto">
-					<label className="sr-only" htmlFor="host">Host</label>
-					<input type="text" className="input text-center md:text-left w-full" id="host" placeholder="demo.mcstatus.io" defaultValue={host} onChange={(event) => dispatch({ type: 'SET_HOST', value: event.target.value })} autoComplete="off" spellCheck="false" autoCapitalize="off" autoCorrect="off" autoFocus={autoFocus} />
-				</div>
+		<form className={`flex flex-wrap items-center gap-3 ${className}`} onSubmit={handleSubmit}>
+			<div className="basis-full sm:basis-auto">
+				<label className="sr-only" htmlFor="type">Server Type</label>
+				<select className="select w-full md:w-auto" id="type" defaultValue={type} onChange={(event) => dispatch({ type: 'SET_TYPE', value: event.target.value })}>
+					<option value="java" className="text-neutral-800">Java Edition</option>
+					<option value="bedrock" className="text-neutral-800">Bedrock Edition</option>
+				</select>
 			</div>
-			<div className="w-full md:w-auto">
-				<button type="submit" className="button flex items-center gap-2 w-full" disabled={!isValid(data) || (data.type === type && data.host === host)}>
-					<span>Submit</span>
-					<ArrowRightIcon width="16" height="16" />
-				</button>
+			<div className="grow">
+				<label className="sr-only" htmlFor="host">Host</label>
+				<input type="text" className="input text-center md:text-left w-full" id="host" placeholder="demo.mcstatus.io" defaultValue={host} onChange={(event) => dispatch({ type: 'SET_HOST', value: event.target.value })} autoComplete="off" spellCheck="false" autoCapitalize="off" autoCorrect="off" autoFocus={autoFocus} />
 			</div>
+			<button type="submit" className="basis-full md:basis-auto button flex items-center justify-center gap-2" disabled={!isValid(data) || (data.type === type && data.host === host)}>
+				<span>Submit</span>
+				<ArrowRightIcon width="16" height="16" />
+			</button>
 		</form>
 	);
 }

@@ -15,6 +15,6 @@ export default function Ad({ className }) {
 	}, []);
 
 	return process.env.NEXT_PUBLIC_CARBON_CODE
-		? <div className={`${className ?? ''} carbon`} ref={elem} />
+		? <div className={`${className ?? ''} carbon max-w-fit mx-auto md:mx-0`} ref={elem} />
 		: null;
 }

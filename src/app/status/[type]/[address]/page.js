@@ -68,7 +68,7 @@ export default async function Page({ params: { type, address } }) {
 			<section>
 				{
 					status.host === 'demo.mcstatus.io' && status.port === 25565
-						? <div className="card lg:flex lg:flex-row lg:items-center lg:gap-5 mt-5">
+						? <div className="card flex items-center gap-5 mt-5">
 							<InfoIcon width="24" height="24" className="w-[24px] h-[24px] hidden lg:block ml-2" />
 							<p>Please note that this is not a real Minecraft server, it is a demo server used to test the features of this website. If you would like to learn more, please refer to our <Link href="/about#faq" className="link">frequently asked questions</Link>.</p>
 						</div>

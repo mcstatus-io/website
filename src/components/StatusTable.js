@@ -90,8 +90,8 @@ export default function StatusTable({ status, protocolVersions, className = '', 
 												? <button type="button" className="button flex gap-2 items-center text-sm" onClick={() => setShowAvatars(!showAvatars)}>
 													{
 														showAvatars
-															? <ListIcon width="20" height="20" />
-															: <UserIcon width="20" height="20" />
+															? <ListIcon width="16" height="16" />
+															: <UserIcon width="16" height="16" />
 													}
 													{
 														showAvatars
@@ -111,14 +111,14 @@ export default function StatusTable({ status, protocolVersions, className = '', 
 							? <div className={showPlayers ? 'block' : 'hidden'} id="players-list">
 								{
 									showAvatars && allowAvatars
-										? <ul className="list-none flex flex-wrap gap-5 mt-3">
+										? <ul className="list-none flex flex-wrap gap-2 mt-3">
 											{
 												status.players.list.sort(sortAscendingCaseInsensitive('name_clean')).map((player, index) => (
 													<li key={index}>
-														<div className="flex gap-3 items-center">
-															<Image src={`https://api.mineatar.io/head/${player.uuid}`} width="32" height="32" />
-															<a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}`} className="link" title={player.uuid}>{player.name_clean}</a>
-														</div>
+														<a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}`} className="card card-hover px-3 py-2 flex gap-3 items-center">
+															<Image src={`https://api.mineatar.io/head/${player.uuid}`} width="24" height="24" />
+															<span className="font-mono text-sm" title={player.uuid}>{player.name_clean}</span>
+														</a>
 													</li>
 												))
 											}
@@ -145,7 +145,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
 								}
 								{
 									status.players.online > status.players.list.length && allowAvatars
-										? <p className="text-neutral-500 dark:text-neutral-400 mt-3 italic">Note that not all online players are shown. Standard Java Edition servers limit sample players to 12 by default.</p>
+										? <p className="text-neutral-500 dark:text-neutral-400 mt-3 italic">Note that not all online players may not be shown. Standard Java Edition servers limit sample players to 12 by default.</p>
 										: null
 								}
 							</div>

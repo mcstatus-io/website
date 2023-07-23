@@ -12,7 +12,7 @@ export default function Collapsible({ title, autoExpanded, id, noPadding = false
 				<span className="text-left">{title}</span>
 				<Chevron width="24" height="24" isFlipped={isExpanded} />
 			</button>
-			<div className={`${isExpanded ? 'block' : 'hidden'} card ${noPadding ? '' : 'p-4'} rounded-t-none`} id={id}>
+			<div className={`${isExpanded ? 'block' : 'hidden'} card ${noPadding ? 'p-0' : 'p-4'} rounded-t-none`} id={id}>
 				{children}
 			</div>
 		</div>

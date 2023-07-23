@@ -19,8 +19,8 @@ export default function Page() {
 			<Container>
 				<section>
 					<hgroup>
-						<h1 className="h1">Minecraft Server Status</h1>
-						<p className="text-2xl font-light mt-2 text-neutral-300">Quickly retrieve the status of any Minecraft server</p>
+						<h1 className="title">Minecraft Server Status</h1>
+						<p className="subtitle">Quickly retrieve the status of any Minecraft server</p>
 					</hgroup>
 					<Search className="mt-5" autoFocus />
 				</section>
@@ -29,8 +29,8 @@ export default function Page() {
 					<div className="flex items-center gap-6 md:ml-6 mt-12">
 						<GiftIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
-							<h2 className="h2">Sample Servers</h2>
-							<p className="text-lg font-light text-neutral-400">A few sample servers to test out our service</p>
+							<h2 className="title">Sample Servers</h2>
+							<p className="subtitle">A few sample servers to test out our service</p>
 						</hgroup>
 					</div>
 					<SampleServers className="mt-5" />
@@ -39,8 +39,8 @@ export default function Page() {
 					<div className="flex items-center gap-6 md:ml-6 mt-12">
 						<InfoIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
-							<h2 className="h2">About Us</h2>
-							<p className="text-lg font-light text-neutral-400">A quick understanding of what we do</p>
+							<h2 className="title">About Us</h2>
+							<p className="subtitle">A quick understanding of what we do</p>
 						</hgroup>
 					</div>
 					<p className="mb-3 mt-5 leading-7">mcstatus.io is an online tool for retrieving the status of any Java Edition or Bedrock Edition Minecraft server. We also offer an API for developers to programmatically retrieve the status of Minecraft servers, with a very lenient cache duration of only 1 minute. This service was inspired by <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a> but built from the ground up with speed and reliability in mind. While working with other existing services, I realized the many missing features that developers could use which inspired me to start my own service. To this day, we serve an average of 50K unique users and over 500,000 requests per month.</p>
@@ -52,8 +52,8 @@ export default function Page() {
 					<div className="flex items-center gap-6 md:ml-6 mt-12">
 						<ToolIcon width="28" height="28" className="hidden md:block" />
 						<hgroup>
-							<h2 className="h2">Other Tools</h2>
-							<p className="text-lg font-light text-neutral-400">Other services we have also made</p>
+							<h2 className="title">Other Tools</h2>
+							<p className="subtitle">Other services we have also made</p>
 						</hgroup>
 					</div>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">

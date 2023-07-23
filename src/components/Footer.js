@@ -4,7 +4,7 @@ import Container from '@/components/Container';
 export default function Footer(props) {
 	return (
 		<Container noMargin {...props}>
-			<footer className="flex flex-col sm:flex-row gap-3 sm:gap-0 items-center justify-between mb-12 pt-5 border-t-2 border-t-neutral-200 dark:border-t-neutral-800">
+			<footer className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0 mb-12 pt-5 border-t-2 border-t-neutral-200 dark:border-t-neutral-800">
 				<p className="flex items-center gap-2">
 					<span>Made with</span>
 					<RedHeartIcon width="18" height="18" />

@@ -21,14 +21,21 @@
             @apply underline
 
 @layer components
-    .h1
-        @apply text-4xl lg:text-5xl font-black
+    .title
+        &:is(h1)
+            @apply text-4xl lg:text-5xl font-black
 
-    .h2
-        @apply text-2xl font-bold
+            & + .subtitle
+                @apply text-2xl font-light mt-2 text-neutral-300
 
-    .h3
-        @apply text-lg font-bold
+        &:is(h2)
+            @apply text-2xl font-bold
+
+            & + .subtitle
+                @apply text-lg font-light text-neutral-400
+
+        &:is(h3)
+            @apply text-lg font-bold
         
     .button
         @include box
@@ -55,8 +62,8 @@
     .carbon > *:not([id="carbonads"])
         @apply hidden
 
-code
-    @apply text-red-700 dark:text-red-400 font-mono
+    code
+        @apply text-red-700 dark:text-red-400 font-mono
 
 .flex *
     @apply min-w-0
@@ -81,5 +88,5 @@ h1[id], h2[id], h3[id], h4[id], h5[id]
     .carbon-poweredby
         @apply absolute right-2 bottom-2 px-2 py-1 uppercase font-bold tracking-widest hover:text-blue-600 text-[8px]
 
-:not(.button, .select, .input, .interactive-box):is(:focus-visible)
+:not(.button, .select, .input, .card-hover):is(:focus-visible)
     @apply outline-1 outline-offset-4 outline-white outline-dashed

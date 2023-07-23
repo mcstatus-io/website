@@ -41,8 +41,8 @@ export default function Page() {
 			<Navbar active="api" />
 			<Container>
 				<hgroup>
-					<h1 className="h1">API Documentation</h1>
-					<p className="text-2xl font-light mt-2 text-neutral-300">Documentation on how to use our API in your service</p>
+					<h1 className="title">API Documentation</h1>
+					<p className="subtitle">Documentation on how to integrate our API in your service</p>
 				</hgroup>
 				<Ad className="mt-5" />
 				<section>
@@ -74,36 +74,38 @@ export default function Page() {
 								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/java/&lt;address&gt;</span></code>
 							</p>
 							<Collapsible title="Query Parameters" className="block mt-4">
-								<table className="table table-auto text-center w-full border-x border-t border-neutral-700">
-									<thead>
-										<tr>
-											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Value</th>
-											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Data Type</th>
-											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Optional</th>
-											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Default</th>
-											<th className="p-3 border-b border-neutral-700 w-[60%]">Description</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th className="p-3 border-r border-b border-neutral-700">
-												<code>query</code>
-											</th>
-											<td className="p-3 border-r border-b border-neutral-700">
-												Boolean
-											</td>
-											<td className="p-3 border-r border-b border-neutral-700">
-												Yes
-											</td>
-											<td className="p-3 border-r border-b border-neutral-700">
-												<code>true</code>
-											</td>
-											<td className="p-3 border-b border-neutral-700">
-												<span>Enables query lookup on the server, which provides additional information such as the <code>software</code> and <code>plugins</code> properties on the response. Disabling this may also speed up status lookup times.</span>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+								<div className="max-w-full overflow-x-auto">
+									<table className="table table-auto min-w-[640px] text-center w-full border-x border-t border-neutral-700">
+										<thead>
+											<tr>
+												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Value</th>
+												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Data Type</th>
+												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Optional</th>
+												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Default</th>
+												<th className="p-3 border-b border-neutral-700 w-[60%]">Description</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th className="p-3 border-r border-b border-neutral-700">
+													<code>query</code>
+												</th>
+												<td className="p-3 border-r border-b border-neutral-700">
+													Boolean
+												</td>
+												<td className="p-3 border-r border-b border-neutral-700">
+													Yes
+												</td>
+												<td className="p-3 border-r border-b border-neutral-700">
+													<code>true</code>
+												</td>
+												<td className="p-3 border-b border-neutral-700">
+													<span>Enables query lookup on the server, which provides additional information such as the <code>software</code> and <code>plugins</code> properties on the response. Disabling this may also speed up status lookup times.</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</Collapsible>
 							<Collapsible title="Response Body" className="block mt-2" noPadding>
 								<Highlight source={javaExample} className="bg-neutral-800 dark:bg-transparent" />
@@ -132,53 +134,55 @@ export default function Page() {
 								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/widget/java/&lt;address&gt;</span></code>
 							</p>
 							<Collapsible title="Query Parameters" className="block mt-4">
-								<table className="table table-auto text-center w-full border-x border-t border-neutral-700">
-									<thead>
-										<tr>
-											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Value</th>
-											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Data Type</th>
-											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Optional</th>
-											<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Default</th>
-											<th className="p-3 border-b border-neutral-700 w-[60%]">Description</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th className="p-3 border-r border-b border-neutral-700">
-												<code>dark</code>
-											</th>
-											<td className="p-3 border-r border-b border-neutral-700">
-												Boolean
-											</td>
-											<td className="p-3 border-r border-b border-neutral-700">
-												Yes
-											</td>
-											<td className="p-3 border-r border-b border-neutral-700">
-												<code>true</code>
-											</td>
-											<td className="p-3 border-b border-neutral-700">
-												<span>Enables dark mode for the widget image, making the background a dark gray color with the foreground text white.</span>
-											</td>
-										</tr>
-										<tr>
-											<th className="p-3 border-r border-b border-neutral-700">
-												<code>rounded</code>
-											</th>
-											<td className="p-3 border-r border-b border-neutral-700">
-												Boolean
-											</td>
-											<td className="p-3 border-r border-b border-neutral-700">
-												Yes
-											</td>
-											<td className="p-3 border-r border-b border-neutral-700">
-												<code>true</code>
-											</td>
-											<td className="p-3 border-b border-neutral-700">
-												<span>Makes the corners of the widget card rounded, leaving the missing corner area transparent.</span>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+								<div className="max-w-full overflow-x-auto">
+									<table className="table table-auto min-w-[640px] text-center w-full border-x border-t border-neutral-700">
+										<thead>
+											<tr>
+												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Value</th>
+												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Data Type</th>
+												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Optional</th>
+												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Default</th>
+												<th className="p-3 border-b border-neutral-700 w-[60%]">Description</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th className="p-3 border-r border-b border-neutral-700">
+													<code>dark</code>
+												</th>
+												<td className="p-3 border-r border-b border-neutral-700">
+													Boolean
+												</td>
+												<td className="p-3 border-r border-b border-neutral-700">
+													Yes
+												</td>
+												<td className="p-3 border-r border-b border-neutral-700">
+													<code>true</code>
+												</td>
+												<td className="p-3 border-b border-neutral-700">
+													<span>Enables dark mode for the widget image, making the background a dark gray color with the foreground text white.</span>
+												</td>
+											</tr>
+											<tr>
+												<th className="p-3 border-r border-b border-neutral-700">
+													<code>rounded</code>
+												</th>
+												<td className="p-3 border-r border-b border-neutral-700">
+													Boolean
+												</td>
+												<td className="p-3 border-r border-b border-neutral-700">
+													Yes
+												</td>
+												<td className="p-3 border-r border-b border-neutral-700">
+													<code>true</code>
+												</td>
+												<td className="p-3 border-b border-neutral-700">
+													<span>Makes the corners of the widget card rounded, leaving the missing corner area transparent.</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</Collapsible>
 							<Collapsible title="Response Body" className="block mt-2">
 								<div className="flex items-center gap-3">
@@ -197,7 +201,8 @@ export default function Page() {
 								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/icon/&lt;address&gt;</span></code>
 							</p>
 							<Collapsible title="Response Body" className="block mt-4">
-								<Image src={iconExample} width="128" height="128" alt="Sample server icon" />
+								<Image src={iconExample} width="128" height="128" className="[image-rendering:pixelated;]" alt="Sample server icon" />
+								<p className="text-neutral-500 italic mt-3">(actual 64&times;64, scaled to 128&times;128)</p>
 							</Collapsible>
 						</div>
 					</section>
