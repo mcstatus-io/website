@@ -75,31 +75,27 @@ export default function Page() {
 							</p>
 							<Collapsible title="Query Parameters" className="block mt-4">
 								<div className="max-w-full overflow-x-auto">
-									<table className="table table-auto min-w-[640px] text-center w-full border-x border-t border-neutral-700">
+									<table className="table table-auto min-w-[640px] text-center w-full border-x border-t border-neutral-600">
 										<thead>
 											<tr>
-												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Value</th>
-												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Data Type</th>
-												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Optional</th>
-												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Default</th>
-												<th className="p-3 border-b border-neutral-700 w-[60%]">Description</th>
+												<th className="p-3 border-r border-b border-neutral-600 w-[10%]">Value</th>
+												<th className="p-3 border-r border-b border-neutral-600 w-[10%]">Data Type</th>
+												<th className="p-3 border-r border-b border-neutral-600 w-[10%]">Default</th>
+												<th className="p-3 border-b border-neutral-600 w-[60%]">Description</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
-												<th className="p-3 border-r border-b border-neutral-700">
+												<th className="p-3 border-r border-b border-neutral-600">
 													<code>query</code>
 												</th>
-												<td className="p-3 border-r border-b border-neutral-700">
+												<td className="p-3 border-r border-b border-neutral-600">
 													Boolean
 												</td>
-												<td className="p-3 border-r border-b border-neutral-700">
-													Yes
-												</td>
-												<td className="p-3 border-r border-b border-neutral-700">
+												<td className="p-3 border-r border-b border-neutral-600">
 													<code>true</code>
 												</td>
-												<td className="p-3 border-b border-neutral-700">
+												<td className="p-3 border-b border-neutral-600">
 													<span>Enables query lookup on the server, which provides additional information such as the <code>software</code> and <code>plugins</code> properties on the response. Disabling this may also speed up status lookup times.</span>
 												</td>
 											</tr>
@@ -135,48 +131,41 @@ export default function Page() {
 							</p>
 							<Collapsible title="Query Parameters" className="block mt-4">
 								<div className="max-w-full overflow-x-auto">
-									<table className="table table-auto min-w-[640px] text-center w-full border-x border-t border-neutral-700">
+									<table className="table table-auto min-w-[640px] text-center w-full border-x border-t border-neutral-600">
 										<thead>
 											<tr>
-												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Value</th>
-												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Data Type</th>
-												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Optional</th>
-												<th className="p-3 border-r border-b border-neutral-700 w-[10%]">Default</th>
-												<th className="p-3 border-b border-neutral-700 w-[60%]">Description</th>
+												<th className="p-3 border-r border-b border-neutral-600 w-[10%]">Value</th>
+												<th className="p-3 border-r border-b border-neutral-600 w-[10%]">Data Type</th>
+												<th className="p-3 border-r border-b border-neutral-600 w-[10%]">Default</th>
+												<th className="p-3 border-b border-neutral-600 w-[60%]">Description</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
-												<th className="p-3 border-r border-b border-neutral-700">
+												<th className="p-3 border-r border-b border-neutral-600">
 													<code>dark</code>
 												</th>
-												<td className="p-3 border-r border-b border-neutral-700">
+												<td className="p-3 border-r border-b border-neutral-600">
 													Boolean
 												</td>
-												<td className="p-3 border-r border-b border-neutral-700">
-													Yes
-												</td>
-												<td className="p-3 border-r border-b border-neutral-700">
+												<td className="p-3 border-r border-b border-neutral-600">
 													<code>true</code>
 												</td>
-												<td className="p-3 border-b border-neutral-700">
+												<td className="p-3 border-b border-neutral-600">
 													<span>Enables dark mode for the widget image, making the background a dark gray color with the foreground text white.</span>
 												</td>
 											</tr>
 											<tr>
-												<th className="p-3 border-r border-b border-neutral-700">
+												<th className="p-3 border-r border-b border-neutral-600">
 													<code>rounded</code>
 												</th>
-												<td className="p-3 border-r border-b border-neutral-700">
+												<td className="p-3 border-r border-b border-neutral-600">
 													Boolean
 												</td>
-												<td className="p-3 border-r border-b border-neutral-700">
-													Yes
-												</td>
-												<td className="p-3 border-r border-b border-neutral-700">
+												<td className="p-3 border-r border-b border-neutral-600">
 													<code>true</code>
 												</td>
-												<td className="p-3 border-b border-neutral-700">
+												<td className="p-3 border-b border-neutral-600">
 													<span>Makes the corners of the widget card rounded, leaving the missing corner area transparent.</span>
 												</td>
 											</tr>

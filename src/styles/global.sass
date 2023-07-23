@@ -1,10 +1,10 @@
 @import "~highlight.js/styles/atom-one-dark.css"    
 
 @mixin box
-    @apply bg-black/5 dark:bg-white/5 contrast-more:bg-black contrast-more:dark:bg-black
+    @apply bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-[0.075]
 
 @mixin interactive-box
-    @apply hover:[&:not(:disabled)]:bg-black/10 hover:dark:[&:not(:disabled)]:bg-white/10 focus:bg-black/10 focus:dark:bg-white/10 outline-none
+    @apply hover:[&:not(:disabled)]:bg-opacity-[0.15] hover:dark:[&:not(:disabled)]:bg-opacity-10 focus:[&:not(:disabled)]:bg-opacity-[0.15] focus:dark:[&:not(:disabled)]:bg-opacity-10 outline-none
 
 @tailwind base
 @tailwind components
@@ -22,17 +22,20 @@
 
 @layer components
     .title
+        &[id]
+            @apply scroll-mt-24
+
         &:is(h1)
             @apply text-4xl lg:text-5xl font-black
 
             & + .subtitle
-                @apply text-2xl font-light mt-2 text-neutral-300
+                @apply text-2xl font-light mt-2 text-neutral-500 dark:text-neutral-300
 
         &:is(h2)
             @apply text-2xl font-bold
 
             & + .subtitle
-                @apply text-lg font-light text-neutral-400
+                @apply text-lg font-light text-neutral-500 dark:text-neutral-400
 
         &:is(h3)
             @apply text-lg font-bold
@@ -76,9 +79,6 @@
 .flex *
     @apply min-w-0
 
-h1[id], h2[id], h3[id], h4[id], h5[id]
-    @apply scroll-mt-24
-
 #carbonads
     @include box
     @include interactive-box
@@ -97,4 +97,4 @@ h1[id], h2[id], h3[id], h4[id], h5[id]
         @apply absolute right-2 bottom-2 px-2 py-1 uppercase font-bold tracking-widest hover:text-blue-600 text-[8px]
 
 :not(.button, .select, .input, .card-hover):is(:focus-visible)
-    @apply outline-1 outline-offset-4 outline-white outline-dashed
+    @apply outline-2 outline-offset-4 outline-black dark:outline-white outline-dashed
