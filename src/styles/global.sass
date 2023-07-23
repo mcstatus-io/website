@@ -59,8 +59,16 @@
         &.card-hover
             @include interactive-box
 
-    .carbon > *:not([id="carbonads"])
-        @apply hidden
+    .carbon
+        & > *:not([id="carbonads"], .preview)
+            @apply hidden
+
+        .preview
+            @include box
+            @apply rounded flex items-center justify-center relative max-w-full font-ubuntu text-lg text-neutral-500 w-[420px] h-[132px]
+
+        &:has([id="carbonads"]) .preview
+            @apply hidden
 
     code
         @apply text-red-700 dark:text-red-400 font-mono
