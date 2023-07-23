@@ -56,8 +56,8 @@ export default function Page() {
 							<p className="text-lg font-light text-neutral-400">Other services we have also made</p>
 						</hgroup>
 					</div>
-					<div className="grid grid-cols-3 gap-3 mt-5">
-						<a href="https://mineatar.io" className="flex gap-5 interactive-box rounded p-5">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
+						<a href="https://mineatar.io" className="card card-hover flex gap-5">
 							<div className="w-16">
 								<Image src={mineatarIcon} className="mx-auto" alt="Mineatar Icon" />
 							</div>

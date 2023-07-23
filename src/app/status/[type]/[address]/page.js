@@ -3,7 +3,7 @@ import InfoIcon from '@/assets/icons/info.svg';
 import APIUsage from '@/components/APIUsage';
 import StatusTable from '@/components/StatusTable';
 
-export const getStatusData = async (type, address) => {
+const getStatus = async (type, address) => {
 	const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/${type}/${address}`, { next: { revalidate: 15 } });
 
 	if (!result.ok) throw new Error(await result.text());
@@ -11,7 +11,7 @@ export const getStatusData = async (type, address) => {
 	return await result.json();
 };
 
-const getProtocolVersionData = async (type) => {
+const getProtocolVersions = async (type) => {
 	const result = await fetch(`https://raw.githubusercontent.com/PrismarineJS/minecraft-data/master/data/${type === 'java' ? 'pc' : 'bedrock'}/common/protocolVersions.json`);
 
 	if (!result.ok) throw new Error(await result.text());
@@ -22,7 +22,13 @@ const getProtocolVersionData = async (type) => {
 export async function generateMetadata({ params: { type, address } }) {
 	address = decodeURIComponent(address);
 
-	const result = await getStatusData(type, address);
+	let result;
+
+	try {
+		result = await getStatus(type, address);
+	} catch {
+		// Ignore
+	}
 
 	return {
 		title: address,
@@ -54,26 +60,24 @@ export async function generateMetadata({ params: { type, address } }) {
 export default async function Page({ params: { type, address } }) {
 	address = decodeURIComponent(address);
 
-	const result = await getStatusData(type, address);
-	const protocolVersions = await getProtocolVersionData(type);
+	const status = await getStatus(type, address);
+	const protocolVersions = await getProtocolVersions(type);
 
 	return (
 		<>
 			<section>
 				{
-					result.host === 'demo.mcstatus.io' && result.port === 25565
-						? <div className="block lg:flex lg:flex-row lg:items-center lg:gap-5 box rounded mt-5 p-5">
+					status.host === 'demo.mcstatus.io' && status.port === 25565
+						? <div className="card lg:flex lg:flex-row lg:items-center lg:gap-5 mt-5">
 							<InfoIcon width="24" height="24" className="w-[24px] h-[24px] hidden lg:block ml-2" />
 							<p>Please note that this is not a real Minecraft server, it is a demo server used to test the features of this website. If you would like to learn more, please refer to our <Link href="/about#faq" className="link">frequently asked questions</Link>.</p>
 						</div>
 						: null
 				}
-				<div className="px-5 py-4 rounded mt-4 box">
-					<StatusTable result={result} protocolVersions={protocolVersions} />
-				</div>
+				<StatusTable status={status} protocolVersions={protocolVersions} className="mt-5" />
 			</section>
 			<section>
-				<APIUsage type={type} address={address} data={result} className="mt-3" />
+				<APIUsage type={type} address={address} data={status} className="mt-3" />
 			</section>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{
 				__html: JSON.stringify([

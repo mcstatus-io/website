@@ -9,7 +9,7 @@ export default function Error({ error }) {
 
 	return (
 		<section>
-			<div className="px-5 py-4 rounded mt-4 box">
+			<div className="card mt-4">
 				<p className="text-red-500 dark:text-red-400">Something went wrong when trying to fetch the status of that server. Please check the console for more information and try again later.</p>
 			</div>
 		</section>

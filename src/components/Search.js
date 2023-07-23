@@ -1,7 +1,8 @@
 'use client';
 
-import { useReducer } from 'react';
 import { useRouter } from 'next/navigation';
+import { useReducer } from 'react';
+import ArrowRightIcon from '@/assets/icons/arrow-right.svg';
 
 const validHostRegEx = /^[A-Za-z0-9-_]+(\.[A-Za-z0-9-_]+)*(:\d{1,5})?$/;
 
@@ -45,8 +46,9 @@ export default function Search({ host = '', type = 'java', className = '', autoF
 				</div>
 			</div>
 			<div className="w-full md:w-auto">
-				<button type="submit" className="button block w-full" disabled={!isValid(data) || (data.type === type && data.host === host)}>
-					Submit
+				<button type="submit" className="button flex items-center gap-2 w-full" disabled={!isValid(data) || (data.type === type && data.host === host)}>
+					<span>Submit</span>
+					<ArrowRightIcon width="16" height="16" />
 				</button>
 			</div>
 		</form>

@@ -1,11 +1,10 @@
 @import "~highlight.js/styles/atom-one-dark.css"    
 
 @mixin box
-    @apply border bg-black bg-opacity-5 contrast-more:bg-opacity-0 border-black border-opacity-10 contrast-more:border-opacity-50 dark:bg-white dark:bg-opacity-5 contrast-more:dark:bg-opacity-0 dark:border-white dark:border-opacity-10 contrast-more:dark:border-opacity-50
+    @apply bg-black/5 dark:bg-white/5 contrast-more:bg-black contrast-more:dark:bg-black
 
 @mixin interactive-box
-    @include box
-    @apply hover:[&:not(:disabled)]:bg-opacity-10 focus:bg-opacity-10 hover:border-opacity-25 contrast-more:hover:border-opacity-100 focus:border-opacity-25 contrast-more:focus:border-opacity-100 disabled:border-opacity-0 outline-none
+    @apply hover:[&:not(:disabled)]:bg-black/10 hover:dark:[&:not(:disabled)]:bg-white/10 focus:bg-black/10 focus:dark:bg-white/10 outline-none
 
 @tailwind base
 @tailwind components
@@ -32,22 +31,26 @@
         @apply text-lg font-bold
         
     .button
+        @include box
         @include interactive-box
-        @apply px-3 py-2 rounded
+        @apply px-3 py-2 rounded disabled:text-neutral-500
 
     .select
+        @include box
         @include interactive-box
         @apply px-3 py-2 rounded w-full appearance-none text-center cursor-pointer
 
     .input
+        @include box
         @include interactive-box
         @apply px-3 py-2 rounded block font-mono w-full
 
-    .box
+    .card
         @include box
+        @apply block p-5 rounded
 
-    .interactive-box
-        @include interactive-box
+        &.card-hover
+            @include interactive-box
 
     .carbon > *:not([id="carbonads"])
         @apply hidden
@@ -62,7 +65,9 @@ h1[id], h2[id], h3[id], h4[id], h5[id]
     @apply scroll-mt-24
 
 #carbonads
-    @apply block relative rounded max-w-full font-ubuntu interactive-box w-[420px]
+    @include box
+    @include interactive-box
+    @apply rounded relative max-w-full font-ubuntu w-[420px]
 
     .carbon-wrap
         @apply flex

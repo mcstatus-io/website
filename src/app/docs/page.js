@@ -66,7 +66,7 @@ export default function Page() {
 				<section>
 					<AnchorHeader size={2} id="routes" className="mt-12">Routes</AnchorHeader>
 					<section>
-						<div className="box p-5 rounded mt-3">
+						<div className="card mt-3">
 							<AnchorHeader size={3} id="java-status">Java Status</AnchorHeader>
 							<p className="mt-2 leading-7">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
 							<p className="flex items-center gap-2 mt-3">
@@ -111,7 +111,7 @@ export default function Page() {
 						</div>
 					</section>
 					<section>
-						<div className="box p-5 rounded mt-3">
+						<div className="card mt-3">
 							<AnchorHeader size={3} id="bedrock-status">Bedrock Status</AnchorHeader>
 							<p className="mt-2 leading-7">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
 							<p className="flex items-center gap-2 mt-3">
@@ -124,7 +124,7 @@ export default function Page() {
 						</div>
 					</section>
 					<section>
-						<div className="box p-5 rounded mt-3">
+						<div className="card mt-3">
 							<AnchorHeader size={3} id="java-widget">Java Widget</AnchorHeader>
 							<p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL. The image is generated on every request, but the status of the server may be cached.</p>
 							<p className="flex items-center gap-2 mt-3">
@@ -189,7 +189,7 @@ export default function Page() {
 						</div>
 					</section>
 					<section>
-						<div className="box p-5 rounded mt-3">
+						<div className="card mt-3">
 							<AnchorHeader size={3} id="icon">Icon</AnchorHeader>
 							<p className="mt-2 leading-7">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
 							<p className="flex items-center gap-2 mt-3">
