@@ -25,9 +25,9 @@ export default function Page() {
 					<Search className="mt-5" autoFocus />
 				</section>
 				<Ad className="mt-5" />
-				<section>
-					<div className="flex items-center gap-6 md:ml-6 mt-12">
-						<GiftIcon width="28" height="28" className="hidden md:block" />
+				<section className="pt-12">
+					<div className="title-group">
+						<GiftIcon width="28" height="28" />
 						<hgroup>
 							<h2 className="title">Sample Servers</h2>
 							<p className="subtitle">A few sample servers to test out our service</p>
@@ -35,9 +35,9 @@ export default function Page() {
 					</div>
 					<SampleServers className="mt-5" />
 				</section>
-				<section>
-					<div className="flex items-center gap-6 md:ml-6 mt-12">
-						<InfoIcon width="28" height="28" className="hidden md:block" />
+				<section className="pt-12">
+					<div className="title-group">
+						<InfoIcon width="28" height="28" />
 						<hgroup>
 							<h2 className="title">About Us</h2>
 							<p className="subtitle">A quick understanding of what we do</p>
@@ -48,9 +48,9 @@ export default function Page() {
 					<p className="mb-3 leading-7">In addition to just retrieving the Minecraft server status, we also use the query protocol for Java Edition servers, allowing us to get extra information about the servers like plugins and software information. While statuses are our main focus, we also offer additional routes like <Link href="/docs#icon" className="link">retrieving an server icon</Link> and a <Link href="/docs#java-widget" className="link">generated status widget</Link>. The icon route allows you to embed your server&apos;s icon directly into your website without ever having to worry about updating it, and the widget route shows your users a preview of your server without them having to open the game.</p>
 					<p className="mb-3 leading-7">Our API is built from the ground up using Go &mdash; a high performance programming language &mdash; and we directly communicate with the Minecraft server using the official networking protocol. We also utilize Redis to store and retrieve cached statuses extremely fast. All of our services are open source, and available for you to view on our <a href="https://github.com/mcstatus-io" className="link">GitHub organization</a>. If you would like to implement our API into your service, head over to the <Link href="/docs" className="link">API documentation</Link> page to read up on the API routes.</p>
 				</section>
-				<section>
-					<div className="flex items-center gap-6 md:ml-6 mt-12">
-						<ToolIcon width="28" height="28" className="hidden md:block" />
+				<section className="pt-12">
+					<div className="title-group">
+						<ToolIcon width="28" height="28" />
 						<hgroup>
 							<h2 className="title">Other Tools</h2>
 							<p className="subtitle">Other services we have also made</p>

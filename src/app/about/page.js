@@ -95,9 +95,9 @@ export default function Page() {
 					<p className="mt-5 leading-7">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="link">NextJS</a> and the back-end was built with <a href="https://golang.org" className="link">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="link">Carbon Ads</a> to help cover the hosting and development costs.</p>
 				</section>
 				<Ad className="mt-5" />
-				<section>
-					<div className="flex items-center gap-6 md:ml-6 mt-12">
-						<HelpCircleIcon width="28" height="28" className="hidden md:block" />
+				<section className="pt-12">
+					<div className="title-group">
+						<HelpCircleIcon width="28" height="28" />
 						<hgroup>
 							<h2 className="title">Frequently Asked Questions</h2>
 							<p className="subtitle">Answers to commonly asked questions</p>
@@ -115,15 +115,15 @@ export default function Page() {
 						}
 					</ul>
 				</section>
-				<section>
-					<div className="flex items-center gap-6 md:ml-6 mt-12">
-						<MailIcon width="28" height="28" className="hidden md:block" />
+				<section className="pt-12">
+					<div className="title-group">
+						<MailIcon width="28" height="28" />
 						<hgroup>
 							<h2 className="title">Contact</h2>
 							<p className="subtitle">How to contact me if needed</p>
 						</hgroup>
 					</div>
-					<p className="mt-5 leading-7">If you wish to contact me, please do so using <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>. I accept any sort of feedback on our service including bug reports, feature suggestions, questions about usage, etc.</p>
+					<p className="mt-5 leading-7">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>. We accept any sort of feedback on our service, including bug reports, feature suggestions, questions about the API, etc.</p>
 				</section>
 			</Container>
 			<script type="application/ld+json" dangerouslySetInnerHTML={{

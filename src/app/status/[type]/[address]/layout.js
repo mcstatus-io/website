@@ -19,7 +19,7 @@ export default function RootLayout({ children, params: { type, address } }) {
 					<Search type={type} host={decodeURIComponent(address)} className="mt-5" />
 				</section>
 				{children}
-				<Ad className="mt-4" />
+				<Ad className="mt-5" />
 			</Container>
 		</>
 	);

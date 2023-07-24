@@ -21,6 +21,12 @@
             @apply underline
 
 @layer components
+    .title-group
+        @apply flex items-center gap-6 md:ml-6
+
+        & > svg
+            @apply hidden md:block
+
     .title
         &[id]
             @apply scroll-mt-24
