@@ -143,7 +143,7 @@ export default function Navbar({ active }) {
                                 </div>
                             }
                             className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800'} p-2`}
-                            align="left-1/2 -translate-x-1/2 md:right-0 top-0 bottom-[calc(100%+0.5rem)] top-[unset] md:top-[calc(100%+0.5rem)]"
+                            align="left-1/2 -translate-x-1/2 md:translate-x-[unset] md:left-[unset] md:right-0 top-0 bottom-[calc(100%+0.5rem)] top-[unset] md:top-[calc(100%+0.5rem)]"
                         >
                             {({ setExpanded }) => (
                                 <div className={`card ${showMenu ? 'text-white bg-neutral-800' : 'text-black dark:text-white bg-neutral-300 dark:bg-neutral-800'} p-2 min-w-[240px] shadow-lg shadow-black/25`}>
