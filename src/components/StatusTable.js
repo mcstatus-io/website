@@ -230,7 +230,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
 															<span>{plugin.name}</span>
 														</a>
 														{
-															plugin.version.length > 0 && valid(coerce(plugin.version))
+															plugin.version && plugin.version.length > 0 && valid(coerce(plugin.version))
 																? <span className="text-neutral-400 pr-4 md:pr-0"> v{plugin.version}</span>
 																: null
 														}
