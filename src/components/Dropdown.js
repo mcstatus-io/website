@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-export default function Dropdown({ text, className, align = 'left', children }) {
+export default function Dropdown({ text, className, align = 'left-0', children }) {
     const dropdownElem = useRef();
     const [isExpanded, setExpanded] = useState(false);
 
@@ -23,7 +23,7 @@ export default function Dropdown({ text, className, align = 'left', children }) 
             <button type="button" className={className} onClick={() => setExpanded(!isExpanded)}>
                 {text}
             </button>
-            <div className={`absolute z-50 top-[calc(100%+0.5rem)] ${align === 'left' ? 'left-0' : align === 'right' ? 'right-0' : ''} ${isExpanded ? 'block' : 'hidden'}`}>
+            <div className={`absolute z-50 top-[calc(100%+0.5rem)] ${isExpanded ? 'block' : 'hidden'} ${align}`}>
                 {typeof children === 'function' ? children({ isExpanded, setExpanded }) : children}
             </div>
         </div>

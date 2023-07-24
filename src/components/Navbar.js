@@ -138,14 +138,15 @@ export default function Navbar({ active }) {
                             text={
                                 <div className="flex items-center gap-2">
                                     <SunIcon width="22" height="22" title="Status" />
+                                    <span className="md:sr-only font-bold">Theme</span>
                                     <Chevron width="16" height="16" className="text-neutral-500" />
                                 </div>
                             }
                             className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800'} p-2`}
-                            align="right"
+                            align="left-1/2 -translate-x-1/2 md:right-0 top-0 bottom-[calc(100%+0.5rem)] top-[unset] md:top-[calc(100%+0.5rem)]"
                         >
                             {({ setExpanded }) => (
-                                <div className="card text-black dark:text-white bg-neutral-300 dark:bg-neutral-800 p-2 min-w-[240px] shadow-lg shadow-black/25">
+                                <div className={`card ${showMenu ? 'text-white bg-neutral-800' : 'text-black dark:text-white bg-neutral-300 dark:bg-neutral-800'} p-2 min-w-[240px] shadow-lg shadow-black/25`}>
                                     <ul className="list-none flex flex-col">
                                         <li>
                                             <button type="button" className="w-full px-3 py-2 flex items-center gap-3 hover:bg-neutral-400 dark:hover:bg-neutral-700 rounded text-left" onClick={() => setTheme('auto', setExpanded)}>
