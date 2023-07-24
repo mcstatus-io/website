@@ -56,7 +56,7 @@ export default function Page() {
 					</section>
 					<section>
 						<AnchorHeader size={3} id="cache" className="mt-12">Cache</AnchorHeader>
-						<p className="mt-3 leading-7">To reduce the amount of spam and deliberate denial-of-service attacks of our service, we implement a caching system for all of the data we fetch, including but not limited to status responses and server icons. Each route has its own cache duration, unique to the pathname of the request. Please note that adding query parameters to the request will not force a fresh request, it will still return the cached response. All routes with data retrieved from the cache will contain a header in the response with the key <code>X-Cache-Hit</code> which will contain a boolean value whether or not our service used a value from cache. The response will also contain a <code>X-Cache-Time-Remaining</code> if the cache was hit, which contains an integer with the amount of seconds remaining until the cache expires for this request. Any request made after this cache expiration time will result in fresh data being retrieved on our end. No exceptions will be made to the cache duration. If you want to bypass the cache, we recommend that you self-host the <a href="https://github.com/mcstatus-io/ping-server" className="link">ping-server</a> available on our GitHub organization.</p>
+						<p className="mt-3 leading-7">To reduce the amount of spam and deliberate denial-of-service attacks of our service, we implement a caching system for all of the data we fetch, including but not limited to status responses and server icons. Each route has its own cache duration, unique to the pathname of the request. Please note that adding query parameters to the request will not force a fresh request, it will still return the cached response. All routes with data retrieved from the cache will contain a header in the response with the key <code>X-Cache-Hit</code> which will contain a boolean value whether or not our service used a value from cache. The response will also contain a <code>X-Cache-Time-Remaining</code> header if the cache was hit, which contains an integer with the amount of seconds remaining until the cache expires for this request. Any request made after this cache expiration time will result in fresh data being retrieved on our end. No exceptions will be made to the cache duration. If you want to bypass the cache, we recommend that you self-host the <a href="https://github.com/mcstatus-io/ping-server" className="link">ping-server</a> available on our GitHub organization.</p>
 					</section>
 					<section>
 						<AnchorHeader size={3} id="supported" className="mt-12">Supported Versions</AnchorHeader>
@@ -178,7 +178,7 @@ export default function Page() {
 								</div>
 							</Collapsible>
 							<Collapsible title="Response Body" className="block mt-2">
-								<div className="flex items-center gap-3">
+								<div className="flex flex-col lg:flex-row items-center gap-3">
 									<Image src={javaWidgetLightExample} alt="Sample Java Edition server light widget" />
 									<Image src={javaWidgetDarkExample} alt="Sample Java Edition server dark widget" />
 								</div>
