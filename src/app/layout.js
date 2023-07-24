@@ -1,6 +1,6 @@
 import '@/styles/global.sass';
 
-import { Fira_Mono, Inter, Ubuntu } from 'next/font/google';
+import { Fira_Mono, Inter } from 'next/font/google';
 import Script from 'next/script';
 import Container from '@/components/Container';
 import Footer from '@/components/Footer';
@@ -11,14 +11,6 @@ const interFont = Inter({
 	display: 'swap',
 	subsets: ['latin'],
 	fallback: ['Arial', 'sans-serif']
-});
-
-const ubuntuFont = Ubuntu({
-	variable: '--font-ubuntu',
-	weight: ['400', '700'],
-	display: 'swap',
-	subsets: ['latin'],
-	fallback: ['Verdana', 'sans-serif']
 });
 
 const firaMonoFont = Fira_Mono({
@@ -103,7 +95,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en" className={`${interFont.variable} ${firaMonoFont.variable} ${ubuntuFont.variable}`}>
+		<html lang="en" className={`${interFont.variable} ${firaMonoFont.variable}`}>
 			<body className="bg-white dark:bg-neutral-900 dark:text-white overflow-x-hidden w-[100vw] scroll-smooth">
 				<div className="flex flex-col min-h-[100lvh]">
 					<div className="grow">

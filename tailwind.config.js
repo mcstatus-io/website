@@ -9,8 +9,7 @@ module.exports = {
 		extend: {},
 		fontFamily: {
 			sans: ['var(--font-inter)'],
-			mono: ['var(--font-fira-mono)'],
-			ubuntu: ['var(--font-ubuntu)']
+			mono: ['var(--font-fira-mono)']
 		}
 	}
 };

@@ -52,7 +52,7 @@ export default function Page() {
 					</section>
 					<section>
 						<AnchorHeader size={3} id="standards" className="mt-12">Standards</AnchorHeader>
-						<p className="mt-3 leading-7">The majority of this API uses the standardized REST API, which in simple terms means you will be making HTTP requests to our service. We currently only support endpoints using the <code>GET</code> method. You will never have to use <code>POST</code> or any other method with requires you to send body data or headers with your request. All status endpoints return a response body in <a href="https://www.json.org/json-en.html" className="link">JSON format</a>. No other data formatting standard is available at this time, and there is currently no future plan to support anything other than JSON. All JSON returned from this service will have whitespace and any unnecessary characters removed to reduce network bandwidth and wasted information. You may learn more about the properties you receive from these routes by reading the documented response body from the route on this page.</p>
+						<p className="mt-3 leading-7">The majority of this API uses the standardized REST API, which in simple terms means you will be making HTTP requests to our service. We currently only support endpoints using the <code>GET</code> method. You will never have to use <code>POST</code> or any other method with requires you to send body data or headers with your request. All status endpoints return a response body in <a href="https://www.json.org/json-en.html" className="link">JSON format</a>, except if the response status code is not in the <code>200-299</code> success range, in which the body will be plain text. No other data formatting standard is available at this time, and there is currently no future plan to support anything other than JSON. All JSON returned from this service will have whitespace and any unnecessary characters removed to reduce network bandwidth and wasted information. You may learn more about the properties you receive from these routes by reading the documented response body from the route on this page.</p>
 					</section>
 					<section>
 						<AnchorHeader size={3} id="cache" className="mt-12">Cache</AnchorHeader>
@@ -60,7 +60,11 @@ export default function Page() {
 					</section>
 					<section>
 						<AnchorHeader size={3} id="supported" className="mt-12">Supported Versions</AnchorHeader>
-						<p className="mt-3 leading-7">All Minecraft servers, including pre-netty rewrite Java Edition and Bedrock Edition servers, are supported. Make sure you are using the correct endpoint when retrieving a server status, as attempting to use the Java Edition status route with a Bedrock Edition host (or vise-versa) will result in a response saying the server is offline unless the server explicitly has cross-play supported. If the server you specify does not use the standard port value (<code>25565</code> for Java Edition, <code>19132</code> for Bedrock Edition), then you will need to specify the port by using the following format: <code>host:port</code>.</p>
+						<p className="mt-3 leading-7">All Minecraft servers, including pre-netty rewrite Java Edition and Bedrock Edition servers, are supported. Make sure you are using the correct endpoint when retrieving a server status, as attempting to use the Java Edition status route with a Bedrock Edition host (or vise-versa) will result in a response saying the server is offline unless the server explicitly has cross-play supported. If the server you specify does not use the standard port value (<code>25565</code> for Java Edition, <code>19132</code> for Bedrock Edition), then you will need to specify the port by using the following format: <code>&lt;host&gt;:&lt;port&gt;</code>.</p>
+					</section>
+					<section>
+						<AnchorHeader size={3} id="error-handling" className="mt-12">Error Handling</AnchorHeader>
+						<p className="mt-3 leading-7">You may encounter an error from any API endpoint if you attempt to use any malformed input, such as an incorrectly formatted server address or a strange value for a query parameter. Whether or not you expect it, you should always handle in case the server returns an error, always in the form of a non-200 status code response. If you do receive a non-200 status code response, the body will always contain a plain text string describing the error, with the <code>Content-Type</code> header set to <code>text/plain</code>. An example of a standard error is <code>Invalid address value</code>, returned if the server address provided is not in a recognized <code>&lt;host&gt;:&lt;port&gt;</code> or <code>&lt;host&gt;</code> format.</p>
 					</section>
 				</section>
 				<section>
@@ -96,7 +100,7 @@ export default function Page() {
 													<code>true</code>
 												</td>
 												<td className="p-3 border-b border-neutral-400 dark:border-neutral-600">
-													<span>Enables query lookup on the server, which provides additional information such as the <code>software</code> and <code>plugins</code> properties on the response. Disabling this may also speed up status lookup times.</span>
+													<span>Enables query lookup on the server, which provides additional information such as the <code>software</code> and <code>plugins</code> properties on the response. Disabling this may also speed up status retrieval times.</span>
 												</td>
 											</tr>
 										</tbody>
@@ -104,7 +108,7 @@ export default function Page() {
 								</div>
 							</Collapsible>
 							<Collapsible title="Response Body" className="block mt-2" noPadding>
-								<Highlight source={javaExample} className="bg-neutral-800 dark:bg-transparent" />
+								<Highlight source={javaExample} className="bg-neutral-900" />
 							</Collapsible>
 						</div>
 					</section>
@@ -117,7 +121,7 @@ export default function Page() {
 								<code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/bedrock/&lt;address&gt;</span></code>
 							</p>
 							<Collapsible title="Response Body" className="block mt-4" noPadding>
-								<Highlight source={bedrockExample} className="bg-neutral-800 dark:bg-transparent" />
+								<Highlight source={bedrockExample} className="bg-neutral-900" />
 							</Collapsible>
 						</div>
 					</section>
