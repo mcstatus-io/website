@@ -4,22 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import CalendarIcon from '@/assets/icons/calendar.svg';
-import CheckIcon from '@/assets/icons/check.svg';
-import CPUIcon from '@/assets/icons/cpu.svg';
 import DiscordIcon from '@/assets/icons/discord.svg';
 import GithubIcon from '@/assets/icons/github.svg';
 import MenuIcon from '@/assets/icons/menu.svg';
-import MoonIcon from '@/assets/icons/moon.svg';
-import SunIcon from '@/assets/icons/sun.svg';
 import CloseIcon from '@/assets/icons/x.svg';
 import icon from '@/assets/img/icon.png';
-import Chevron from '@/components/Chevron';
 import Container from '@/components/Container';
-import Dropdown from '@/components/Dropdown';
 
 export default function Navbar({ active }) {
     const [showMenu, setShowMenu] = useState(false);
-    const [currentTheme, setCurrentTheme] = useState(null);
 
     useEffect(() => {
         if (showMenu) {
@@ -28,52 +21,6 @@ export default function Navbar({ active }) {
             document.body.classList.remove('overflow-hidden');
         }
     }, [showMenu]);
-
-    useEffect(() => {
-        if (!currentTheme) {
-            setCurrentTheme(window.localStorage.getItem('theme') || 'auto');
-        }
-
-        switch (currentTheme) {
-            case 'auto': {
-                if (!window.matchMedia) return;
-
-                const darkThemeMatch = window.matchMedia('(prefers-color-scheme: dark)');
-
-                const onChange = () => {
-                    if (darkThemeMatch.matches) {
-                        document.documentElement.classList.add('dark');
-                    } else {
-                        document.documentElement.classList.remove('dark');
-                    }
-                };
-
-                onChange();
-
-                darkThemeMatch.addEventListener('change', onChange);
-
-                return () => darkThemeMatch.removeEventListener('change', onChange);
-            }
-            case 'light': {
-                document.documentElement.classList.remove('dark');
-
-                break;
-            }
-            case 'dark': {
-                document.documentElement.classList.add('dark');
-
-                break;
-            }
-        }
-    }, [currentTheme]);
-
-    const setTheme = (newTheme, setExpanded) => {
-        setExpanded(false);
-
-        window.localStorage.setItem('theme', newTheme);
-
-        setCurrentTheme(newTheme);
-    };
 
     return (
         <nav className={`text-black dark:text-white w-screen h-[4.25rem] sticky top-0 z-50 ${!showMenu ? 'bg-white dark:bg-[#121212dd] bg-opacity-80 backdrop-blur-[6px] backdrop-saturate-150 backdrop-brightness-50 border-b border-b-neutral-200 dark:border-b-neutral-800' : ''}`}>
@@ -132,47 +79,6 @@ export default function Navbar({ active }) {
                             <CalendarIcon width="22" height="22" title="Status" />
                             <span className="md:sr-only font-bold">Status Page</span>
                         </a>
-                    </li>
-                    <li>
-                        <Dropdown
-                            text={
-                                <div className="flex items-center gap-2">
-                                    <SunIcon width="22" height="22" title="Status" />
-                                    <span className="md:sr-only font-bold">Theme</span>
-                                    <Chevron width="16" height="16" className="text-neutral-500" />
-                                </div>
-                            }
-                            className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800'} p-2`}
-                            align="left-1/2 -translate-x-1/2 md:translate-x-[unset] md:left-[unset] md:right-0 top-0 bottom-[calc(100%+0.5rem)] top-[unset] md:top-[calc(100%+0.5rem)]"
-                        >
-                            {({ setExpanded }) => (
-                                <div className={`card ${showMenu ? 'text-white bg-neutral-800' : 'text-black dark:text-white bg-neutral-300 dark:bg-neutral-800'} p-2 min-w-[240px] shadow-lg shadow-black/25`}>
-                                    <ul className="list-none flex flex-col">
-                                        <li>
-                                            <button type="button" className="w-full px-3 py-2 flex items-center gap-3 hover:bg-neutral-400 dark:hover:bg-neutral-700 rounded text-left" onClick={() => setTheme('auto', setExpanded)}>
-                                                <CPUIcon width="18" height="18" />
-                                                <span>Automatic</span>
-                                                <CheckIcon width="18" height="18" className={`ml-auto ${currentTheme === 'auto' ? 'block' : 'hidden'}`} />
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button type="button" className="w-full px-3 py-2 flex items-center gap-3 hover:bg-neutral-400 dark:hover:bg-neutral-700 rounded text-left" onClick={() => setTheme('light', setExpanded)}>
-                                                <SunIcon width="18" height="18" />
-                                                <span>Light</span>
-                                                <CheckIcon width="18" height="18" className={`ml-auto ${currentTheme === 'light' ? 'block' : 'hidden'}`} />
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button type="button" className="w-full px-3 py-2 flex items-center gap-3 hover:bg-neutral-400 dark:hover:bg-neutral-700 rounded text-left" onClick={() => setTheme('dark', setExpanded)}>
-                                                <MoonIcon width="18" height="18" />
-                                                <span>Dark</span>
-                                                <CheckIcon width="18" height="18" className={`ml-auto ${currentTheme === 'dark' ? 'block' : 'hidden'}`} />
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            )}
-                        </Dropdown>
                     </li>
                 </ul>
             </Container>

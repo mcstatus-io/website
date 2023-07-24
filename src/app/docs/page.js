@@ -67,6 +67,63 @@ export default function Page() {
                         <p className="mt-3 leading-7">You may encounter an error from any API endpoint if you attempt to use any malformed input, such as an incorrectly formatted server address or a strange value for a query parameter. Whether or not you expect it, you should always handle in case the server returns an error, always in the form of a non-200 status code response. If you do receive a non-200 status code response, the body will always contain a plain text string describing the error, with the <code>Content-Type</code> header set to <code>text/plain</code>. An example of a standard error is <code>Invalid address value</code>, returned if the server address provided is not in a recognized <code>&lt;host&gt;:&lt;port&gt;</code> or <code>&lt;host&gt;</code> format.</p>
                     </section>
                 </section>
+                <section className="pt-12">
+                    <AnchorHeader size={2} id="revisions">Revisions</AnchorHeader>
+                    <p className="mt-3 leading-7">Over the lifetime of this service, there has been a few changes that breaks compatibility with existing users who rely on consistent and non-changing data. When this happens, we release a new major version of the API called a revision, which is why you see <code>/v2</code> in the URL of all API requests. As time goes on, we can no longer support previous revisions and have to shut them down. You may refer to the table below to see any major revisions from the past up until present time. If you use our API, it is generally recommended to come back to this page every so often to confirm the revision you are using is not becoming deprecated.</p>
+                    <div className="overflow-x-auto max-w-full">
+                        <table className="table mt-5 min-w-[1560px]">
+                            <thead>
+                                <tr>
+                                    <th>Revision</th>
+                                    <th>Base URL</th>
+                                    <th>Release Date</th>
+                                    <th>Deprecation Date</th>
+                                    <th>Changelog</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span>Revision 1</span>
+                                    </td>
+                                    <td>
+                                        <code>https://api.mcstatus.io/v1</code>
+                                    </td>
+                                    <td>
+                                        <span>September 2021</span>
+                                    </td>
+                                    <td>
+                                        <span>February 2023</span>
+                                    </td>
+                                    <td>
+                                        <span>Initial API release</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Revision 2</span>
+                                    </td>
+                                    <td>
+                                        <code>https://api.mcstatus.io/v2</code>
+                                    </td>
+                                    <td>
+                                        <span>July 2022</span>
+                                    </td>
+                                    <td>
+                                        <span className="text-neutral-500">&mdash;</span>
+                                    </td>
+                                    <td>
+                                        <ul className="flex flex-col gap-1 list-inside list-disc">
+                                            <li>Moved response properties to root of response</li>
+                                            <li>Support query lookup</li>
+                                            <li>Added widgets</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
                 <section>
                     <AnchorHeader size={2} id="routes" className="mt-12">Routes</AnchorHeader>
                     <section className="pt-3">
@@ -79,27 +136,27 @@ export default function Page() {
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
                                 <div className="max-w-full overflow-x-auto">
-                                    <table className="table table-auto min-w-[640px] text-center w-full border-x border-t border-neutral-400 dark:border-neutral-600">
+                                    <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
-                                                <th className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600 w-[10%]">Value</th>
-                                                <th className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600 w-[10%]">Data Type</th>
-                                                <th className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600 w-[10%]">Default</th>
-                                                <th className="p-3 border-b border-neutral-400 dark:border-neutral-600 w-[60%]">Description</th>
+                                                <th className="w-[10%]">Value</th>
+                                                <th className="w-[10%]">Data Type</th>
+                                                <th className="w-[10%]">Default</th>
+                                                <th className="w-[60%]">Description</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600">
+                                                <th>
                                                     <code>query</code>
                                                 </th>
-                                                <td className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600">
-													Boolean
+                                                <td>
+                                                    <span>Boolean</span>
                                                 </td>
-                                                <td className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600">
+                                                <td>
                                                     <code>true</code>
                                                 </td>
-                                                <td className="p-3 border-b border-neutral-400 dark:border-neutral-600">
+                                                <td>
                                                     <span>Enables query lookup on the server, which provides additional information such as the <code>software</code> and <code>plugins</code> properties on the response. Disabling this may also speed up status retrieval times.</span>
                                                 </td>
                                             </tr>
@@ -135,41 +192,41 @@ export default function Page() {
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
                                 <div className="max-w-full overflow-x-auto">
-                                    <table className="table table-auto min-w-[640px] text-center w-full border-x border-t border-neutral-400 dark:border-neutral-600">
+                                    <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
-                                                <th className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600 w-[10%]">Value</th>
-                                                <th className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600 w-[10%]">Data Type</th>
-                                                <th className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600 w-[10%]">Default</th>
-                                                <th className="p-3 border-b border-neutral-400 dark:border-neutral-600 w-[60%]">Description</th>
+                                                <th className="w-[10%]">Value</th>
+                                                <th className="w-[10%]">Data Type</th>
+                                                <th className="w-[10%]">Default</th>
+                                                <th className="w-[60%]">Description</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600">
+                                                <th>
                                                     <code>dark</code>
                                                 </th>
-                                                <td className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600">
-													Boolean
+                                                <td>
+                                                    <span>Boolean</span>
                                                 </td>
-                                                <td className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600">
+                                                <td>
                                                     <code>true</code>
                                                 </td>
-                                                <td className="p-3 border-b border-neutral-400 dark:border-neutral-600">
+                                                <td>
                                                     <span>Enables dark mode for the widget image, making the background a dark gray color with the foreground text white.</span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600">
+                                                <th>
                                                     <code>rounded</code>
                                                 </th>
-                                                <td className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600">
-													Boolean
+                                                <td>
+                                                    <span>Boolean</span>
                                                 </td>
-                                                <td className="p-3 border-r border-b border-neutral-400 dark:border-neutral-600">
+                                                <td>
                                                     <code>true</code>
                                                 </td>
-                                                <td className="p-3 border-b border-neutral-400 dark:border-neutral-600">
+                                                <td>
                                                     <span>Makes the corners of the widget card rounded, leaving the missing corner area transparent.</span>
                                                 </td>
                                             </tr>

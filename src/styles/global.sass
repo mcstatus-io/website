@@ -31,6 +31,18 @@
         &[id]
             @apply scroll-mt-24
 
+            &:has(a, svg)
+                @apply flex items-center gap-2
+
+                a
+                    @apply border-b border-b-transparent hover:border-b-black dark:hover:border-b-white border-dotted
+
+                    &:hover ~ svg
+                        @apply block
+
+                svg
+                    @apply hidden
+
         &:is(h1)
             @apply text-4xl lg:text-5xl font-black
 
@@ -61,6 +73,15 @@
         @include interactive-box
         @apply px-3 py-2 rounded block font-mono w-full
 
+    .table
+        @apply table-auto w-full border-l border-t border-neutral-200 dark:border-neutral-800
+
+        thead th
+            @apply p-3 text-black dark:text-white border-r border-b border-neutral-200 dark:border-neutral-800 bg-neutral-200 dark:bg-neutral-800
+
+        tbody td, tbody th
+            @apply p-3 border-r border-b border-neutral-200 dark:border-neutral-800 text-center
+
     .card
         @include box
         @apply block p-5 rounded
@@ -75,6 +96,10 @@
         .preview
             @include box
             @apply rounded flex items-center justify-center relative max-w-full text-lg text-neutral-500 w-[420px] h-[132px]
+
+        @supports not selector(&:has(.preview))
+            .preview
+                @apply hidden
 
         &:has([id="carbonads"]) .preview
             @apply hidden
