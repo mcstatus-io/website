@@ -5,7 +5,7 @@ hljs.registerLanguage('json', json);
 hljs.configure({ ignoreUnescapedHTML: true });
 
 export default function Highlight({ source, className = '' }) {
-	return (
-		<pre><code className={`hljs ${className}`} dangerouslySetInnerHTML={{ __html: hljs.highlight(source, { language: 'json' }).value }} /></pre>
-	);
+    return (
+        <pre><code className={`hljs ${className}`} dangerouslySetInnerHTML={{ __html: hljs.highlight(source, { language: 'json' }).value }} /></pre>
+    );
 }

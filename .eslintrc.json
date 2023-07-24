@@ -22,7 +22,7 @@
     "rules": {
         "indent": [
             "error",
-            "tab",
+            4,
             {
                 "SwitchCase": 1
             }

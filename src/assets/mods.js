@@ -3,6 +3,6 @@
 // to CurseForge, such as internal mods.
 
 export default [
-	'minecraft',
-	'forge'
+    'minecraft',
+    'forge'
 ];
