@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 import { useReducer } from 'react';
 import ArrowRightIcon from '@/assets/icons/arrow-right.svg';
 
-const validHostRegEx = /^[A-Za-z0-9-_]+(\.[A-Za-z0-9-_]+)*(:\d{1,5})?$/;
+const validHostRegEx = /^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+(:\d{1,5})?$/;
 
-const isValid = (state) => state.host.length > 0 && validHostRegEx.test(state.host) && ['java', 'bedrock'].includes(state.type);
+const isValid = (state) => validHostRegEx.test(state.host) && ['java', 'bedrock'].includes(state.type);
 
 const reducer = (state, action) => {
     switch (action.type) {

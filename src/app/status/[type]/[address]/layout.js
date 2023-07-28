@@ -18,7 +18,15 @@ export default function RootLayout({ children, params: { type, address } }) {
                     </hgroup>
                     <Search type={type} host={decodeURIComponent(address)} className="mt-5" />
                 </section>
-                {children}
+                {
+                    /^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+(:\d{1,5})?$/.test(address)
+                        ? children
+                        : <section>
+                            <div className="card mt-4">
+                                <p className="text-red-500 dark:text-red-400">The address of the server that you are trying to retrieve is invalid. Please check the address and try again.</p>
+                            </div>
+                        </section>
+                }
                 <Ad className="mt-5" />
             </Container>
         </>
