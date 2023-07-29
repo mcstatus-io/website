@@ -427,7 +427,7 @@ export default function Page() {
                 </section>
                 <section className="pt-12">
                     <AnchorHeader size={2} id="debug">Debug Routes</AnchorHeader>
-                    <p className="mt-3 leading-7">The following routes are used to test for any issues with the raw response from the server itself. These routes should not be implemented into your service. If you experience issues with our API, try one of these routes to compare the response to what you should be expecting. Additionally, these routes have a very restrictive rate limit at only 1 request per 15 seconds, limited by IP address. The rate limit is this restrictive because there is no caching enabled for any of these routes.</p>
+                    <p className="mt-3 leading-7">The following routes are used to test for any issues with the raw response from the server itself. These routes should not be implemented into your service, as they may be disabled or removed entirely at any random point without notice. If you experience issues with our API, try one of these routes to compare the response to what you should be expecting. Additionally, these routes have a very restrictive rate limit at only 1 request per 15 seconds, limited by IP address. The rate limit is this restrictive because there is no caching enabled for any of these routes.</p>
                     <Collapsible title="Routes List" className="pt-3">
                         <section>
                             <div className="card">
