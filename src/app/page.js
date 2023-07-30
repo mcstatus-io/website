@@ -52,8 +52,8 @@ export default function Page() {
                     <div className="title-group">
                         <ToolIcon width="28" height="28" />
                         <hgroup>
-                            <h2 className="title">Other Tools</h2>
-                            <p className="subtitle">Other services we have also made</p>
+                            <h2 className="title">Partners</h2>
+                            <p className="subtitle">Other services we are partnered with</p>
                         </hgroup>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">

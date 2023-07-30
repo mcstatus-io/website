@@ -1,6 +1,9 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import HelpCircleIcon from '@/assets/icons/help-circle.svg';
 import MailIcon from '@/assets/icons/mail.svg';
+import ToolIcon from '@/assets/icons/tool.svg';
+import mineatarIcon from '@/assets/img/mineatar.png';
 import Ad from '@/components/Ad';
 import Collapsible from '@/components/Collapsible';
 import Container from '@/components/Container';
@@ -114,6 +117,26 @@ export default function Page() {
                             ))
                         }
                     </ul>
+                </section>
+                <section className="pt-12">
+                    <div className="title-group">
+                        <ToolIcon width="28" height="28" />
+                        <hgroup>
+                            <h2 className="title">Partners</h2>
+                            <p className="subtitle">Other services we are partnered with</p>
+                        </hgroup>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
+                        <a href="https://mineatar.io" className="card card-hover flex gap-5">
+                            <div className="w-16">
+                                <Image src={mineatarIcon} className="mx-auto" alt="Mineatar Icon" />
+                            </div>
+                            <div>
+                                <p className="text-lg font-bold">Mineatar</p>
+                                <p className="mt-1">A fast and efficient Minecraft avatar rendering service and API.</p>
+                            </div>
+                        </a>
+                    </div>
                 </section>
                 <section className="pt-12">
                     <div className="title-group">
