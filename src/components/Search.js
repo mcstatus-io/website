@@ -6,12 +6,12 @@ import ArrowRightIcon from '@/assets/icons/arrow-right.svg';
 
 const validHostRegEx = /^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+(:\d{1,5})?$/;
 
-const isValid = (state) => validHostRegEx.test(state.host) && ['java', 'bedrock'].includes(state.type);
+const isValid = (state) => validHostRegEx.test(state.address) && ['java', 'bedrock'].includes(state.type);
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'SET_HOST':
-            return { ...state, host: action.value };
+        case 'SET_ADDRESS':
+            return { ...state, address: action.value };
         case 'SET_TYPE':
             return { ...state, type: action.value };
         default:
@@ -19,15 +19,15 @@ const reducer = (state, action) => {
     }
 };
 
-export default function Search({ host = '', type = 'java', className = '', autoFocus }) {
+export default function Search({ type = 'java', address = '', className = '', autoFocus }) {
     const { push } = useRouter();
 
-    const [data, dispatch] = useReducer(reducer, { host, type });
+    const [data, dispatch] = useReducer(reducer, { type, address });
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        push(`/status/${data.type}/${data.host.toLowerCase()}`);
+        push(`/status/${data.type}/${data.address.toLowerCase()}`);
     };
 
     return (
@@ -40,10 +40,10 @@ export default function Search({ host = '', type = 'java', className = '', autoF
                 </select>
             </div>
             <div className="grow">
-                <label className="sr-only" htmlFor="host">Host</label>
-                <input type="text" className="input text-center md:text-left w-full" id="host" placeholder="demo.mcstatus.io" defaultValue={host} onChange={(event) => dispatch({ type: 'SET_HOST', value: event.target.value })} autoComplete="off" spellCheck="false" autoCapitalize="off" autoCorrect="off" autoFocus={autoFocus} />
+                <label className="sr-only" htmlFor="address">Server Address</label>
+                <input type="text" className="input text-center md:text-left w-full" id="address" placeholder="demo.mcstatus.io" defaultValue={address} onChange={(event) => dispatch({ type: 'SET_ADDRESS', value: event.target.value })} autoComplete="off" spellCheck="false" autoCapitalize="off" autoCorrect="off" autoFocus={autoFocus} />
             </div>
-            <button type="submit" className="basis-full md:basis-auto button flex items-center justify-center gap-2" disabled={!isValid(data) || (data.type === type && data.host === host)}>
+            <button type="submit" className="basis-full md:basis-auto button flex items-center justify-center gap-2" disabled={!isValid(data) || (data.type === type && data.address === address)}>
                 <span>Submit</span>
                 <ArrowRightIcon width="16" height="16" />
             </button>

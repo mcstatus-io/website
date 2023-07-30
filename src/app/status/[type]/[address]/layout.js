@@ -18,7 +18,7 @@ export default function RootLayout({ children, params: { type, address } }) {
                         <h1 className="title">Minecraft Server Status</h1>
                         <p className="subtitle">Quickly retrieve the status of any Minecraft server</p>
                     </hgroup>
-                    <Search type={type} host={decodeURIComponent(address)} className="mt-5" />
+                    <Search type={type} address={address} className="mt-5" />
                 </section>
                 {
                     /^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+(:\d{1,5})?$/.test(address)

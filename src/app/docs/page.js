@@ -393,7 +393,7 @@ export default function Page() {
                                                     <span className="text-neutral-500 italic">(time of request)</span>
                                                 </td>
                                                 <td>
-                                                    <span>The timestamp of the vote sent to the server.</span>
+                                                    <span>The timestamp of the vote sent to the server. This should be in RFC3339 format.</span>
                                                 </td>
                                             </tr>
                                             <tr>

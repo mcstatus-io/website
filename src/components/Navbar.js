@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import CalendarIcon from '@/assets/icons/calendar.svg';
+import ClockIcon from '@/assets/icons/clock.svg';
 import DiscordIcon from '@/assets/icons/discord.svg';
 import GithubIcon from '@/assets/icons/github.svg';
 import MenuIcon from '@/assets/icons/menu.svg';
@@ -76,7 +76,7 @@ export default function Navbar({ active }) {
                     </li>
                     <li>
                         <a href="https://status.mcstatus.io" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800'} p-2`}>
-                            <CalendarIcon width="22" height="22" title="Status" />
+                            <ClockIcon width="22" height="22" title="Status" />
                             <span className="md:sr-only font-bold">Status Page</span>
                         </a>
                     </li>
