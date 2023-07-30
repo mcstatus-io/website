@@ -5,6 +5,8 @@ import Navbar from '@/components/Navbar';
 import Search from '@/components/Search';
 
 export default function RootLayout({ children, params: { type, address } }) {
+    address = decodeURIComponent(address);
+
     if (type !== 'java' && type !== 'bedrock') return notFound();
 
     return (
