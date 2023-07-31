@@ -57,6 +57,18 @@
 
         &:is(h3)
             @apply text-lg font-bold
+
+    .badge
+        @apply rounded px-2 py-1 text-xs font-mono
+
+        &.badge-blue
+            @apply bg-blue-600 text-white
+
+        &.badge-green
+            @apply bg-green-600 text-white
+
+        &.badge-orange
+            @apply bg-orange-600 text-white
         
     .button
         @include box
@@ -74,13 +86,17 @@
         @apply px-3 py-2 rounded block font-mono w-full
 
     .table
-        @apply table-auto w-full border-l border-t border-neutral-200 dark:border-neutral-800
+        @apply table-auto w-full
 
         thead th
-            @apply p-3 text-black dark:text-white border-r border-b border-neutral-200 dark:border-neutral-800 bg-neutral-200 dark:bg-neutral-800
+            @apply p-3 text-black dark:text-white dark:border-neutral-800 bg-black/10 dark:bg-white/10
 
-        tbody td, tbody th
-            @apply p-3 border-r border-b border-neutral-200 dark:border-neutral-800 text-center
+        tbody
+            td, th
+                @apply p-3 text-center
+
+            tr:not(:last-of-type) th, tr:not(:last-of-type) td
+                @apply border-b border-black/5 dark:border-white/5
 
     .card
         @include box

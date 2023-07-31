@@ -52,7 +52,7 @@ export default function Page() {
                     </section>
                     <section className="pt-12">
                         <AnchorHeader size={3} id="standards">Standards</AnchorHeader>
-                        <p className="mt-3 leading-7">The majority of this API uses the standardized REST API, which in simple terms means you will be making HTTP requests to our service. We currently only support endpoints using the <code>GET</code> method. All status endpoints return a response body in <a href="https://www.json.org/json-en.html" className="link">JSON format</a>, except if the response status code is not in the <code>200-299</code> success range, in which the body will be plain text. No other data formatting standard is available at this time, and there is currently no future plan to support anything other than JSON. All JSON returned from this service will have whitespace and any unnecessary characters removed to reduce network bandwidth and wasted information. You may learn more about the properties you receive from these routes by reading the documented response body from the route on this page.</p>
+                        <p className="mt-3 leading-7">The majority of this API uses the standardized REST API, which in simple terms means you will be making HTTP requests to our service. We currently only support endpoints using the <code>GET</code> and <code>POST</code> methods. All status endpoints return a response body in <a href="https://www.json.org/json-en.html" className="link">JSON format</a>, except if the response status code is not in the <code>200-299</code> success range, in which the body will be plain text. No other data formatting standard is available at this time, and there is currently no future plan to support anything other than JSON. All JSON returned from this service will have whitespace and any unnecessary characters removed to reduce network bandwidth and wasted information. You may learn more about the properties you receive from these routes by reading the documented response body from the route on this page.</p>
                     </section>
                     <section className="pt-12">
                         <AnchorHeader size={3} id="cache">Cache</AnchorHeader>
@@ -60,7 +60,7 @@ export default function Page() {
                     </section>
                     <section className="pt-12">
                         <AnchorHeader size={3} id="supported">Supported Versions</AnchorHeader>
-                        <p className="mt-3 leading-7">All Minecraft servers, including pre-netty rewrite Java Edition and Bedrock Edition servers, are supported. Make sure you are using the correct endpoint when retrieving a server status, as attempting to use the Java Edition status route with a Bedrock Edition host (or vise-versa) will result in a response saying the server is offline unless the server explicitly has cross-play supported. If the server you specify does not use the standard port value (<code>25565</code> for Java Edition, <code>19132</code> for Bedrock Edition), then you will need to specify the port by using the following format: <code>&lt;host&gt;:&lt;port&gt;</code>.</p>
+                        <p className="mt-3 leading-7">All Minecraft servers, including modern and legacy Java Edition servers, and Bedrock Edition servers, are supported. Make sure you are using the correct endpoint when retrieving a server status, as attempting to use the Java Edition status route with a Bedrock Edition host (or vise-versa) will result in a response saying the server is offline unless the server explicitly has cross-play supported. If the server you specify does not use the standard port value (<code>25565</code> for Java Edition, <code>19132</code> for Bedrock Edition), then you will need to specify the port by using the following format: <code>&lt;host&gt;:&lt;port&gt;</code>.</p>
                     </section>
                     <section className="pt-12">
                         <AnchorHeader size={3} id="error-handling">Error Handling</AnchorHeader>
@@ -70,8 +70,8 @@ export default function Page() {
                 <section className="pt-12">
                     <AnchorHeader size={2} id="revisions">Revisions</AnchorHeader>
                     <p className="mt-3 leading-7">Over the lifetime of this service, there has been a few changes that breaks compatibility with existing users who rely on consistent and non-changing data. When this happens, we release a new major version of the API called a revision, which is why you see <code>/v2</code> in the URL of all API requests. As time goes on, we can no longer support previous revisions and have to shut them down. You may refer to the table below to see any major revisions from the past up until present time. If you use our API, it is generally recommended to come back to this page every so often to confirm the revision you are using is not becoming deprecated.</p>
-                    <div className="overflow-x-auto max-w-full">
-                        <table className="table mt-5 min-w-[1560px]">
+                    <div className="card p-0 overflow-x-auto max-w-full mt-3">
+                        <table className="table min-w-[1560px]">
                             <thead>
                                 <tr>
                                     <th>Revision</th>
@@ -117,6 +117,8 @@ export default function Page() {
                                             <li>Moved response properties to root of response</li>
                                             <li>Support query lookup</li>
                                             <li>Added widgets</li>
+                                            <li>Added vote route</li>
+                                            <li>Added debug routes</li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -131,11 +133,11 @@ export default function Page() {
                             <AnchorHeader size={3} id="java-status">Java Status</AnchorHeader>
                             <p className="mt-2 leading-7">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
+                                <span className="badge badge-blue">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/java/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
-                                <div className="max-w-full overflow-x-auto">
+                                <div className="card p-0 max-w-full overflow-x-auto">
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
@@ -165,7 +167,7 @@ export default function Page() {
                                 </div>
                             </Collapsible>
                             <Collapsible title="Response Body" className="block mt-2" noPadding>
-                                <Highlight source={javaExample} className="bg-neutral-900" />
+                                <Highlight source={javaExample} className="bg-neutral-900 rounded-b" />
                             </Collapsible>
                         </div>
                     </section>
@@ -174,11 +176,11 @@ export default function Page() {
                             <AnchorHeader size={3} id="bedrock-status">Bedrock Status</AnchorHeader>
                             <p className="mt-2 leading-7">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
+                                <span className="badge badge-blue">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/bedrock/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Response Body" className="block mt-4" noPadding>
-                                <Highlight source={bedrockExample} className="bg-neutral-900" />
+                                <Highlight source={bedrockExample} className="bg-neutral-900 rounded-b" />
                             </Collapsible>
                         </div>
                     </section>
@@ -187,11 +189,11 @@ export default function Page() {
                             <AnchorHeader size={3} id="java-widget">Java Widget</AnchorHeader>
                             <p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL. The image is generated on every request, but the status of the server may be cached.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
+                                <span className="badge badge-blue">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/widget/java/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
-                                <div className="max-w-full overflow-x-auto">
+                                <div className="card p-0 max-w-full overflow-x-auto">
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
@@ -247,7 +249,7 @@ export default function Page() {
                             <AnchorHeader size={3} id="icon">Icon</AnchorHeader>
                             <p className="mt-2 leading-7">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
+                                <span className="badge badge-blue">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/icon/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Response Body" className="block mt-4">
@@ -261,11 +263,11 @@ export default function Page() {
                             <AnchorHeader size={3} id="vote">Send Vote</AnchorHeader>
                             <p className="mt-2 leading-7">Allows you to send a Votifier vote to the specified server. All data should be sent as query parameters. Only Votifier 2 is currently supported.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="bg-orange-600 rounded px-2 py-1 text-xs text-white">POST</span>
+                                <span className="badge badge-green">POST</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/vote</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
-                                <div className="max-w-full overflow-x-auto">
+                                <div className="card p-0 max-w-full overflow-x-auto">
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
@@ -418,7 +420,7 @@ export default function Page() {
                                 </div>
                             </Collapsible>
                             <Collapsible title="Response Body" className="block mt-2" noPadding>
-                                <div className="bg-neutral-900 p-4">
+                                <div className="bg-neutral-900 p-4 rounded-b">
                                     <span>The vote was successfully sent to the server</span>
                                 </div>
                             </Collapsible>
@@ -433,7 +435,7 @@ export default function Page() {
                             <div className="card">
                                 <div className="flex items-center gap-2">
                                     <h3 className="title">Java Status</h3>
-                                    <span className="block text-xs text-orange-600 px-2 py-1 font-mono">DEBUG ONLY</span>
+                                    <span className="badge badge-orange">DEBUG ONLY</span>
                                 </div>
                                 <p className="mt-2 leading-7">Returns the raw status response from the Java Edition Minecraft server. This route only works on 1.7 servers and up.</p>
                                 <p className="flex items-center gap-2 mt-3">
@@ -446,7 +448,7 @@ export default function Page() {
                             <div className="card">
                                 <div className="flex items-center gap-2">
                                     <h3 className="title">Legacy Java Status</h3>
-                                    <span className="block text-xs text-orange-600 px-2 py-1 font-mono">DEBUG ONLY</span>
+                                    <span className="badge badge-orange">DEBUG ONLY</span>
                                 </div>
                                 <p className="mt-2 leading-7">Returns the raw legacy status response from the Java Edition Minecraft server. This route only works on 1.6.4 servers and below.</p>
                                 <p className="flex items-center gap-2 mt-3">
@@ -459,7 +461,7 @@ export default function Page() {
                             <div className="card">
                                 <div className="flex items-center gap-2">
                                     <h3 className="title">Bedrock Status</h3>
-                                    <span className="block text-xs text-orange-600 px-2 py-1 font-mono">DEBUG ONLY</span>
+                                    <span className="badge badge-orange">DEBUG ONLY</span>
                                 </div>
                                 <p className="mt-2 leading-7">Returns the raw status response from the Bedrock Edition Minecraft server. This route only works on 1.7 servers and up.</p>
                                 <p className="flex items-center gap-2 mt-3">
@@ -472,7 +474,7 @@ export default function Page() {
                             <div className="card">
                                 <div className="flex items-center gap-2">
                                     <h3 className="title">Basic Query</h3>
-                                    <span className="block text-xs text-orange-600 px-2 py-1 font-mono">DEBUG ONLY</span>
+                                    <span className="badge badge-orange">DEBUG ONLY</span>
                                 </div>
                                 <p className="mt-2 leading-7">Returns the raw basic query information from the Java Edition Minecraft server. The server must have query enabled for this to work.</p>
                                 <p className="flex items-center gap-2 mt-3">
@@ -485,7 +487,7 @@ export default function Page() {
                             <div className="card">
                                 <div className="flex items-center gap-2">
                                     <h3 className="title">Full Query</h3>
-                                    <span className="block text-xs text-orange-600 px-2 py-1 font-mono">DEBUG ONLY</span>
+                                    <span className="badge badge-orange">DEBUG ONLY</span>
                                 </div>
                                 <p className="mt-2 leading-7">Returns the raw full query information from the Java Edition Minecraft server. The server must have query enabled for this to work.</p>
                                 <p className="flex items-center gap-2 mt-3">

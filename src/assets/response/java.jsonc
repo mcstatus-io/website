@@ -139,8 +139,8 @@
             // The name of the plugin.
             // @type {string}
             "name": "WorldEdit",
-            // The semantic version of the plugin.
-            // @type {string}
+            // The semantic version of the plugin. This property can also be null.
+            // @type {string | null}
             "version": "7.2.14"
         }
     ]
