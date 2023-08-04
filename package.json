@@ -42,7 +42,7 @@
 		"raw-loader": "^4.0.2",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"sass": "^1.64.1",
+		"sass": "^1.64.2",
 		"semver": "^7.5.4",
 		"sharp": "^0.32.4",
 		"tailwindcss": "^3.3.3"
@@ -53,8 +53,8 @@
 		"@types/prop-types": "^15.7.5",
 		"@types/semver": "^7.5.0",
 		"cross-env": "^7.0.3",
-		"eslint": "^8.45.0",
+		"eslint": "^8.46.0",
 		"eslint-config-next": "^13.4.12",
-		"eslint-plugin-react": "^7.33.0"
+		"eslint-plugin-react": "^7.33.1"
 	}
 }
