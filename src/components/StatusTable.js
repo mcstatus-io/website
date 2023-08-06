@@ -12,7 +12,7 @@ import Chevron from '@/components/Chevron';
 import MinecraftFormatted from '@/components/MinecraftFormatted';
 
 const hasDuplicateValues = (arr) => arr.length > new Set(arr).size;
-const sortAscendingCaseInsensitive = (prop) => (a, b) => a[prop].toLowerCase() > b[prop].toLowerCase() ? 1 : b[prop].toLowerCase() > a[prop].toLowerCase() ? -1 : 0;
+const sortFuncAscendingCaseInsensitive = (prop) => (a, b) => a[prop].toLowerCase() > b[prop].toLowerCase() ? 1 : b[prop].toLowerCase() > a[prop].toLowerCase() ? -1 : 0;
 
 export default function StatusTable({ status, protocolVersions, className = '', ...props }) {
     const [showMods, setShowMods] = useState(false);
@@ -76,7 +76,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                     : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
                         }
                         {
-                            status.players.list?.length > 0
+                            status.players?.list?.length > 0
                                 ? <>
                                     <div className="flex flex-wrap items-center gap-3">
                                         <button type="button" className="button w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
@@ -107,13 +107,13 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                         }
                     </div>
                     {
-                        status.players.list?.length > 0
+                        status.players?.list?.length > 0
                             ? <div className={showPlayers ? 'block' : 'hidden'} id="players-list">
                                 {
                                     showAvatars && allowAvatars
                                         ? <ul className="list-none flex flex-wrap gap-2 mt-3">
                                             {
-                                                status.players.list.sort(sortAscendingCaseInsensitive('name_clean')).map((player, index) => (
+                                                status.players.list.sort(sortFuncAscendingCaseInsensitive('name_clean')).map((player, index) => (
                                                     <li key={index}>
                                                         <a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}`} className="card card-hover px-3 py-2 flex gap-3 items-center">
                                                             <Image src={`https://api.mineatar.io/head/${player.uuid}`} width="24" height="24" />
@@ -127,7 +127,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                             ? <div className="font-mono whitespace-pre bg-black overflow-x-auto p-4 mt-3">
                                                 <ul className="list-none">
                                                     {
-                                                        status.players.list.sort(sortAscendingCaseInsensitive('name_clean')).map((player, index) => (
+                                                        status.players.list.sort(sortFuncAscendingCaseInsensitive('name_clean')).map((player, index) => (
                                                             <li key={index}>
                                                                 <p className="text-white flex items-center justify-start md:justify-between gap-2 md:gap-3">
                                                                     <span className="min-w-fit">
@@ -174,7 +174,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                 <div className={`${showMods ? 'block' : 'hidden'} tags mt-2 font-mono whitespace-pre bg-black overflow-x-auto p-4`} id="mods-list">
                                     <ul className="list-none">
                                         {
-                                            status.mods.sort(sortAscendingCaseInsensitive('name')).map((mod, index) => (
+                                            status.mods.sort(sortFuncAscendingCaseInsensitive('name')).map((mod, index) => (
                                                 <li key={index}>
                                                     <p className="text-white">
                                                         <span className="text-neutral-500">{Array((status.mods.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
@@ -222,7 +222,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                 <div className={`${showPlugins ? 'block' : 'hidden'} tags mt-2 font-mono whitespace-pre bg-black overflow-x-auto p-4`} id="plugin-list">
                                     <ul className="list-none">
                                         {
-                                            status.plugins.sort(sortAscendingCaseInsensitive('name')).map((plugin, index) => (
+                                            status.plugins.sort(sortFuncAscendingCaseInsensitive('name')).map((plugin, index) => (
                                                 <li key={index}>
                                                     <p className="text-white">
                                                         <span className="text-neutral-500">{Array((status.plugins.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
