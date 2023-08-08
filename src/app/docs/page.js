@@ -11,6 +11,7 @@ import Collapsible from '@/components/Collapsible';
 import Container from '@/components/Container';
 import Highlight from '@/components/Highlight';
 import Navbar from '@/components/Navbar';
+import RevisionsTable, { RevisionRow } from '@/components/RevisionsTable';
 
 export const metadata = {
     title: 'API Documentation',
@@ -71,59 +72,26 @@ export default function Page() {
                     <AnchorHeader size={2} id="revisions">Revisions</AnchorHeader>
                     <p className="mt-3 leading-7">Over the lifetime of this service, there has been a few changes that breaks compatibility with existing users who rely on consistent and non-changing data. When this happens, we release a new major version of the API called a revision, which is why you see <code>/v2</code> in the URL of all API requests. As time goes on, we can no longer support previous revisions and have to shut them down. You may refer to the table below to see any major revisions from the past up until present time. If you use our API, it is generally recommended to come back to this page every so often to confirm the revision you are using is not becoming deprecated.</p>
                     <div className="card p-0 overflow-x-auto max-w-full mt-3">
-                        <table className="table min-w-[1560px]">
-                            <thead>
-                                <tr>
-                                    <th>Revision</th>
-                                    <th>Base URL</th>
-                                    <th>Release Date</th>
-                                    <th>Deprecation Date</th>
-                                    <th>Changelog</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <span>Revision 1</span>
-                                    </td>
-                                    <td>
-                                        <code>https://api.mcstatus.io/v1</code>
-                                    </td>
-                                    <td>
-                                        <span>September 2021</span>
-                                    </td>
-                                    <td>
-                                        <span>February 2023</span>
-                                    </td>
-                                    <td>
-                                        <span>Initial API release</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>Revision 2</span>
-                                    </td>
-                                    <td>
-                                        <code>https://api.mcstatus.io/v2</code>
-                                    </td>
-                                    <td>
-                                        <span>July 2022</span>
-                                    </td>
-                                    <td>
-                                        <span className="text-neutral-500">&mdash;</span>
-                                    </td>
-                                    <td>
-                                        <ul className="flex flex-col gap-1 list-inside list-disc">
-                                            <li>Moved response properties to root of response</li>
-                                            <li>Support query lookup</li>
-                                            <li>Added widgets</li>
-                                            <li>Added vote route</li>
-                                            <li>Added debug routes</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <RevisionsTable>
+                            <RevisionRow
+                                name="Revision 1"
+                                baseURL="/v1"
+                                releaseDate="September 2021"
+                                deprecationDate="February 2023"
+                                changelog={['Initial API release']}
+                            />
+                            <RevisionRow
+                                name="Revision 2"
+                                baseURL="/v2"
+                                releaseDate="July 2022"
+                                changelog={[
+                                    'Moved response properties to root of response',
+                                    'Support query lookup',
+                                    'Added widgets',
+                                    'Added vote route'
+                                ]}
+                            />
+                        </RevisionsTable>
                     </div>
                 </section>
                 <section>
@@ -426,77 +394,6 @@ export default function Page() {
                             </Collapsible>
                         </div>
                     </section>
-                </section>
-                <section className="pt-12">
-                    <AnchorHeader size={2} id="debug">Debug Routes</AnchorHeader>
-                    <p className="mt-3 leading-7">The following routes are used to test for any issues with the raw response from the server itself. These routes should not be implemented into your service, as they may be disabled or removed entirely at any random point without notice. If you experience issues with our API, try one of these routes to compare the response to what you should be expecting. Additionally, these routes have a very restrictive rate limit at only 1 request per 15 seconds, limited by IP address. The rate limit is this restrictive because there is no caching enabled for any of these routes.</p>
-                    <Collapsible title="Routes List" className="pt-3">
-                        <section>
-                            <div className="card">
-                                <div className="flex items-center gap-2">
-                                    <h3 className="title">Java Status</h3>
-                                    <span className="badge badge-orange">DEBUG ONLY</span>
-                                </div>
-                                <p className="mt-2 leading-7">Returns the raw status response from the Java Edition Minecraft server. This route only works on 1.7 servers and up.</p>
-                                <p className="flex items-center gap-2 mt-3">
-                                    <span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-                                    <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/debug/java/&lt;address&gt;</span></code>
-                                </p>
-                            </div>
-                        </section>
-                        <section className="pt-3">
-                            <div className="card">
-                                <div className="flex items-center gap-2">
-                                    <h3 className="title">Legacy Java Status</h3>
-                                    <span className="badge badge-orange">DEBUG ONLY</span>
-                                </div>
-                                <p className="mt-2 leading-7">Returns the raw legacy status response from the Java Edition Minecraft server. This route only works on 1.6.4 servers and below.</p>
-                                <p className="flex items-center gap-2 mt-3">
-                                    <span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-                                    <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/debug/legacy/&lt;address&gt;</span></code>
-                                </p>
-                            </div>
-                        </section>
-                        <section className="pt-3">
-                            <div className="card">
-                                <div className="flex items-center gap-2">
-                                    <h3 className="title">Bedrock Status</h3>
-                                    <span className="badge badge-orange">DEBUG ONLY</span>
-                                </div>
-                                <p className="mt-2 leading-7">Returns the raw status response from the Bedrock Edition Minecraft server. This route only works on 1.7 servers and up.</p>
-                                <p className="flex items-center gap-2 mt-3">
-                                    <span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-                                    <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/debug/bedrock/&lt;address&gt;</span></code>
-                                </p>
-                            </div>
-                        </section>
-                        <section className="pt-3">
-                            <div className="card">
-                                <div className="flex items-center gap-2">
-                                    <h3 className="title">Basic Query</h3>
-                                    <span className="badge badge-orange">DEBUG ONLY</span>
-                                </div>
-                                <p className="mt-2 leading-7">Returns the raw basic query information from the Java Edition Minecraft server. The server must have query enabled for this to work.</p>
-                                <p className="flex items-center gap-2 mt-3">
-                                    <span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-                                    <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/debug/query/basic/&lt;address&gt;</span></code>
-                                </p>
-                            </div>
-                        </section>
-                        <section className="pt-3">
-                            <div className="card">
-                                <div className="flex items-center gap-2">
-                                    <h3 className="title">Full Query</h3>
-                                    <span className="badge badge-orange">DEBUG ONLY</span>
-                                </div>
-                                <p className="mt-2 leading-7">Returns the raw full query information from the Java Edition Minecraft server. The server must have query enabled for this to work.</p>
-                                <p className="flex items-center gap-2 mt-3">
-                                    <span className="bg-green-700 rounded px-2 py-1 text-xs text-white">GET</span>
-                                    <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/debug/query/full/&lt;address&gt;</span></code>
-                                </p>
-                            </div>
-                        </section>
-                    </Collapsible>
                 </section>
                 <section className="pt-12">
                     <AnchorHeader size={2} id="libraries">Libraries</AnchorHeader>
