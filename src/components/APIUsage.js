@@ -3,6 +3,10 @@ import Collapsible from '@/components/Collapsible';
 import Highlight from '@/components/Highlight';
 
 export default function APIUsage({ type, address, data, ...props }) {
+    if (typeof data.icon !== 'undefined' && data.icon !== null && data.icon.length >= 64) {
+        data.icon = `${data.icon.substring(0, 64)} (...${((data.icon.length - 64) / 1000).toFixed(1)} KB)`;
+    }
+
     return (
         <Collapsible title="API Usage" id="api-usage" {...props}>
             <p>
