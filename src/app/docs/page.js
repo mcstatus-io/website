@@ -109,7 +109,7 @@ export default function Page() {
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
-                                                <th className="w-[10%]">Value</th>
+                                                <th className="w-[10%]">Key</th>
                                                 <th className="w-[10%]">Data Type</th>
                                                 <th className="w-[10%]">Default</th>
                                                 <th className="w-[60%]">Description</th>
@@ -165,7 +165,7 @@ export default function Page() {
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
-                                                <th className="w-[10%]">Value</th>
+                                                <th className="w-[10%]">Key</th>
                                                 <th className="w-[10%]">Data Type</th>
                                                 <th className="w-[10%]">Default</th>
                                                 <th className="w-[60%]">Description</th>
@@ -239,7 +239,7 @@ export default function Page() {
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
-                                                <th className="w-[15%]">Value</th>
+                                                <th className="w-[15%]">Key</th>
                                                 <th className="w-[15%]">Data Type</th>
                                                 <th className="w-[15%]">Required</th>
                                                 <th className="w-[15%]">Default</th>
