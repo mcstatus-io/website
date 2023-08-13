@@ -1,6 +1,5 @@
 'use client';
 
-import linkifyHtml from 'linkify-html';
 import { useEffect, useRef } from 'react';
 
 const obfuscatedCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+[]"\';:<>,./?';
@@ -19,7 +18,7 @@ export default function MinecraftFormatted({ html, className = '' }) {
         const render = () => {
             if (prefersReducedMotion.matches) return;
 
-            obfuscatedElems.forEach((elem) => {
+            for (const elem of obfuscatedElems) {
                 let value = '';
 
                 for (let i = 0, l = elem.innerText.length; i < l; i++) {
@@ -27,7 +26,7 @@ export default function MinecraftFormatted({ html, className = '' }) {
                 }
 
                 elem.innerText = value;
-            });
+            }
 
             renderRequest = requestAnimationFrame(render);
         };
@@ -52,6 +51,6 @@ export default function MinecraftFormatted({ html, className = '' }) {
     });
 
     return (
-        <pre className={`block bg-black text-white p-4 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: linkifyHtml(html, { className: 'hover:underline underline-offset-2', rel: 'noreferrer' }) }} ref={containerElem} />
+        <pre className={`block bg-black text-white p-4 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: html }} ref={containerElem} />
     );
 }
