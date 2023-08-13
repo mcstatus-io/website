@@ -51,6 +51,6 @@ export default function MinecraftFormatted({ html, className = '' }) {
     });
 
     return (
-        <pre className={`block bg-black text-white p-4 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: html }} ref={containerElem} />
+        <pre className={`block bg-black rounded text-white p-5 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: html }} ref={containerElem} />
     );
 }

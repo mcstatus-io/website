@@ -101,7 +101,7 @@ export default function Page() {
                             <AnchorHeader size={3} id="java-status">Java Status</AnchorHeader>
                             <p className="mt-2 leading-7">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="badge badge-blue">GET</span>
+                                <span className="badge badge-blue text-xs">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/java/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
@@ -144,7 +144,7 @@ export default function Page() {
                             <AnchorHeader size={3} id="bedrock-status">Bedrock Status</AnchorHeader>
                             <p className="mt-2 leading-7">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="badge badge-blue">GET</span>
+                                <span className="badge badge-blue text-xs">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/bedrock/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Response Body" className="block mt-4" noPadding>
@@ -157,7 +157,7 @@ export default function Page() {
                             <AnchorHeader size={3} id="java-widget">Java Widget</AnchorHeader>
                             <p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL. The image is generated on every request, but the status of the server may be cached.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="badge badge-blue">GET</span>
+                                <span className="badge badge-blue text-xs">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/widget/java/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
@@ -217,7 +217,7 @@ export default function Page() {
                             <AnchorHeader size={3} id="icon">Icon</AnchorHeader>
                             <p className="mt-2 leading-7">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="badge badge-blue">GET</span>
+                                <span className="badge badge-blue text-xs">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/icon/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Response Body" className="block mt-4">
@@ -231,7 +231,7 @@ export default function Page() {
                             <AnchorHeader size={3} id="vote">Send Vote</AnchorHeader>
                             <p className="mt-2 leading-7">Allows you to send a Votifier vote to the specified server. All data should be sent as query parameters. Only Votifier 2 is currently supported.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="badge badge-green">POST</span>
+                                <span className="badge badge-green text-xs">POST</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/vote</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
@@ -403,8 +403,8 @@ export default function Page() {
                             libraryList.map((library, index) => (
                                 <li key={index}>
                                     <a href={library.url} className="button p-4 flex items-center gap-2">
-                                        <span className="text-sm rounded px-2 py-1 bg-neutral-500 text-white">{library.official ? 'Official' : 'Unofficial'}</span>
-                                        <span className="text-sm rounded px-2 py-1" style={{ color: languageColors[library.language][0], backgroundColor: languageColors[library.language][1] }}>{languageNames[library.language]}</span>
+                                        <span className="badge badge-gray">{library.official ? 'Official' : 'Unofficial'}</span>
+                                        <span className="badge" style={{ color: languageColors[library.language][0], backgroundColor: languageColors[library.language][1] }}>{languageNames[library.language]}</span>
                                         <code className="text-black dark:text-white">{library.name}</code>
                                     </a>
                                 </li>

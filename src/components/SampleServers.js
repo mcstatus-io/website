@@ -28,7 +28,7 @@ export default function SampleServers({ className = '' }) {
                     <li key={index}>
                         <Link href={`/status/${server.type}/${server.address}`} className="button flex flex-col sm:flex-row items-start sm:items-center gap-3 p-5">
                             <div className="flex items-center gap-3">
-                                <span className={`px-2 py-1 rounded ${server.type === 'java' ? 'bg-green-700 contrast-more:bg-green-900' : 'bg-blue-600 contrast-more:bg-blue-900'} text-xs text-white`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
+                                <span className={`badge text-white text-xs ${server.type === 'java' ? 'bg-green-700 contrast-more:bg-green-900' : 'bg-blue-600 contrast-more:bg-blue-900'}`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
                                 <span className="font-bold">{server.name}</span>
                             </div>
                             <code className="text-sm text-neutral-700 dark:text-neutral-300 sm:ml-auto md:max-lg:hidden">{server.address}</code>

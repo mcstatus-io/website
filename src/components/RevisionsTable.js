@@ -43,7 +43,7 @@ export function RevisionRow({ name, baseURL, releaseDate = null, deprecationDate
                                         ))
                                     }
                                 </ul>
-                                : <button type="button" className="button button-border px-2 py-1" onClick={() => setShowChanges(true)}>Click to show changelog</button>
+                                : <button type="button" className="button button-border button-sm" onClick={() => setShowChanges(true)}>Click to show changelog</button>
                         : <span className="text-neutral-500">&mdash;</span>
                 }
             </td>

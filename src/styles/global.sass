@@ -59,16 +59,37 @@
             @apply text-lg font-bold
 
     .badge
-        @apply rounded px-2 py-1 text-xs font-mono
+        @apply rounded px-2 py-1 text-sm
+
+        &.badge-red
+            @apply bg-red-600 text-white
+
+            &.badge-hover
+                @apply hover:bg-red-700
 
         &.badge-blue
             @apply bg-blue-600 text-white
 
+            &.badge-hover
+                @apply hover:bg-blue-700
+
         &.badge-green
-            @apply bg-green-600 text-white
+            @apply bg-green-700 text-white
+
+            &.badge-hover
+                @apply hover:bg-green-800
 
         &.badge-orange
             @apply bg-orange-600 text-white
+
+            &.badge-hover
+                @apply hover:bg-orange-700
+
+        &.badge-gray
+            @apply bg-neutral-600 text-white
+
+            &.badge-hover
+                @apply hover:bg-neutral-700
         
     .button
         @include box
@@ -77,6 +98,9 @@
 
         &.button-border
             @apply bg-transparent border border-black/20 dark:border-white/20 hover:border-black/50 dark:hover:border-white/50 focus:border-black/50 dark:focus:border-white/50
+
+        &.button-sm
+            @apply px-2 py-1 text-sm
 
     .select
         @include box
