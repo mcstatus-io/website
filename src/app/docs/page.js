@@ -365,11 +365,8 @@ export default function Page() {
                                                     <span>String</span>
                                                 </td>
                                                 <td>
-                                                    <p>
-                                                        <span className="font-bold">Yes</span>
-                                                        <span>*</span>
-                                                    </p>
-                                                    <p className="text-neutral-500 italic">(Votifier 1 only)</p>
+                                                    <span className="font-bold">Yes</span>
+                                                    <span>*</span>
                                                 </td>
                                                 <td>
                                                     <span className="text-neutral-500">&mdash;</span>
@@ -411,11 +408,8 @@ export default function Page() {
                                                     <span>String</span>
                                                 </td>
                                                 <td>
-                                                    <p>
-                                                        <span className="font-bold">Yes</span>
-                                                        <span>*</span>
-                                                    </p>
-                                                    <p className="text-neutral-500 italic">(Votifier 2 only)</p>
+                                                    <span className="font-bold">Yes</span>
+                                                    <span>*</span>
                                                 </td>
                                                 <td>
                                                     <span className="text-neutral-500">&mdash;</span>
@@ -444,6 +438,10 @@ export default function Page() {
                                         </tbody>
                                     </table>
                                 </div>
+                                <p className="mt-3 text-neutral-300">
+                                    <span className="font-bold">*</span>
+                                    <span> This query parameter is only required if you are using the Votifier version specified by this category. For example, the <code>publickey</code> query parameter is only required if you are using Votifier <code>version=1</code>.</span>
+                                </p>
                             </Collapsible>
                             <Collapsible title="Response Body" className="block mt-2" noPadding>
                                 <div className="bg-neutral-900 p-4 rounded-b">
