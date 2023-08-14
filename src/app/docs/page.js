@@ -354,6 +354,7 @@ export default function Page() {
                                                     <div className="flex items-center gap-3">
                                                         <span>Votifier 1</span>
                                                         <span className="font-normal text-neutral-500 text-sm">(query <code>version=1</code>)</span>
+                                                        <span className="font-normal text-neutral-300">*</span>
                                                     </div>
                                                 </th>
                                             </tr>
@@ -366,7 +367,7 @@ export default function Page() {
                                                 </td>
                                                 <td>
                                                     <span className="font-bold">Yes</span>
-                                                    <span>*</span>
+                                                    <span>**</span>
                                                 </td>
                                                 <td>
                                                     <span className="text-neutral-500">&mdash;</span>
@@ -409,7 +410,7 @@ export default function Page() {
                                                 </td>
                                                 <td>
                                                     <span className="font-bold">Yes</span>
-                                                    <span>*</span>
+                                                    <span>**</span>
                                                 </td>
                                                 <td>
                                                     <span className="text-neutral-500">&mdash;</span>
@@ -440,6 +441,10 @@ export default function Page() {
                                 </div>
                                 <p className="mt-3 text-neutral-300">
                                     <span className="font-bold">*</span>
+                                    <span> Due to how Votifier 1 works, it is impossible to confirm whether a vote was successfully processed by the server. You should only receive an error if the server is offline or invalid data was supplied.</span>
+                                </p>
+                                <p className="mt-3 text-neutral-300">
+                                    <span className="font-bold">**</span>
                                     <span> This query parameter is only required if you are using the Votifier version specified by this category. For example, the <code>publickey</code> query parameter is only required if you are using Votifier <code>version=1</code>.</span>
                                 </p>
                             </Collapsible>
