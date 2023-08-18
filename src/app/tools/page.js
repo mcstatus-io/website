@@ -5,7 +5,7 @@ import Container from '@/components/Container';
 import Navbar from '@/components/Navbar';
 
 export const metadata = {
-    title: 'Tools', // TODO
+    title: 'Tools',
     description: 'A few tools for server owners or developers to quickly test features on their server.',
     openGraph: {
         title: 'Tools - Minecraft Server Status',
@@ -50,28 +50,22 @@ export default function Page() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/tools/votifier">
-                                <div className="card card-hover h-full">
-                                    <p className="text-lg font-bold">Votifier Tester</p>
-                                    <p className="mt-1">Quickly test whether or not your Votifier is set up properly by sending a real vote.</p>
-                                </div>
-                            </Link>
+                            <div className="card card-disabled h-full [--card-text:'Coming_Soon';]">
+                                <p className="text-lg font-bold">Votifier Tester</p>
+                                <p className="mt-1">Quickly test whether or not your Votifier is set up properly by sending a real vote.</p>
+                            </div>
                         </li>
                         <li>
-                            <Link href="/tools/whitelist">
-                                <div className="card card-hover h-full">
-                                    <p className="text-lg font-bold">Whitelist Creator</p>
-                                    <p className="mt-1">Automatically generates a whitelist with pre-filled player UUIDs.</p>
-                                </div>
-                            </Link>
+                            <div className="card card-disabled h-full [--card-text:'Coming_Soon';]">
+                                <p className="text-lg font-bold">Whitelist Creator</p>
+                                <p className="mt-1">Automatically generates a whitelist with pre-filled player UUIDs.</p>
+                            </div>
                         </li>
                         <li>
-                            <Link href="/tools/properties">
-                                <div className="card card-hover h-full">
-                                    <p className="text-lg font-bold">Server Properties Editor</p>
-                                    <p className="mt-1">Quickly adjust your server.properties file by using our online editor.</p>
-                                </div>
-                            </Link>
+                            <div className="card card-disabled h-full [--card-text:'Coming_Soon';]">
+                                <p className="text-lg font-bold">Server Properties Editor</p>
+                                <p className="mt-1">Quickly adjust your server.properties file by using our online editor.</p>
+                            </div>
                         </li>
                         <li>
                             <a href="https://www.planetminecraft.com/banner">

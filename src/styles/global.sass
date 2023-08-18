@@ -132,6 +132,17 @@
         &.card-hover
             @include interactive-box
 
+        &.card-disabled
+            @apply relative
+
+            & > *
+                @apply opacity-10
+
+            &::before
+                content: var(--card-text)
+
+                @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl
+
     .carbon
         & > *:not([id="carbonads"], .preview)
             @apply hidden
