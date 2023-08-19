@@ -4,17 +4,16 @@
 [![](https://img.shields.io/github/actions/workflow/status/mcstatus-io/website/node.js.yml)](https://github.com/mcstatus-io/website/actions)
 [![](https://img.shields.io/uptimerobot/ratio/m790234582-15fa01814434ec8c2dc75568)](https://status.mcstatus.io/)
 
-The NextJS server that powers the mcstatus.io website. This repository is open source for transparency reasons only.
+This is the source code for the [mcstatus.io](https://mcstatus.io) website. It is built using [NextJS](https://nextjs.org/) and [TailwindCSS](https://tailwindcss.com/). This code is currently under copyright, and is not licensed for distribution. If you are looking for the source code of the API, you are in the wrong place. Please visit the [mcstatus-io/ping-server](https://github.com/mcstatus-io/ping-server) repository instead.
 
 ## Requirements
 
-- [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/en/)
 
-## Installation
+## Getting Started
 
 ```bash
-# 1. Clone the repository
+# 1. Clone the repository (or download from this page)
 $ git clone https://github.com/mcstatus-io/website.git
 
 # 2. Move the working directory into the cloned repository
