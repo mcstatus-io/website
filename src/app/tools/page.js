@@ -33,12 +33,14 @@ export default function Page() {
             <Navbar active="tools" />
             <Container>
                 <section>
-                    <hgroup>
-                        <h1 className="title">Tools</h1>
-                        <p className="subtitle">Simple tools to help out</p>
-                    </hgroup>
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between lg:gap-5">
+                        <hgroup>
+                            <h1 className="title">Tools</h1>
+                            <p className="subtitle">Simple tools to help out</p>
+                        </hgroup>
+                        <Ad />
+                    </div>
                 </section>
-                <Ad className="mt-5" />
                 <section className="pt-12">
                     <ul className="grid grid-cols-3 gap-3">
                         <li>

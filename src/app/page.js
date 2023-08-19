@@ -18,13 +18,15 @@ export default function Page() {
             <Navbar active="home" />
             <Container>
                 <section>
-                    <hgroup>
-                        <h1 className="title">Minecraft Server Status</h1>
-                        <p className="subtitle">Quickly retrieve the status of any Minecraft server</p>
-                    </hgroup>
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between lg:gap-5">
+                        <hgroup>
+                            <h1 className="title">Minecraft Server Status</h1>
+                            <p className="subtitle">Quickly retrieve the status of any Minecraft server</p>
+                        </hgroup>
+                        <Ad />
+                    </div>
                     <Search className="mt-5" autoFocus />
                 </section>
-                <Ad className="mt-5" />
                 <section className="pt-12">
                     <div className="title-group">
                         <GiftIcon width="28" height="28" />

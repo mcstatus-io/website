@@ -14,10 +14,13 @@ export default function RootLayout({ children, params: { type, address } }) {
             <Navbar />
             <Container>
                 <section>
-                    <hgroup>
-                        <h1 className="title">Minecraft Server Status</h1>
-                        <p className="subtitle">Quickly retrieve the status of any Minecraft server</p>
-                    </hgroup>
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between lg:gap-5">
+                        <hgroup>
+                            <h1 className="title">Minecraft Server Status</h1>
+                            <p className="subtitle">Quickly retrieve the status of any Minecraft server</p>
+                        </hgroup>
+                        <Ad />
+                    </div>
                     <Search type={type} address={address} className="mt-5" />
                 </section>
                 {
@@ -29,7 +32,6 @@ export default function RootLayout({ children, params: { type, address } }) {
                             </div>
                         </section>
                 }
-                <Ad className="mt-5" />
             </Container>
         </>
     );

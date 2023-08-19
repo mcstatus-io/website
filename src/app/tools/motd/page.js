@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import ChevronRightIcon from '@/assets/icons/chevron-right.svg';
+import Ad from '@/components/Ad';
 import Container from '@/components/Container';
 import MOTDEditor from '@/components/MOTDEditor';
 import Navbar from '@/components/Navbar';
@@ -31,10 +34,19 @@ export default function Page() {
             <Navbar active="tools" />
             <Container>
                 <section>
-                    <hgroup>
-                        <h1 className="title">MOTD Editor</h1>
-                        <p className="subtitle">Easily edit and preview an MOTD before using it on your own server</p>
-                    </hgroup>
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between lg:gap-5">
+                        <hgroup>
+                            <div className="flex items-center gap-3">
+                                <Link href="/tools">
+                                    <span className="title h1 link">Tools</span>
+                                </Link>
+                                <ChevronRightIcon width="32" height="32" className="text-neutral-500" />
+                                <h1 className="title">MOTD Editor</h1>
+                            </div>
+                            <p className="subtitle h1">Easily edit and preview an MOTD before using it on your own server</p>
+                        </hgroup>
+                        <Ad />
+                    </div>
                 </section>
                 <MOTDEditor />
             </Container>

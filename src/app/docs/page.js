@@ -41,11 +41,13 @@ export default function Page() {
         <>
             <Navbar active="api" />
             <Container>
-                <hgroup>
-                    <h1 className="title">API Documentation</h1>
-                    <p className="subtitle">Documentation on how to integrate our API in your service</p>
-                </hgroup>
-                <Ad className="mt-5" />
+                <div className="flex flex-col lg:flex-row lg:items-end justify-between lg:gap-5">
+                    <hgroup>
+                        <h1 className="title">API Documentation</h1>
+                        <p className="subtitle">Documentation on how to integrate our API in your service</p>
+                    </hgroup>
+                    <Ad />
+                </div>
                 <section>
                     <section className="pt-12">
                         <AnchorHeader size={2} id="overview">Overview</AnchorHeader>

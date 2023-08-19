@@ -91,13 +91,15 @@ export default function Page() {
             <Navbar active="about" />
             <Container>
                 <section>
-                    <hgroup>
-                        <h1 className="title">About</h1>
-                        <p className="subtitle">A quick understanding of what we do</p>
-                    </hgroup>
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between lg:gap-5">
+                        <hgroup>
+                            <h1 className="title">About</h1>
+                            <p className="subtitle">A quick understanding of what we do</p>
+                        </hgroup>
+                        <Ad />
+                    </div>
                     <p className="mt-5 leading-7">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="link">NextJS</a> and the back-end was built with <a href="https://golang.org" className="link">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="link">Carbon Ads</a> to help cover the hosting and development costs.</p>
                 </section>
-                <Ad className="mt-5" />
                 <section className="pt-12">
                     <div className="title-group">
                         <HelpCircleIcon width="28" height="28" />
