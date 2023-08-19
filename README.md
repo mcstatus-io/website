@@ -1,4 +1,4 @@
-# mcstatus.io
+# Website
 ![](https://img.shields.io/github/languages/code-size/mcstatus-io/website)
 [![](https://img.shields.io/github/issues/mcstatus-io/website)](https://github.com/mcstatus-io/website/issues)
 [![](https://img.shields.io/github/actions/workflow/status/mcstatus-io/website/node.js.yml)](https://github.com/mcstatus-io/website/actions)
