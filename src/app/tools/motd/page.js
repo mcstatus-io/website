@@ -34,13 +34,13 @@ export default function Page() {
             <Navbar active="tools" />
             <Container>
                 <section>
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between lg:gap-5">
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
                             <div className="flex items-center gap-3">
-                                <Link href="/tools">
+                                <Link href="/tools" className="hidden md:block">
                                     <span className="title h1 link">Tools</span>
                                 </Link>
-                                <ChevronRightIcon width="32" height="32" className="text-neutral-500" />
+                                <ChevronRightIcon width="32" height="32" className="text-neutral-500 hidden md:block" />
                                 <h1 className="title">MOTD Editor</h1>
                             </div>
                             <p className="subtitle h1">Easily edit and preview an MOTD before using it on your own server</p>

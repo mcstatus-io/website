@@ -91,7 +91,7 @@ export default function Page() {
             <Navbar active="about" />
             <Container>
                 <section>
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between lg:gap-5">
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
                             <h1 className="title">About</h1>
                             <p className="subtitle">A quick understanding of what we do</p>

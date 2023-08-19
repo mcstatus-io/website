@@ -33,7 +33,7 @@ export default function Page() {
             <Navbar active="tools" />
             <Container>
                 <section>
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between lg:gap-5">
+                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
                             <h1 className="title">Tools</h1>
                             <p className="subtitle">Simple tools to help out</p>
@@ -42,7 +42,7 @@ export default function Page() {
                     </div>
                 </section>
                 <section className="pt-12">
-                    <ul className="grid grid-cols-3 gap-3">
+                    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                         <li>
                             <Link href="/tools/motd">
                                 <div className="card card-hover h-full">

@@ -381,24 +381,30 @@ export default function MOTDEditor() {
             <section className="pt-12">
                 <h2 className="title">Code</h2>
                 <div className="card mt-3">
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-col md:flex-row md:items-center gap-3">
                         <h3 className="title">Vanilla</h3>
-                        <code>server.properties</code>
-                        <CopyButton className="button-sm gap-2" iconSize="16" text={getServerPropertiesCode(tree)} />
+                        <div className="flex items-center gap-3">
+                            <code>server.properties</code>
+                            <CopyButton className="button-sm gap-2" iconSize="16" text={getServerPropertiesCode(tree)} />
+                        </div>
                     </div>
-                    <pre className="bg-black p-5 mt-3 rounded"><code>{getServerPropertiesCode(tree)}</code></pre>
-                    <div className="flex items-center gap-3 mt-8">
+                    <pre className="bg-black p-5 mt-3 rounded overflow-auto"><code>{getServerPropertiesCode(tree)}</code></pre>
+                    <div className="flex flex-col md:flex-row md:items-center gap-3 mt-8">
                         <h3 className="title">BungeeCord</h3>
-                        <code>config.yml</code>
-                        <CopyButton className="button-sm gap-2" iconSize="16" text={getBungeeCordCode(tree)} />
+                        <div className="flex items-center gap-3">
+                            <code>config.yml</code>
+                            <CopyButton className="button-sm gap-2" iconSize="16" text={getBungeeCordCode(tree)} />
+                        </div>
                     </div>
-                    <pre className="bg-black p-5 mt-3 rounded"><code>{getBungeeCordCode(tree)}</code></pre>
-                    <div className="flex items-center gap-3 mt-8">
+                    <pre className="bg-black p-5 mt-3 rounded overflow-auto"><code>{getBungeeCordCode(tree)}</code></pre>
+                    <div className="flex flex-col md:flex-row md:items-center gap-3 mt-8">
                         <h3 className="title">ServerListPlus</h3>
-                        <code>ServerListPlus.yml</code>
-                        <CopyButton className="button-sm gap-2" iconSize="16" text={getServerListPlusCode(tree)} />
+                        <div className="flex items-center gap-3">
+                            <code>ServerListPlus.yml</code>
+                            <CopyButton className="button-sm gap-2" iconSize="16" text={getServerListPlusCode(tree)} />
+                        </div>
                     </div>
-                    <pre className="bg-black p-5 mt-3 rounded"><code>{getServerListPlusCode(tree)}</code></pre>
+                    <pre className="bg-black p-5 mt-3 rounded overflow-auto"><code>{getServerListPlusCode(tree)}</code></pre>
                 </div>
             </section>
             <section className="pt-12">
@@ -406,7 +412,7 @@ export default function MOTDEditor() {
                     <h2 className="title">Permalink</h2>
                     <CopyButton className="button-sm font-sans gap-2" iconSize="16" text={`https://mcstatus.io/tools/motd?text=${encodeURIComponent(text)}`} />
                 </div>
-                <div className="card mt-3">
+                <div className="card mt-3 overflow-auto">
                     <pre><code>https://mcstatus.io/tools/motd?text={encodeURIComponent(text)}</code></pre>
                 </div>
             </section>
