@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 
 const obfuscatedCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+[]"\';:<>,./?';
 
-export default function MinecraftFormatted({ html, className = '' }) {
+export default function MinecraftFormatted({ html, className = '', children }) {
     const containerElem = useRef();
 
     useEffect(() => {
@@ -51,6 +51,8 @@ export default function MinecraftFormatted({ html, className = '' }) {
     });
 
     return (
-        <pre className={`block bg-black rounded text-white p-5 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: html }} ref={containerElem} />
+        html
+            ? <pre className={`block bg-black rounded text-white p-5 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: html }} ref={containerElem} />
+            : <pre className={`block bg-black rounded text-white p-5 w-full overflow-x-auto ${className}`} ref={containerElem}>{children}</pre>
     );
 }

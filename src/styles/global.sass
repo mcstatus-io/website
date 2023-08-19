@@ -43,20 +43,20 @@
                 svg
                     @apply hidden
 
-        &:is(h1)
+        &:is(h1), &.h1
             @apply text-4xl lg:text-5xl font-black
 
-            & + .subtitle
-                @apply text-2xl font-light mt-2 text-neutral-500 dark:text-neutral-300
-
-        &:is(h2)
+        &:is(h2), &.h2
             @apply text-2xl font-bold
 
-            & + .subtitle
-                @apply text-lg font-light text-neutral-500 dark:text-neutral-400
-
-        &:is(h3)
+        &:is(h3), &.h3
             @apply text-lg font-bold
+
+    h1.title + .subtitle, .title.h1 + .subtitle, .subtitle.h1
+        @apply text-2xl font-light mt-2 text-neutral-500 dark:text-neutral-300
+
+    h2.title + .subtitle, .title.h2 + .subtitle, .subtitle.h2
+        @apply text-lg font-light text-neutral-500 dark:text-neutral-400
 
     .badge
         @apply rounded px-2 py-1 text-sm
@@ -131,6 +131,17 @@
 
         &.card-hover
             @include interactive-box
+
+        &.card-disabled
+            @apply relative
+
+            & > *
+                @apply opacity-10
+
+            &::before
+                content: var(--card-text)
+
+                @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl
 
     .carbon
         & > *:not([id="carbonads"], .preview)

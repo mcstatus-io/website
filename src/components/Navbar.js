@@ -48,6 +48,13 @@ export default function Navbar({ active }) {
                         </Link>
                     </li>
                     <li>
+                        <Link href="/tools">
+                            <div className={`p-1 ${showMenu && active === 'tools' ? 'text-white' : active === 'tools' ? 'text-black dark:text-white' : showMenu ? 'text-neutral-400' : 'hover:text-black hover:dark:text-white'}`}>
+                                <span>Tools</span>
+                            </div>
+                        </Link>
+                    </li>
+                    <li>
                         <Link href="/docs">
                             <div className={`p-1 ${showMenu && active === 'api' ? 'text-white' : active === 'api' ? 'text-black dark:text-white' : showMenu ? 'text-neutral-400' : 'hover:text-black hover:dark:text-white'}`}>
                                 <span className="hidden md:block">API</span>
