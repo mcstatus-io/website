@@ -5,124 +5,107 @@ import { useEffect, useRef, useState } from 'react';
 import CopyButton from '@/components/CopyButton';
 import MinecraftFormatted from '@/components/MinecraftFormatted';
 
-const getKeyByValue = (obj, v) => Object.keys(obj).find(k => obj[k] === v);
+const colors = [
+    { id: 'black', name: 'Black', code: '0', hex: '#000000' },
+    { id: 'dark_blue', name: 'Dark Blue', code: '1', hex: '#0000AA' },
+    { id: 'dark_green', name: 'Dark Green', code: '2', hex: '#00AA00' },
+    { id: 'dark_aqua', name: 'Dark Aqua', code: '3', hex: '#00AAAA' },
+    { id: 'dark_red', name: 'Dark Red', code: '4', hex: '#AA0000' },
+    { id: 'dark_purple', name: 'Dark Purple', code: '5', hex: '#AA00AA' },
+    { id: 'gold', name: 'Gold', code: '6', hex: '#FFAA00' },
+    { id: 'gray', name: 'Gray', code: '7', hex: '#AAAAAA' },
+    { id: 'dark_gray', name: 'Dark Gray', code: '8', hex: '#555555' },
+    { id: 'blue', name: 'Blue', code: '9', hex: '#5555FF' },
+    { id: 'green', name: 'Green', code: 'a', hex: '#55FF55' },
+    { id: 'aqua', name: 'Aqua', code: 'b', hex: '#55FFFF' },
+    { id: 'red', name: 'Red', code: 'c', hex: '#FF5555' },
+    { id: 'light_purple', name: 'Light Purple', code: 'd', hex: '#FF55FF' },
+    { id: 'yellow', name: 'Yellow', code: 'e', hex: '#FFFF55' },
+    { id: 'white', name: 'White', code: 'f', hex: '#FFFFFF' }
+];
 
-const colorCodes = {
-    '0': 'black',
-    '1': 'dark_blue',
-    '2': 'dark_green',
-    '3': 'dark_aqua',
-    '4': 'dark_red',
-    '5': 'dark_purple',
-    '6': 'gold',
-    '7': 'gray',
-    '8': 'dark_gray',
-    '9': 'blue',
-    'a': 'green',
-    'b': 'aqua',
-    'c': 'red',
-    'd': 'light_purple',
-    'e': 'yellow',
-    'f': 'white'
-};
-
-const colorHexValues = {
-    'black': '#000000',
-    'dark_blue': '#0000AA',
-    'dark_green': '#00AA00',
-    'dark_aqua': '#00AAAA',
-    'dark_red': '#AA0000',
-    'dark_purple': '#AA00AA',
-    'gold': '#FFAA00',
-    'gray': '#AAAAAA',
-    'dark_gray': '#555555',
-    'blue': '#5555FF',
-    'green': '#55FF55',
-    'aqua': '#55FFFF',
-    'red': '#FF5555',
-    'light_purple': '#FF55FF',
-    'yellow': '#FFFF55',
-    'white': '#FFFFFF'
-};
-
-const formattingCodes = {
-    'k': 'obfuscated',
-    'l': 'bold',
-    'm': 'strikethrough',
-    'n': 'underline',
-    'o': 'italic'
-};
+const formatters = [
+    { id: 'obfuscated', name: 'Obfuscated', code: 'k', className: 'minecraft-format-obfuscated' },
+    { id: 'bold', name: 'Bold', code: 'l', className: 'font-bold' },
+    { id: 'strikethrough', name: 'Strikethrough', code: 'm', className: 'line-through' },
+    { id: 'underline', name: 'Underline', code: 'n', className: 'underline' },
+    { id: 'italic', name: 'Italic', code: 'o', className: 'italic' },
+    { id: 'reset', name: 'Reset', code: 'r', className: null }
+];
 
 const buildTreeFromText = (text) => {
     const result = [
-        { color: 'white', text: '' }
+        { color: 'white', formatters: [], text: '' }
     ];
 
     for (let i = 0, l = text.length; i < l; i++) {
+        const lastItem = result[result.length - 1];
         const char = text.charAt(i);
 
         switch (char) {
             case '&': {
                 const nextChar = text.charAt(i + 1);
 
-                if (!nextChar) continue;
+                if (nextChar) {
+                    const foundColor = colors.find((color) => color.code === nextChar);
+                    const foundFormatter = formatters.find((formatter) => formatter.code === nextChar);
 
-                if (Object.keys(colorCodes).includes(nextChar)) {
-                    result.push({ color: colorCodes[nextChar.toLowerCase()], text: '' });
+                    if (foundColor) {
+                        if (lastItem.text.length > 0 || lastItem.formatters.length > 0) {
+                            result.push({ color: foundColor.id, formatters: [], text: '' });
+                        } else {
+                            lastItem.color = foundColor.id;
+                        }
 
-                    i++;
-                } else if (Object.keys(formattingCodes).includes(nextChar)) {
-                    result.push({ ...result[result.length - 1], [formattingCodes[nextChar]]: true, text: '' });
+                        i++;
+                    } else if (foundFormatter) {
+                        if (foundFormatter.id === 'reset') {
+                            result.push({ color: 'white', formatters: [], text: '' });
+                        } else {
+                            if (lastItem.text.length > 0) {
+                                result.push({ ...lastItem, formatters: [...new Set([...lastItem.formatters, foundFormatter.id])], text: '' });
+                            } else {
+                                lastItem.formatters = [...new Set([...lastItem.formatters, foundFormatter.id])];
+                            }
+                        }
 
-                    i++;
-                } else if (nextChar === 'r') {
-                    result.push({ color: 'white', text: '' });
-
-                    i++;
+                        i++;
+                    } else {
+                        lastItem.text += char;
+                    }
                 } else {
-                    result[result.length - 1].text += char;
+                    lastItem.text += char;
                 }
 
                 break;
             }
             case '\n': {
-                result.push({ reset: true, color: 'white', text: '\n' });
+                result.push({ color: 'white', formatters: [], text: '\n' });
 
                 break;
             }
             default:
-                result[result.length - 1].text += char;
+                lastItem.text += char;
         }
     }
 
-    return result;
+    return result.filter((item) => item.text.length > 0);
 };
 
 const buildElementFromItem = (item, index) => {
     const classes = [];
 
-    if (item.obfuscated) {
-        classes.push('minecraft-format-obfuscated');
+    for (const formatter of item.formatters) {
+        const foundFormatter = formatters.find((f) => f.id === formatter);
+        if (!foundFormatter || !foundFormatter.className) continue;
+
+        classes.push(foundFormatter.className);
     }
 
-    if (item.bold) {
-        classes.push('font-bold');
-    }
-
-    if (item.strikethrough) {
-        classes.push('line-through');
-    }
-
-    if (item.underline) {
-        classes.push('underline');
-    }
-
-    if (item.italic) {
-        classes.push('italic');
-    }
+    const foundColor = colors.find((color) => color.id === item.color);
 
     return (
-        <span className={classes.join(' ')} style={{ color: colorHexValues[item.color] }} key={index}>{item.text}</span>
+        <span className={classes.join(' ')} style={{ color: foundColor?.hex ?? '#FFFFFF' }} key={index}>{item.text}</span>
     );
 };
 
@@ -130,34 +113,7 @@ const getServerPropertiesCode = (tree) => {
     let result = 'motd=';
 
     for (const item of tree) {
-        let colorCode = `\\u00A7${getKeyByValue(colorCodes, item.color)}`;
-        let formattingCodes = '';
-
-        if (item.obfuscated) {
-            formattingCodes += '\\u00A7k';
-        }
-
-        if (item.bold) {
-            formattingCodes += '\\u00A7l';
-        }
-
-        if (item.strikethrough) {
-            formattingCodes += '\\u00A7m';
-        }
-
-        if (item.underline) {
-            formattingCodes += '\\u00A7n';
-        }
-
-        if (item.italic) {
-            formattingCodes += '\\u00A7o';
-        }
-
-        if (item.reset) {
-            formattingCodes += '\\u00A7r';
-        }
-
-        result += `${colorCode}${formattingCodes}${item.text.replaceAll('\n', '\\n')}`;
+        result += `\\u00A7${colors.find((color) => color.id === item.color)?.code ?? 'f'}${item.formatters.map((formatter) => formatters.find((f) => f.id === formatter)?.code).filter((v) => v).map((code) => `\\u00A7${code}`).join('')}${item.text.replaceAll('\n', '\\n')}`;
     }
 
     return result;
@@ -167,34 +123,7 @@ const getBungeeCordCode = (tree) => {
     let result = 'motd: "';
 
     for (const item of tree) {
-        let colorCode = `&${getKeyByValue(colorCodes, item.color)}`;
-        let formattingCodes = '';
-
-        if (item.obfuscated) {
-            formattingCodes += '&k';
-        }
-
-        if (item.bold) {
-            formattingCodes += '&l';
-        }
-
-        if (item.strikethrough) {
-            formattingCodes += '&m';
-        }
-
-        if (item.underline) {
-            formattingCodes += '&n';
-        }
-
-        if (item.italic) {
-            formattingCodes += '&o';
-        }
-
-        if (item.reset) {
-            formattingCodes += '&r';
-        }
-
-        result += `${colorCode}${formattingCodes}${item.text.replaceAll('\n', '\\n')}`;
+        result += `&${colors.find((color) => color.id === item.color)?.code ?? 'f'}${item.formatters.map((formatter) => formatters.find((f) => f.id === formatter)?.code).filter((v) => v).map((code) => `&${code}`).join('')}${item.text.replaceAll('\n', '\\n')}`;
     }
 
     return result + '"';
@@ -204,34 +133,7 @@ const getServerListPlusCode = (tree) => {
     let result = 'Description:\n- |-\n  ';
 
     for (const item of tree) {
-        let colorCode = `&${getKeyByValue(colorCodes, item.color)}`;
-        let formattingCodes = '';
-
-        if (item.obfuscated) {
-            formattingCodes += '&k';
-        }
-
-        if (item.bold) {
-            formattingCodes += '&l';
-        }
-
-        if (item.strikethrough) {
-            formattingCodes += '&m';
-        }
-
-        if (item.underline) {
-            formattingCodes += '&n';
-        }
-
-        if (item.italic) {
-            formattingCodes += '&o';
-        }
-
-        if (item.reset) {
-            formattingCodes += '&r';
-        }
-
-        result += `${colorCode}${formattingCodes}${item.text.replaceAll('\n', '\n  ')}`;
+        result += `&${colors.find((color) => color.id === item.color)?.code ?? 'f'}${item.formatters.map((formatter) => formatters.find((f) => f.id === formatter)?.code).filter((v) => v).map((code) => `&${code}`).join('')}${item.text.replaceAll('\n', '\\n  ')}`;
     }
 
     return result;
@@ -280,88 +182,21 @@ export default function MOTDEditor() {
                 <h2 className="title">Editor</h2>
                 <div className="card mt-3">
                     <div className="flex flex-wrap items-center gap-1">
-                        <button type="button" className="button button-sm p-0" title="Black" onClick={() => addFormattingCode('0')}>
-                            <span className="sr-only">Black</span>
-                            <div className="block w-6 h-6 bg-[#000000] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Dark Blue" onClick={() => addFormattingCode('1')}>
-                            <span className="sr-only">Dark Blue</span>
-                            <div className="block w-6 h-6 bg-[#0000AA] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Dark Green" onClick={() => addFormattingCode('2')}>
-                            <span className="sr-only">Dark Green</span>
-                            <div className="block w-6 h-6 bg-[#00AA00] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Dark Aqua" onClick={() => addFormattingCode('3')}>
-                            <span className="sr-only">Dark Aqua</span>
-                            <div className="block w-6 h-6 bg-[#00AAAA] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Dark Red" onClick={() => addFormattingCode('4')}>
-                            <span className="sr-only">Dark Red</span>
-                            <div className="block w-6 h-6 bg-[#AA0000] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Dark Purple" onClick={() => addFormattingCode('5')}>
-                            <span className="sr-only">Dark Purple</span>
-                            <div className="block w-6 h-6 bg-[#AA00AA] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Gold" onClick={() => addFormattingCode('6')}>
-                            <span className="sr-only">Gold</span>
-                            <div className="block w-6 h-6 bg-[#FFAA00] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Gray" onClick={() => addFormattingCode('7')}>
-                            <span className="sr-only">Gray</span>
-                            <div className="block w-6 h-6 bg-[#AAAAAA] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Dark Gray" onClick={() => addFormattingCode('8')}>
-                            <span className="sr-only">Dark Gray</span>
-                            <div className="block w-6 h-6 bg-[#555555] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Blue" onClick={() => addFormattingCode('9')}>
-                            <span className="sr-only">Blue</span>
-                            <div className="block w-6 h-6 bg-[#5555FF] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Green" onClick={() => addFormattingCode('a')}>
-                            <span className="sr-only">Green</span>
-                            <div className="block w-6 h-6 bg-[#55FF55] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Aqua" onClick={() => addFormattingCode('b')}>
-                            <span className="sr-only">Aqua</span>
-                            <div className="block w-6 h-6 bg-[#55FFFF] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Red" onClick={() => addFormattingCode('c')}>
-                            <span className="sr-only">Red</span>
-                            <div className="block w-6 h-6 bg-[#FF5555] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Light Purple" onClick={() => addFormattingCode('d')}>
-                            <span className="sr-only">Light Purple</span>
-                            <div className="block w-6 h-6 bg-[#FF55FF] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="Yellow" onClick={() => addFormattingCode('e')}>
-                            <span className="sr-only">Yellow</span>
-                            <div className="block w-6 h-6 bg-[#FFFF55] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm p-0" title="White" onClick={() => addFormattingCode('f')}>
-                            <span className="sr-only">White</span>
-                            <div className="block w-6 h-6 bg-[#FFFFFF] rounded" />
-                        </button>
-                        <button type="button" className="button button-sm ml-2" title="Obfuscated" onClick={() => addFormattingCode('k')}>
-                            <span>Obfuscated</span>
-                        </button>
-                        <button type="button" className="button button-sm" title="Bold" onClick={() => addFormattingCode('l')}>
-                            <span className="font-bold">Bold</span>
-                        </button>
-                        <button type="button" className="button button-sm" title="Strikethrough" onClick={() => addFormattingCode('m')}>
-                            <span className="line-through">Strikethrough</span>
-                        </button>
-                        <button type="button" className="button button-sm" title="Underline" onClick={() => addFormattingCode('n')}>
-                            <span className="underline">Underline</span>
-                        </button>
-                        <button type="button" className="button button-sm" title="Italic" onClick={() => addFormattingCode('o')}>
-                            <span className="italic">Italic</span>
-                        </button>
-                        <button type="button" className="button button-sm" title="Reset" onClick={() => addFormattingCode('r')}>
-                            <span>Reset</span>
-                        </button>
+                        {
+                            colors.map(({ name, code, hex }, index) => (
+                                <button type="button" className="button button-sm p-0" title={name} onClick={() => addFormattingCode(code)} key={index}>
+                                    <span className="sr-only">{name}</span>
+                                    <div className="block w-6 h-6 rounded" style={{ backgroundColor: hex }} />
+                                </button>
+                            ))
+                        }
+                        {
+                            formatters.map(({ name, code, className }, index) => (
+                                <button type="button" className={`button button-sm ${index === 0 ? 'ml-2' : ''}`} onClick={() => addFormattingCode(code)} key={index}>
+                                    <span className={className}>{name}</span>
+                                </button>
+                            ))
+                        }
                     </div>
                     <textarea className="input resize-none mt-3" rows="2" defaultValue={text} placeholder="Type your MOTD here..." onChange={handleChange} ref={textareaElem} />
                 </div>
@@ -370,7 +205,7 @@ export default function MOTDEditor() {
                 <h2 className="title">Preview</h2>
                 <MinecraftFormatted className="text-lg mt-3">
                     {
-                        text.length > 0
+                        tree.length > 0
                             ? tree.map((item, index) => (
                                 buildElementFromItem(item, index)
                             ))
