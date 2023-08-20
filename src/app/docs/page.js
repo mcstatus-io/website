@@ -134,6 +134,20 @@ export default function Page() {
                                                     <span>Enables query lookup on the server, which provides additional information such as the <code>software</code> and <code>plugins</code> properties on the response. Disabling this may also speed up status retrieval times.</span>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <th>
+                                                    <code>timeout</code>
+                                                </th>
+                                                <td>
+                                                    <span>Number</span>
+                                                </td>
+                                                <td>
+                                                    <code>5.0</code>
+                                                </td>
+                                                <td>
+                                                    <span>The amount of seconds until the status retrieval times out and an offline response is returned. This can also be a floating point number.</span>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -151,7 +165,37 @@ export default function Page() {
                                 <span className="badge badge-blue text-xs">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/bedrock/&lt;address&gt;</span></code>
                             </p>
-                            <Collapsible title="Response Body" className="block mt-4" noPadding>
+                            <Collapsible title="Query Parameters" className="block mt-4">
+                                <div className="card p-0 max-w-full overflow-x-auto">
+                                    <table className="table min-w-[640px]">
+                                        <thead>
+                                            <tr>
+                                                <th className="w-[10%]">Key</th>
+                                                <th className="w-[10%]">Data Type</th>
+                                                <th className="w-[10%]">Default</th>
+                                                <th className="w-[60%]">Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <code>timeout</code>
+                                                </th>
+                                                <td>
+                                                    <span>Number</span>
+                                                </td>
+                                                <td>
+                                                    <code>5.0</code>
+                                                </td>
+                                                <td>
+                                                    <span>The amount of seconds until the status retrieval times out and an offline response is returned. This can also be a floating point number.</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </Collapsible>
+                            <Collapsible title="Response Body" className="block mt-2" noPadding>
                                 <Highlight source={bedrockExample} className="bg-neutral-900 rounded-b" />
                             </Collapsible>
                         </div>
@@ -204,6 +248,20 @@ export default function Page() {
                                                     <span>Makes the corners of the widget card rounded, leaving the missing corner area transparent.</span>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <th>
+                                                    <code>timeout</code>
+                                                </th>
+                                                <td>
+                                                    <span>Number</span>
+                                                </td>
+                                                <td>
+                                                    <code>5.0</code>
+                                                </td>
+                                                <td>
+                                                    <span>The amount of seconds until the status retrieval times out and an offline response is returned. This can also be a floating point number.</span>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -224,7 +282,37 @@ export default function Page() {
                                 <span className="badge badge-blue text-xs">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/icon/&lt;address&gt;</span></code>
                             </p>
-                            <Collapsible title="Response Body" className="block mt-4">
+                            <Collapsible title="Query Parameters" className="block mt-4">
+                                <div className="card p-0 max-w-full overflow-x-auto">
+                                    <table className="table min-w-[640px]">
+                                        <thead>
+                                            <tr>
+                                                <th className="w-[10%]">Key</th>
+                                                <th className="w-[10%]">Data Type</th>
+                                                <th className="w-[10%]">Default</th>
+                                                <th className="w-[60%]">Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <code>timeout</code>
+                                                </th>
+                                                <td>
+                                                    <span>Number</span>
+                                                </td>
+                                                <td>
+                                                    <code>5.0</code>
+                                                </td>
+                                                <td>
+                                                    <span>The amount of seconds until the status retrieval times out and an offline response is returned. This can also be a floating point number.</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </Collapsible>
+                            <Collapsible title="Response Body" className="block mt-2">
                                 <Image src={iconExample} width="128" height="128" className="[image-rendering:pixelated;]" alt="Sample server icon" />
                                 <p className="text-neutral-500 italic mt-3">(actual 64&times;64, scaled to 128&times;128)</p>
                             </Collapsible>
@@ -300,6 +388,23 @@ export default function Page() {
                                                 </td>
                                                 <td>
                                                     <span>The port of the Votifier server to send the vote to.</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <code>timeout</code>
+                                                </th>
+                                                <td>
+                                                    <span>Number</span>
+                                                </td>
+                                                <td>
+                                                    <span>No</span>
+                                                </td>
+                                                <td>
+                                                    <code>5.0</code>
+                                                </td>
+                                                <td>
+                                                    <span>The amount of seconds until the connection times out with the server.</span>
                                                 </td>
                                             </tr>
                                             <tr>
