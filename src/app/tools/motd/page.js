@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
 import ChevronRightIcon from '@/assets/icons/chevron-right.svg';
 import Ad from '@/components/Ad';
 import Container from '@/components/Container';
@@ -48,7 +49,9 @@ export default function Page() {
                         <Ad />
                     </div>
                 </section>
-                <MOTDEditor />
+                <Suspense fallback={null}>
+                    <MOTDEditor />
+                </Suspense>
             </Container>
             <script type="application/ld+json" dangerouslySetInnerHTML={{
                 __html: JSON.stringify([
