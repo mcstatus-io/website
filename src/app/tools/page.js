@@ -36,7 +36,7 @@ export default function Page() {
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
                             <h1 className="title">Tools</h1>
-                            <p className="subtitle">Simple tools to help out</p>
+                            <p className="subtitle">Simple server admin tools to help you out</p>
                         </hgroup>
                         <Ad />
                     </div>
@@ -52,10 +52,12 @@ export default function Page() {
                             </Link>
                         </li>
                         <li>
-                            <div className="card card-disabled h-full [--card-text:'Coming_Soon';]">
-                                <p className="text-lg font-bold">Votifier Tester</p>
-                                <p className="mt-1">Quickly test whether or not your Votifier is set up properly by sending a real vote.</p>
-                            </div>
+                            <Link href="/tools/vote">
+                                <div className="card card-hover h-full">
+                                    <p className="text-lg font-bold">Votifier Tester</p>
+                                    <p className="mt-1">Quickly test whether or not your Votifier is set up properly by sending a real vote.</p>
+                                </div>
+                            </Link>
                         </li>
                         <li>
                             <div className="card card-disabled h-full [--card-text:'Coming_Soon';]">

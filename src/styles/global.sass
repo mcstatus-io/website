@@ -4,7 +4,7 @@
     @apply bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-[0.075]
 
 @mixin interactive-box
-    @apply hover:[&:not(:disabled)]:bg-opacity-[0.15] hover:dark:[&:not(:disabled)]:bg-opacity-10 focus:[&:not(:disabled)]:bg-opacity-[0.15] focus:dark:[&:not(:disabled)]:bg-opacity-10 outline-none
+    @apply hover:[&:not(:disabled)]:bg-opacity-[0.15] hover:dark:[&:not(:disabled)]:bg-opacity-10 focus:[&:not(:disabled)]:bg-opacity-[0.15] focus:dark:[&:not(:disabled)]:bg-opacity-10 disabled:bg-opacity-5 outline-none
 
 @tailwind base
 @tailwind components
@@ -111,6 +111,9 @@
         @include box
         @include interactive-box
         @apply px-3 py-2 rounded block font-mono w-full
+
+    .label
+        @apply block font-bold text-neutral-500 mb-1
 
     .table
         @apply table-auto w-full
