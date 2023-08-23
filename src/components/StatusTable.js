@@ -44,7 +44,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
             rows.push([
                 'Icon',
                 status.icon
-                    ? <Image src={status.icon} width="64" height="64" alt="Server icon" />
+                    ? <Image src={status.icon} width="64" height="64" alt="Server icon" className="[image-rendering:pixelated;]" />
                     : <p className="text-neutral-500 dark:text-neutral-400">N/A</p>
             ]);
         }
@@ -301,6 +301,15 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                 'Software',
                 status.software
                     ? <span>{status.software}</span>
+                    : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
+            ]);
+        }
+
+        if (typeof status.srv_record !== 'undefined') {
+            rows.push([
+                'SRV Record',
+                status.srv_record
+                    ? <code>{status.srv_record.host}:{status.srv_record.port}</code>
                     : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
             ]);
         }

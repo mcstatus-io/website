@@ -143,5 +143,17 @@
             // @type {string | null}
             "version": "7.2.14"
         }
-    ]
+    ],
+    // The result of the SRV record lookup when acquiring the connection details
+    // of the server. This will be missing if the server is offline.
+    // @type {object}
+    "srv_record": {
+        // The hostname returned by the SRV lookup. If the SRV record exists, this
+        // is the actual hostname our service used to connect to the server.
+        // @type {string}
+        "host": "144.172.70.183",
+        // The port returned by the SRV lookup.
+        // @type {number}
+        "port": 25565
+    }
 }
