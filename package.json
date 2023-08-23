@@ -36,7 +36,7 @@
 		"cssnano": "^6.0.1",
 		"formik": "^2.4.3",
 		"highlight.js": "^11.8.0",
-		"next": "^13.4.19",
+		"next": "^13.4.12",
 		"postcss": "^8.4.28",
 		"raw-loader": "^4.0.2",
 		"react": "^18.2.0",
