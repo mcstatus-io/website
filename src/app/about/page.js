@@ -4,6 +4,7 @@ import HelpCircleIcon from '@/assets/icons/help-circle.svg';
 import MailIcon from '@/assets/icons/mail.svg';
 import ToolIcon from '@/assets/icons/tool.svg';
 import mineatarIcon from '@/assets/img/mineatar.png';
+import serverFlexIcon from '@/assets/img/serverflex.png';
 import Ad from '@/components/Ad';
 import Collapsible from '@/components/Collapsible';
 import Container from '@/components/Container';
@@ -129,7 +130,16 @@ export default function Page() {
                         </hgroup>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
-                        <a href="https://mineatar.io" className="card card-hover flex gap-5">
+                        <a href="https://serverflex.io/product/minecraft-server-hosting?utm_source=mcstatus.io" className="card card-hover flex gap-5">
+                            <div className="w-16">
+                                <Image src={serverFlexIcon} className="mx-auto" alt="ServerFlex Icon" />
+                            </div>
+                            <div>
+                                <p className="text-lg font-bold">ServerFlex</p>
+                                <p className="mt-1">Professional Minecraft server hosting, available in data centres around the world.</p>
+                            </div>
+                        </a>
+                        <a href="https://mineatar.io?utm_source=mcstatus.io" className="card card-hover flex gap-5">
                             <div className="w-16">
                                 <Image src={mineatarIcon} className="mx-auto" alt="Mineatar Icon" />
                             </div>

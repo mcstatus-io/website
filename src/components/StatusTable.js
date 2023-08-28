@@ -115,7 +115,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                             {
                                                 status.players.list.sort(sortFuncAscendingCaseInsensitive('name_clean')).map((player, index) => (
                                                     <li key={index}>
-                                                        <a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}`} className="card card-hover px-3 py-2 flex gap-3 items-center">
+                                                        <a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}&utm_source=mcstatus.io`} className="card card-hover px-3 py-2 flex gap-3 items-center">
                                                             <Image src={`https://api.mineatar.io/head/${player.uuid}`} width="24" height="24" />
                                                             <span className="font-mono text-sm" title={player.uuid}>{player.name_clean}</span>
                                                         </a>
@@ -132,7 +132,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                                                 <p className="text-white flex items-center justify-start md:justify-between gap-2 md:gap-3">
                                                                     <span className="min-w-fit">
                                                                         <span className="text-neutral-500">{Array((status.players.list.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
-                                                                        <a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}`} className="link">{player.name_clean}</a>
+                                                                        <a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}&utm_source=mcstatus.io`} className="link">{player.name_clean}</a>
                                                                     </span>
                                                                     <span className="min-w-fit text-neutral-500 pr-4 md:pr-0">{player.uuid}</span>
                                                                 </p>
@@ -181,7 +181,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                                         {
                                                             internalMods.includes(mod.name)
                                                                 ? <span className="text-white">{mod.name}</span>
-                                                                : <a className="link" href={`https://www.curseforge.com/minecraft/search?search=${encodeURIComponent(mod.name)}&class=mc-mods`}>
+                                                                : <a className="link" href={`https://www.curseforge.com/minecraft/search?search=${encodeURIComponent(mod.name)}&class=mc-mods&utm_source=mcstatus.io`}>
                                                                     <span>{mod.name}</span>
                                                                 </a>
                                                         }
@@ -226,7 +226,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                                 <li key={index}>
                                                     <p className="text-white">
                                                         <span className="text-neutral-500">{Array((status.plugins.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
-                                                        <a className="link" href={`https://dev.bukkit.org/search?search=${encodeURIComponent(plugin.name)}`}>
+                                                        <a className="link" href={`https://dev.bukkit.org/search?search=${encodeURIComponent(plugin.name)}&utm_source=mcstatus.io`}>
                                                             <span>{plugin.name}</span>
                                                         </a>
                                                         {
