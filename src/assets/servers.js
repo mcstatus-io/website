@@ -35,4 +35,4 @@ export default [
     { type: 'bedrock', name: 'LifeBlock', address: 'play-lifeblock.net' },
     { type: 'bedrock', name: 'MC-SMP', address: 'mcsmp.net' },
     { type: 'bedrock', name: 'Demo Server', address: 'demo.mcstatus.io' }
-];
+].sort((a, b) => a.name > b.name ? 1 : b.name > a.name ? -1 : 0);

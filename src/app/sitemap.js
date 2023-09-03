@@ -5,6 +5,7 @@ export default function generateSitemap() {
 
     return [
         { url: 'https://mcstatus.io/', lastModified },
+        { url: 'https://mcstatus.io/servers', lastModified },
         { url: 'https://mcstatus.io/tools', lastModified },
         { url: 'https://mcstatus.io/tools/motd', lastModified },
         { url: 'https://mcstatus.io/tools/vote', lastModified },

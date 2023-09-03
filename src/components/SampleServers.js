@@ -24,14 +24,14 @@ export default function SampleServers({ className = '' }) {
     return (
         <ul className={`list-none grid grid-cols-1 md:grid-cols-2 gap-3 ${className}`}>
             {
-                servers.map((server, index) => (
+                servers.map(({ type, address, name }, index) => (
                     <li key={index}>
-                        <Link href={`/status/${server.type}/${server.address}`} className="button flex flex-col sm:flex-row items-start sm:items-center gap-3 p-5">
+                        <Link href={`/status/${type}/${address}`} className="button flex flex-col sm:flex-row items-start sm:items-center gap-3 p-5">
                             <div className="flex items-center gap-3">
-                                <span className={`badge text-white text-xs ${server.type === 'java' ? 'bg-green-700 contrast-more:bg-green-900' : 'bg-blue-600 contrast-more:bg-blue-900'}`}>{server.type === 'java' ? 'Java' : 'Bedrock'}</span>
-                                <span className="font-bold">{server.name}</span>
+                                <span className={`badge ${type === 'java' ? 'badge-green' : type === 'bedrock' ? 'badge-blue' : 'badge-gray'} text-xs`}>{type === 'java' ? 'Java' : type === 'bedrock' ? 'Bedrock' : 'Unknown'}</span>
+                                <span className="font-bold">{name}</span>
                             </div>
-                            <code className="text-sm text-neutral-700 dark:text-neutral-300 sm:ml-auto md:max-lg:hidden">{server.address}</code>
+                            <code className="text-sm text-neutral-700 dark:text-neutral-300 sm:ml-auto md:max-lg:hidden">{address}</code>
                         </Link>
                     </li>
                 ))

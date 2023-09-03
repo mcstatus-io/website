@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import ChevronRightIcon from '@/assets/icons/chevron-right.svg';
 import GiftIcon from '@/assets/icons/gift.svg';
 import InfoIcon from '@/assets/icons/info.svg';
 import ToolIcon from '@/assets/icons/tool.svg';
@@ -29,12 +30,20 @@ export default function Page() {
                     <Search className="mt-5" autoFocus />
                 </section>
                 <section className="pt-12">
-                    <div className="title-group">
-                        <GiftIcon width="28" height="28" />
-                        <hgroup>
-                            <h2 className="title">Sample Servers</h2>
-                            <p className="subtitle">A few sample servers to test out our service</p>
-                        </hgroup>
+                    <div className="flex items-end justify-between">
+                        <div className="title-group">
+                            <GiftIcon width="28" height="28" />
+                            <hgroup>
+                                <h2 className="title">Sample Servers</h2>
+                                <p className="subtitle">A few sample servers to test out our service</p>
+                            </hgroup>
+                        </div>
+                        <Link href="/servers">
+                            <div className="flex items-center gap-2 link">
+                                <span>View All</span>
+                                <ChevronRightIcon width="20" height="20" />
+                            </div>
+                        </Link>
                     </div>
                     <SampleServers className="mt-5" />
                 </section>
