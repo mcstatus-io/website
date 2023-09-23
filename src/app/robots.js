@@ -4,7 +4,8 @@ export default function generateRobots() {
             userAgent: '*',
             allow: '/',
             disallow: [
-                '/status/*/*/icon'
+                '/status/*/*/icon',
+                '/cdn-cgi'
             ]
         },
         sitemap: 'https://mcstatus.io/sitemap.xml'

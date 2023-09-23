@@ -130,7 +130,7 @@ export default function Page() {
                         </hgroup>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
-                        <a href="https://serverflex.io/product/minecraft-server-hosting?utm_source=mcstatus.io" className="card card-hover flex gap-5">
+                        <a href="https://serverflex.io/product/minecraft-server-hosting?utm_source=mcstatus.io" className="card card-hover flex gap-5" rel="sponsored">
                             <div className="w-16">
                                 <Image src={serverFlexIcon} className="mx-auto" alt="ServerFlex Icon" />
                             </div>
@@ -139,7 +139,7 @@ export default function Page() {
                                 <p className="mt-1">Professional Minecraft server hosting, available in data centres around the world.</p>
                             </div>
                         </a>
-                        <a href="https://mineatar.io?utm_source=mcstatus.io" className="card card-hover flex gap-5">
+                        <a href="https://mineatar.io?utm_source=mcstatus.io" className="card card-hover flex gap-5" rel="sponsored">
                             <div className="w-16">
                                 <Image src={mineatarIcon} className="mx-auto" alt="Mineatar Icon" />
                             </div>

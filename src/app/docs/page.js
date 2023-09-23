@@ -572,7 +572,7 @@ export default function Page() {
                         {
                             libraryList.map((library, index) => (
                                 <li key={index}>
-                                    <a href={library.url} className="button p-4 flex items-center gap-2">
+                                    <a href={library.url} rel="sponsored" className="button p-4 flex items-center gap-2">
                                         <span className="badge badge-gray">{library.official ? 'Official' : 'Unofficial'}</span>
                                         <span className="badge" style={{ color: languageColors[library.language][0], backgroundColor: languageColors[library.language][1] }}>{languageNames[library.language]}</span>
                                         <code className="text-black dark:text-white">{library.name}</code>

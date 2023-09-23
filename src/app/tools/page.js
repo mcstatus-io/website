@@ -6,10 +6,10 @@ import Navbar from '@/components/Navbar';
 
 export const metadata = {
     title: 'Tools',
-    description: 'A few tools for server owners or developers to quickly test features on their server.',
+    description: 'A few simple and easy to use tools for Minecraft server owners and developers. All of our tools are free to use forever.',
     openGraph: {
         title: 'Tools - Minecraft Server Status',
-        description: 'A few tools for server owners or developers to quickly test features on their server.',
+        description: 'A few simple and easy to use tools for Minecraft server owners and developers. All of our tools are free to use forever.',
         url: '/tools',
         siteName: 'Minecraft Server Status',
         images: [
@@ -72,7 +72,7 @@ export default function Page() {
                             </div>
                         </li>
                         <li>
-                            <a href="https://www.planetminecraft.com/banner">
+                            <a href="https://www.planetminecraft.com/banner" rel="sponsored">
                                 <div className="card card-hover h-full">
                                     <p className="flex items-center gap-3 text-lg font-bold">
                                         <span>Banner Editor</span>
@@ -83,7 +83,7 @@ export default function Page() {
                             </a>
                         </li>
                         <li>
-                            <a href="https://minecraft-ids.grahamedgecombe.com">
+                            <a href="https://minecraft-ids.grahamedgecombe.com" rel="sponsored">
                                 <div className="card card-hover h-full">
                                     <p className="flex items-center gap-3 text-lg font-bold">
                                         <span>Blocks &amp; Items</span>
@@ -102,7 +102,7 @@ export default function Page() {
                             </Link>
                         </li>
                         <li>
-                            <a href="https://haselkern.com/Minecraft-ArmorStand">
+                            <a href="https://haselkern.com/Minecraft-ArmorStand" rel="sponsored">
                                 <div className="card card-hover h-full">
                                     <p className="flex items-center gap-3 text-lg font-bold">
                                         <span>Armor Stand Creator</span>

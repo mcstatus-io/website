@@ -8,10 +8,10 @@ import Navbar from '@/components/Navbar';
 
 export const metadata = {
     title: 'MOTD Editor',
-    description: 'Easily edit and preview any MOTD before using it on your own Minecraft server.',
+    description: 'Easily and quickly edit and preview any message-of-the-day (or MOTD) before using it on your own Minecraft server.',
     openGraph: {
         title: 'MOTD Editor - Minecraft Server Status',
-        description: 'Easily edit and preview any MOTD before using it on your own Minecraft server.',
+        description: 'Easily and quickly edit and preview any message-of-the-day (or MOTD) before using it on your own Minecraft server.',
         url: '/tools/motd',
         siteName: 'Minecraft Server Status',
         images: [

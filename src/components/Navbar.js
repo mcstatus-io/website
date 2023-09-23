@@ -82,7 +82,7 @@ export default function Navbar({ active }) {
                         </a>
                     </li>
                     <li>
-                        <a href="https://status.mcstatus.io" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800'} p-2`}>
+                        <a href="https://status.mcstatus.io" rel="nofollow" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800'} p-2`}>
                             <ClockIcon width="22" height="22" title="Status" />
                             <span className="md:sr-only font-bold">Status Page</span>
                         </a>

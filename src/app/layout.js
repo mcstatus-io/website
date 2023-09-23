@@ -103,7 +103,7 @@ export default function RootLayout({ children }) {
                             <Container className="my-12" noMargin>
                                 <alert className="card text-red-500 dark:text-red-400">
                                     <span className="font-bold">Please note!</span>
-                                    <span> It looks like JavaScript is not supported by your browser. This is most likely because you are using an outdated browser or your browser has disabled it for this website. Many crucial functions of this website relies on JavaScript to work properly. <a href="https://www.enable-javascript.com/" className="link">Click here</a> to learn how to enable JavaScript for this website.</span>
+                                    <span> It looks like JavaScript is not supported by your browser. This is most likely because you are using an outdated browser or your browser has disabled it for this website. Many crucial functions of this website relies on JavaScript to work properly. <a href="https://www.enable-javascript.com/" className="link" rel="nofollow">Click here</a> to learn how to enable JavaScript for this website.</span>
                                 </alert>
                             </Container>
                         </noscript>
