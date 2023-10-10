@@ -4,7 +4,7 @@ export default [
     { type: 'java', name: 'MCHub', address: 'mchub.com' },
     { type: 'java', name: 'MCCentral', address: 'mccentral.org' },
     { type: 'java', name: 'AppleCraft', address: 'mp.applecraft.org' },
-    { type: 'java', name: 'PurplePrison', address: 'play.purpleprison.xyz' },
+    { type: 'java', name: 'PurplePrison', address: 'play.purpleprison.net' },
     { type: 'java', name: 'CubeCraft', address: 'play.cubecraft.net' },
     { type: 'java', name: 'ExtremeCraft', address: 'play.extremecraft.net' },
     { type: 'java', name: 'SnapCraft', address: 'mc.snapcraft.net' },
