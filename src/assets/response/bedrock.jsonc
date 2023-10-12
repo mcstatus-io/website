@@ -8,6 +8,11 @@
     // The port of the server that was resolved from the address string.
     // @type {number}
     "port": 19132,
+    // This is the IP address that was resolved from the hostname of the server.
+    // It is possible that IP resolution can fail, especially if an invalid hostname
+    // was provided, so this property may be null.
+    // @type {string | null}
+    "ip_address": "144.172.70.183",
     // Whether or not this server address has been blocked by Mojang.
     // If this is true, Notchian clients will not be able to connect to the
     // server via the Minecraft client because it previously violated the EULA.
