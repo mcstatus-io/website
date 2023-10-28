@@ -46,7 +46,12 @@ module.exports = withBundleAnalyzer({
         NEXT_PUBLIC_COMMIT_ID: commitID
     },
     images: {
-        domains: ['api.mineatar.io']
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'api.mineatar.io'
+            }
+        ]
     },
     experimental: {
         webpackBuildWorker: true
