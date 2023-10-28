@@ -47,5 +47,8 @@ module.exports = withBundleAnalyzer({
     },
     images: {
         domains: ['api.mineatar.io']
+    },
+    experimental: {
+        webpackBuildWorker: true
     }
 });

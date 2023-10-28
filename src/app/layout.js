@@ -86,11 +86,14 @@ export const metadata = {
             { rel: 'mask-icon', url: '/img/safari-pinned-tab.svg', color: '#303030' }
         ]
     },
-    themeColor: '#303030',
     manifest: '/site.webmanifest',
     alternates: {
         canonical: '/'
     }
+};
+
+export const viewport = {
+    themeColor: '#303030'
 };
 
 export default function RootLayout({ children }) {
