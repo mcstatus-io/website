@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import AlertCircleIcon from '@/assets/icons/alert-circle.svg';
 import InfoIcon from '@/assets/icons/info.svg';
 import APIUsage from '@/components/APIUsage';
 import StatusTable from '@/components/StatusTable';
@@ -63,14 +64,25 @@ export default async function Page({ params: { type, address } }) {
     const status = await getStatus(type, address);
     const protocolVersions = await getProtocolVersions(type);
 
+    const isDemoServer = status.host === 'demo.mcstatus.io' && status.port === 25565;
+    const isAternosServer = status.host.split('.').slice(-2).join('.').toLowerCase() === 'aternos.me';
+
     return (
         <>
             <section>
                 {
-                    status.host === 'demo.mcstatus.io' && status.port === 25565
+                    isDemoServer
                         ? <div className="card flex items-center gap-5 mt-3">
                             <InfoIcon width="24" height="24" className="w-[24px] h-[24px] hidden lg:block ml-2" />
-                            <p>Please note that this is not a real Minecraft server, it is a demo server used to test the features of this website. If you would like to learn more, please refer to our <Link href="/about#faq" className="link">frequently asked questions</Link>.</p>
+                            <p>Please note that this is not a real Minecraft server, it is a demo server used to test the features of this website. If you would like to learn more, please refer to our <Link href="/about#demo" className="link">frequently asked questions</Link>.</p>
+                        </div>
+                        : null
+                }
+                {
+                    isAternosServer
+                        ? <div className="card bg-red-500/20 flex items-center gap-5 mt-3">
+                            <AlertCircleIcon width="24" height="24" className="text-red-500 w-[24px] h-[24px] hidden lg:block ml-2" />
+                            <p>Please note that servers hosted by Aternos may not return the correct status. You may read more information about this unresolvable issue by <Link href="/about#aternos" className="link">clicking here</Link>.</p>
                         </div>
                         : null
                 }
