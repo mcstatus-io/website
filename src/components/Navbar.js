@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import ArrowRightIcon from '@/assets/icons/arrow-right.svg';
 import ClockIcon from '@/assets/icons/clock.svg';
 import DiscordIcon from '@/assets/icons/discord.svg';
 import GithubIcon from '@/assets/icons/github.svg';
@@ -85,6 +86,12 @@ export default function Navbar({ active }) {
                         <a href="https://status.mcstatus.io" rel="nofollow" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800'} p-2`}>
                             <ClockIcon width="22" height="22" title="Status" />
                             <span className="md:sr-only font-bold">Status Page</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href={process.env.NEXT_PUBLIC_DASHBOARD} className="button button-green flex items-center gap-2 px-5 py-3 rounded-full text-white">
+                            <span>Dashboard</span>
+                            <ArrowRightIcon width="18" height="18" />
                         </a>
                     </li>
                 </ul>
