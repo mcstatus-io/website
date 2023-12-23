@@ -88,12 +88,16 @@ export default function Navbar({ active }) {
                             <span className="md:sr-only font-bold">Status Page</span>
                         </a>
                     </li>
-                    <li>
-                        <a href={process.env.NEXT_PUBLIC_DASHBOARD} className="button button-green flex items-center gap-2 px-5 py-3 rounded-full text-white">
-                            <span>Dashboard</span>
-                            <ArrowRightIcon width="18" height="18" />
-                        </a>
-                    </li>
+                    {
+                        process.env.NEXT_PUBLIC_DASHBOARD
+                            ? <li>
+                                <a href={process.env.NEXT_PUBLIC_DASHBOARD} className="button button-green flex items-center gap-2 px-5 py-3 rounded-full text-white">
+                                    <span>Dashboard</span>
+                                    <ArrowRightIcon width="18" height="18" />
+                                </a>
+                            </li>
+                            : null
+                    }
                 </ul>
             </Container>
         </nav>
