@@ -4,6 +4,8 @@ import InfoIcon from '@/assets/icons/info.svg';
 import APIUsage from '@/components/APIUsage';
 import StatusTable from '@/components/StatusTable';
 
+const validHostRegEx = /^[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+(:\d{1,5})?$/;
+
 const getStatus = async (type, address) => {
     const result = await fetch(`${process.env.NEXT_PUBLIC_PING_HOST}/status/${type}/${address}`, { next: { revalidate: 15 } });
 
@@ -25,10 +27,12 @@ export async function generateMetadata({ params: { type, address } }) {
 
     let result;
 
-    try {
-        result = await getStatus(type, address);
-    } catch {
-        // Ignore
+    if (validHostRegEx.test(address)) {
+        try {
+            result = await getStatus(type, address);
+        } catch {
+            // Ignore
+        }
     }
 
     return {
@@ -60,6 +64,14 @@ export async function generateMetadata({ params: { type, address } }) {
 
 export default async function Page({ params: { type, address } }) {
     address = decodeURIComponent(address);
+
+    if (!validHostRegEx.test(address)) return (
+        <section>
+            <div className="card mt-4">
+                <p className="text-red-500 dark:text-red-400">The address of the server that you are trying to retrieve is invalid. Please check the address and try again.</p>
+            </div>
+        </section>
+    );
 
     const status = await getStatus(type, address);
     const protocolVersions = await getProtocolVersions(type);
