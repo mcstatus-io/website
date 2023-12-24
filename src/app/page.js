@@ -30,7 +30,7 @@ export default function Page() {
                     <Search className="mt-5" autoFocus />
                 </section>
                 <section className="pt-12">
-                    <div className="flex items-end justify-between">
+                    <div className="flex flex-col sm:flex-row gap-2 sm:items-end justify-between">
                         <div className="title-group">
                             <GiftIcon width="28" height="28" />
                             <hgroup>
