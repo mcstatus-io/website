@@ -53,28 +53,28 @@ export default function Page() {
                 <section>
                     <section className="pt-12">
                         <AnchorHeader size={2} id="overview">Overview</AnchorHeader>
-                        <p className="mt-3 leading-7">The goal of this API documentation is to accurately and precisely describe the functionality of this service in plain terms. This page will go over everything you need to know before implementing our API into your service. If you believe there is anything missing, any typos, or incorrect information on this page, please reach out to me via email at <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>.</p>
+                        <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">The goal of this API documentation is to accurately and precisely describe the functionality of this service in plain terms. This page will go over everything you need to know before implementing our API into your service. If you believe there is anything missing, any typos, or incorrect information on this page, please reach out to me via email at <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>.</p>
                     </section>
                     <section className="pt-12">
                         <AnchorHeader size={3} id="standards">Standards</AnchorHeader>
-                        <p className="mt-3 leading-7">The majority of this API uses the standardized REST API, which in simple terms means you will be making HTTP requests to our service. We currently only support endpoints using the <code>GET</code> and <code>POST</code> methods. All status endpoints return a response body in <a href="https://www.json.org/json-en.html" className="link">JSON format</a>, except if the response status code is not in the <code>200-299</code> success range, in which the body will be plain text. No other data formatting standard is available at this time, and there is currently no future plan to support anything other than JSON. All JSON returned from this service will have whitespace and any unnecessary characters removed to reduce network bandwidth and wasted information. You may learn more about the properties you receive from these routes by reading the documented response body from the route on this page.</p>
+                        <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">The majority of this API uses the standardized REST API, which in simple terms means you will be making HTTP requests to our service. We currently only support endpoints using the <code>GET</code> and <code>POST</code> methods. All status endpoints return a response body in <a href="https://www.json.org/json-en.html" className="link">JSON format</a>, except if the response status code is not in the <code>200-299</code> success range, in which the body will be plain text. No other data formatting standard is available at this time, and there is currently no future plan to support anything other than JSON. All JSON returned from this service will have whitespace and any unnecessary characters removed to reduce network bandwidth and wasted information. You may learn more about the properties you receive from these routes by reading the documented response body from the route on this page.</p>
                     </section>
                     <section className="pt-12">
                         <AnchorHeader size={3} id="cache">Cache</AnchorHeader>
-                        <p className="mt-3 leading-7">To reduce the amount of spam and deliberate denial-of-service attacks of our service, we implement a caching system for all of the data we fetch, including but not limited to status responses and server icons. Each route has its own cache duration, unique to the pathname of the request. Please note that adding query parameters to the request will not force a fresh request, it will still return the cached response. All routes with data retrieved from the cache will contain a header in the response with the key <code>X-Cache-Hit</code> which will contain a boolean value whether or not our service used a value from cache. The response will also contain a <code>X-Cache-Time-Remaining</code> header if the cache was hit, which contains an integer with the amount of seconds remaining until the cache expires for this request. Any request made after this cache expiration time will result in fresh data being retrieved on our end. No exceptions will be made to the cache duration. If you want to bypass the cache, we recommend that you self-host the <a href="https://github.com/mcstatus-io/ping-server" className="link">ping-server</a> available on our GitHub organization.</p>
+                        <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">To reduce the amount of spam and deliberate denial-of-service attacks of our service, we implement a caching system for all of the data we fetch, including but not limited to status responses and server icons. Each route has its own cache duration, unique to the pathname of the request. Please note that adding query parameters to the request will not force a fresh request, it will still return the cached response. All routes with data retrieved from the cache will contain a header in the response with the key <code>X-Cache-Hit</code> which will contain a boolean value whether or not our service used a value from cache. The response will also contain a <code>X-Cache-Time-Remaining</code> header if the cache was hit, which contains an integer with the amount of seconds remaining until the cache expires for this request. Any request made after this cache expiration time will result in fresh data being retrieved on our end. No exceptions will be made to the cache duration. If you want to bypass the cache, we recommend that you self-host the <a href="https://github.com/mcstatus-io/ping-server" className="link">ping-server</a> available on our GitHub organization.</p>
                     </section>
                     <section className="pt-12">
                         <AnchorHeader size={3} id="supported">Supported Versions</AnchorHeader>
-                        <p className="mt-3 leading-7">All Minecraft servers, including modern and legacy Java Edition servers, and Bedrock Edition servers, are supported. Make sure you are using the correct endpoint when retrieving a server status, as attempting to use the Java Edition status route with a Bedrock Edition host (or vise-versa) will result in a response saying the server is offline unless the server explicitly has cross-play supported. If the server you specify does not use the standard port value (<code>25565</code> for Java Edition, <code>19132</code> for Bedrock Edition), then you will need to specify the port by using the following format: <code>&lt;host&gt;:&lt;port&gt;</code>.</p>
+                        <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">All Minecraft servers, including modern and legacy Java Edition servers, and Bedrock Edition servers, are supported. Make sure you are using the correct endpoint when retrieving a server status, as attempting to use the Java Edition status route with a Bedrock Edition host (or vise-versa) will result in a response saying the server is offline unless the server explicitly has cross-play supported. If the server you specify does not use the standard port value (<code>25565</code> for Java Edition, <code>19132</code> for Bedrock Edition), then you will need to specify the port by using the following format: <code>&lt;host&gt;:&lt;port&gt;</code>.</p>
                     </section>
                     <section className="pt-12">
                         <AnchorHeader size={3} id="error-handling">Error Handling</AnchorHeader>
-                        <p className="mt-3 leading-7">You may encounter an error from any API endpoint if you attempt to use any malformed input, such as an incorrectly formatted server address or a strange value for a query parameter. Whether or not you expect it, you should always handle in case the server returns an error, always in the form of a non-200 status code response. If you do receive a non-200 status code response, the body will always contain a plain text string describing the error, with the <code>Content-Type</code> header set to <code>text/plain</code>. An example of a standard error is <code>Invalid address value</code>, returned if the server address provided is not in a recognized <code>&lt;host&gt;:&lt;port&gt;</code> or <code>&lt;host&gt;</code> format.</p>
+                        <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">You may encounter an error from any API endpoint if you attempt to use any malformed input, such as an incorrectly formatted server address or a strange value for a query parameter. Whether or not you expect it, you should always handle in case the server returns an error, always in the form of a non-200 status code response. If you do receive a non-200 status code response, the body will always contain a plain text string describing the error, with the <code>Content-Type</code> header set to <code>text/plain</code>. An example of a standard error is <code>Invalid address value</code>, returned if the server address provided is not in a recognized <code>&lt;host&gt;:&lt;port&gt;</code> or <code>&lt;host&gt;</code> format.</p>
                     </section>
                 </section>
                 <section className="pt-12">
                     <AnchorHeader size={2} id="revisions">Revisions</AnchorHeader>
-                    <p className="mt-3 leading-7">Over the lifetime of this service, there has been a few changes that breaks compatibility with existing users who rely on consistent and non-changing data. When this happens, we release a new major version of the API called a revision, which is why you see <code>/v2</code> in the URL of all API requests. As time goes on, we can no longer support previous revisions and have to shut them down. You may refer to the table below to see any major revisions from the past up until present time. If you use our API, it is generally recommended to come back to this page every so often to confirm the revision you are using is not becoming deprecated.</p>
+                    <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">Over the lifetime of this service, there has been a few changes that breaks compatibility with existing users who rely on consistent and non-changing data. When this happens, we release a new major version of the API called a revision, which is why you see <code>/v2</code> in the URL of all API requests. As time goes on, we can no longer support previous revisions and have to shut them down. You may refer to the table below to see any major revisions from the past up until present time. If you use our API, it is generally recommended to come back to this page every so often to confirm the revision you are using is not becoming deprecated.</p>
                     <div className="card p-0 overflow-x-auto max-w-full mt-3">
                         <RevisionsTable>
                             <RevisionRow
@@ -103,7 +103,7 @@ export default function Page() {
                     <section className="pt-3">
                         <div className="card">
                             <AnchorHeader size={3} id="java-status">Java Status</AnchorHeader>
-                            <p className="mt-2 leading-7">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
+                            <p className="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
                             <p className="flex items-center gap-2 mt-3">
                                 <span className="badge badge-blue text-xs">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/java/&lt;address&gt;</span></code>
@@ -160,7 +160,7 @@ export default function Page() {
                     <section className="pt-3">
                         <div className="card">
                             <AnchorHeader size={3} id="bedrock-status">Bedrock Status</AnchorHeader>
-                            <p className="mt-2 leading-7">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
+                            <p className="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
                             <p className="flex items-center gap-2 mt-3">
                                 <span className="badge badge-blue text-xs">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/bedrock/&lt;address&gt;</span></code>
@@ -203,7 +203,7 @@ export default function Page() {
                     <section className="pt-3">
                         <div className="card">
                             <AnchorHeader size={3} id="java-widget">Java Widget</AnchorHeader>
-                            <p className="mt-2 leading-7">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL. The image is generated on every request, but the status of the server may be cached.</p>
+                            <p className="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL. The image is generated on every request, but the status of the server may be cached.</p>
                             <p className="flex items-center gap-2 mt-3">
                                 <span className="badge badge-blue text-xs">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/widget/java/&lt;address&gt;</span></code>
@@ -277,7 +277,7 @@ export default function Page() {
                     <section className="pt-3">
                         <div className="card">
                             <AnchorHeader size={3} id="icon">Icon</AnchorHeader>
-                            <p className="mt-2 leading-7">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
+                            <p className="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
                             <p className="flex items-center gap-2 mt-3">
                                 <span className="badge badge-blue text-xs">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/icon/&lt;address&gt;</span></code>
@@ -321,7 +321,7 @@ export default function Page() {
                     <section className="pt-3">
                         <div className="card">
                             <AnchorHeader size={3} id="vote">Send Vote</AnchorHeader>
-                            <p className="mt-2 leading-7">Allows you to send a Votifier vote to the specified server. All data should be sent as query parameters.</p>
+                            <p className="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">Allows you to send a Votifier vote to the specified server. All data should be sent as query parameters.</p>
                             <p className="flex items-center gap-2 mt-3">
                                 <span className="badge badge-green text-xs">POST</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/vote</span></code>
@@ -567,7 +567,7 @@ export default function Page() {
                 </section>
                 <section className="pt-12">
                     <AnchorHeader size={2} id="libraries">Libraries</AnchorHeader>
-                    <p className="mt-3 leading-7">We try and provide official support for integrating our service into many languages. The list of official and unofficial libraries are below.</p>
+                    <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">We try and provide official support for integrating our service into many languages. The list of official and unofficial libraries are below.</p>
                     <ul className="list-none flex flex-col gap-3 mt-3">
                         {
                             libraryList.map((library, index) => (
@@ -584,7 +584,7 @@ export default function Page() {
                 </section>
                 <section className="pt-12">
                     <AnchorHeader size={2} id="support">Support</AnchorHeader>
-                    <p className="mt-3 leading-7">If you require any additional assistance or found a bug you would like to report, please send an email to <a href="mailto:api@mcstatus.io" className="link">api@mcstatus.io</a>. We will be more than happy to provide any assistance.</p>
+                    <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">If you require any additional assistance or found a bug you would like to report, please send an email to <a href="mailto:api@mcstatus.io" className="link">api@mcstatus.io</a>. We will be more than happy to provide any assistance.</p>
                 </section>
             </Container >
             <script type="application/ld+json" dangerouslySetInnerHTML={{

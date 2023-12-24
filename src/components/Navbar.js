@@ -91,7 +91,7 @@ export default function Navbar({ active }) {
                     {
                         process.env.NEXT_PUBLIC_DASHBOARD
                             ? <li>
-                                <a href={process.env.NEXT_PUBLIC_DASHBOARD} className="button button-green flex items-center gap-2 px-5 py-3 rounded-full text-white">
+                                <a href={process.env.NEXT_PUBLIC_DASHBOARD} className="button button-green flex items-center gap-2 px-5 py-3 rounded-full text-black dark:text-white">
                                     <span>Dashboard</span>
                                     <ArrowRightIcon width="18" height="18" />
                                 </a>
