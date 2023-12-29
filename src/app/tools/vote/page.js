@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import ChevronRightIcon from '@/assets/icons/chevron-right.svg';
-import Ad from '@/components/Ad';
-import Container from '@/components/Container';
-import Navbar from '@/components/Navbar';
-import VotifierTester from '@/components/VotifierTester';
+import CarbonAd from '@/components/CarbonAd';
+import Navbar from '@/components/layout/Navbar';
+import VotifierTester from '@/components/tools/VotifierTester';
 
 export const metadata = {
     title: 'Votifier Tester',
@@ -32,7 +31,7 @@ export default function Page() {
     return (
         <>
             <Navbar active="tools" />
-            <Container>
+            <div className="container">
                 <section>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
@@ -45,13 +44,13 @@ export default function Page() {
                             </div>
                             <p className="subtitle h1">Quickly test whether or not your Votifier is set up properly</p>
                         </hgroup>
-                        <Ad />
+                        <CarbonAd />
                     </div>
                 </section>
                 <section className="pt-12">
                     <VotifierTester />
                 </section>
-            </Container>
+            </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{
                 __html: JSON.stringify([
                     {

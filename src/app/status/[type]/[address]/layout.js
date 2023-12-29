@@ -1,8 +1,7 @@
 import { notFound } from 'next/navigation';
-import Ad from '@/components/Ad';
-import Container from '@/components/Container';
-import Navbar from '@/components/Navbar';
-import Search from '@/components/Search';
+import CarbonAd from '@/components/CarbonAd';
+import LookupForm from '@/components/layout/LookupForm';
+import Navbar from '@/components/layout/Navbar';
 
 export default function RootLayout({ children, params: { type, address } }) {
     address = decodeURIComponent(address);
@@ -12,19 +11,19 @@ export default function RootLayout({ children, params: { type, address } }) {
     return (
         <>
             <Navbar />
-            <Container>
+            <div className="container">
                 <section>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
                             <h1 className="title">Minecraft Server Status</h1>
                             <p className="subtitle">Quickly retrieve the status of any Minecraft server</p>
                         </hgroup>
-                        <Ad />
+                        <CarbonAd />
                     </div>
-                    <Search type={type} address={address} className="mt-5" />
+                    <LookupForm type={type} address={address} className="mt-5" />
                 </section>
                 {children}
-            </Container>
+            </div>
         </>
     );
 }

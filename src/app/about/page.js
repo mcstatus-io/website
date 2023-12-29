@@ -5,10 +5,9 @@ import MailIcon from '@/assets/icons/mail.svg';
 import ToolIcon from '@/assets/icons/tool.svg';
 import mineatarIcon from '@/assets/img/mineatar.png';
 import serverFlexIcon from '@/assets/img/serverflex.png';
-import Ad from '@/components/Ad';
+import CarbonAd from '@/components/CarbonAd';
 import Collapsible from '@/components/Collapsible';
-import Container from '@/components/Container';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/layout/Navbar';
 
 const frequentlyAskedQuestions = [
     {
@@ -112,14 +111,14 @@ export default function Page() {
     return (
         <>
             <Navbar active="about" />
-            <Container>
+            <div className="container">
                 <section>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
                             <h1 className="title">About</h1>
                             <p className="subtitle">A quick understanding of what we do</p>
                         </hgroup>
-                        <Ad />
+                        <CarbonAd />
                     </div>
                     <p className="mt-5 leading-7">mcstatus.io was created as a utility for people to check the status of a Minecraft server for any purpose. This service also doubles as an API for developers to programmatically check the status of servers. The design of the website was heavily inspired by the simplicity of <a href="https://mcsrvstat.us" className="link">mcsrvstat.us</a> but aimed at improving consistency and conformity to standards. The website is built using <a href="https://nextjs.org" className="link">NextJS</a> and the back-end was built with <a href="https://golang.org" className="link">Go</a>. This site uses clean advertising from <a href="https://www.carbonads.net/" className="link">Carbon Ads</a> to help cover the hosting and development costs.</p>
                 </section>
@@ -182,7 +181,7 @@ export default function Page() {
                     </div>
                     <p className="mt-5 leading-7">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>. We accept any sort of feedback on our service, including bug reports, feature suggestions, questions about the API, etc.</p>
                 </section>
-            </Container>
+            </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{
                 __html: JSON.stringify([
                     {

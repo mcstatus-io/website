@@ -19,7 +19,7 @@ const reducer = (state, action) => {
     }
 };
 
-export default function Search({ type = 'java', address = '', className = '', autoFocus }) {
+export default function LookupForm({ type = 'java', address = '', className = '', autoFocus }) {
     const { push } = useRouter();
 
     const [data, dispatch] = useReducer(reducer, { type, address });

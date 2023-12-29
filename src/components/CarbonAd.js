@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
-export default function Ad({ className }) {
+export default function CarbonAd({ className }) {
     const elem = useRef();
 
     useEffect(() => {

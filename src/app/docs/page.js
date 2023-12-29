@@ -5,13 +5,12 @@ import iconExample from '@/assets/response/icon.png';
 import javaWidgetDarkExample from '@/assets/response/java-widget-dark.png';
 import javaWidgetLightExample from '@/assets/response/java-widget-light.png';
 import javaExample from '@/assets/response/java.jsonc';
-import Ad from '@/components/Ad';
 import AnchorHeader from '@/components/AnchorHeader';
+import CarbonAd from '@/components/CarbonAd';
 import Collapsible from '@/components/Collapsible';
-import Container from '@/components/Container';
 import Highlight from '@/components/Highlight';
-import Navbar from '@/components/Navbar';
-import RevisionsTable, { RevisionRow } from '@/components/RevisionsTable';
+import RevisionsTable, { RevisionRow } from '@/components/docs/RevisionsTable';
+import Navbar from '@/components/layout/Navbar';
 
 export const metadata = {
     title: 'API Documentation',
@@ -40,14 +39,14 @@ export default function Page() {
     return (
         <>
             <Navbar active="api" />
-            <Container>
+            <div className="container">
                 <section>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
                             <h1 className="title">API Documentation</h1>
                             <p className="subtitle">Documentation on how to integrate our API in your service</p>
                         </hgroup>
-                        <Ad />
+                        <CarbonAd />
                     </div>
                 </section>
                 <section>
@@ -586,7 +585,7 @@ export default function Page() {
                     <AnchorHeader size={2} id="support">Support</AnchorHeader>
                     <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">If you require any additional assistance or found a bug you would like to report, please send an email to <a href="mailto:api@mcstatus.io" className="link">api@mcstatus.io</a>. We will be more than happy to provide any assistance.</p>
                 </section>
-            </Container >
+            </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{
                 __html: JSON.stringify([
                     {

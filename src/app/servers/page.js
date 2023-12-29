@@ -1,9 +1,8 @@
 import sampleServers from '@/assets/servers';
-import Ad from '@/components/Ad';
 import AnchorHeader from '@/components/AnchorHeader';
-import Container from '@/components/Container';
-import Navbar from '@/components/Navbar';
+import CarbonAd from '@/components/CarbonAd';
 import ServerListing from '@/components/ServerListing';
+import Navbar from '@/components/layout/Navbar';
 
 export const metadata = {
     title: 'Servers',
@@ -32,14 +31,14 @@ export default function Page() {
     return (
         <>
             <Navbar />
-            <Container>
+            <div className="container">
                 <section>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
                             <h1 className="title">Servers</h1>
                             <p className="subtitle">A list of all sample Minecraft servers provided</p>
                         </hgroup>
-                        <Ad />
+                        <CarbonAd />
                     </div>
                 </section>
                 <section className="pt-12">
@@ -50,7 +49,7 @@ export default function Page() {
                     <AnchorHeader size={2} id="sample">Popular Servers</AnchorHeader>
                     <p className="mt-3">Coming soon...</p>
                 </section>
-            </Container>
+            </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{
                 __html: JSON.stringify([
                     {

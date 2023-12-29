@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import ChevronsLeft from '@/assets/icons/chevrons-left.svg';
-import Container from '@/components/Container';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/layout/Navbar';
 
 export const metadata = {
     title: 'Page Not Found - Minecraft Server Status'
@@ -11,7 +10,7 @@ export default function NotFound() {
     return (
         <>
             <Navbar />
-            <Container>
+            <div className="container">
                 <section>
                     <h1 className="title">Not Found</h1>
                     <p className="text-xl mt-1">The page that you requested could not be found, please check the address and try again.</p>
@@ -22,7 +21,7 @@ export default function NotFound() {
                         </div>
                     </Link>
                 </section>
-            </Container>
+            </div>
         </>
     );
 }

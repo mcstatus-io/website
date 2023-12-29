@@ -10,7 +10,6 @@ import GithubIcon from '@/assets/icons/github.svg';
 import MenuIcon from '@/assets/icons/menu.svg';
 import CloseIcon from '@/assets/icons/x.svg';
 import icon from '@/assets/img/icon.png';
-import Container from '@/components/Container';
 
 export default function Navbar({ active }) {
     const [showMenu, setShowMenu] = useState(false);
@@ -25,7 +24,7 @@ export default function Navbar({ active }) {
 
     return (
         <nav className={`text-black dark:text-white w-screen h-[4.25rem] sticky top-0 z-50 ${!showMenu ? 'bg-white dark:bg-[#121212dd] bg-opacity-80 backdrop-blur-[6px] backdrop-saturate-150 backdrop-brightness-50 border-b border-b-neutral-200 dark:border-b-neutral-800' : ''}`}>
-            <Container className="relative md:px-6 h-full flex items-center" noMargin>
+            <div className="container container-no-margin relative md:px-6 h-full flex items-center">
                 <header className={`${showMenu ? 'hidden' : 'md:max-lg:hidden'} md:pr-6 md:border-r-2 md:border-r-[rgba(0,0,0,0.1)] md:dark:border-r-neutral-700 mr-6`}>
                     <Link href="/" className="flex items-center content-center p-1">
                         <Image src={icon} alt="mcstatus.io Icon" width="32" height="32" priority />
@@ -99,7 +98,7 @@ export default function Navbar({ active }) {
                             : null
                     }
                 </ul>
-            </Container>
+            </div>
         </nav>
     );
 }

@@ -6,11 +6,10 @@ import InfoIcon from '@/assets/icons/info.svg';
 import ToolIcon from '@/assets/icons/tool.svg';
 import mineatarIcon from '@/assets/img/mineatar.png';
 import serverFlexIcon from '@/assets/img/serverflex.png';
-import Ad from '@/components/Ad';
-import Container from '@/components/Container';
-import Navbar from '@/components/Navbar';
+import CarbonAd from '@/components/CarbonAd';
 import SampleServers from '@/components/SampleServers';
-import Search from '@/components/Search';
+import LookupForm from '@/components/layout/LookupForm';
+import Navbar from '@/components/layout/Navbar';
 
 export const revalidate = 30;
 
@@ -18,16 +17,16 @@ export default function Page() {
     return (
         <>
             <Navbar active="home" />
-            <Container>
+            <div className="container">
                 <section>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
                             <h1 className="title">Minecraft Server Status</h1>
                             <p className="subtitle">Quickly retrieve the status of any Minecraft server</p>
                         </hgroup>
-                        <Ad />
+                        <CarbonAd />
                     </div>
-                    <Search className="mt-5" autoFocus />
+                    <LookupForm className="mt-5" autoFocus />
                 </section>
                 <section className="pt-12">
                     <div className="flex flex-col sm:flex-row gap-2 sm:items-end justify-between">
@@ -89,7 +88,7 @@ export default function Page() {
                         </a>
                     </div>
                 </section>
-            </Container>
+            </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{
                 __html: JSON.stringify([
                     {

@@ -81,11 +81,9 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                             status.players?.list?.length > 0
                                 ? <>
                                     <div className="flex flex-wrap items-center gap-3">
-                                        <button type="button" className="button w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
-                                            <div className="flex items-center gap-1">
-                                                <span>{showPlayers ? 'Hide' : 'Show'} player list</span>
-                                                <Chevron width="20" height="20" isFlipped={showPlayers} />
-                                            </div>
+                                        <button type="button" className="button flex items-center gap-1 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
+                                            <span>{showPlayers ? 'Hide' : 'Show'} player list</span>
+                                            <Chevron width="16" height="16" isFlipped={showPlayers} />
                                         </button>
                                         {
                                             showPlayers && allowAvatars
@@ -126,7 +124,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                             }
                                         </ul>
                                         : allowAvatars
-                                            ? <div className="font-mono whitespace-pre bg-black overflow-x-auto p-4 mt-3">
+                                            ? <div className="font-mono whitespace-pre bg-black rounded overflow-x-auto p-4 mt-3">
                                                 <ul className="list-none">
                                                     {
                                                         status.players.list.sort(sortFuncAscendingCaseInsensitive('name_clean')).map((player, index) => (
@@ -147,7 +145,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                 }
                                 {
                                     status.players.online > status.players.list.length && allowAvatars
-                                        ? <p className="text-neutral-500 dark:text-neutral-400 mt-3 italic">Note that not all online players may not be shown. Standard Java Edition servers limit sample players to 12 by default.</p>
+                                        ? <p className="text-neutral-500 dark:text-neutral-400 mt-3 text-sm">Note that not all online players may not be shown. Standard Java Edition servers limit sample players to 12 by default.</p>
                                         : null
                                 }
                             </div>
@@ -166,14 +164,12 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                             ? <>
                                 <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
                                     <span>{status.mods.length} mod{status.mods.length === 1 ? '' : 's'} loaded</span>
-                                    <button type="button" className="button w-fit text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
-                                        <div className="flex items-center gap-1">
-                                            <span>{showMods ? 'Hide' : 'Show'} mod list</span>
-                                            <Chevron width="20" height="20" isFlipped={showMods} />
-                                        </div>
+                                    <button type="button" className="button flex items-center gap-1 w-fit text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
+                                        <span>{showMods ? 'Hide' : 'Show'} mod list</span>
+                                        <Chevron width="16" height="16" isFlipped={showMods} />
                                     </button>
                                 </div>
-                                <div className={`${showMods ? 'block' : 'hidden'} tags mt-2 font-mono whitespace-pre bg-black overflow-x-auto p-4`} id="mods-list">
+                                <div className={`${showMods ? 'block' : 'hidden'} tags mt-2 font-mono whitespace-pre bg-black rounded overflow-x-auto p-4`} id="mods-list">
                                     <ul className="list-none">
                                         {
                                             status.mods.sort(sortFuncAscendingCaseInsensitive('name')).map((mod, index) => (
@@ -214,14 +210,12 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                             ? <>
                                 <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
                                     <span>{status.plugins.length} plugin{status.plugins.length === 1 ? '' : 's'} loaded</span>
-                                    <button type="button" className="button w-fit text-sm" onClick={() => setShowPlugins(!showPlugins)} aria-controls="plugin-list" aria-expanded={showPlugins}>
-                                        <div className="flex items-center gap-1">
-                                            <span>{showPlugins ? 'Hide' : 'Show'} plugin list</span>
-                                            <Chevron width="20" height="20" isFlipped={showPlugins} />
-                                        </div>
+                                    <button type="button" className="button flex items-center gap-1 w-fit text-sm" onClick={() => setShowPlugins(!showPlugins)} aria-controls="plugin-list" aria-expanded={showPlugins}>
+                                        <span>{showPlugins ? 'Hide' : 'Show'} plugin list</span>
+                                        <Chevron width="16" height="16" isFlipped={showPlugins} />
                                     </button>
                                 </div>
-                                <div className={`${showPlugins ? 'block' : 'hidden'} tags mt-2 font-mono whitespace-pre bg-black overflow-x-auto p-4`} id="plugin-list">
+                                <div className={`${showPlugins ? 'block' : 'hidden'} tags mt-2 font-mono whitespace-pre bg-black rounded overflow-x-auto p-4`} id="plugin-list">
                                     <ul className="list-none">
                                         {
                                             status.plugins.sort(sortFuncAscendingCaseInsensitive('name')).map((plugin, index) => (

@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
 import ChevronRightIcon from '@/assets/icons/chevron-right.svg';
-import Ad from '@/components/Ad';
-import Container from '@/components/Container';
-import MOTDEditor from '@/components/MOTDEditor';
-import Navbar from '@/components/Navbar';
+import CarbonAd from '@/components/CarbonAd';
+import Navbar from '@/components/layout/Navbar';
+import MOTDEditor from '@/components/tools/MOTDEditor';
 
 export const metadata = {
     title: 'MOTD Editor',
@@ -33,7 +32,7 @@ export default function Page() {
     return (
         <>
             <Navbar active="tools" />
-            <Container>
+            <div className="container">
                 <section>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
@@ -46,13 +45,13 @@ export default function Page() {
                             </div>
                             <p className="subtitle h1">Easily edit and preview an MOTD before using it on your own server</p>
                         </hgroup>
-                        <Ad />
+                        <CarbonAd />
                     </div>
                 </section>
                 <Suspense fallback={null}>
                     <MOTDEditor />
                 </Suspense>
-            </Container>
+            </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{
                 __html: JSON.stringify([
                     {

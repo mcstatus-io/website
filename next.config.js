@@ -52,8 +52,5 @@ module.exports = withBundleAnalyzer({
                 hostname: 'api.mineatar.io'
             }
         ]
-    },
-    experimental: {
-        webpackBuildWorker: true
     }
 });

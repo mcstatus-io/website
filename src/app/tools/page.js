@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import ExternalLinkIcon from '@/assets/icons/external-link.svg';
-import Ad from '@/components/Ad';
-import Container from '@/components/Container';
-import Navbar from '@/components/Navbar';
+import CarbonAd from '@/components/CarbonAd';
+import Navbar from '@/components/layout/Navbar';
 
 export const metadata = {
     title: 'Tools',
@@ -31,14 +30,14 @@ export default function Page() {
     return (
         <>
             <Navbar active="tools" />
-            <Container>
+            <div className="container">
                 <section>
                     <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
                         <hgroup>
                             <h1 className="title">Tools</h1>
                             <p className="subtitle">Simple server admin tools to help you out</p>
                         </hgroup>
-                        <Ad />
+                        <CarbonAd />
                     </div>
                 </section>
                 <section className="pt-12">
@@ -114,7 +113,7 @@ export default function Page() {
                         </li>
                     </ul>
                 </section>
-            </Container>
+            </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{
                 __html: JSON.stringify([
                     {
