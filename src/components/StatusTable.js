@@ -300,15 +300,15 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                     : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
             ]);
         }
+    }
 
-        if (typeof status.srv_record !== 'undefined') {
-            rows.push([
-                'SRV Record',
-                status.srv_record
-                    ? <code>{status.srv_record.host}:{status.srv_record.port}</code>
-                    : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
-            ]);
-        }
+    if (typeof status.srv_record !== 'undefined') {
+        rows.push([
+            'SRV Record',
+            status.srv_record
+                ? <span className="font-mono">{status.srv_record.host}:{status.srv_record.port}</span>
+                : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
+        ]);
     }
 
     return (

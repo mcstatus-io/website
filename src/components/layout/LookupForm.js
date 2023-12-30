@@ -41,7 +41,7 @@ export default function LookupForm({ type = 'java', address = '', className = ''
             </div>
             <div className="grow">
                 <label className="sr-only" htmlFor="address">Server Address</label>
-                <input type="text" className="input text-center md:text-left w-full" id="address" placeholder="demo.mcstatus.io" defaultValue={address} onChange={(event) => dispatch({ type: 'SET_ADDRESS', value: event.target.value })} autoComplete="off" spellCheck="false" autoCapitalize="off" autoCorrect="off" autoFocus={autoFocus} />
+                <input type="text" className="input text-center md:text-left w-full" id="address" placeholder="demo.mcstatus.io" defaultValue={address} onChange={(event) => dispatch({ type: 'SET_ADDRESS', value: event.target.value })} autoComplete="off" spellCheck="false" autoCapitalize="none" autoCorrect="off" autoFocus={autoFocus} />
             </div>
             <button type="submit" className="basis-full md:basis-auto button flex items-center justify-center gap-2" disabled={!isValid(data) || (data.type === type && data.address === address)}>
                 <span>Submit</span>
