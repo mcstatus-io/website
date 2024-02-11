@@ -96,7 +96,7 @@ export default async function Page({ params: { type, address } }) {
     const status = await getStatus(type, address);
     const protocolVersions = await getProtocolVersions(type);
 
-    const isDemoServer = status.host === 'demo.mcstatus.io' && status.port === 25565;
+    const isDemoServer = status.online && status.host === 'demo.mcstatus.io' && (status.port === 25565 || status.port === 19132);
     const isAternosServer = status.host.split('.').slice(-2).join('.').toLowerCase() === 'aternos.me';
 
     return (

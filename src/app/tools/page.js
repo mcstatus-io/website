@@ -59,19 +59,29 @@ export default function Page() {
                             </Link>
                         </li>
                         <li>
-                            <div className="card card-disabled h-full [--card-text:'Coming_Soon';]">
-                                <p className="text-lg font-bold">Whitelist Creator</p>
-                                <p className="mt-1">Automatically generates a whitelist with pre-filled player UUIDs.</p>
-                            </div>
+                            <a href="https://mctools.org/whitelist-creator?utm_source=mcstatus.io" rel="sponsored">
+                                <div className="card card-hover h-full">
+                                    <p className="flex items-center gap-3 text-lg font-bold">
+                                        <span>Whitelist Creator</span>
+                                        <ExternalLinkIcon width="16" height="16" className="text-neutral-500" />
+                                    </p>
+                                    <p className="mt-1">Automatically generates a whitelist with pre-filled player UUIDs.</p>
+                                </div>
+                            </a>
                         </li>
                         <li>
-                            <div className="card card-disabled h-full [--card-text:'Coming_Soon';]">
-                                <p className="text-lg font-bold">Server Properties Editor</p>
-                                <p className="mt-1">Quickly adjust your server.properties file by using our online editor.</p>
-                            </div>
+                            <a href="https://mctools.org/server-properties-creator?utm_source=mcstatus.io" rel="sponsored">
+                                <div className="card card-hover h-full">
+                                    <p className="flex items-center gap-3 text-lg font-bold">
+                                        <span>Server Properties Editor</span>
+                                        <ExternalLinkIcon width="16" height="16" className="text-neutral-500" />
+                                    </p>
+                                    <p className="mt-1">Quickly adjust your server.properties file by using our online editor.</p>
+                                </div>
+                            </a>
                         </li>
                         <li>
-                            <a href="https://www.planetminecraft.com/banner" rel="sponsored">
+                            <a href="https://www.planetminecraft.com/banner?utm_source=mcstatus.io" rel="sponsored">
                                 <div className="card card-hover h-full">
                                     <p className="flex items-center gap-3 text-lg font-bold">
                                         <span>Banner Editor</span>
@@ -82,7 +92,7 @@ export default function Page() {
                             </a>
                         </li>
                         <li>
-                            <a href="https://minecraft-ids.grahamedgecombe.com" rel="sponsored">
+                            <a href="https://minecraft-ids.grahamedgecombe.com?utm_source=mcstatus.io" rel="sponsored">
                                 <div className="card card-hover h-full">
                                     <p className="flex items-center gap-3 text-lg font-bold">
                                         <span>Blocks &amp; Items</span>
