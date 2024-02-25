@@ -5,10 +5,10 @@ import ServerListing from '@/components/ServerListing';
 import Navbar from '@/components/layout/Navbar';
 
 export const metadata = {
-    title: 'Servers',
+    title: 'Sample Servers',
     description: 'A list of all sample and frequently retrieved Minecraft servers for you to browse and try our service.',
     openGraph: {
-        title: 'Servers - Minecraft Server Status',
+        title: 'Sample Servers - Minecraft Server Status',
         description: 'A list of all sample and frequently retrieved Minecraft servers for you to browse and try our service.',
         url: '/servers',
         siteName: 'Minecraft Server Status',
