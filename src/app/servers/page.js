@@ -1,5 +1,4 @@
 import sampleServers from '@/assets/servers';
-import AnchorHeader from '@/components/AnchorHeader';
 import CarbonAd from '@/components/CarbonAd';
 import ServerListing from '@/components/ServerListing';
 import Navbar from '@/components/layout/Navbar';
@@ -35,19 +34,14 @@ export default function Page() {
                 <section>
                     <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
                         <hgroup>
-                            <h1 className="title">Servers</h1>
+                            <h1 className="title">Sample Servers</h1>
                             <p className="subtitle">A list of all sample Minecraft servers provided</p>
                         </hgroup>
                         <CarbonAd />
                     </div>
                 </section>
                 <section className="pt-12">
-                    <AnchorHeader size={2} id="sample">Sample Servers</AnchorHeader>
-                    <ServerListing servers={sampleServers} className="mt-5" />
-                </section>
-                <section className="pt-12">
-                    <AnchorHeader size={2} id="sample">Popular Servers</AnchorHeader>
-                    <p className="mt-3">Coming soon...</p>
+                    <ServerListing servers={sampleServers} />
                 </section>
             </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{

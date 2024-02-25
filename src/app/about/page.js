@@ -55,7 +55,7 @@ const frequentlyAskedQuestions = [
     {
         anchor: 'banned',
         title: 'My IP address was banned from the API, how do I appeal?',
-        content: <p className="leading-7">Most IP bans are because of mass spam requests to the API. Mass requests may cause a disruption in service for other developers who are looking to use the API. You may request to be unbanned by providing an explanation when you email <a href="mailto:api@mcstatus.io" className="link link-contrast">api@mcstatus.io</a>.</p>,
+        content: <p className="leading-7">Most IP bans are because of mass spam requests to the API. Mass requests may cause a disruption in service for other developers who are looking to use the API. You may request to be unbanned by providing an explanation when you email <a href="mailto:api@mcstatus.io" className="link link-contrast" rel="nofollow">api@mcstatus.io</a>.</p>,
         textContent: '<p>Most IP bans are because of mass spam requests to the API. Mass requests may cause a disruption in service for other developers who are looking to use the API. You may request to be unbanned by providing an explanation when you email <a href="mailto:api@mcstatus.io">api@mcstatus.io</a>.</p>'
     },
     {
@@ -179,7 +179,7 @@ export default function Page() {
                             <p className="subtitle">How to contact me if needed</p>
                         </hgroup>
                     </div>
-                    <p className="mt-5 leading-7">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>. We accept any sort of feedback on our service, including bug reports, feature suggestions, questions about the API, etc.</p>
+                    <p className="mt-5 leading-7">If you wish to contact us, please do so using <a href="mailto:contact@mcstatus.io" className="link" rel="nofollow">contact@mcstatus.io</a>. We accept any sort of feedback on our service, including bug reports, feature suggestions, questions about the API, etc.</p>
                 </section>
             </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{

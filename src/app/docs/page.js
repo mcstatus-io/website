@@ -52,7 +52,7 @@ export default function Page() {
                 <section>
                     <section className="pt-12">
                         <AnchorHeader size={2} id="overview">Overview</AnchorHeader>
-                        <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">The goal of this API documentation is to accurately and precisely describe the functionality of this service in plain terms. This page will go over everything you need to know before implementing our API into your service. If you believe there is anything missing, any typos, or incorrect information on this page, please reach out to me via email at <a href="mailto:contact@mcstatus.io" className="link">contact@mcstatus.io</a>.</p>
+                        <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">The goal of this API documentation is to accurately and precisely describe the functionality of this service in plain terms. This page will go over everything you need to know before implementing our API into your service. If you believe there is anything missing, any typos, or incorrect information on this page, please reach out to me via email at <a href="mailto:contact@mcstatus.io" className="link" rel="nofollow">contact@mcstatus.io</a>.</p>
                     </section>
                     <section className="pt-12">
                         <AnchorHeader size={3} id="standards">Standards</AnchorHeader>
@@ -583,7 +583,7 @@ export default function Page() {
                 </section>
                 <section className="pt-12">
                     <AnchorHeader size={2} id="support">Support</AnchorHeader>
-                    <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">If you require any additional assistance or found a bug you would like to report, please send an email to <a href="mailto:api@mcstatus.io" className="link">api@mcstatus.io</a>. We will be more than happy to provide any assistance.</p>
+                    <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">If you require any additional assistance or found a bug you would like to report, please send an email to <a href="mailto:api@mcstatus.io" className="link" rel="nofollow">api@mcstatus.io</a>. We will be more than happy to provide any assistance.</p>
                 </section>
             </div>
             <script type="application/ld+json" dangerouslySetInnerHTML={{
