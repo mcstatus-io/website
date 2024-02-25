@@ -33,7 +33,7 @@ export default function Page() {
             <Navbar />
             <div className="container">
                 <section>
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+                    <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
                         <hgroup>
                             <h1 className="title">Servers</h1>
                             <p className="subtitle">A list of all sample Minecraft servers provided</p>

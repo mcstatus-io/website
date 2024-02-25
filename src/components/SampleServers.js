@@ -26,7 +26,7 @@ export default function SampleServers({ className = '' }) {
             {
                 servers.map(({ type, address, name }, index) => (
                     <li key={index}>
-                        <Link href={`/status/${type}/${address}`} className="button flex flex-col sm:flex-row items-start sm:items-center gap-3 p-5">
+                        <Link href={`/status/${type}/${address}`} className="flex flex-col items-start gap-3 p-5 button sm:flex-row sm:items-center">
                             <div className="flex items-center gap-3">
                                 <span className={`badge ${type === 'java' ? 'badge-green' : type === 'bedrock' ? 'badge-blue' : 'badge-gray'} text-xs`}>{type === 'java' ? 'Java' : type === 'bedrock' ? 'Bedrock' : 'Unknown'}</span>
                                 <span className="font-bold">{name}</span>

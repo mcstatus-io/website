@@ -24,14 +24,14 @@ export default function Navbar({ active }) {
 
     return (
         <nav className={`text-black dark:text-white w-screen h-[4.25rem] sticky top-0 z-50 ${!showMenu ? 'bg-white dark:bg-[#121212dd] bg-opacity-80 backdrop-blur-[6px] backdrop-saturate-150 backdrop-brightness-50 border-b border-b-neutral-200 dark:border-b-neutral-800' : ''}`}>
-            <div className="container container-no-margin relative md:px-6 h-full flex items-center">
+            <div className="container relative flex items-center h-full container-no-margin md:px-6">
                 <header className={`${showMenu ? 'hidden' : 'md:max-lg:hidden'} md:pr-6 md:border-r-2 md:border-r-[rgba(0,0,0,0.1)] md:dark:border-r-neutral-700 mr-6`}>
                     <Link href="/" className="flex items-center content-center p-1">
                         <Image src={icon} alt="mcstatus.io Icon" width="32" height="32" priority />
-                        <span className="text-xl font-extrabold ml-2 tracking-tighter">MCS</span>
+                        <span className="ml-2 text-xl font-extrabold tracking-tighter">MCS</span>
                     </Link>
                 </header>
-                <button className="absolute top-4 right-4 z-50 text-black dark:text-white ml-auto md:hidden p-2" type="button" onClick={() => setShowMenu(!showMenu)}>
+                <button className="absolute z-50 p-2 ml-auto text-black top-4 right-4 dark:text-white md:hidden" type="button" onClick={() => setShowMenu(!showMenu)}>
                     {
                         showMenu
                             ? <CloseIcon width="24" height="24" className="text-white" />
@@ -72,25 +72,25 @@ export default function Navbar({ active }) {
                     <li>
                         <a href="https://discord.gg/QwvzbA9KGz" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800'} p-2`}>
                             <DiscordIcon width="22" height="22" title="Discord" />
-                            <span className="md:sr-only font-bold">Discord</span>
+                            <span className="font-bold md:sr-only">Discord</span>
                         </a>
                     </li>
                     <li>
                         <a href="https://github.com/mcstatus-io" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800'} p-2`}>
                             <GithubIcon width="22" height="22" title="GitHub" />
-                            <span className="md:sr-only font-bold">GitHub</span>
+                            <span className="font-bold md:sr-only">GitHub</span>
                         </a>
                     </li>
                     <li>
                         <a href="https://status.mcstatus.io" rel="nofollow" className={`flex gap-3 items-center rounded-full ${showMenu ? 'text-white' : 'text-black dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-800'} p-2`}>
                             <ClockIcon width="22" height="22" title="Status" />
-                            <span className="md:sr-only font-bold">Status Page</span>
+                            <span className="font-bold md:sr-only">Status Page</span>
                         </a>
                     </li>
                     {
                         process.env.NEXT_PUBLIC_DASHBOARD
                             ? <li>
-                                <a href={process.env.NEXT_PUBLIC_DASHBOARD} className="button button-green flex items-center gap-2 px-5 py-3 rounded-full text-black dark:text-white">
+                                <a href={process.env.NEXT_PUBLIC_DASHBOARD} className="flex items-center gap-2 px-5 py-3 text-black rounded-full button button-green dark:text-white">
                                     <span>Dashboard</span>
                                     <ArrowRightIcon width="18" height="18" />
                                 </a>

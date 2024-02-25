@@ -105,8 +105,8 @@ export default function RootLayout({ children }) {
                 <div className="flex flex-col min-h-[100lvh]">
                     <div className="grow">
                         <noscript>
-                            <div className="container container-no-margin my-12">
-                                <alert className="card text-red-500 dark:text-red-400">
+                            <div className="container my-12 container-no-margin">
+                                <alert className="text-red-500 card dark:text-red-400">
                                     <span className="font-bold">Please note!</span>
                                     <span> It looks like JavaScript is not supported by your browser. This is most likely because you are using an outdated browser or your browser has disabled it for this website. Many crucial functions of this website relies on JavaScript to work properly. <a href="https://www.enable-javascript.com/" className="link" rel="nofollow">Click here</a> to learn how to enable JavaScript for this website.</span>
                                 </alert>

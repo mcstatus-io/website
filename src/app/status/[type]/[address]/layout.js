@@ -13,7 +13,7 @@ export default function RootLayout({ children, params: { type, address } }) {
             <Navbar />
             <div className="container">
                 <section>
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+                    <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
                         <hgroup>
                             <h1 className="title">Minecraft Server Status</h1>
                             <p className="subtitle">Quickly retrieve the status of any Minecraft server</p>

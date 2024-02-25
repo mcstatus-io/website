@@ -41,7 +41,7 @@ export default function Page() {
             <Navbar active="api" />
             <div className="container">
                 <section>
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+                    <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
                         <hgroup>
                             <h1 className="title">API Documentation</h1>
                             <p className="subtitle">Documentation on how to integrate our API in your service</p>
@@ -74,7 +74,7 @@ export default function Page() {
                 <section className="pt-12">
                     <AnchorHeader size={2} id="revisions">Revisions</AnchorHeader>
                     <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">Over the lifetime of this service, there has been a few changes that breaks compatibility with existing users who rely on consistent and non-changing data. When this happens, we release a new major version of the API called a revision, which is why you see <code>/v2</code> in the URL of all API requests. As time goes on, we can no longer support previous revisions and have to shut them down. You may refer to the table below to see any major revisions from the past up until present time. If you use our API, it is generally recommended to come back to this page every so often to confirm the revision you are using is not becoming deprecated.</p>
-                    <div className="card p-0 overflow-x-auto max-w-full mt-3">
+                    <div className="max-w-full p-0 mt-3 overflow-x-auto card">
                         <RevisionsTable>
                             <RevisionRow
                                 name="Revision 1"
@@ -104,11 +104,11 @@ export default function Page() {
                             <AnchorHeader size={3} id="java-status">Java Status</AnchorHeader>
                             <p className="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">Retrieves the status of any Java Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>play.hypixel.net</code> is a valid connection address as well as <code>play.hypixel.net:25565</code>.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="badge badge-blue text-xs">GET</span>
+                                <span className="text-xs badge badge-blue">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/java/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
-                                <div className="card p-0 max-w-full overflow-x-auto">
+                                <div className="max-w-full p-0 overflow-x-auto card">
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
@@ -152,7 +152,7 @@ export default function Page() {
                                 </div>
                             </Collapsible>
                             <Collapsible title="Response Body" className="block mt-2" noPadding>
-                                <Highlight source={javaExample} className="bg-neutral-900 rounded-b" />
+                                <Highlight source={javaExample} className="rounded-b bg-neutral-900" />
                             </Collapsible>
                         </div>
                     </section>
@@ -161,11 +161,11 @@ export default function Page() {
                             <AnchorHeader size={3} id="bedrock-status">Bedrock Status</AnchorHeader>
                             <p className="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">Retrieves the status of any Bedrock Edition Minecraft server. <code>&lt;address&gt;</code> should be replaced with the connection address of the server. For example, <code>pe.mineplex.com</code> is a valid connection address as well as <code>pe.mineplex.com:19132</code>.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="badge badge-blue text-xs">GET</span>
+                                <span className="text-xs badge badge-blue">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/status/bedrock/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
-                                <div className="card p-0 max-w-full overflow-x-auto">
+                                <div className="max-w-full p-0 overflow-x-auto card">
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
@@ -195,7 +195,7 @@ export default function Page() {
                                 </div>
                             </Collapsible>
                             <Collapsible title="Response Body" className="block mt-2" noPadding>
-                                <Highlight source={bedrockExample} className="bg-neutral-900 rounded-b" />
+                                <Highlight source={bedrockExample} className="rounded-b bg-neutral-900" />
                             </Collapsible>
                         </div>
                     </section>
@@ -204,11 +204,11 @@ export default function Page() {
                             <AnchorHeader size={3} id="java-widget">Java Widget</AnchorHeader>
                             <p className="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">Returns a widget image containing information about the Java Edition server. This widget can be embedded into any website or any source that allows images via URL. The image is generated on every request, but the status of the server may be cached.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="badge badge-blue text-xs">GET</span>
+                                <span className="text-xs badge badge-blue">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/widget/java/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
-                                <div className="card p-0 max-w-full overflow-x-auto">
+                                <div className="max-w-full p-0 overflow-x-auto card">
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
@@ -266,7 +266,7 @@ export default function Page() {
                                 </div>
                             </Collapsible>
                             <Collapsible title="Response Body" className="block mt-2">
-                                <div className="flex flex-col lg:flex-row items-center gap-3">
+                                <div className="flex flex-col items-center gap-3 lg:flex-row">
                                     <Image src={javaWidgetLightExample} alt="Sample Java Edition server light widget" />
                                     <Image src={javaWidgetDarkExample} alt="Sample Java Edition server dark widget" />
                                 </div>
@@ -278,11 +278,11 @@ export default function Page() {
                             <AnchorHeader size={3} id="icon">Icon</AnchorHeader>
                             <p className="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">Returns just the icon/favicon of any Java Edition Minecraft server. If connection to the server fails or if the server is offline then the default icon is returned. The address value is optional, and if not provided then the default icon is returned.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="badge badge-blue text-xs">GET</span>
+                                <span className="text-xs badge badge-blue">GET</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/icon/&lt;address&gt;</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
-                                <div className="card p-0 max-w-full overflow-x-auto">
+                                <div className="max-w-full p-0 overflow-x-auto card">
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
@@ -313,7 +313,7 @@ export default function Page() {
                             </Collapsible>
                             <Collapsible title="Response Body" className="block mt-2">
                                 <Image src={iconExample} width="128" height="128" className="[image-rendering:pixelated;]" alt="Sample server icon" />
-                                <p className="text-neutral-500 italic mt-3">(actual 64&times;64, scaled to 128&times;128)</p>
+                                <p className="mt-3 italic text-neutral-500">(actual 64&times;64, scaled to 128&times;128)</p>
                             </Collapsible>
                         </div>
                     </section>
@@ -322,11 +322,11 @@ export default function Page() {
                             <AnchorHeader size={3} id="vote">Send Vote</AnchorHeader>
                             <p className="mt-2 leading-7 text-neutral-700 dark:text-neutral-300">Allows you to send a Votifier vote to the specified server. All data should be sent as query parameters.</p>
                             <p className="flex items-center gap-2 mt-3">
-                                <span className="badge badge-green text-xs">POST</span>
+                                <span className="text-xs badge badge-green">POST</span>
                                 <code className="break-words">https://api.mcstatus.io<span className="font-bold">/v2/vote</span></code>
                             </p>
                             <Collapsible title="Query Parameters" className="block mt-4">
-                                <div className="card p-0 max-w-full overflow-x-auto">
+                                <div className="max-w-full p-0 overflow-x-auto card">
                                     <table className="table min-w-[640px]">
                                         <thead>
                                             <tr>
@@ -451,17 +451,17 @@ export default function Page() {
                                                     <span>No</span>
                                                 </td>
                                                 <td>
-                                                    <span className="text-neutral-500 italic">(time of request)</span>
+                                                    <span className="italic text-neutral-500">(time of request)</span>
                                                 </td>
                                                 <td>
                                                     <span>The timestamp of the vote sent to the server. This should be in RFC3339 format if provided.</span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th colSpan="5" className="text-left p-5">
+                                                <th colSpan="5" className="p-5 text-left">
                                                     <div className="flex items-center gap-3">
                                                         <span>Votifier 1</span>
-                                                        <span className="font-normal text-neutral-500 text-sm">(query <code>version=1</code>)</span>
+                                                        <span className="text-sm font-normal text-neutral-500">(query <code>version=1</code>)</span>
                                                         <span className="font-normal text-neutral-300">*</span>
                                                     </div>
                                                 </th>
@@ -495,17 +495,17 @@ export default function Page() {
                                                     <span>No</span>
                                                 </td>
                                                 <td>
-                                                    <span className="text-neutral-500 italic">(user IP address)</span>
+                                                    <span className="italic text-neutral-500">(user IP address)</span>
                                                 </td>
                                                 <td>
                                                     <span>The IP address of the user sending the vote. If missing, the IP address of the client sending the request will be used.</span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th colSpan="5" className="text-left p-5">
+                                                <th colSpan="5" className="p-5 text-left">
                                                     <div className="flex items-center gap-3">
                                                         <span>Votifier 2</span>
-                                                        <span className="font-normal text-neutral-500 text-sm">(query <code>version=2</code>)</span>
+                                                        <span className="text-sm font-normal text-neutral-500">(query <code>version=2</code>)</span>
                                                     </div>
                                                 </th>
                                             </tr>
@@ -557,7 +557,7 @@ export default function Page() {
                                 </p>
                             </Collapsible>
                             <Collapsible title="Response Body" className="block mt-2" noPadding>
-                                <div className="bg-neutral-900 p-4 rounded-b">
+                                <div className="p-4 rounded-b bg-neutral-900">
                                     <span>The vote was successfully sent to the server</span>
                                 </div>
                             </Collapsible>
@@ -567,11 +567,11 @@ export default function Page() {
                 <section className="pt-12">
                     <AnchorHeader size={2} id="libraries">Libraries</AnchorHeader>
                     <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">We try and provide official support for integrating our service into many languages. The list of official and unofficial libraries are below.</p>
-                    <ul className="list-none flex flex-col gap-3 mt-3">
+                    <ul className="flex flex-col gap-3 mt-3 list-none">
                         {
                             libraryList.map((library, index) => (
                                 <li key={index}>
-                                    <a href={library.url} rel="sponsored" className="button p-4 flex items-center gap-2">
+                                    <a href={library.url} rel="sponsored" className="flex items-center gap-2 p-4 button">
                                         <span className="badge badge-gray">{library.official ? 'Official' : 'Unofficial'}</span>
                                         <span className="badge" style={{ color: languageColors[library.language][0], backgroundColor: languageColors[library.language][1] }}>{languageNames[library.language]}</span>
                                         <code className="text-black dark:text-white">{library.name}</code>

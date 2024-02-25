@@ -36,7 +36,7 @@ export function RevisionRow({ name, baseURL, releaseDate = null, deprecationDate
                         ? changelog.length <= 1
                             ? <span>{changelog[0]}</span>
                             : showChanges
-                                ? <ul className="flex flex-col gap-1 list-inside list-disc">
+                                ? <ul className="flex flex-col gap-1 list-disc list-inside">
                                     {
                                         changelog.map((desc, index) => (
                                             <li key={index}>{desc}</li>

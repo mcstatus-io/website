@@ -34,16 +34,16 @@ export default function LookupForm({ type = 'java', address = '', className = ''
         <form className={`flex flex-wrap items-center gap-3 ${className}`} onSubmit={handleSubmit}>
             <div className="basis-full sm:basis-auto">
                 <label className="sr-only" htmlFor="type">Server Type</label>
-                <select className="select w-full md:w-auto" id="type" defaultValue={type} onChange={(event) => dispatch({ type: 'SET_TYPE', value: event.target.value })}>
+                <select className="w-full select md:w-auto" id="type" defaultValue={type} onChange={(event) => dispatch({ type: 'SET_TYPE', value: event.target.value })}>
                     <option value="java" className="text-neutral-800">Java Edition</option>
                     <option value="bedrock" className="text-neutral-800">Bedrock Edition</option>
                 </select>
             </div>
             <div className="grow">
                 <label className="sr-only" htmlFor="address">Server Address</label>
-                <input type="text" className="input text-center md:text-left w-full" id="address" placeholder="demo.mcstatus.io" defaultValue={address} onChange={(event) => dispatch({ type: 'SET_ADDRESS', value: event.target.value })} autoComplete="off" spellCheck="false" autoCapitalize="none" autoCorrect="off" autoFocus={autoFocus} />
+                <input type="text" className="w-full text-center input md:text-left" id="address" placeholder="demo.mcstatus.io" defaultValue={address} onChange={(event) => dispatch({ type: 'SET_ADDRESS', value: event.target.value })} autoComplete="off" spellCheck="false" autoCapitalize="none" autoCorrect="off" autoFocus={autoFocus} />
             </div>
-            <button type="submit" className="basis-full md:basis-auto button flex items-center justify-center gap-2" disabled={!isValid(data) || (data.type === type && data.address === address)}>
+            <button type="submit" className="flex items-center justify-center gap-2 basis-full md:basis-auto button" disabled={!isValid(data) || (data.type === type && data.address === address)}>
                 <span>Submit</span>
                 <ArrowRightIcon width="16" height="16" />
             </button>

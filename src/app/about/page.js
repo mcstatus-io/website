@@ -76,8 +76,8 @@ const frequentlyAskedQuestions = [
         content: (
             <>
                 <p className="leading-7">Aternos uses a clever system to display to the user in-game when one of their hosted servers is currently down, by showing &quot;This server is offline.&quot; in the MOTD. This works well for Minecraft players but makes it difficult for server status retrieval tools because it tricks our service into thinking it is online because it returned a successful response. While we could incorporate a workaround to show these servers as offline, there is no guaranteed method to properly detect this.</p>
-                <p className="leading-7 mt-3">Additionally, Aternos puts servers into a suspended state if there has been no activity on the network for a while. When our service attempts to retrieve the status of a suspended server, their network declines any connection and a true offline response is returned by our service. Immediately following, Aternos will allow connections but return their fake &quot;This server is offline.&quot; response again, while our server is still returning the initial offline response due to our 1 minute cache duration. There is currently no solution for any of the issues listed above.</p>
-                <p className="leading-7 mt-3">There is currently no solution for any of the issues listed above. It is recommended that you do not rely on our service to accurately determine the status of any Minecraft server hosted by Aternos.</p>
+                <p className="mt-3 leading-7">Additionally, Aternos puts servers into a suspended state if there has been no activity on the network for a while. When our service attempts to retrieve the status of a suspended server, their network declines any connection and a true offline response is returned by our service. Immediately following, Aternos will allow connections but return their fake &quot;This server is offline.&quot; response again, while our server is still returning the initial offline response due to our 1 minute cache duration. There is currently no solution for any of the issues listed above.</p>
+                <p className="mt-3 leading-7">There is currently no solution for any of the issues listed above. It is recommended that you do not rely on our service to accurately determine the status of any Minecraft server hosted by Aternos.</p>
             </>
         ),
         textContent: '<p>Aternos uses a clever system to display to the user in-game when one of their hosted servers is currently down, by showing "This server is offline." in the MOTD. This works well for Minecraft players but makes it difficult for server status retrieval tools because it tricks our service into thinking it is online because it returned a successful response. While we could incorporate a workaround to show these servers as offline, there is no guaranteed method to properly detect this. Additionally, Aternos puts servers into a suspended state if there has been no activity on the network for a while. When our service attempts to retrieve the status of a suspended server, their network declines any connection and a true offline response is returned by our service. Immediately following, Aternos will allow connections but return their fake "This server is offline." response again, while our server is still returning the initial offline response due to our 1 minute cache duration. There is currently no solution for any of the issues listed above. There is currently no solution for any of the issues listed above. It is recommended that you do not rely on our service to accurately determine the status of any Minecraft server hosted by Aternos.</p>'
@@ -113,7 +113,7 @@ export default function Page() {
             <Navbar active="about" />
             <div className="container">
                 <section>
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+                    <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
                         <hgroup>
                             <h1 className="title">About</h1>
                             <p className="subtitle">A quick understanding of what we do</p>
@@ -130,7 +130,7 @@ export default function Page() {
                             <p className="subtitle">Answers to commonly asked questions</p>
                         </hgroup>
                     </div>
-                    <ul className="list-none flex flex-col gap-3 mt-5">
+                    <ul className="flex flex-col gap-3 mt-5 list-none">
                         {
                             frequentlyAskedQuestions.map((item, index) => (
                                 <li key={index}>
@@ -150,8 +150,8 @@ export default function Page() {
                             <p className="subtitle">Other services we are partnered with</p>
                         </hgroup>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
-                        <a href="https://serverflex.io/product/minecraft-server-hosting?utm_source=mcstatus.io" className="card card-hover flex gap-5" rel="sponsored">
+                    <div className="grid grid-cols-1 gap-3 mt-5 md:grid-cols-2 lg:grid-cols-3">
+                        <a href="https://serverflex.io/product/minecraft-server-hosting?utm_source=mcstatus.io" className="flex gap-5 card card-hover" rel="sponsored">
                             <div className="w-16">
                                 <Image src={serverFlexIcon} className="mx-auto" alt="ServerFlex Icon" />
                             </div>
@@ -160,7 +160,7 @@ export default function Page() {
                                 <p className="mt-1">Professional Minecraft server hosting, available in data centres around the world.</p>
                             </div>
                         </a>
-                        <a href="https://mineatar.io?utm_source=mcstatus.io" className="card card-hover flex gap-5" rel="sponsored">
+                        <a href="https://mineatar.io?utm_source=mcstatus.io" className="flex gap-5 card card-hover" rel="sponsored">
                             <div className="w-16">
                                 <Image src={mineatarIcon} className="mx-auto" alt="Mineatar Icon" />
                             </div>

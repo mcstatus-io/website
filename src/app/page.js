@@ -19,7 +19,7 @@ export default function Page() {
             <Navbar active="home" />
             <div className="container">
                 <section>
-                    <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+                    <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
                         <hgroup>
                             <h1 className="title">Minecraft Server Status</h1>
                             <p className="subtitle">Quickly retrieve the status of any Minecraft server</p>
@@ -29,7 +29,7 @@ export default function Page() {
                     <LookupForm className="mt-5" autoFocus />
                 </section>
                 <section className="pt-12">
-                    <div className="flex flex-col sm:flex-row gap-2 sm:items-end justify-between">
+                    <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
                         <div className="title-group">
                             <GiftIcon width="28" height="28" />
                             <hgroup>
@@ -67,8 +67,8 @@ export default function Page() {
                             <p className="subtitle">Other services we are partnered with</p>
                         </hgroup>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
-                        <a href="https://serverflex.io/product/minecraft-server-hosting?utm_source=mcstatus.io" className="card card-hover flex gap-5" rel="sponsored">
+                    <div className="grid grid-cols-1 gap-3 mt-5 md:grid-cols-2 lg:grid-cols-3">
+                        <a href="https://serverflex.io/product/minecraft-server-hosting?utm_source=mcstatus.io" className="flex gap-5 card card-hover" rel="sponsored">
                             <div className="w-16">
                                 <Image src={serverFlexIcon} className="mx-auto" alt="ServerFlex Icon" />
                             </div>
@@ -77,7 +77,7 @@ export default function Page() {
                                 <p className="mt-1">Professional Minecraft server hosting, available in data centres around the world.</p>
                             </div>
                         </a>
-                        <a href="https://mineatar.io?utm_source=mcstatus.io" className="card card-hover flex gap-5" rel="sponsored">
+                        <a href="https://mineatar.io?utm_source=mcstatus.io" className="flex gap-5 card card-hover" rel="sponsored">
                             <div className="w-16">
                                 <Image src={mineatarIcon} className="mx-auto" alt="Mineatar Icon" />
                             </div>

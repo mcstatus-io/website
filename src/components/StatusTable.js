@@ -24,8 +24,8 @@ export default function StatusTable({ status, protocolVersions, className = '', 
         [
             'Status',
             status.online
-                ? <span className="badge badge-green text-sm">Online</span>
-                : <span className="badge badge-red text-sm">Offline</span>
+                ? <span className="text-sm badge badge-green">Online</span>
+                : <span className="text-sm badge badge-red">Offline</span>
         ],
         [
             'Host',
@@ -69,7 +69,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
             [
                 'Players',
                 <>
-                    <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
+                    <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-3">
                         {
                             typeof status.players?.online === 'number' && typeof status.players?.max === 'number'
                                 ? <span>{status.players.online} / {status.players.max}</span>
@@ -81,13 +81,13 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                             status.players?.list?.length > 0
                                 ? <>
                                     <div className="flex flex-wrap items-center gap-3">
-                                        <button type="button" className="button flex items-center gap-1 w-auto text-sm" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
+                                        <button type="button" className="flex items-center w-auto gap-1 text-sm button" onClick={() => setShowPlayers(!showPlayers)} aria-controls="players-list" aria-expanded={showPlayers}>
                                             <span>{showPlayers ? 'Hide' : 'Show'} player list</span>
                                             <Chevron width="16" height="16" isFlipped={showPlayers} />
                                         </button>
                                         {
                                             showPlayers && allowAvatars
-                                                ? <button type="button" className="button flex gap-2 items-center text-sm" onClick={() => setShowAvatars(!showAvatars)}>
+                                                ? <button type="button" className="flex items-center gap-2 text-sm button" onClick={() => setShowAvatars(!showAvatars)}>
                                                     {
                                                         showAvatars
                                                             ? <ListIcon width="16" height="16" />
@@ -111,11 +111,11 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                             ? <div className={showPlayers ? 'block' : 'hidden'} id="players-list">
                                 {
                                     showAvatars && allowAvatars
-                                        ? <ul className="list-none flex flex-wrap gap-2 mt-3">
+                                        ? <ul className="flex flex-wrap gap-2 mt-3 list-none">
                                             {
                                                 status.players.list.sort(sortFuncAscendingCaseInsensitive('name_clean')).map((player, index) => (
                                                     <li key={index}>
-                                                        <a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}&utm_source=mcstatus.io`} rel="sponsored" className="card card-hover px-3 py-2 flex gap-3 items-center">
+                                                        <a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}&utm_source=mcstatus.io`} rel="sponsored" className="flex items-center gap-3 px-3 py-2 card card-hover">
                                                             <Image src={`https://api.mineatar.io/head/${player.uuid}`} width="24" height="24" />
                                                             <span className="font-mono text-sm" title={player.uuid}>{player.name_clean}</span>
                                                         </a>
@@ -124,17 +124,17 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                             }
                                         </ul>
                                         : allowAvatars
-                                            ? <div className="font-mono whitespace-pre bg-black rounded overflow-x-auto p-4 mt-3">
+                                            ? <div className="p-4 mt-3 overflow-x-auto font-mono whitespace-pre bg-black rounded">
                                                 <ul className="list-none">
                                                     {
                                                         status.players.list.sort(sortFuncAscendingCaseInsensitive('name_clean')).map((player, index) => (
                                                             <li key={index}>
-                                                                <p className="text-white flex items-center justify-start md:justify-between gap-2 md:gap-3">
+                                                                <p className="flex items-center justify-start gap-2 text-white md:justify-between md:gap-3">
                                                                     <span className="min-w-fit">
                                                                         <span className="text-neutral-500">{Array((status.players.list.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
                                                                         <a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}&utm_source=mcstatus.io`} rel="sponsored" className="link">{player.name_clean}</a>
                                                                     </span>
-                                                                    <span className="min-w-fit text-neutral-500 pr-4 md:pr-0">{player.uuid}</span>
+                                                                    <span className="pr-4 min-w-fit text-neutral-500 md:pr-0">{player.uuid}</span>
                                                                 </p>
                                                             </li>
                                                         ))
@@ -145,7 +145,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                 }
                                 {
                                     status.players.online > status.players.list.length && allowAvatars
-                                        ? <p className="text-neutral-500 dark:text-neutral-400 mt-3 text-sm">Note that not all online players may not be shown. Standard Java Edition servers limit sample players to 12 by default.</p>
+                                        ? <p className="mt-3 text-sm text-neutral-500 dark:text-neutral-400">Note that not all online players may not be shown. Standard Java Edition servers limit sample players to 12 by default.</p>
                                         : null
                                 }
                             </div>
@@ -162,9 +162,9 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                     {
                         status.mods.length > 0
                             ? <>
-                                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
+                                <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-3">
                                     <span>{status.mods.length} mod{status.mods.length === 1 ? '' : 's'} loaded</span>
-                                    <button type="button" className="button flex items-center gap-1 w-fit text-sm" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
+                                    <button type="button" className="flex items-center gap-1 text-sm button w-fit" onClick={() => setShowMods(!showMods)} aria-controls="mods-list" aria-expanded={showMods}>
                                         <span>{showMods ? 'Hide' : 'Show'} mod list</span>
                                         <Chevron width="16" height="16" isFlipped={showMods} />
                                     </button>
@@ -185,7 +185,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                                         }
                                                         {
                                                             mod.version.length > 0 && valid(coerce(mod.version))
-                                                                ? <span className="text-neutral-400 pr-4"> v{mod.version}</span>
+                                                                ? <span className="pr-4 text-neutral-400"> v{mod.version}</span>
                                                                 : null
                                                         }
                                                     </p>
@@ -208,9 +208,9 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                     {
                         status.plugins.length > 0
                             ? <>
-                                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
+                                <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-3">
                                     <span>{status.plugins.length} plugin{status.plugins.length === 1 ? '' : 's'} loaded</span>
-                                    <button type="button" className="button flex items-center gap-1 w-fit text-sm" onClick={() => setShowPlugins(!showPlugins)} aria-controls="plugin-list" aria-expanded={showPlugins}>
+                                    <button type="button" className="flex items-center gap-1 text-sm button w-fit" onClick={() => setShowPlugins(!showPlugins)} aria-controls="plugin-list" aria-expanded={showPlugins}>
                                         <span>{showPlugins ? 'Hide' : 'Show'} plugin list</span>
                                         <Chevron width="16" height="16" isFlipped={showPlugins} />
                                     </button>
@@ -227,7 +227,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                                         </a>
                                                         {
                                                             plugin.version && plugin.version.length > 0 && valid(coerce(plugin.version))
-                                                                ? <span className="text-neutral-400 pr-4 md:pr-0"> v{plugin.version}</span>
+                                                                ? <span className="pr-4 text-neutral-400 md:pr-0"> v{plugin.version}</span>
                                                                 : null
                                                         }
                                                     </p>
@@ -317,7 +317,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                 {
                     rows.map(([label, content], index) => (
                         <li className={`block lg:flex w-full p-4 ${index + 1 < rows.length ? 'border-b border-b-black/10 dark:border-b-white/10 contrast-more:border-b-black/50 contrast-more:dark:border-b-white/50' : ''}`} key={index}>
-                            <span className="block lg:inline-block mb-1 lg:mb-0 w-64 font-semibold self-center">{label}</span>
+                            <span className="self-center block w-64 mb-1 font-semibold lg:inline-block lg:mb-0">{label}</span>
                             <div className="w-full">
                                 {content}
                             </div>

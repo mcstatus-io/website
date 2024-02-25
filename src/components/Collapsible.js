@@ -21,7 +21,7 @@ export default function Collapsible({ title, index = null, autoExpanded, id, noP
                 <span className="text-left">
                     {
                         index !== null
-                            ? <span className="text-neutral-500 mr-2 text-lg font-mono font-bold">{index}</span>
+                            ? <span className="mr-2 font-mono text-lg font-bold text-neutral-500">{index}</span>
                             : null
                     }
                     <span>{title}</span>

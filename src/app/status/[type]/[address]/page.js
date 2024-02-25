@@ -87,7 +87,7 @@ export default async function Page({ params: { type, address } }) {
 
     if (!validHostRegEx.test(address)) return (
         <section>
-            <div className="card mt-4">
+            <div className="mt-4 card">
                 <p className="text-red-500 dark:text-red-400">The address of the server that you are trying to retrieve is invalid. Please check the address and try again.</p>
             </div>
         </section>
@@ -104,7 +104,7 @@ export default async function Page({ params: { type, address } }) {
             <section>
                 {
                     isDemoServer
-                        ? <div className="card flex items-center gap-5 mt-3">
+                        ? <div className="flex items-center gap-5 mt-3 card">
                             <InfoIcon width="24" height="24" className="w-[24px] h-[24px] hidden lg:block ml-2" />
                             <p>Please note that this is not a real Minecraft server, it is a demo server used to test the features of this website. If you would like to learn more, please refer to our <Link href="/about#demo" className="link">frequently asked questions</Link>.</p>
                         </div>
@@ -112,7 +112,7 @@ export default async function Page({ params: { type, address } }) {
                 }
                 {
                     isAternosServer
-                        ? <div className="card bg-red-500/20 flex items-center gap-5 mt-3">
+                        ? <div className="flex items-center gap-5 mt-3 card bg-red-500/20">
                             <AlertCircleIcon width="24" height="24" className="text-red-500 w-[24px] h-[24px] hidden lg:block ml-2" />
                             <p>Please note that servers hosted by Aternos may not return the correct status. You may read more information about this unresolvable issue by <Link href="/about#aternos" className="link">clicking here</Link>.</p>
                         </div>

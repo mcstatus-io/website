@@ -180,11 +180,11 @@ export default function MOTDEditor() {
         <>
             <section className="pt-12">
                 <h2 className="title">Editor</h2>
-                <div className="card mt-3">
+                <div className="mt-3 card">
                     <div className="flex flex-wrap items-center gap-1">
                         {
                             colors.map(({ name, code, hex }, index) => (
-                                <button type="button" className="button button-sm p-0" title={name} onClick={() => addFormattingCode(code)} key={index}>
+                                <button type="button" className="p-0 button button-sm" title={name} onClick={() => addFormattingCode(code)} key={index}>
                                     <span className="sr-only">{name}</span>
                                     <div className="block w-6 h-6 rounded" style={{ backgroundColor: hex }} />
                                 </button>
@@ -198,12 +198,12 @@ export default function MOTDEditor() {
                             ))
                         }
                     </div>
-                    <textarea className="input resize-none mt-3" rows="2" defaultValue={text} placeholder="Type your MOTD here..." onChange={handleChange} ref={textareaElem} />
+                    <textarea className="mt-3 resize-none input" rows="2" defaultValue={text} placeholder="Type your MOTD here..." onChange={handleChange} ref={textareaElem} />
                 </div>
             </section>
             <section className="pt-12">
                 <h2 className="title">Preview</h2>
-                <MinecraftFormatted className="text-lg mt-3">
+                <MinecraftFormatted className="mt-3 text-lg">
                     {
                         tree.length > 0
                             ? tree.map((item, index) => (
@@ -215,39 +215,39 @@ export default function MOTDEditor() {
             </section>
             <section className="pt-12">
                 <h2 className="title">Code</h2>
-                <div className="card mt-3">
-                    <div className="flex flex-col md:flex-row md:items-center gap-3">
+                <div className="mt-3 card">
+                    <div className="flex flex-col gap-3 md:flex-row md:items-center">
                         <h3 className="title">Vanilla</h3>
                         <div className="flex items-center gap-3">
                             <code>server.properties</code>
-                            <CopyButton className="button-sm gap-2" iconSize="16" text={getServerPropertiesCode(tree)} />
+                            <CopyButton className="gap-2 button-sm" iconSize="16" text={getServerPropertiesCode(tree)} />
                         </div>
                     </div>
-                    <pre className="bg-black p-5 mt-3 rounded overflow-auto"><code>{getServerPropertiesCode(tree)}</code></pre>
-                    <div className="flex flex-col md:flex-row md:items-center gap-3 mt-8">
+                    <pre className="p-5 mt-3 overflow-auto bg-black rounded"><code>{getServerPropertiesCode(tree)}</code></pre>
+                    <div className="flex flex-col gap-3 mt-8 md:flex-row md:items-center">
                         <h3 className="title">BungeeCord</h3>
                         <div className="flex items-center gap-3">
                             <code>config.yml</code>
-                            <CopyButton className="button-sm gap-2" iconSize="16" text={getBungeeCordCode(tree)} />
+                            <CopyButton className="gap-2 button-sm" iconSize="16" text={getBungeeCordCode(tree)} />
                         </div>
                     </div>
-                    <pre className="bg-black p-5 mt-3 rounded overflow-auto"><code>{getBungeeCordCode(tree)}</code></pre>
-                    <div className="flex flex-col md:flex-row md:items-center gap-3 mt-8">
+                    <pre className="p-5 mt-3 overflow-auto bg-black rounded"><code>{getBungeeCordCode(tree)}</code></pre>
+                    <div className="flex flex-col gap-3 mt-8 md:flex-row md:items-center">
                         <h3 className="title">ServerListPlus</h3>
                         <div className="flex items-center gap-3">
                             <code>ServerListPlus.yml</code>
-                            <CopyButton className="button-sm gap-2" iconSize="16" text={getServerListPlusCode(tree)} />
+                            <CopyButton className="gap-2 button-sm" iconSize="16" text={getServerListPlusCode(tree)} />
                         </div>
                     </div>
-                    <pre className="bg-black p-5 mt-3 rounded overflow-auto"><code>{getServerListPlusCode(tree)}</code></pre>
+                    <pre className="p-5 mt-3 overflow-auto bg-black rounded"><code>{getServerListPlusCode(tree)}</code></pre>
                 </div>
             </section>
             <section className="pt-12">
                 <div className="flex items-center gap-3">
                     <h2 className="title">Permalink</h2>
-                    <CopyButton className="button-sm font-sans gap-2" iconSize="16" text={`https://mcstatus.io/tools/motd?text=${encodeURIComponent(text)}`} />
+                    <CopyButton className="gap-2 font-sans button-sm" iconSize="16" text={`https://mcstatus.io/tools/motd?text=${encodeURIComponent(text)}`} />
                 </div>
-                <div className="card mt-3 overflow-auto">
+                <div className="mt-3 overflow-auto card">
                     <pre><code>https://mcstatus.io/tools/motd?text={encodeURIComponent(text)}</code></pre>
                 </div>
             </section>
