@@ -35,35 +35,15 @@ export async function generateMetadata({ params: { type, address } }) {
         }
     }
 
-    let description = 'This server is currently offline or cannot be reached at this time. Please try a different host or check out one of our sample servers to test.';
-
-    if (result?.online) {
-        if (typeof result?.players?.online === 'number' && typeof result?.players?.max === 'number') {
-            description = `This server is currently online, and has ${result.players.online}/${result.players.max} players.`;
-        } else if (typeof result?.players?.online === 'number') {
-            description = `This server is currently online, and has ${result.players.online} players.`;
-        } else {
-            description = 'This server is currently online, but does not provide any player information.';
-        }
-
-        if (typeof result?.version?.name_clean === 'string') {
-            description += ` It is currently running version '${result.version.name_clean}'.`;
-        } else if (typeof result?.players?.online !== 'number' && typeof result?.players?.max !== 'number') {
-            description += ' It also does not provide any version information.';
-        } else {
-            description += ' This server does not provide any version information.';
-        }
-    }
-
     return {
         title: address,
-        description,
+        description: `Easily and quickly retrieve the status of ${address} or any other Minecraft server by using our simple status retrieval tool.`,
         icons: {
             icon: result?.icon ?? 'https://mcstatus.io/img/icon.png'
         },
         openGraph: {
-            title: address,
-            description,
+            title: `${address} - Minecraft Server Status`,
+            description: `Easily and quickly retrieve the status of ${address} or any other Minecraft server by using our simple status retrieval tool.`,
             url: `/status/${type}/${address}`,
             siteName: 'Minecraft Server Status',
             images: [

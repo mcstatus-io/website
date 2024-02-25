@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import CarbonAd from '@/components/CarbonAd';
 import LookupForm from '@/components/layout/LookupForm';
 import Navbar from '@/components/layout/Navbar';
+import { Suspense } from 'react';
+import Loading from '@/app/status/[type]/[address]/loading';
 
 export default function RootLayout({ children, params: { type, address } }) {
     address = decodeURIComponent(address);
@@ -22,7 +24,9 @@ export default function RootLayout({ children, params: { type, address } }) {
                     </div>
                     <LookupForm type={type} address={address} className="mt-5" />
                 </section>
-                {children}
+                <Suspense fallback={<Loading />}>
+                    {children}
+                </Suspense>
             </div>
         </>
     );
