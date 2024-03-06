@@ -13,6 +13,7 @@ import MinecraftFormatted from '@/components/MinecraftFormatted';
 
 const hasDuplicateValues = (arr) => arr.length > new Set(arr).size;
 const sortFuncAscendingCaseInsensitive = (prop) => (a, b) => a[prop].toLowerCase() > b[prop].toLowerCase() ? 1 : b[prop].toLowerCase() > a[prop].toLowerCase() ? -1 : 0;
+const getNumberedPrefix = (arr, index) => `${Array((arr.length.toString().length - (index + 1).toString().length) + 1).join(' ')}${index + 1}. `;
 
 export default function StatusTable({ status, protocolVersions, className = '', ...props }) {
     const [showMods, setShowMods] = useState(false);
@@ -111,7 +112,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                             ? <div className={showPlayers ? 'block' : 'hidden'} id="players-list">
                                 {
                                     showAvatars && allowAvatars
-                                        ? <ul className="flex flex-wrap gap-2 mt-3 list-none">
+                                        ? <ol className="flex flex-wrap gap-2 mt-3 list-none">
                                             {
                                                 status.players.list.sort(sortFuncAscendingCaseInsensitive('name_clean')).map((player, index) => (
                                                     <li key={index}>
@@ -122,16 +123,16 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                                     </li>
                                                 ))
                                             }
-                                        </ul>
+                                        </ol>
                                         : allowAvatars
                                             ? <div className="p-4 mt-3 overflow-x-auto font-mono whitespace-pre bg-black rounded">
-                                                <ul className="list-none">
+                                                <ol className="list-none">
                                                     {
                                                         status.players.list.sort(sortFuncAscendingCaseInsensitive('name_clean')).map((player, index) => (
                                                             <li key={index}>
                                                                 <p className="flex items-center justify-start gap-2 text-white md:justify-between md:gap-3">
                                                                     <span className="min-w-fit">
-                                                                        <span className="text-neutral-500">{Array((status.players.list.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
+                                                                        <span className="text-neutral-500">{getNumberedPrefix(status.players.list, index)}</span>
                                                                         <a href={`https://minecraftuuid.com/?search=${encodeURIComponent(player.uuid)}&utm_source=mcstatus.io`} rel="sponsored" className="link">{player.name_clean}</a>
                                                                     </span>
                                                                     <span className="pr-4 min-w-fit text-neutral-500 md:pr-0">{player.uuid}</span>
@@ -139,7 +140,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                                             </li>
                                                         ))
                                                     }
-                                                </ul>
+                                                </ol>
                                             </div>
                                             : <MinecraftFormatted html={status.players.list.map((player) => player.name_html).join('\n')} className="mt-3" />
                                 }
@@ -170,12 +171,12 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                     </button>
                                 </div>
                                 <div className={`${showMods ? 'block' : 'hidden'} tags mt-2 font-mono whitespace-pre bg-black rounded overflow-x-auto p-4`} id="mods-list">
-                                    <ul className="list-none">
+                                    <ol className="list-none">
                                         {
                                             status.mods.sort(sortFuncAscendingCaseInsensitive('name')).map((mod, index) => (
                                                 <li key={index}>
                                                     <p className="text-white">
-                                                        <span className="text-neutral-500">{Array((status.mods.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
+                                                        <span className="text-neutral-500">{getNumberedPrefix(status.mods, index)}</span>
                                                         {
                                                             internalMods.includes(mod.name)
                                                                 ? <span className="text-white">{mod.name}</span>
@@ -192,7 +193,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                                 </li>
                                             ))
                                         }
-                                    </ul>
+                                    </ol>
                                 </div>
                             </>
                             : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
@@ -216,12 +217,12 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                     </button>
                                 </div>
                                 <div className={`${showPlugins ? 'block' : 'hidden'} tags mt-2 font-mono whitespace-pre bg-black rounded overflow-x-auto p-4`} id="plugin-list">
-                                    <ul className="list-none">
+                                    <ol className="list-none">
                                         {
                                             status.plugins.sort(sortFuncAscendingCaseInsensitive('name')).map((plugin, index) => (
                                                 <li key={index}>
                                                     <p className="text-white">
-                                                        <span className="text-neutral-500">{Array((status.plugins.length.toString().length - (index + 1).toString().length) + 1).join(' ')}{index + 1}. </span>
+                                                        <span className="text-neutral-500">{getNumberedPrefix(status.plugins, index)}</span>
                                                         <a className="link" href={`https://dev.bukkit.org/search?search=${encodeURIComponent(plugin.name)}&utm_source=mcstatus.io`} rel="sponsored">
                                                             <span>{plugin.name}</span>
                                                         </a>
@@ -234,7 +235,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                                 </li>
                                             ))
                                         }
-                                    </ul>
+                                    </ol>
                                 </div>
                             </>
                             : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
