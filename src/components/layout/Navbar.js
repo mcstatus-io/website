@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import ArrowRightIcon from '@/assets/icons/arrow-right.svg';
+import ToolIcon from '@/assets/icons/tool.svg';
 import ClockIcon from '@/assets/icons/clock.svg';
 import DiscordIcon from '@/assets/icons/discord.svg';
 import GithubIcon from '@/assets/icons/github.svg';
@@ -90,9 +90,9 @@ export default function Navbar({ active }) {
                     {
                         process.env.NEXT_PUBLIC_DASHBOARD
                             ? <li>
-                                <a href={process.env.NEXT_PUBLIC_DASHBOARD} className="flex items-center gap-2 px-5 py-3 text-black rounded-full button button-green dark:text-white">
+                                <a href={process.env.NEXT_PUBLIC_DASHBOARD} className="flex items-center gap-2 px-4 py-2 text-black rounded-full button button-border dark:text-white">
                                     <span>Dashboard</span>
-                                    <ArrowRightIcon width="18" height="18" />
+                                    <ToolIcon width="18" height="18" />
                                 </a>
                             </li>
                             : null
