@@ -4,6 +4,7 @@ import { Fira_Mono, Inter } from 'next/font/google';
 import Script from 'next/script';
 import ServiceWorker from '@/components/ServiceWorker';
 import Footer from '@/components/layout/Footer';
+import Navbar from '@/components/layout/Navbar';
 
 const interFont = Inter({
     variable: '--font-inter',
@@ -112,6 +113,7 @@ export default function RootLayout({ children }) {
                                 </alert>
                             </div>
                         </noscript>
+                        <Navbar />
                         {children}
                         <ServiceWorker />
                     </div>

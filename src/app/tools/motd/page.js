@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import ChevronRightIcon from '@/assets/icons/chevron-right.svg';
 import CarbonAd from '@/components/CarbonAd';
-import Navbar from '@/components/layout/Navbar';
 import MOTDEditor from '@/components/tools/MOTDEditor';
 
 export const metadata = {
@@ -31,7 +30,6 @@ export const metadata = {
 export default function Page() {
     return (
         <>
-            <Navbar active="tools" />
             <div className="container">
                 <section>
                     <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">

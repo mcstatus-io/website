@@ -10,8 +10,10 @@ import GithubIcon from '@/assets/icons/github.svg';
 import MenuIcon from '@/assets/icons/menu.svg';
 import CloseIcon from '@/assets/icons/x.svg';
 import icon from '@/assets/img/icon.png';
+import { usePathname } from 'next/navigation';
 
-export default function Navbar({ active }) {
+export default function Navbar() {
+    const path = usePathname();
     const [showMenu, setShowMenu] = useState(false);
 
     useEffect(() => {
@@ -42,29 +44,29 @@ export default function Navbar({ active }) {
                 <ul className={`list-none text-neutral-500 dark:text-neutral-400 ${showMenu ? 'flex flex-col justify-center absolute top-0 left-0 bg-neutral-900 bg-opacity-90 backdrop-blur-lg w-[100vw] h-[100vh] z-40' : 'hidden md:flex'} gap-4 items-center grow`}>
                     <li>
                         <Link href="/">
-                            <div className={`p-1 ${showMenu && active === 'home' ? 'text-white' : active === 'home' ? 'text-black dark:text-white' : showMenu ? 'text-neutral-400' : 'hover:text-black hover:dark:text-white'}`}>
+                            <div className={`p-1 ${path === '/' ? 'text-white' : 'text-neutral-400 md:hover:text-black md:hover:dark:text-white'}`}>
                                 <span>Home</span>
                             </div>
                         </Link>
                     </li>
                     <li>
                         <Link href="/tools">
-                            <div className={`p-1 ${showMenu && active === 'tools' ? 'text-white' : active === 'tools' ? 'text-black dark:text-white' : showMenu ? 'text-neutral-400' : 'hover:text-black hover:dark:text-white'}`}>
+                            <div className={`p-1 ${path.startsWith('/tools') ? 'text-white' : 'text-neutral-400 md:hover:text-black md:hover:dark:text-white'}`}>
                                 <span>Tools</span>
                             </div>
                         </Link>
                     </li>
                     <li>
                         <Link href="/docs">
-                            <div className={`p-1 ${showMenu && active === 'api' ? 'text-white' : active === 'api' ? 'text-black dark:text-white' : showMenu ? 'text-neutral-400' : 'hover:text-black hover:dark:text-white'}`}>
-                                <span className="hidden md:block">API</span>
-                                <span className="block md:hidden">API Documentation</span>
+                            <div className={`p-1 ${path.startsWith('/docs') ? 'text-white' : 'text-neutral-400 md:hover:text-black md:hover:dark:text-white'}`}>
+                                <span>API</span>
+                                <span className="md:hidden"> Documentation</span>
                             </div>
                         </Link>
                     </li>
                     <li className="md:mr-auto">
                         <Link href="/about">
-                            <div className={`p-1 ${showMenu && active === 'about' ? 'text-white' : active === 'about' ? 'text-black dark:text-white' : showMenu ? 'text-neutral-400' : 'hover:text-black hover:dark:text-white'}`}>
+                            <div className={`p-1 ${path.startsWith('/about') ? 'text-white' : 'text-neutral-400 md:hover:text-black md:hover:dark:text-white'}`}>
                                 <span>About</span>
                             </div>
                         </Link>
@@ -87,16 +89,12 @@ export default function Navbar({ active }) {
                             <span className="font-bold md:sr-only">Status Page</span>
                         </a>
                     </li>
-                    {
-                        process.env.NEXT_PUBLIC_DASHBOARD
-                            ? <li>
-                                <a href={process.env.NEXT_PUBLIC_DASHBOARD} className="flex items-center gap-2 px-4 py-2 text-black rounded-full button button-border dark:text-white">
-                                    <span>Dashboard</span>
-                                    <ToolIcon width="18" height="18" />
-                                </a>
-                            </li>
-                            : null
-                    }
+                    <li>
+                        <a href={process.env.NEXT_PUBLIC_DASHBOARD || 'https://dashboard.mcstatus.io'} className="flex items-center gap-2 px-4 py-2 text-black rounded-full button button-border dark:text-white">
+                            <span>Dashboard</span>
+                            <ToolIcon width="18" height="18" />
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

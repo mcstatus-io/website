@@ -1,7 +1,6 @@
 import sampleServers from '@/assets/servers';
 import CarbonAd from '@/components/CarbonAd';
 import ServerListing from '@/components/ServerListing';
-import Navbar from '@/components/layout/Navbar';
 
 export const metadata = {
     title: 'Sample Servers',
@@ -29,7 +28,6 @@ export const metadata = {
 export default function Page() {
     return (
         <>
-            <Navbar />
             <div className="container">
                 <section>
                     <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">

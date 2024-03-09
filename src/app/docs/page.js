@@ -10,7 +10,6 @@ import CarbonAd from '@/components/CarbonAd';
 import Collapsible from '@/components/Collapsible';
 import Highlight from '@/components/Highlight';
 import RevisionsTable, { RevisionRow } from '@/components/docs/RevisionsTable';
-import Navbar from '@/components/layout/Navbar';
 
 export const metadata = {
     title: 'API Documentation',
@@ -38,7 +37,6 @@ export const metadata = {
 export default function Page() {
     return (
         <>
-            <Navbar active="api" />
             <div className="container">
                 <section>
                     <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">

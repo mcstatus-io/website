@@ -7,7 +7,6 @@ import mineatarIcon from '@/assets/img/mineatar.png';
 import serverFlexIcon from '@/assets/img/serverflex.png';
 import CarbonAd from '@/components/CarbonAd';
 import Collapsible from '@/components/Collapsible';
-import Navbar from '@/components/layout/Navbar';
 
 const frequentlyAskedQuestions = [
     {
@@ -110,7 +109,6 @@ export const metadata = {
 export default function Page() {
     return (
         <>
-            <Navbar active="about" />
             <div className="container">
                 <section>
                     <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">

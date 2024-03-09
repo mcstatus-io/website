@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import ExternalLinkIcon from '@/assets/icons/external-link.svg';
 import CarbonAd from '@/components/CarbonAd';
-import Navbar from '@/components/layout/Navbar';
 
 export const metadata = {
     title: 'Tools',
@@ -29,7 +28,6 @@ export const metadata = {
 export default function Page() {
     return (
         <>
-            <Navbar active="tools" />
             <div className="container">
                 <section>
                     <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">

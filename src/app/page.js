@@ -9,14 +9,12 @@ import serverFlexIcon from '@/assets/img/serverflex.png';
 import CarbonAd from '@/components/CarbonAd';
 import SampleServers from '@/components/SampleServers';
 import LookupForm from '@/components/layout/LookupForm';
-import Navbar from '@/components/layout/Navbar';
 
 export const revalidate = 30;
 
 export default function Page() {
     return (
         <>
-            <Navbar active="home" />
             <div className="container">
                 <section>
                     <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
