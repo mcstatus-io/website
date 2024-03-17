@@ -48,6 +48,12 @@ export default function Page() {
                     </div>
                 </section>
                 <section>
+                    <div className="mt-12 card card-warning">
+                        <p className="leading-7">
+                            <span className="font-bold">Heads up!</span>
+                            <span> With the release of API revision 3 coming soon, use of the API will require an authorization token generated on the dashboard using a registered account. This system is put in place to reduce spam and other forms of abuse. Revision 3 is still unreleased and currently has no ETA, but a mid-2024 release time is to be expected. Additionally, these docs will be moving to the dashboard.</span>
+                        </p>
+                    </div>
                     <section className="pt-12">
                         <AnchorHeader size={2} id="overview">Overview</AnchorHeader>
                         <p className="mt-3 leading-7 text-neutral-700 dark:text-neutral-300">The goal of this API documentation is to accurately and precisely describe the functionality of this service in plain terms. This page will go over everything you need to know before implementing our API into your service. If you believe there is anything missing, any typos, or incorrect information on this page, please reach out to me via email at <a href="mailto:contact@mcstatus.io" className="link" rel="nofollow">contact@mcstatus.io</a>.</p>
