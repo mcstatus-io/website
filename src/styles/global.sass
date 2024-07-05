@@ -1,9 +1,10 @@
-@import "~highlight.js/styles/atom-one-dark.css"    
+@import "./atom-one-dark.min.css"    
 
-@mixin box
+@mixin card
     @apply bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-[0.075]
 
-@mixin interactive-box
+@mixin interactive-card
+    @include card
     @apply hover:[&:not(:disabled)]:bg-opacity-[0.15] hover:dark:[&:not(:disabled)]:bg-opacity-10 focus:[&:not(:disabled)]:bg-opacity-[0.15] focus:dark:[&:not(:disabled)]:bg-opacity-10 disabled:bg-opacity-5 outline-none
 
 @tailwind base
@@ -98,8 +99,7 @@
                 @apply hover:bg-neutral-700
         
     .button
-        @include box
-        @include interactive-box
+        @include interactive-card
         @apply px-3 py-2 rounded disabled:text-neutral-500
 
         &.button-border
@@ -109,15 +109,13 @@
             @apply px-2 py-1 text-sm
 
     .select
-        @include box
-        @include interactive-box
+        @include interactive-card
         @apply px-3 py-2 rounded w-full appearance-none text-center cursor-pointer
 
         text-align-last: center
 
     .input
-        @include box
-        @include interactive-box
+        @include interactive-card
         @apply px-3 py-2 rounded block font-mono w-full
 
     .label
@@ -137,14 +135,14 @@
                 @apply border-b border-black/5 dark:border-white/5
 
     .card
-        @include box
+        @include card
         @apply block p-5 rounded
 
         &.card-warning
             @apply bg-orange-400/30
 
         &.card-hover
-            @include interactive-box
+            @include interactive-card
 
         &.card-disabled
             @apply relative
@@ -164,7 +162,7 @@
             @apply hidden
 
         .preview
-            @include box
+            @include card
             @apply rounded flex items-center justify-center relative max-w-full text-lg text-neutral-500 w-[420px] h-[132px]
 
         @supports not selector(&:has(.preview))
@@ -181,8 +179,7 @@
     @apply min-w-0
 
 #carbonads
-    @include box
-    @include interactive-box
+    @include interactive-card
     @apply rounded relative max-w-full w-[420px]
 
     .carbon-wrap
