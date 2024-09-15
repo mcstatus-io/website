@@ -40,6 +40,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
 
     if (status.online) {
         const allowAvatars = !hasDuplicateValues(status.players?.list?.map((player) => player.uuid) ?? []);
+        const formattedPlayerList = status.players?.list?.some((player) => player.name_raw !== player.name_clean) ?? false;
 
         if (status.icon) {
             rows.push([
@@ -56,7 +57,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
             [
                 'MOTD',
                 status.motd?.html
-                    ? <MinecraftFormatted html={status.motd.html} key="motd" />
+                    ? <MinecraftFormatted html={status.motd.html} autoCenter key="motd" />
                     : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
             ],
             [
@@ -66,8 +67,26 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                         ? <span>{status.version.name_clean ?? status.version.name}</span>
                         : <MinecraftFormatted html={status.version.name_html} />
                     : <span className="text-neutral-500 dark:text-neutral-400">N/A (&lt; 1.3)</span>
-            ],
-            [
+            ]
+        );
+
+        if (formattedPlayerList) {
+            rows.push(
+                [
+                    'Players',
+                    typeof status.players?.online === 'number' && typeof status.players?.max === 'number'
+                        ? <span>{status.players.online} / {status.players.max}</span>
+                        : typeof status.players?.online === 'number'
+                            ? <span>{status.players.online}</span>
+                            : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
+                ],
+                [
+                    'Information',
+                    <MinecraftFormatted html={status.players.list.map((player) => player.name_html).join('\n')} key="information" />
+                ]
+            );
+        } else {
+            rows.push([
                 'Players',
                 <>
                     <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-3">
@@ -111,7 +130,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                         status.players?.list?.length > 0
                             ? <div className={showPlayers ? 'block' : 'hidden'} id="players-list">
                                 {
-                                    showAvatars && allowAvatars
+                                    showAvatars && allowAvatars && !formattedPlayerList
                                         ? <ol className="flex flex-wrap gap-2 mt-3 list-none">
                                             {
                                                 status.players.list.sort(sortFuncAscendingCaseInsensitive('name_clean')).map((player, index) => (
@@ -124,7 +143,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                                 ))
                                             }
                                         </ol>
-                                        : allowAvatars
+                                        : allowAvatars && !formattedPlayerList
                                             ? <div className="p-4 mt-3 overflow-x-auto font-mono whitespace-pre bg-black rounded">
                                                 <ol className="list-none">
                                                     {
@@ -146,15 +165,26 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                                 }
                                 {
                                     status.players.online > status.players.list.length && allowAvatars
-                                        ? <p className="mt-3 text-sm text-neutral-500 dark:text-neutral-400">Note that not all online players may not be shown. Standard Java Edition servers limit sample players to 12 by default.</p>
+                                        ? <p className="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
+                                            <span>Note that not all online players may not be shown. Standard Java Edition servers limit sample players to 12 by default.</span>
+                                            {
+                                                showAvatars
+                                                    ? <>
+                                                        <span> Player head avatar images provided by </span>
+                                                        <a href="https://mineatar.io" rel="noreferrer" className="link">Mineatar</a>
+                                                        <span>.</span>
+                                                    </>
+                                                    : null
+                                            }
+                                        </p>
                                         : null
                                 }
                             </div>
                             : null
                     }
                 </>
-            ]
-        );
+            ]);
+        }
 
         if (typeof status.mods !== 'undefined') {
             rows.push([
