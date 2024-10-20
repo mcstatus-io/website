@@ -66,7 +66,7 @@ export default function StatusTable({ status, protocolVersions, className = '', 
                     ? status.version.name_raw === status.version.name_clean || status.version.name
                         ? <span>{status.version.name_clean ?? status.version.name}</span>
                         : <MinecraftFormatted html={status.version.name_html} />
-                    : <span className="text-neutral-500 dark:text-neutral-400">N/A (&lt; 1.3)</span>
+                    : <span className="text-neutral-500 dark:text-neutral-400">N/A</span>
             ]
         );
 
