@@ -1,5 +1,6 @@
 'use client';
 
+import linkifyHtml from 'linkify-html';
 import { useEffect, useRef } from 'react';
 
 const obfuscatedCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+[]"\';:<>,./?';
@@ -52,7 +53,7 @@ export default function MinecraftFormatted({ html, className = '', children }) {
 
     return (
         html
-            ? <pre className={`block bg-black rounded text-white p-5 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: html }} ref={containerElem} />
+            ? <pre className={`block bg-black rounded text-white p-5 w-full overflow-x-auto ${className}`} dangerouslySetInnerHTML={{ __html: linkifyHtml(html) }} ref={containerElem} />
             : <pre className={`block bg-black rounded text-white p-5 w-full overflow-x-auto ${className}`} ref={containerElem}>{children}</pre>
     );
 }
