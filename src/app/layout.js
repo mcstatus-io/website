@@ -1,10 +1,10 @@
 import '@/styles/global.sass';
 
 import { Fira_Mono, Inter } from 'next/font/google';
-import Script from 'next/script';
 import ServiceWorker from '@/components/ServiceWorker';
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
+import SwetrixLoader from '@/components/SwetrixLoader';
 
 const interFont = Inter({
     variable: '--font-inter',
@@ -121,8 +121,7 @@ export default function RootLayout({ children }) {
                         <Footer />
                     </div>
                 </div>
-                <Script src="https://www.googletagmanager.com/gtag/js?id=G-76CZV53176" strategy="afterInteractive" />
-                <Script src="/js/ga.js" id="google-analytics" strategy="afterInteractive" />
+                <SwetrixLoader />
             </body>
         </html>
     );
