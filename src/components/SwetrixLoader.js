@@ -7,14 +7,14 @@ import * as Swetrix from 'swetrix';
 
 export default function SwetrixLoader() {
     useEffect(() => {
-        Swetrix.init('5pffz8E887ex', { devMode: true, apiURL: 'https://swetrix.mcstatus.io/log' });
+        Swetrix.init('5pffz8E887ex', { apiURL: 'https://swetrix.mcstatus.io/log' });
         Swetrix.trackViews();
     }, []);
 
     return (
         <noscript>
             <img
-                src="https://api.swetrix.com/log/noscript?pid=5pffz8E887ex"
+                src="https://swetrix.mcstatus.io/log/noscript?pid=5pffz8E887ex"
                 alt=""
                 referrerPolicy="no-referrer-when-downgrade"
             />
