@@ -29,7 +29,9 @@ export default function Page() {
                 <section className="pt-12">
                     <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
                         <div className="title-group">
-                            <GiftIcon width="28" height="28" />
+                            <div className="icon">
+                                <GiftIcon width="28" height="28" />
+                            </div>
                             <hgroup>
                                 <h2 className="title">Sample Servers</h2>
                                 <p className="subtitle">A few sample servers to test out our service</p>
@@ -46,7 +48,9 @@ export default function Page() {
                 </section>
                 <section className="pt-12">
                     <div className="title-group">
-                        <InfoIcon width="28" height="28" />
+                        <div className="icon">
+                            <InfoIcon width="28" height="28" />
+                        </div>
                         <hgroup>
                             <h2 className="title">About Us</h2>
                             <p className="subtitle">A quick understanding of what we do</p>
@@ -59,7 +63,9 @@ export default function Page() {
                 </section>
                 <section className="pt-12">
                     <div className="title-group">
-                        <ToolIcon width="28" height="28" />
+                        <div className="icon">
+                            <ToolIcon width="28" height="28" />
+                        </div>
                         <hgroup>
                             <h2 className="title">Partners</h2>
                             <p className="subtitle">Other services we are partnered with</p>

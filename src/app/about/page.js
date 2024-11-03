@@ -122,7 +122,9 @@ export default function Page() {
                 </section>
                 <section className="pt-12">
                     <div className="title-group">
-                        <HelpCircleIcon width="28" height="28" />
+                        <div className="icon">
+                            <HelpCircleIcon width="28" height="28" />
+                        </div>
                         <hgroup>
                             <h2 className="title">Frequently Asked Questions</h2>
                             <p className="subtitle">Answers to commonly asked questions</p>
@@ -142,7 +144,9 @@ export default function Page() {
                 </section>
                 <section className="pt-12">
                     <div className="title-group">
-                        <ToolIcon width="28" height="28" />
+                        <div className="icon">
+                            <ToolIcon width="28" height="28" />
+                        </div>
                         <hgroup>
                             <h2 className="title">Partners</h2>
                             <p className="subtitle">Other services we are partnered with</p>
@@ -171,7 +175,9 @@ export default function Page() {
                 </section>
                 <section className="pt-12">
                     <div className="title-group">
-                        <MailIcon width="28" height="28" />
+                        <div className="icon">
+                            <MailIcon width="28" height="28" />
+                        </div>
                         <hgroup>
                             <h2 className="title">Contact</h2>
                             <p className="subtitle">How to contact me if needed</p>
