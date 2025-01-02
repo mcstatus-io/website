@@ -8,7 +8,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const commitID = childProcess.execSync('git rev-parse HEAD').toString();
 
 module.exports = withBundleAnalyzer({
-    swcMinify: true,
     reactStrictMode: true,
     redirects: () => [
         {
