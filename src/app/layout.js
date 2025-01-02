@@ -2,9 +2,9 @@ import '@/styles/global.sass';
 
 import { Fira_Mono, Inter } from 'next/font/google';
 import ServiceWorker from '@/components/ServiceWorker';
+import SwetrixLoader from '@/components/SwetrixLoader';
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
-import SwetrixLoader from '@/components/SwetrixLoader';
 
 const interFont = Inter({
     variable: '--font-inter',
@@ -122,6 +122,7 @@ export default function RootLayout({ children }) {
                     </div>
                 </div>
                 <SwetrixLoader />
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3454627264520632" crossOrigin="anonymous"></script>
             </body>
         </html>
     );

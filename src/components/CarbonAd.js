@@ -2,7 +2,11 @@
 
 import { useEffect, useRef } from 'react';
 
+/* eslint-disable no-unreachable */
+
 export default function CarbonAd({ className }) {
+    return null;
+
     const elem = useRef();
 
     useEffect(() => {
