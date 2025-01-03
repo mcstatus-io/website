@@ -122,7 +122,6 @@ export default function RootLayout({ children }) {
                     </div>
                 </div>
                 <SwetrixLoader />
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3454627264520632" crossOrigin="anonymous"></script>
             </body>
         </html>
     );
