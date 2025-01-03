@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import ToolIcon from '@/assets/icons/tool.svg';
+import PatreonIcon from '@/assets/icons/patreon.svg';
 import ClockIcon from '@/assets/icons/clock.svg';
 import DiscordIcon from '@/assets/icons/discord.svg';
 import GithubIcon from '@/assets/icons/github.svg';
@@ -90,9 +90,9 @@ export default function Navbar() {
                         </a>
                     </li>
                     <li>
-                        <a href={process.env.NEXT_PUBLIC_DASHBOARD || 'https://dashboard.mcstatus.io'} className="flex items-center gap-2 px-4 py-2 text-black rounded-full button button-border dark:text-white">
-                            <span>Dashboard</span>
-                            <ToolIcon width="18" height="18" />
+                        <a href="https://patreon.com/mcstatus" target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full text-patreon button button-border">
+                            <span>Patreon</span>
+                            <PatreonIcon width="18" height="18" />
                         </a>
                     </li>
                 </ul>
