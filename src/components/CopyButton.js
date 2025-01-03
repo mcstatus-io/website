@@ -13,7 +13,7 @@ export default function CopyButton({ baseButtonText = 'Copy', copiedButtonText =
             await navigator.clipboard.writeText(text);
 
             setState('success');
-        } catch (e) {
+        } catch {
             setState('error');
         }
     };
