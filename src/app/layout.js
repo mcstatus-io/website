@@ -2,7 +2,6 @@ import '@/styles/global.sass';
 
 import { Fira_Mono, Inter } from 'next/font/google';
 import ServiceWorker from '@/components/ServiceWorker';
-import SwetrixLoader from '@/components/SwetrixLoader';
 import Footer from '@/components/layout/Footer';
 import Navbar from '@/components/layout/Navbar';
 
@@ -121,7 +120,6 @@ export default function RootLayout({ children }) {
                         <Footer />
                     </div>
                 </div>
-                <SwetrixLoader />
             </body>
         </html>
     );

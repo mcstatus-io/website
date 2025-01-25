@@ -1,16 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
-import * as Swetrix from 'swetrix';
 
 export default function Error({ error }) {
     useEffect(() => {
         console.error(error);
-
-        Swetrix.trackError({
-            name: 'StatusError',
-            message: error.message ?? error?.toString() ?? error
-        });
     }, [error]);
 
     return (
