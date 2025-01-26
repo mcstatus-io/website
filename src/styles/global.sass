@@ -1,15 +1,12 @@
-@import "./atom-one-dark.min.css"    
+@import "tailwindcss"
+@import "./atom-one-dark.min.css"
 
 @mixin card
-    @apply bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-[0.075]
+    @apply bg-black/10 dark:bg-white/7.5
 
 @mixin interactive-card
     @include card
-    @apply hover:[&:not(:disabled)]:bg-opacity-[0.15] hover:dark:[&:not(:disabled)]:bg-opacity-10 focus:[&:not(:disabled)]:bg-opacity-[0.15] focus:dark:[&:not(:disabled)]:bg-opacity-10 disabled:bg-opacity-5 outline-none
-
-@tailwind base
-@tailwind components
-@tailwind utilities
+    @apply hover:[&:not(:disabled)]:bg-black/15 hover:dark:[&:not(:disabled)]:bg-white/10 focus:[&:not(:disabled)]:bg-black/15 focus:dark:[&:not(:disabled)]:bg-white/10 disabled:bg-black/5 disabled:dark:bg-white/5 outline-none
 
 @layer utilities
     .link
